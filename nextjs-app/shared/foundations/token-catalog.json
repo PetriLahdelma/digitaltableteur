@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-29T20:32:19.844Z",
-  "tokenCount": 228,
-  "usageCoverage": 173,
+  "generatedAt": "2026-10-30T15:35:05.792Z",
+  "tokenCount": 230,
+  "usageCoverage": 178,
   "themes": [
     {
       "id": "light",
@@ -1991,21 +1991,35 @@
         {
           "name": "--size-width-md",
           "value": "320px",
-          "usage": "",
+          "usage": "Max inline size for md blocks.",
           "category": "size",
           "subgroup": "General"
         },
         {
           "name": "--size-width-lg",
           "value": "900px",
-          "usage": "",
+          "usage": "Max inline size for lg blocks.",
           "category": "size",
           "subgroup": "General"
         },
         {
           "name": "--size-width-form",
           "value": "600px",
-          "usage": "",
+          "usage": "Max inline size for form blocks.",
+          "category": "size",
+          "subgroup": "General"
+        },
+        {
+          "name": "--size-target-min",
+          "value": "24px",
+          "usage": "Smallest pointer target, the WCAG 2.2 AA floor (2.5.8): min-block-size and min-inline-size on anything clickable, unless spacing gives it a 24px circle.",
+          "category": "size",
+          "subgroup": "General"
+        },
+        {
+          "name": "--size-target-touch",
+          "value": "44px",
+          "usage": "Comfortable touch target (44px) for primary actions on phones; the site page tests hold touch targets to it.",
           "category": "size",
           "subgroup": "General"
         }

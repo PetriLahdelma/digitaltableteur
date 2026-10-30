@@ -2305,5 +2305,6 @@
   "taskListStatusInProgress": "Pågår",
   "taskListStatusCompleted": "Klar",
   "taskListStatusCannotStart": "Kan inte börja än",
-  "taskListStepDone": "klar"
+  "taskListStepDone": "klar",
+  "statListOf": "av {{total}}"
 }

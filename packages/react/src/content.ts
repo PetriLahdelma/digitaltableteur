@@ -56,6 +56,11 @@ export type {
   StageListStage,
   StageListVariant,
 } from "../../../nextjs-app/shared/components/StageList";
+export { default as StatList } from "../../../nextjs-app/shared/components/StatList/StatList";
+export type {
+  StatListItem,
+  StatListProps,
+} from "../../../nextjs-app/shared/components/StatList";
 export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export { Logo } from "../../../nextjs-app/shared/components/Logo/Logo";

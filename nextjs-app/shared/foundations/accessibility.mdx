@@ -22,7 +22,7 @@ import { a11yFigures, contrastFigures } from '../../../.storybook/blocks/guide/g
     {
       value: a11yFigures.reviewed,
       of: a11yFigures.total,
-      label: "Components with a reviewed accessibility record",
+      label: "Reviewed accessibility record",
     },
     {
       value: a11yFigures.accessibilityTree,
@@ -33,7 +33,7 @@ import { a11yFigures, contrastFigures } from '../../../.storybook/blocks/guide/g
     {
       value: a11yFigures.realBrowserForcedColors,
       of: a11yFigures.total,
-      label: "Forced colours verified in a real browser",
+      label: "Forced colours, real browser",
     },
   ]}
 />
@@ -73,8 +73,8 @@ Each guarantee below is backed by a check that fails the build or the story run.
     ],
     [
       "Motion",
-      "Animated components honour prefers-reduced-motion. Motion tokens set defaults; the component decides what reduced motion means for it.",
-      "The reducedMotion flag in each contract",
+      <>Animated components honour <Code size="inherit">prefers-reduced-motion</Code>. Motion tokens set defaults; the component decides what reduced motion means for it.</>,
+      <>The <Code size="inherit">reducedMotion</Code> flag in each contract</>,
     ],
   ]}
 />

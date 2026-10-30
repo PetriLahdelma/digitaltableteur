@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.52 - 2026-10-30
+
+- `StatList` (new, alpha): key figures as a description list. Each item pairs
+  a figure with its label, an optional total (`of`, "191 of 208") and a short
+  note. `variant` is `rule` (a hairline above each figure) or `card` (surface
+  tiles); `size` md or lg; `align` start or center. The label stays first in
+  the DOM, so a screen reader hears "Components, 191".
+- `Text`, `Title`: new `flush` prop drops the block margins when the parent
+  owns spacing (a row, a cell, a card or a gap).
+- `Table`: `caption` is optional when the table is named another way,
+  `aria-labelledby` or `aria-label`. A table with no name at all warns in
+  development, and the contract's `table-needs-name` rule catches it.
+- `Button`: labels set in the medium weight (500) instead of inheriting 400.
+- `Badge`: the leading dot takes the badge's own text colour, so a warning
+  badge's dot no longer reads lighter than its label; semantic icons draw in
+  the bold weight to match the 600 label.
+- `StatusDot`: the label sets the baseline, so it sits on the line of the
+  text beside it (it dropped about 3px in table cells).
+
 ## 0.1.51 - 2026-10-30
 
 - `TooltipContent`: new `shortcut` prop, one entry per key held together

@@ -1,6 +1,11 @@
+/* Baseline, with the dot centred on its own: the label then gives the
+   inline-flex box its baseline, so "Exported" sits on the same line as the
+   text beside it. With align-items: center the dot (which has no text) gave
+   the baseline from its bottom edge and dropped the label about 3px. */
+
 .root {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-internal-6);
   font-family: var(--font-body);
   color: var(--color-text);
@@ -10,6 +15,7 @@
   block-size: 0.5em;
   inline-size: 0.5em;
   flex: none;
+  align-self: center;
   border-radius: var(--radius-circle);
   background-color: currentcolor;
 }

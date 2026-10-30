@@ -9,8 +9,12 @@ export type TableAlign = "start" | "center" | "end";
 export type TableSortDirection = "ascending" | "descending" | "none";
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
-  /** Accessible table name, rendered as a `<caption>`. */
-  caption: string;
+  /**
+   * Accessible table name, rendered as a `<caption>`. Optional only when the
+   * table is named another way: `aria-labelledby` pointing at a visible
+   * heading, or `aria-label`. A table needs a name either way.
+   */
+  caption?: string;
   /** Visually hide the caption while keeping the accessible name. */
   hideCaption?: boolean;
   /** Density scale. @default "md" */
@@ -79,6 +83,25 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     const wrapperRef = useRef<HTMLDivElement>(null);
     const captionId = useId();
     const scrolls = useOverflowsInline(wrapperRef);
+    const labelledBy = rest["aria-labelledby"];
+    const label = rest["aria-label"];
+    const hasCaption = Boolean(caption);
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !hasCaption &&
+      !labelledBy &&
+      !label
+    ) {
+      console.warn(
+        "[Table] A table needs an accessible name: pass caption, aria-labelledby or aria-label.",
+      );
+    }
+    // The scroll region takes the same name as the table.
+    const regionName = hasCaption
+      ? { "aria-labelledby": captionId }
+      : labelledBy
+        ? { "aria-labelledby": labelledBy }
+        : { "aria-label": label };
     return (
       <div
         ref={wrapperRef}
@@ -88,7 +111,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           wrapperClassName,
         )}
         {...(scrolls
-          ? { tabIndex: 0, role: "region", "aria-labelledby": captionId }
+          ? { tabIndex: 0, role: "region", ...regionName }
           : {})}
       >
         <table
@@ -104,12 +127,14 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           )}
           {...rest}
         >
-          <caption
-            id={captionId}
-            className={hideCaption ? styles.visuallyHidden : styles.caption}
-          >
-            {caption}
-          </caption>
+          {hasCaption ? (
+            <caption
+              id={captionId}
+              className={hideCaption ? styles.visuallyHidden : styles.caption}
+            >
+              {caption}
+            </caption>
+          ) : null}
           {children}
         </table>
       </div>

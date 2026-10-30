@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideTable, GuideCodeList } from '../../../.storybook/blocks/guide/GuidePage';
 import Code from "@dt/Code";
 
 <Meta title="Overview/Utilities" />
@@ -19,13 +19,13 @@ All of these are exported from `@digitaltableteur/react`.
   columns={["Utility", "Does", "Used by"]}
   rows={[
     [<Code size="inherit">useMediaQuery</Code>, "Subscribes to a media query without hydration mismatches.", "Responsive components"],
-    [<Code size="inherit">LayerProvider, useLayer</Code>, "Chooses where portals mount and which z-index tier they use.", "Modal, popovers, toasts, tooltips"],
+    [<GuideCodeList names="LayerProvider, useLayer" />, <>Chooses where portals mount and which <Code size="inherit">z-index</Code> tier they use.</>, "Modal, popovers, toasts, tooltips"],
     [<Code size="inherit">useFocusTrap</Code>, "Keeps focus inside an overlay and returns it on close.", "Modal"],
     [<Code size="inherit">useScrollLock</Code>, "Locks page scroll while an overlay is open.", "Modal"],
-    [<Code size="inherit">useOverflow, useScrollOverflow</Code>, "Reports overflow and whether a track can scroll further.", "Horizontal tracks"],
+    [<GuideCodeList names="useOverflow, useScrollOverflow" />, "Reports overflow and whether a track can scroll further.", "Horizontal tracks"],
     [<Code size="inherit">useStreamingText</Code>, "Smooths streamed text into an even reveal.", "Donny chat replies"],
-    [<Code size="inherit">LinkProvider, Link</Code>, "Lets the host app supply its router link.", "Every component that links"],
-    [<Code size="inherit">ThemeProvider, useTheme</Code>, "Holds and changes the active theme.", "The whole app"],
+    [<GuideCodeList names="LinkProvider, Link" />, "Lets the host app supply its router link.", "Every component that links"],
+    [<GuideCodeList names="ThemeProvider, useTheme" />, "Holds and changes the active theme.", "The whole app"],
   ]}
 />
 
@@ -49,7 +49,7 @@ The overlays are built in-house rather than on a headless library, so they own f
 
 ### LayerProvider and useLayer(options)
 
-`LayerProvider` lets the host choose the DOM node that portals mount into; without it they use `document.body`. `useLayer()` returns that container and the z-index tier for a `modal`, `popover`, `toast` or `tooltip`.
+`LayerProvider` lets the host choose the DOM node that portals mount into; without it they use `document.body`. `useLayer()` returns that container and the `z-index` tier for a `modal`, `popover`, `toast` or `tooltip`.
 
 ### useFocusTrap(ref, active)
 

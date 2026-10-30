@@ -11,6 +11,10 @@ import AlertBanner from "@dt/AlertBanner";
 import { useTranslate } from "../../lib/translation";
 import styles from "./Mermaid.module.css";
 
+/**
+ * Diagram colours. Each value is a CSS colour or a token reference such as
+ * `var(--color-text)`; tokens keep following the active theme after render.
+ */
 export interface MermaidThemeColors {
   /** Text color */
   color: string;
@@ -20,15 +24,36 @@ export interface MermaidThemeColors {
   lineColor?: string;
 }
 
+/** Token defaults: ink text, no fill, hairline lines, in every theme. */
 const DEFAULT_COLORS: MermaidThemeColors = {
-  color: "#ED4B9B",
+  color: "var(--color-text)",
   nodeBg: "transparent",
+  lineColor: "var(--color-border)",
+};
+
+/**
+ * Mermaid computes derived shades from its theme variables, so it needs real
+ * colours. Resolve `var(--token)` against the document; the CSS custom
+ * properties on the diagram keep the token, so a theme switch still recolours
+ * the rendered SVG.
+ */
+const resolveColor = (value: string): string => {
+  const token = value.match(/^var\((--[\w-]+)\)$/)?.[1];
+  if (!token || typeof document === "undefined") return value;
+  const resolved = getComputedStyle(document.documentElement)
+    .getPropertyValue(token)
+    .trim();
+  return resolved || "#000000";
 };
 
 let lastColorKey = "";
 
-const loadMermaid = async (colors: MermaidThemeColors = DEFAULT_COLORS) => {
+const loadMermaid = async (themeColors: MermaidThemeColors = DEFAULT_COLORS) => {
   const { default: mermaid } = await import("mermaid");
+  const colors: MermaidThemeColors = {
+    color: resolveColor(themeColors.color),
+    nodeBg: resolveColor(themeColors.nodeBg),
+  };
   const colorKey = `${colors.color}-${colors.nodeBg}`;
   if (colorKey !== lastColorKey) {
     mermaid.initialize({
@@ -186,9 +211,9 @@ export const Mermaid: React.FC<MermaidProps> = ({
               {
                 "--mermaid-color": (themeColors ?? DEFAULT_COLORS).color,
                 "--mermaid-node-bg": (themeColors ?? DEFAULT_COLORS).nodeBg,
-                "--mermaid-line-color":
-                  themeColors?.lineColor ??
-                  (themeColors ?? DEFAULT_COLORS).color,
+                "--mermaid-line-color": themeColors
+                  ? (themeColors.lineColor ?? themeColors.color)
+                  : DEFAULT_COLORS.lineColor,
               } as React.CSSProperties
             }
             dangerouslySetInnerHTML={{ __html: svg }}

@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T09:46:22.649Z",
+  "generatedAt": "2026-10-30T16:18:03.405Z",
   "summary": {
-    "componentCount": 191,
+    "componentCount": 192,
     "statusCounts": {
       "beta": 48,
       "stable": 108,
       "deprecated": 3,
-      "alpha": 32
+      "alpha": 33
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 91.8,
-    "codebaseComponentCount": 208,
-    "usageCoveragePercent": 94.8,
+    "catalogCompletenessPercent": 91.9,
+    "codebaseComponentCount": 209,
+    "usageCoveragePercent": 93.8,
     "componentsWithProductionUsage": 45,
     "notReadyForStablePromotion": false
   },
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 228,
-    "usageCoverage": 173,
+    "tokenCount": 230,
+    "usageCoverage": 178,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 208,
-    "inCatalog": 191,
+    "totalComponentsInCodebase": 209,
+    "inCatalog": 192,
     "outOfCatalog": 17,
-    "catalogCompletenessPercent": 91.8,
+    "catalogCompletenessPercent": 91.9,
     "artifactCoverage": {
-      "stories": 175,
-      "tests": 187,
-      "mdx": 7,
-      "spec": 191
+      "stories": 176,
+      "tests": 188,
+      "mdx": 8,
+      "spec": 192
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 191,
-    "withAnyUsage": 181,
+    "catalogedComponents": 192,
+    "withAnyUsage": 180,
     "withProductionUsage": 45,
-    "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 926,
-    "aliasImportFiles": 474,
-    "relativeImportFiles": 492,
+    "uniqueImportedComponents": 180,
+    "totalEvidenceRows": 934,
+    "aliasImportFiles": 482,
+    "relativeImportFiles": 493,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-10-29T07:16:41.509Z",
+    "generatedAt": "2026-10-30T14:50:09.917Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 97,
+    "nodesWithComposesWith": 102,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,7 +102,7 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 191,
+      "digitaltableteur": 192,
       "dsharp": 112
     },
     "statusMix": {
@@ -110,7 +110,7 @@
         "beta": 48,
         "stable": 108,
         "deprecated": 3,
-        "alpha": 32
+        "alpha": 33
       },
       "dsharp": {
         "beta": 110,
@@ -475,7 +475,13 @@
           "nest accordions more than one level deep. Two-level disclosure becomes unreadable in screen reader linear mode.",
           "put a single short paragraph behind a section — the click costs more than it saves; show the text directly."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Code",
+          "CodeBlock",
+          "Mermaid",
+          "Title",
+          "Button"
+        ],
         "prefersOver": [],
         "declaredPropCount": 8,
         "guidelines": [
@@ -5303,7 +5309,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 15,
+        "importCount": 13,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 6,
@@ -5529,12 +5535,12 @@
           "nest a Button inside a Badge beyond the built-in removable affordance."
         ],
         "composesWith": [
+          "Button",
           "TextInput",
           "Icon",
-          "Button",
-          "Text",
           "Grid",
-          "FlexBox"
+          "FlexBox",
+          "Text"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -8306,7 +8312,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 67,
+        "importCount": 66,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 38,
@@ -9820,7 +9826,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 10,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 5,
@@ -9857,18 +9863,6 @@
           },
           {
             "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Card",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Card",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/Docs/DesignSystemOverview.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
             "context": "story"
@@ -10066,7 +10060,8 @@
           "Button",
           "Icon",
           "Badge",
-          "Divider"
+          "Divider",
+          "FlexBox"
         ],
         "prefersOver": [],
         "declaredPropCount": 16,
@@ -13844,7 +13839,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Code",
-        "importCount": 1,
+        "importCount": 7,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -13854,6 +13849,42 @@
             "importKind": "relative",
             "importPath": "./Code/Code",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/APIIntegration.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/LLMSchema.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Welcome.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Code",
+            "context": "story"
           }
         ]
       },
@@ -13912,7 +13943,14 @@
           "add a copy affordance; a copyable command is a Snippet.",
           "use it for keyboard keys; that is Kbd."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "CodeBlock",
+          "Text",
+          "TextInput",
+          "StatusDot",
+          "Select",
+          "Table"
+        ],
         "prefersOver": [],
         "declaredPropCount": 1,
         "guidelines": [
@@ -14360,7 +14398,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CodeBlock",
-        "importCount": 1,
+        "importCount": 6,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -14370,6 +14408,36 @@
             "importKind": "relative",
             "importPath": "./CodeBlock/CodeBlock",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/APIIntegration.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/CodeBlock",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/CodeBlock",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/LLMSchema.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/CodeBlock",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/CodeBlock",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Welcome.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/CodeBlock",
+            "context": "story"
           }
         ]
       },
@@ -14501,7 +14569,14 @@
           "number blocks under five lines.",
           "nest it in another scroll container; use `maxHeight`."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Code",
+          "Icon",
+          "SegmentedControl",
+          "Text",
+          "TextInput",
+          "Toast"
+        ],
         "prefersOver": [],
         "declaredPropCount": 16,
         "guidelines": [
@@ -29886,7 +29961,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 77,
+        "importCount": 75,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 40,
@@ -30124,9 +30199,9 @@
         "composesWith": [
           "Button",
           "Text",
+          "ComplianceCard",
           "Badge",
           "Title",
-          "ComplianceCard",
           "Label"
         ],
         "prefersOver": [],
@@ -30610,7 +30685,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/IconButton",
-        "importCount": 10,
+        "importCount": 9,
         "productionImportCount": 1,
         "patternImportCount": 3,
         "componentImportCount": 2,
@@ -30659,12 +30734,6 @@
           },
           {
             "path": "nextjs-app/shared/components/Tooltip/Tooltip.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/IconButton",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/IconButton",
             "context": "story"
@@ -38596,7 +38665,7 @@
           "themeColors": {
             "optional": true,
             "type": "MermaidThemeColors",
-            "description": "Diagram color overrides"
+            "description": "Diagram color overrides: CSS colours or var(--token) references. Defaults to --color-text and --color-border, so diagrams follow the theme."
           }
         },
         "forbiddenUse": [
@@ -38608,7 +38677,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Mermaid",
-        "importCount": 4,
+        "importCount": 5,
         "productionImportCount": 4,
         "patternImportCount": 0,
         "componentImportCount": 0,
@@ -38636,6 +38705,12 @@
             "importKind": "relative",
             "importPath": "../../../Mermaid",
             "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/LLMSchema.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Mermaid",
+            "context": "story"
           }
         ]
       },
@@ -38718,7 +38793,13 @@
           "repeat the Mermaid source as the alternative; translate the visual grammar into ordinary prose and semantic lists.",
           "use a diagram for content that is a simple list or sequence; write the list with List instead."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Code",
+          "CodeBlock",
+          "Title",
+          "Accordion",
+          "Button"
+        ],
         "prefersOver": [],
         "declaredPropCount": 8,
         "guidelines": [
@@ -51160,7 +51241,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SegmentedControl",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 1,
@@ -51176,6 +51257,12 @@
             "importKind": "relative",
             "importPath": "./SegmentedControl",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/SegmentedControl",
+            "context": "story"
           }
         ]
       },
@@ -51272,7 +51359,14 @@
           "use it for actions or navigation that commits/routes — use `ButtonGroup` or links. Selecting must only change the bound value.",
           "overflow it; if the options do not fit on one line, use `Select`."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Code",
+          "CodeBlock",
+          "Icon",
+          "Text",
+          "TextInput",
+          "Toast"
+        ],
         "prefersOver": [],
         "declaredPropCount": 6,
         "guidelines": [
@@ -52592,18 +52686,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SentrySummaryCard",
-        "importCount": 1,
+        "importCount": 0,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": [
-          {
-            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/SentrySummaryCard",
-            "context": "story"
-          }
-        ]
+        "evidence": []
       },
       "agent": {
         "preferredImport": "@dt/SentrySummaryCard",
@@ -59871,6 +59958,451 @@
       }
     },
     {
+      "name": "StatList",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "StatList",
+        "tier": "molecule",
+        "group": "display",
+        "status": "alpha",
+        "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "dl",
+        "variants": {
+          "variant": {
+            "values": [
+              "rule",
+              "card"
+            ],
+            "default": "rule",
+            "propSourced": true
+          },
+          "size": {
+            "values": [
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          },
+          "align": {
+            "values": [
+              "start",
+              "center"
+            ],
+            "default": "start",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Not interactive."
+          ],
+          "ariaRequirements": [
+            "Renders a <dl>; each item is a <dt> label followed by a <dd> figure and an optional <dd> note, so the label is read before the figure.",
+            "The figure is drawn above the label with CSS order only; reading order is unchanged."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-title",
+            "--color-text",
+            "--color-muted",
+            "--color-border",
+            "--color-border-light",
+            "--color-surface"
+          ],
+          "spacing": [
+            "--space-internal-8",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-layout-24",
+            "--space-layout-32"
+          ]
+        },
+        "lightDarkVerified": false,
+        "forbiddenUse": [
+          "animate figures counting up; the figure is the content, not a decoration.",
+          "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+          "use it for tables of several values per row."
+        ],
+        "schemaVersion": 2,
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "StatListItem[]",
+            "description": "Figures in reading order."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "rule",
+              "card"
+            ],
+            "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "md",
+              "lg"
+            ],
+            "description": "Figure size: md for rows of four or more, lg for two or three."
+          },
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "start",
+              "center"
+            ],
+            "description": "Text alignment inside each item."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+          }
+        }
+      },
+      "spec": "# StatList\n\n## Intent\nShow a few key figures with what each one counts, so a reader can take in the\nnumbers at a glance and still hear them in order with a screen reader.\n\n## Interaction contract\n- Keyboard: not interactive.\n- Pointer: not interactive.\n- Screen readers: a description list; each label is read, then its figure,\n  then the note. The figure is drawn first with CSS order only.\n\n## Do / don't\n- Do: keep labels short and concrete, and put the source or date in the note.\n- Do: pass `of` for a figure out of a total instead of writing \"191/208\".\n- Don't: animate figures counting up.\n- Don't: use it for several values per row; use Table.\n\n## Design notes\n- Tokens: --font-size-title-s and -m for figures, --color-border hairlines\n  (rule) or --color-surface tiles (card), --space-layout-24/32 gaps.\n- Figures use the regular-weight display face, as on the site's display lines.\n- Figma: not drawn yet.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/StatList",
+        "importCount": 0,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": []
+      },
+      "agent": {
+        "preferredImport": "@dt/StatList",
+        "intent": "Show a few key figures with what each one counts, so a reader can take in the numbers at a glance and still hear them in order with a screen reader.",
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "StatListItem[]",
+            "description": "Figures in reading order."
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "card",
+              "rule"
+            ],
+            "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "md",
+              "lg"
+            ],
+            "description": "Figure size: md for rows of four or more, lg for two or three."
+          },
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "start"
+            ],
+            "description": "Text alignment inside each item."
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+          }
+        },
+        "propRelationships": [],
+        "forbiddenCombos": [],
+        "variants": {
+          "variant": {
+            "values": [
+              "card",
+              "rule"
+            ],
+            "default": "card"
+          },
+          "size": {
+            "values": [
+              "md",
+              "lg"
+            ],
+            "default": "md"
+          },
+          "align": {
+            "values": [
+              "center",
+              "start"
+            ],
+            "default": "center"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep labels short and concrete, and put the source or date in the note.",
+          "pass `of` for a figure out of a total instead of writing \"191/208\"."
+        ],
+        "avoidWhen": [
+          "animate figures counting up.",
+          "use it for several values per row; use Table."
+        ],
+        "requiredA11y": [
+          "Renders a <dl>; each item is a <dt> label followed by a <dd> figure and an optional <dd> note, so the label is read before the figure.",
+          "The figure is drawn above the label with CSS order only; reading order is unchanged."
+        ],
+        "keyboard": [
+          "Not interactive."
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "animate figures counting up.",
+          "use it for several values per row; use Table."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 5,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "keep labels short and concrete, and put the source or date in the note.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "pass `of` for a figure out of a total instead of writing \"191/208\".",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "animate figures counting up.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for several values per row; use Table.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "2.5.8",
+                "name": "Target Size (Minimum)",
+                "level": "AA",
+                "en301549": "9.2.5.8",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "1.3.1",
+                "name": "Info and Relationships",
+                "level": "A",
+                "en301549": "9.1.3.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual",
+            "wcag": [
+              {
+                "sc": "2.1.1",
+                "name": "Keyboard",
+                "level": "A",
+                "en301549": "9.2.1.1",
+                "coverage": "partial"
+              },
+              {
+                "sc": "2.1.2",
+                "name": "No Keyboard Trap",
+                "level": "A",
+                "en301549": "9.2.1.2",
+                "coverage": "partial"
+              }
+            ]
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture.",
+            "wcag": [
+              {
+                "sc": "4.1.2",
+                "name": "Name, Role, Value",
+                "level": "A",
+                "en301549": "9.4.1.2",
+                "coverage": "partial"
+              }
+            ]
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST + controlled/uncontrolled pairs"
+          },
+          "forbiddenCombos": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StatList.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StatList.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StatList.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "StatList.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          },
+          "temporal": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "consequence": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          }
+        },
+        "governance": null,
+        "content": null,
+        "temporal": null,
+        "consequence": null
+      }
+    },
+    {
       "name": "StatusDot",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -60117,7 +60649,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StatusDot",
-        "importCount": 5,
+        "importCount": 7,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
@@ -60148,6 +60680,18 @@
           },
           {
             "path": "nextjs-app/shared/components/VirtualListItem/VirtualListItem.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/StatusDot",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/StatusDot",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/StatusDot",
             "context": "story"
@@ -60246,9 +60790,12 @@
           "rely on the color alone to convey state."
         ],
         "composesWith": [
+          "Code",
           "Icon",
-          "Badge",
-          "Kbd"
+          "Select",
+          "Table",
+          "TableCell",
+          "TableHeaderCell"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -61593,9 +62140,9 @@
         ],
         "props": {
           "caption": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Accessible table name, rendered as a `<caption>`."
+            "description": "Accessible table name, rendered as a `<caption>`. Optional only when the table is named by aria-labelledby or aria-label."
           },
           "hideCaption": {
             "optional": true,
@@ -61637,6 +62184,23 @@
           "use it for page layout",
           "omit a meaningful caption",
           "put interactive sort logic in the cell instead of the useTable* hooks"
+        ],
+        "forbiddenCombos": [
+          {
+            "id": "table-needs-name",
+            "when": {
+              "caption": {
+                "absent": true
+              }
+            },
+            "requireAnyOf": [
+              "aria-labelledby",
+              "aria-label"
+            ],
+            "reason": "A table without a caption has no accessible name. Pass caption, or aria-labelledby pointing at a visible heading, e.g. <Table aria-labelledby=\"usage-heading\">.",
+            "severity": "error",
+            "evidence": "Table.tsx development warning (!caption && !aria-labelledby && !aria-label)"
+          }
         ],
         "composesWith": [
           "TableRow",
@@ -61716,7 +62280,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
-        "importCount": 9,
+        "importCount": 10,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 4,
@@ -61770,6 +62334,12 @@
             "context": "story"
           },
           {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "story"
+          },
+          {
             "path": "nextjs-app/shared/hooks/useTableSortable.ts",
             "importKind": "relative",
             "importPath": "../components/Table",
@@ -61782,9 +62352,9 @@
         "intent": "Give the design system a low-level, composable table so product surfaces can assemble bespoke tables from DS-styled parts, while `DataTable` provides the batteries-included configuration on top. Compose with native `<th…",
         "props": {
           "caption": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Accessible table name, rendered as a `<caption>`."
+            "description": "Accessible table name, rendered as a `<caption>`. Optional only when the\ntable is named another way: `aria-labelledby` pointing at a visible\nheading, or `aria-label`. A table needs a name either way."
           },
           "hideCaption": {
             "optional": true,
@@ -61823,7 +62393,23 @@
           }
         },
         "propRelationships": [],
-        "forbiddenCombos": [],
+        "forbiddenCombos": [
+          {
+            "id": "table-needs-name",
+            "when": {
+              "caption": {
+                "absent": true
+              }
+            },
+            "requireAnyOf": [
+              "aria-labelledby",
+              "aria-label"
+            ],
+            "reason": "A table without a caption has no accessible name. Pass caption, or aria-labelledby pointing at a visible heading, e.g. <Table aria-labelledby=\"usage-heading\">.",
+            "severity": "error",
+            "evidence": "Table.tsx development warning (!caption && !aria-labelledby && !aria-label)"
+          }
+        ],
         "variants": {
           "size": {
             "values": [
@@ -62291,7 +62877,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableCell",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 2,
@@ -62328,6 +62914,12 @@
           },
           {
             "path": "nextjs-app/shared/components/TableRow/TableRow.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TableCell",
             "context": "story"
@@ -62824,7 +63416,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableHeaderCell",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 2,
@@ -62861,6 +63453,12 @@
           },
           {
             "path": "nextjs-app/shared/components/TableRow/TableRow.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TableHeaderCell",
             "context": "story"
@@ -63757,7 +64355,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableRow",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 2,
@@ -63794,6 +64392,12 @@
           },
           {
             "path": "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TableRow",
             "context": "story"
@@ -65585,6 +66189,11 @@
               "relaxed",
               "loose"
             ]
+          },
+          "flush": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
           }
         },
         "forbiddenUse": [
@@ -65784,6 +66393,11 @@
               "relaxed",
               "loose"
             ]
+          },
+          "flush": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell,\na card or a flex/grid gap."
           }
         },
         "propRelationships": [],
@@ -65833,16 +66447,16 @@
         ],
         "composesWith": [
           "Button",
-          "Title",
           "TextInput",
+          "Title",
           "Icon",
           "CheckboxGroup",
-          "Link"
+          "Toast"
         ],
         "prefersOver": [
           "raw paragraph elements"
         ],
-        "declaredPropCount": 4,
+        "declaredPropCount": 5,
         "guidelines": [
           {
             "level": "should",
@@ -66869,7 +67483,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
-        "importCount": 11,
+        "importCount": 12,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 6,
@@ -66924,6 +67538,12 @@
           },
           {
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextInput",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TextInput",
             "context": "story"
@@ -67137,7 +67757,7 @@
           "CheckboxGroup",
           "TextArea",
           "Badge",
-          "Title"
+          "Toast"
         ],
         "prefersOver": [],
         "declaredPropCount": 14,
@@ -67464,7 +68084,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ThemeProvider",
-        "importCount": 13,
+        "importCount": 11,
         "productionImportCount": 1,
         "patternImportCount": 2,
         "componentImportCount": 3,
@@ -67518,18 +68138,6 @@
             "context": "story"
           },
           {
-            "path": "nextjs-app/shared/stories/Docs/DesignSystemOverview.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/ThemeProvider",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/Docs/Theming.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/ThemeProvider",
-            "context": "story"
-          },
-          {
             "path": "nextjs-app/shared/stories/Welcome.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/ThemeProvider",
@@ -67540,6 +68148,12 @@
             "importKind": "relative",
             "importPath": "../components/ThemeProvider",
             "context": "test"
+          },
+          {
+            "path": "nextjs-app/shared/hooks/usePersistentTheme.ts",
+            "importKind": "relative",
+            "importPath": "../components/ThemeProvider",
+            "context": "other"
           }
         ]
       },
@@ -68608,6 +69222,11 @@
               "loose"
             ],
             "description": "Line height variant."
+          },
+          "flush": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
           }
         },
         "forbiddenUse": [
@@ -68677,7 +69296,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 34,
+        "importCount": 33,
         "productionImportCount": 0,
         "patternImportCount": 6,
         "componentImportCount": 14,
@@ -68818,6 +69437,11 @@
               "loose"
             ],
             "description": "Line height variant."
+          },
+          "flush": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell,\na card or a flex/grid gap."
           }
         },
         "propRelationships": [],
@@ -68873,15 +69497,15 @@
         "composesWith": [
           "Text",
           "Button",
+          "Link",
           "Icon",
           "TextInput",
-          "Link",
-          "Badge"
+          "Checkbox"
         ],
         "prefersOver": [
           "raw heading elements"
         ],
-        "declaredPropCount": 7,
+        "declaredPropCount": 8,
         "guidelines": [
           {
             "level": "should",
@@ -69563,12 +70187,12 @@
           "use Toast for validation errors on a field. The visual is far from the error source; use HelperText."
         ],
         "composesWith": [
-          "Button",
           "Text",
           "TextInput",
+          "Button",
           "Modal",
-          "CheckboxGroup",
-          "TextArea"
+          "Icon",
+          "CheckboxGroup"
         ],
         "prefersOver": [
           "AlertBanner for page-level persistent status"

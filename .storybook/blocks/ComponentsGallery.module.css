@@ -141,6 +141,12 @@
   inset: auto;
 }
 
+/* Display type is viewport-scaled; at thumbnail size cap it to title-m. */
+
+.displayPreview > * {
+  font-size: var(--font-size-title-m);
+}
+
 /* Representative Modal thumbnail — the live Modal portals full-screen. */
 
 .modalPreview {
@@ -150,7 +156,7 @@
   flex-direction: column;
   gap: var(--space-internal-4);
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md, var(--radius-lg));
   background: var(--main-body-background-color);
   box-shadow: var(--shadow-lg, 0 10px 30px rgb(0 0 0 / 12%));
   text-align: start;
@@ -203,9 +209,12 @@
   color: var(--color-muted);
 }
 
+/* The pill drops under a long name instead of the name breaking mid-word. */
+
 .meta {
   display: flex;
   padding: var(--space-internal-12) var(--space-internal-16);
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-8);
@@ -217,6 +226,7 @@
   font-size: var(--font-size-text-s);
   font-weight: 500;
   text-decoration: none;
+  overflow-wrap: normal;
   color: var(--color-text);
 }
 

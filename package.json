@@ -230,7 +230,8 @@
     "intake:db:generate": "drizzle-kit generate --config drizzle.intake.config.ts",
     "intake:dev": "node scripts/intake-dev.mjs",
     "intake:admin-enrol": "node scripts/intake-admin-enrol.mjs",
-    "intake:db:migrate": "drizzle-kit migrate --config drizzle.intake.config.ts"
+    "intake:db:migrate": "drizzle-kit migrate --config drizzle.intake.config.ts",
+    "check:target-size": "node scripts/design-system/check-target-size.mjs"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.81",

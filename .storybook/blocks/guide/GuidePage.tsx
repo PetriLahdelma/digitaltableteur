@@ -1,13 +1,15 @@
 import React from "react";
 import type { ComponentProps, ReactNode } from "react";
 import Card from "@dt/Card";
-import StatusDot from "@dt/StatusDot";
+import Code from "@dt/Code";
+import StatList from "@dt/StatList";
 import Table from "@dt/Table";
 import TableCell from "@dt/TableCell";
 import TableHeaderCell from "@dt/TableHeaderCell";
 import TableRow from "@dt/TableRow";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
+import { cn } from "../../../nextjs-app/shared/lib/cn";
 import { GuideAnchor, GuideContext } from "./guideMdx";
 import styles from "./GuidePage.module.css";
 
@@ -45,13 +47,19 @@ export function GuidePage({
     <GuideContext.Provider value={true}>
       <article className={`sb-unstyled ${styles.page}`}>
         <header className={styles.header}>
-          <Text as="p" size="xs" className={styles.kicker}>
+          <Text as="p" size="xs" flush className={styles.kicker}>
             {kicker}
           </Text>
-          <Title as="h1" size="xl" lineHeight="tight" className={styles.title}>
+          <Title as="h1" size="m" lineHeight="tight" className={styles.title}>
             {title}
           </Title>
-          <Text as="p" size="l" lineHeight="normal" className={styles.lede}>
+          <Text
+            as="p"
+            size="l"
+            lineHeight="normal"
+            flush
+            className={styles.lede}
+          >
             {lede}
           </Text>
         </header>
@@ -78,7 +86,7 @@ export function GuideSection({
     >
       <Title
         as="h2"
-        size="s"
+        size="xs"
         lineHeight="snug"
         id={`guide-${slug(title)}`}
         className={styles.h2}
@@ -86,7 +94,7 @@ export function GuideSection({
         {title}
       </Title>
       {intro ? (
-        <Text as="p" size="m" lineHeight="relaxed" className={styles.p}>
+        <Text as="p" size="s" className={styles.p}>
           {intro}
         </Text>
       ) : null}
@@ -96,8 +104,9 @@ export function GuideSection({
 }
 
 /**
- * Large figures on a hairline, as on the site's stat rows. `of` renders a
- * quiet "of 193" after the figure instead of squeezing it into the number.
+ * The figure row at the top of a guide page: DS StatList with its defaults
+ * (rule variant, md figures). Kept as a wrapper so guide pages keep the
+ * short `facts` shape and get stable ids.
  */
 export function GuideFacts({
   facts,
@@ -110,37 +119,10 @@ export function GuideFacts({
   }[];
 }) {
   return (
-    <dl className={styles.facts}>
-      {facts.map((fact, index) => (
-        <div key={index} className={styles.fact}>
-          <dt className={styles.factLabel}>
-            <Text as="span" size="s" lineHeight="snug">
-              {fact.label}
-            </Text>
-            {fact.note ? (
-              <Text as="span" size="xxs" className={styles.factNote}>
-                {fact.note}
-              </Text>
-            ) : null}
-          </dt>
-          <dd className={styles.factValue}>
-            <Title
-              as="span"
-              size="m"
-              lineHeight="tight"
-              className={styles.factFigure}
-            >
-              {fact.value}
-            </Title>
-            {fact.of ? (
-              <Text as="span" size="s" className={styles.factOf}>
-                of {fact.of}
-              </Text>
-            ) : null}
-          </dd>
-        </div>
-      ))}
-    </dl>
+    <StatList
+      className={styles.facts}
+      items={facts.map((fact, index) => ({ id: String(index), ...fact }))}
+    />
   );
 }
 
@@ -151,7 +133,9 @@ export function GuideSteps({
   steps: { title: string; body: ReactNode }[];
 }) {
   return (
-    <ol className={styles.steps}>
+    // Three steps sit in a row; more go two across, so titles stay on one
+    // line and the card text keeps a readable measure.
+    <ol className={cn(styles.steps, steps.length > 3 && styles.stepsTwo)}>
       {steps.map((step, index) => (
         <Card
           key={step.title}
@@ -172,16 +156,12 @@ export function GuideSteps({
             as="h3"
             size="xxs"
             lineHeight="snug"
+            flush
             className={styles.stepTitle}
           >
             {step.title}
           </Title>
-          <Text
-            as="p"
-            size="s"
-            lineHeight="relaxed"
-            className={styles.stepBody}
-          >
+          <Text as="p" size="xs" flush className={styles.stepBody}>
             {step.body}
           </Text>
         </Card>
@@ -189,6 +169,13 @@ export function GuideSteps({
     </ol>
   );
 }
+
+/** Labels and values this short stay on one line; long text takes the slack. */
+const SHORT_CELL = 28;
+
+const isShort = (cell: ReactNode) =>
+  (typeof cell === "string" || typeof cell === "number") &&
+  String(cell).length <= SHORT_CELL;
 
 /** A captioned table. The first column is a row header. */
 export function GuideTable({
@@ -200,19 +187,30 @@ export function GuideTable({
   columns: string[];
   rows: ReactNode[][];
 }) {
+  // A column of counts aligns at the end, header included, in tabular figures.
+  const numericColumns = columns.map((_, index) =>
+    rows.every((row) => typeof row[index] === "number"),
+  );
   return (
     <div className={styles.block}>
-      <Table caption={caption} hideCaption size="md">
-        <thead>
+      {/* Below 40rem each row stacks with its column labels, so a phone
+          never squeezes three columns into 340px. */}
+      <Table caption={caption} hideCaption size="md" stackOnNarrow>
+        <thead role="rowgroup">
           <TableRow>
-            {columns.map((column) => (
-              <TableHeaderCell key={column} scope="col">
+            {columns.map((column, columnIndex) => (
+              <TableHeaderCell
+                key={column}
+                scope="col"
+                align={numericColumns[columnIndex] ? "end" : undefined}
+                className={styles.nowrap}
+              >
                 {column}
               </TableHeaderCell>
             ))}
           </TableRow>
         </thead>
-        <tbody>
+        <tbody role="rowgroup">
           {rows.map((row, rowIndex) => (
             <TableRow key={rowIndex}>
               {row.map((cell, cellIndex) =>
@@ -221,7 +219,15 @@ export function GuideTable({
                     {cell}
                   </TableHeaderCell>
                 ) : (
-                  <TableCell key={cellIndex}>{cell}</TableCell>
+                  <TableCell
+                    key={cellIndex}
+                    label={columns[cellIndex]}
+                    numeric={numericColumns[cellIndex]}
+                    align={numericColumns[cellIndex] ? "end" : undefined}
+                    className={isShort(cell) ? styles.nowrap : undefined}
+                  >
+                    {cell}
+                  </TableCell>
                 ),
               )}
             </TableRow>
@@ -233,22 +239,12 @@ export function GuideTable({
 }
 
 /**
- * Things the system does not cover yet. Kept on the page on purpose: a guide
- * that only lists what works overstates the system.
+ * Things the system does not cover yet, as the guide's dash list. Kept on
+ * the page on purpose: a guide that only lists what works overstates the
+ * system.
  */
 export function GuideGaps({ items }: { items: ReactNode[] }) {
-  return (
-    <ul className={styles.gaps}>
-      {items.map((item, index) => (
-        <li key={index} className={styles.gap}>
-          <StatusDot tone="warning" size="sm" />
-          <Text as="span" size="s" lineHeight="relaxed">
-            {item}
-          </Text>
-        </li>
-      ))}
-    </ul>
-  );
+  return <GuideList items={items} />;
 }
 
 /** The guide dash list, for TSX pages (MDX lists get it automatically). */
@@ -286,23 +282,70 @@ export function GuideCards({
   return (
     <ul className={`${styles.cards} ${columns === 2 ? styles.cardsTwo : ""}`}>
       {items.map((item) => (
-        <Card key={item.title} as="li" variant="default" padding="lg" className={styles.card}>
+        <Card
+          key={item.title}
+          as="li"
+          variant="default"
+          padding="lg"
+          className={styles.card}
+        >
           {item.meta ? (
-            <Text as="span" size="xxs" className={styles.cardMeta}>
+            <Text as="span" size="xs" flush className={styles.cardMeta}>
               {item.meta}
             </Text>
           ) : null}
-          <Title as="h3" size="xxs" lineHeight="snug" className={styles.cardTitle}>
+          <Title
+            as="h3"
+            size="xxs"
+            lineHeight="snug"
+            flush
+            className={styles.cardTitle}
+          >
             <GuideAnchor href={item.href} underline="none">
               {item.title}
             </GuideAnchor>
           </Title>
-          <Text as="p" size="s" lineHeight="relaxed" className={styles.cardBody}>
+          <Text as="p" size="xs" flush className={styles.cardBody}>
             {item.body}
           </Text>
         </Card>
       ))}
     </ul>
+  );
+}
+
+/**
+ * Keeps a hyphenated term on one line ("pre-push", "ADR-0004"). Satoshi has
+ * no non-breaking hyphen (U+2011), so the break is prevented in CSS and the
+ * real hyphen stays.
+ */
+export function GuideNoBreak({ children }: { children: ReactNode }) {
+  return <span className={styles.nowrap}>{children}</span>;
+}
+
+/**
+ * Several names as separate code chips ("props variants slots", or
+ * "LayerProvider, useLayer"), so a list wraps between names instead of one
+ * unbreakable chip setting the column width. Commas in the input are kept.
+ */
+export function GuideCodeList({ names }: { names: string }) {
+  const parts = names.split(/(,?\s+)/);
+  return (
+    <>
+      {parts.map((part, index) =>
+        index % 2 === 1 ? (
+          part.includes(",") ? (
+            ", "
+          ) : (
+            " "
+          )
+        ) : (
+          <Code key={index} size="inherit">
+            {part}
+          </Code>
+        ),
+      )}
+    </>
   );
 }
 

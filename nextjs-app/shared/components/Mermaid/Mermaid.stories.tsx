@@ -64,7 +64,8 @@ const meta = {
       table: { disable: true },
     },
     themeColors: {
-      description: "Diagram color overrides",
+      description:
+        "Diagram color overrides: CSS colours or var(--token) references. Defaults to --color-text and --color-border, so diagrams follow the theme.",
       table: { disable: true },
     },
   },

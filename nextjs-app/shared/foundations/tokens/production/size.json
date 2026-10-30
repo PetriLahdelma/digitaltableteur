@@ -8,7 +8,7 @@
           "unit": "px"
         },
         "$type": "dimension",
-        "$description": "Production token --size-width-md",
+        "$description": "Max inline size for md blocks.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--size-width-md",
@@ -24,7 +24,7 @@
           "unit": "px"
         },
         "$type": "dimension",
-        "$description": "Production token --size-width-lg",
+        "$description": "Max inline size for lg blocks.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--size-width-lg",
@@ -40,13 +40,47 @@
           "unit": "px"
         },
         "$type": "dimension",
-        "$description": "Production token --size-width-form",
+        "$description": "Max inline size for form blocks.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--size-width-form",
             "category": "size",
             "subgroup": "General",
             "css": "600px"
+          }
+        }
+      }
+    },
+    "target": {
+      "min": {
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        },
+        "$type": "dimension",
+        "$description": "Smallest pointer target, the WCAG 2.2 AA floor (2.5.8): min-block-size and min-inline-size on anything clickable, unless spacing gives it a 24px circle.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--size-target-min",
+            "category": "size",
+            "subgroup": "General",
+            "css": "24px"
+          }
+        }
+      },
+      "touch": {
+        "$value": {
+          "value": 44,
+          "unit": "px"
+        },
+        "$type": "dimension",
+        "$description": "Comfortable touch target (44px) for primary actions on phones; the site page tests hold touch targets to it.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--size-target-touch",
+            "category": "size",
+            "subgroup": "General",
+            "css": "44px"
           }
         }
       }

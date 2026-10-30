@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.43",
+  "packageVersion": "0.1.52",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -469,6 +469,9 @@
       "StageListProps",
       "StageListStage",
       "StageListVariant",
+      "StatList",
+      "StatListItem",
+      "StatListProps",
       "SupportedLanguage",
       "Table",
       "TableAlign",

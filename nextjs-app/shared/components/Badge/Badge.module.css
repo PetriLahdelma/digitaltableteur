@@ -5,8 +5,8 @@
   /* Fixed heights per size step (xs 24 / sm 32 / md 40 / lg 56); vertical
      centering comes from the flex row, not padding. */
   box-sizing: border-box;
-  inline-size: fit-content;
   block-size: 40px;
+  inline-size: fit-content;
   align-items: center;
   gap: 0.25em;
   border: 2px solid transparent;
@@ -136,7 +136,7 @@
 
 .removable .closeButton {
   display: inline-flex;
-  margin-inline-start: 0.125rem;
+  margin-inline-start: var(--space-internal-2);
   padding: 0;
   block-size: 1.125rem;
   inline-size: 1.125rem;
@@ -215,4 +215,18 @@
 .removable.lg {
   padding-inline-start: var(--space-internal-16);
   font-size: 1.25rem;
+}
+
+/* The leading dot takes the badge's own text colour. StatusDot paints the
+   raw tone (--color-warning), but a warning badge sets its text in
+   --color-warning-contrast for legibility, so a toned dot came out lighter
+   than the label beside it. StatusDot also sets its own text colour, so the
+   wrapper inherits the badge's first. The extra class outranks both. */
+
+.badge .leadingDot {
+  color: inherit;
+}
+
+.badge .leadingDot > [aria-hidden="true"] {
+  background-color: currentcolor;
 }

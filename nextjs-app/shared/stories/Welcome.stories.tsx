@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
+import Code from "@dt/Code";
 import CodeBlock from "@dt/CodeBlock";
 import { useTheme } from "@dt/ThemeProvider";
 import {
@@ -9,6 +10,19 @@ import {
   GuidePage,
   GuideSection,
 } from "../../../.storybook/blocks/guide/GuidePage";
+
+/** Sets a file path inside translated copy as code, so it never breaks. */
+const withPathAsCode = (text: string) => {
+  const match = text.match(/[\w.-]+(?:\/[\w.-]+)+/);
+  if (!match || match.index === undefined) return text;
+  return (
+    <>
+      {text.slice(0, match.index)}
+      <Code size="inherit">{match[0]}</Code>
+      {text.slice(match.index + match[0].length)}
+    </>
+  );
+};
 
 const WelcomeContent = () => {
   const { t } = useTranslation();
@@ -60,7 +74,7 @@ const WelcomeContent = () => {
       >
         <GuideList
           items={[
-            t("storybookWelcomeInsideTokens"),
+            withPathAsCode(t("storybookWelcomeInsideTokens")),
             t("storybookWelcomeInsideThemes"),
             t("storybookWelcomeInsideLocalization"),
           ]}

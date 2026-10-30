@@ -16,7 +16,7 @@ describe("contract blocks", () => {
   it("DocHeader shows name, status, group and figma link", () => {
     render(<DocHeader contract={c} />);
     expect(screen.getByRole("heading", { name: "Button" })).toBeInTheDocument();
-    expect(screen.getByText("stable")).toBeInTheDocument();
+    expect(screen.getByText("Stable")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /figma/i })).toHaveAttribute(
       "href",
       c.figma as string,
@@ -105,7 +105,7 @@ describe("contract blocks", () => {
       "page",
     );
     expect(screen.getByLabelText("Lifecycle status")).toHaveTextContent(
-      "APIstableImplementationbeta",
+      "APIStableImplementationBeta",
     );
     expect(screen.getByRole("link", { name: "React" })).toHaveAttribute(
       "href",

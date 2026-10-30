@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable, GuideNoBreak } from '../../../.storybook/blocks/guide/GuidePage';
 import { catalogFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
 import Code from "@dt/Code";
 
@@ -26,7 +26,7 @@ import Code from "@dt/Code";
     { title: "Discover", body: "find-component or the MCP find tool ranks existing components against an intent, with status and real usage counts." },
     { title: "Read", body: "The contract and the generated agent block give props, variants, usage rules and examples as data." },
     { title: "Generate", body: "The agent writes code against the contract schema, not against what a screenshot looks like." },
-    { title: "Verify", body: "validate_component_usage, validate:agent-usage and the pre-push gates reject raw UI, forbidden combinations and drift." },
+    { title: "Verify", body: <><Code size="inherit">validate_component_usage</Code>, <Code size="inherit">validate:agent-usage</Code> and the <GuideNoBreak>pre-push</GuideNoBreak> gates reject raw UI, forbidden combinations and drift.</> },
   ]}
 />
 

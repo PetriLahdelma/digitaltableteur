@@ -22,6 +22,7 @@ import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
 import { SiteOnly } from "./components/SiteOnly";
 import { SSR_SNAPSHOT_SCRIPT } from "./lib/ssr-snapshot-script";
+import { THEME_INIT_SCRIPT } from "./lib/theme-init-script";
 import "@digitaltableteur/react/style.css";
 import "./globals.css";
 
@@ -116,6 +117,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
+        {/* First in <head>: apply the saved theme before anything paints. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         {/*
          * Font Loading Strategy:
          * - next/font handles font preloading and optimization automatically

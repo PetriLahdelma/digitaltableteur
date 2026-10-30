@@ -90,3 +90,9 @@
     break-after: avoid;
   }
 }
+
+/* Parent owns the spacing (rows, cells, cards, gaps). Declared after the
+   size rules so it wins at equal specificity. */
+.flush {
+  margin-block: 0;
+}

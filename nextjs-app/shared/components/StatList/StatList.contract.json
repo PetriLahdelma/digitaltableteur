@@ -1,0 +1,121 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "StatList",
+    "tier": "molecule",
+    "group": "display",
+    "status": "alpha",
+    "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "dl",
+    "variants": {
+        "variant": {
+            "values": [
+                "rule",
+                "card"
+            ],
+            "default": "rule",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        },
+        "align": {
+            "values": [
+                "start",
+                "center"
+            ],
+            "default": "start",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Not interactive."
+        ],
+        "ariaRequirements": [
+            "Renders a <dl>; each item is a <dt> label followed by a <dd> figure and an optional <dd> note, so the label is read before the figure.",
+            "The figure is drawn above the label with CSS order only; reading order is unchanged."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-title",
+            "--color-text",
+            "--color-muted",
+            "--color-border",
+            "--color-border-light",
+            "--color-surface"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-16",
+            "--space-internal-24",
+            "--space-layout-24",
+            "--space-layout-32"
+        ]
+    },
+    "lightDarkVerified": false,
+    "forbiddenUse": [
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row."
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "StatListItem[]",
+            "description": "Figures in reading order."
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "rule",
+                "card"
+            ],
+            "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "md",
+                "lg"
+            ],
+            "description": "Figure size: md for rows of four or more, lg for two or three."
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "start",
+                "center"
+            ],
+            "description": "Text alignment inside each item."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Merged onto the dl element."
+        }
+    }
+}

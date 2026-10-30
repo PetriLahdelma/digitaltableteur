@@ -177,17 +177,17 @@ const ComponentUsageContent = () => {
           {
             value: summary.strictConsumedCount,
             of: summary.governedCount,
-            label: "Imported from @digitaltableteur/react",
+            label: "Imported from the package",
           },
           {
             value: summary.transitiveConsumedCount,
             of: summary.governedCount,
-            label: "Rendered on a production page",
+            label: "On a live page",
           },
           {
             value: summary.exportedCount,
             of: summary.governedCount,
-            label: "Exported from the package",
+            label: "Exported",
           },
           {
             value: summary.catalogCount,
@@ -240,33 +240,41 @@ const ComponentUsageContent = () => {
         {sorted.length} of {rows.length} components
       </Text>
 
-      <Table caption="Component usage" hideCaption size="md" stickyHeader>
-        <thead>
+      <Table caption="Component usage" hideCaption size="sm" stickyHeader stackOnNarrow>
+        <thead role="rowgroup">
           <TableRow>
             {header("Component", "name")}
             {header("Kind", "kind")}
             {header("Status", "status")}
-            {header("In package", "exported")}
-            {header("Direct imports", "directImportCount", "end")}
-            {header("Prod pages", "prodPageCount", "end")}
+            {header("Package", "exported")}
+            {header("Imports", "directImportCount", "end")}
+            {header("Live pages", "prodPageCount", "end")}
             <TableHeaderCell scope="col">Importers</TableHeaderCell>
           </TableRow>
         </thead>
-        <tbody>
+        <tbody role="rowgroup">
           {sorted.map((row) => (
             <TableRow key={`${row.kind}-${row.name}`}>
               <TableHeaderCell scope="row">
-                <Code size="inherit">{row.name}</Code>
+                <Code size="inherit" className={styles.name}>
+                  {/* Long names may break between their words only. */}
+                  {row.name.split(/(?=[A-Z])/).map((part, index) => (
+                    <React.Fragment key={index}>
+                      {index > 0 ? <wbr /> : null}
+                      {part}
+                    </React.Fragment>
+                  ))}
+                </Code>
               </TableHeaderCell>
-              <TableCell>{row.kind}</TableCell>
-              <TableCell>
+              <TableCell label="Kind">{row.kind}</TableCell>
+              <TableCell label="Status">
                 {row.status ? (
                   <StatusPill status={row.status as ComponentStatus} />
                 ) : (
                   <span className={styles.none}>None</span>
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell label="Package">
                 {row.exported ? (
                   <StatusDot tone="success" size="md">
                     Exported
@@ -275,9 +283,9 @@ const ComponentUsageContent = () => {
                   <span className={styles.none}>No</span>
                 )}
               </TableCell>
-              <TableCell numeric>{row.directImportCount}</TableCell>
-              <TableCell numeric>{row.prodPageCount}</TableCell>
-              <TableCell>
+              <TableCell label="Imports" numeric>{row.directImportCount}</TableCell>
+              <TableCell label="Live pages" numeric>{row.prodPageCount}</TableCell>
+              <TableCell label="Importers">
                 {row.directImporters.length > 0 ? (
                   <details className={styles.importers}>
                     <summary>
@@ -287,7 +295,19 @@ const ComponentUsageContent = () => {
                     <ul>
                       {row.directImporters.map((path) => (
                         <li key={path}>
-                          <Code size="sm">{path}</Code>
+                          <Code size="inherit">
+                            {/* Break long paths at their slashes only. */}
+                            {path.split("/").map((part, index) => (
+                              <React.Fragment key={index}>
+                                {index > 0 ? (
+                                  <>
+                                    /<wbr />
+                                  </>
+                                ) : null}
+                                {part}
+                              </React.Fragment>
+                            ))}
+                          </Code>
                         </li>
                       ))}
                     </ul>

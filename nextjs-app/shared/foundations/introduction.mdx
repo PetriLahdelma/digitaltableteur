@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideFacts, GuideCards, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideFacts, GuideCards, GuideTable, GuideNoBreak } from '../../../.storybook/blocks/guide/GuidePage';
 import { catalogFigures, tokenFigures } from '../../../.storybook/blocks/guide/guideData';
 import Code from "@dt/Code";
 
@@ -15,7 +15,7 @@ import Code from "@dt/Code";
   facts={[
     { value: catalogFigures.components, label: "Components in the catalog", note: `${catalogFigures.status.stable} stable, ${catalogFigures.status.beta} beta, ${catalogFigures.status.alpha} alpha` },
     { value: tokenFigures.tokens, label: "Design tokens", note: "Read from variables.css" },
-    { value: tokenFigures.themes, label: "Themes", note: "Light, dark and two high-contrast themes" },
+    { value: tokenFigures.themes, label: "Themes", note: "Light, dark and high contrast" },
     { value: 3, label: "Languages", note: "English, Finnish and Swedish" },
   ]}
 />
@@ -64,7 +64,7 @@ The foundations live under **Foundations** in the sidebar. Each page renders liv
     ["Space", "Layout spacing between blocks and internal spacing inside them."],
     ["Motion", "Durations, easing curves, stagger and distance."],
     ["Layout", "Breakpoints, containers and the grid."],
-    ["Radius and Elevation", "Corner radii and the four-step shadow ramp."],
+    ["Radius and Elevation", <>Corner radii and the <GuideNoBreak>four-step</GuideNoBreak> shadow ramp.</>],
     ["Focus", "The focus ring tokens for every theme."],
     ["Themes and Contrast", "The four themes side by side, and the contrast ratio of every semantic pair."],
     ["Token catalog", "A searchable index of every token with its usage note."],

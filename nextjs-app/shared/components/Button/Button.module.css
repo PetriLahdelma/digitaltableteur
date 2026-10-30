@@ -18,6 +18,10 @@
   border-radius: var(--radius-lg);
   font-family: var(--primary-body-font);
   font-size: var(--font-size-button-m);
+
+  /* Medium, not the inherited 400: a label at 16-18px needs the weight to
+     hold its own against the border or fill around it. */
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;

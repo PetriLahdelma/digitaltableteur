@@ -29,13 +29,13 @@ Two system settings are honoured on top of the active theme. Under `forced-color
 
 <GuideSteps
   steps={[
-    { title: "A saved choice", body: "The theme the visitor picked last, read from localStorage (theme) or, if storage is blocked, from the dt_theme cookie." },
-    { title: "The system setting", body: "Without a saved choice, prefers-color-scheme decides between light and dark, and the page follows it if the setting changes." },
+    { title: "A saved choice", body: <>The theme the visitor picked last, read from <Code size="inherit">localStorage</Code> (<Code size="inherit">theme</Code>) or, if storage is blocked, from the <Code size="inherit">dt_theme</Code> cookie.</> },
+    { title: "The system setting", body: <>Without a saved choice, <Code size="inherit">prefers-color-scheme</Code> decides between light and dark, and the page follows it if the setting changes.</> },
     { title: "Light", body: "The fallback when neither is available, and what the server renders." },
   ]}
 />
 
-`ThemeProvider` applies the result as a class and a `data-theme` attribute on both `html` and `body`, and sets `color-scheme` so form controls and scrollbars match.
+A small script at the top of `<head>` applies the result before the first paint, so a saved dark or high-contrast choice never flashes light. After hydration `ThemeProvider` takes over: it sets the class and a `data-theme` attribute on `html` and `body`, and `color-scheme` so form controls and scrollbars match.
 
 ## Using it
 
@@ -119,7 +119,6 @@ The script rejects any token that is not in the catalog and writes a scoped bloc
 
 <GuideGaps
   items={[
-    "The theme is applied after hydration and there is no CSS fallback for a saved dark choice, so a returning dark-theme visitor can see light for a moment on first paint.",
     "High-contrast themes are only reachable through a choice. There is no system setting that selects them automatically.",
   ]}
 />

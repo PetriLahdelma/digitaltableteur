@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable, GuideNoBreak, GuideCodeList } from '../../../.storybook/blocks/guide/GuidePage';
 import { tokenCategories, tokenFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
 import Code from "@dt/Code";
 
@@ -25,7 +25,7 @@ import Code from "@dt/Code";
   steps={[
     { title: "Defined in variables.css", body: "The light values sit on :root. Dark and the high-contrast themes override the same names under their theme class." },
     { title: "Built into data", body: "npm run build:tokens writes the token catalog, DTCG JSON, the Tailwind bridge and the agent manifest from that one file." },
-    { title: "Published", body: "@digitaltableteur/tokens carries the JSON and @digitaltableteur/tokens-css the custom properties, every theme included." },
+    { title: "Published", body: <><Code size="inherit">@digitaltableteur/tokens</Code> carries the JSON and <Code size="inherit">@digitaltableteur/tokens-css</Code> the custom properties, every theme included.</> },
     { title: "Read by components", body: "CSS Modules use var(--token). A theme change swaps values; no component code branches on the theme." },
   ]}
 />
@@ -36,12 +36,12 @@ import Code from "@dt/Code";
   caption="Token categories"
   columns={["Category", "Tokens", "Prefix", "Use for"]}
   rows={[
-    ["Color", tokenCategories.color, <Code size="inherit">--color-*</Code>, "Text, surfaces, borders and status. Accents (--accent-*) are for brand moments, not default UI."],
+    ["Color", tokenCategories.color, <Code size="inherit">--color-*</Code>, <>Text, surfaces, borders and status. Accents (<Code size="inherit">--accent-*</Code>) are for brand moments, not default UI.</>],
     ["Typography", tokenCategories.typography, <Code size="inherit">--font-*</Code>, "Families, the fluid size scale, line heights and weights."],
     ["Space", tokenCategories.space, <Code size="inherit">--space-*</Code>, "Gaps and padding. See the two kinds of space below."],
     ["Layout", tokenCategories.layout, <Code size="inherit">--container-*</Code>, "Breakpoints, container widths, page margins and the grid."],
     ["Motion", tokenCategories.motion, <Code size="inherit">--duration-*</Code>, "Durations and easing curves for transitions and animation."],
-    ["Elevation", tokenCategories.elevation, <Code size="inherit">--shadow-*</Code>, "The four-step shadow ramp and overlays."],
+    ["Elevation", tokenCategories.elevation, <Code size="inherit">--shadow-*</Code>, <>The <GuideNoBreak>four-step</GuideNoBreak> shadow ramp and overlays.</>],
     ["Radius", tokenCategories.radius, <Code size="inherit">--radius-*</Code>, "Corner radii from sm to xl, plus full and circle."],
     ["Focus", tokenCategories.focus, <Code size="inherit">--focus-ring-*</Code>, "Focus ring colour, width and offset per theme."],
   ]}
@@ -79,7 +79,7 @@ The build writes a DT-THEME block into `app/tailwind.css` that maps tokens into 
   caption="Tailwind utilities for tokens"
   columns={["Token", "Utilities"]}
   rows={[
-    [<Code size="inherit">--color-success</Code>, <Code size="inherit">bg-dt-success text-dt-success</Code>],
+    [<Code size="inherit">--color-success</Code>, <GuideCodeList names="bg-dt-success text-dt-success" />],
     [<Code size="inherit">--color-border</Code>, <Code size="inherit">border-dt-border</Code>],
     [<Code size="inherit">--font-size-title-m</Code>, <Code size="inherit">text-dt-title-m</Code>],
     [<Code size="inherit">--radius-lg</Code>, <Code size="inherit">rounded-dt-lg</Code>],

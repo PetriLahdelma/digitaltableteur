@@ -10,7 +10,9 @@ import Toast from "@dt/Toast";
 import { resolvePhosphorIcon } from "../../components/Icon/iconRegistry";
 import {
   GuideCards,
+  GuideCodeList,
   GuideList,
+  GuideNoBreak,
   GuidePage,
   GuideSection,
   GuideTable,
@@ -1558,7 +1560,14 @@ const SIZES = [
   ["2xl", 64],
 ] as const;
 
-const WEIGHTS = ["thin", "light", "regular", "bold", "fill", "duotone"] as const;
+const WEIGHTS = [
+  "thin",
+  "light",
+  "regular",
+  "bold",
+  "fill",
+  "duotone",
+] as const;
 
 const code = (value: string) => <Code size="inherit">{value}</Code>;
 
@@ -1628,17 +1637,75 @@ const IconsDocsContent = () => (
         caption="Icon props"
         columns={["Prop", "Type", "Default", "Does"]}
         rows={[
-          [code("name"), code("string"), "Required", "Phosphor name in PascalCase or kebab-case, or a registered alias."],
-          [code("size"), code("2xs to 2xl, or a number"), code("md"), "A named size or pixels."],
-          [code("weight"), code("thin light regular bold fill duotone"), code("regular"), "The Phosphor weight."],
-          [code("ariaLabel"), code("string"), "None", "The accessible name. Give one when the icon carries meaning on its own."],
-          [code("decorative"), code("boolean"), "true without ariaLabel", "Hides the icon from assistive technology."],
-          [code("color"), code("string"), code("currentColor"), "Overrides the inherited text colour. Prefer a token."],
-          [code("rotate"), code("0 90 180 270"), code("0"), "Quarter-turn rotation."],
-          [code("flip"), code("horizontal vertical both"), "None", "Mirrors the glyph on one or both axes."],
-          [code("mirrored"), code("boolean"), code("false"), "Phosphor's own horizontal mirroring, for direction-aware icons."],
-          [code("spin"), code("boolean"), code("false"), "Continuous rotation, for loading. Stops under reduced motion."],
-          [code("pulse"), code("boolean"), code("false"), "A pulse when spin is off."],
+          [
+            code("name"),
+            code("string"),
+            "Required",
+            <>
+              Phosphor name in PascalCase or{" "}
+              <GuideNoBreak>kebab-case</GuideNoBreak>, or a registered alias.
+            </>,
+          ],
+          [
+            code("size"),
+            code("2xs to 2xl, or a number"),
+            code("md"),
+            "A named size or pixels.",
+          ],
+          [
+            code("weight"),
+            <GuideCodeList key="thin light regular bold fill duotone" names="thin light regular bold fill duotone" />,
+            code("regular"),
+            "The Phosphor weight.",
+          ],
+          [
+            code("ariaLabel"),
+            code("string"),
+            "None",
+            "The accessible name. Give one when the icon carries meaning on its own.",
+          ],
+          [
+            code("decorative"),
+            code("boolean"),
+            "true without ariaLabel",
+            "Hides the icon from assistive technology.",
+          ],
+          [
+            code("color"),
+            code("string"),
+            code("currentColor"),
+            "Overrides the inherited text colour. Prefer a token.",
+          ],
+          [
+            code("rotate"),
+            <GuideCodeList key="0 90 180 270" names="0 90 180 270" />,
+            code("0"),
+            "Quarter-turn rotation.",
+          ],
+          [
+            code("flip"),
+            <GuideCodeList key="horizontal vertical both" names="horizontal vertical both" />,
+            "None",
+            "Mirrors the glyph on one or both axes.",
+          ],
+          [
+            code("mirrored"),
+            code("boolean"),
+            code("false"),
+            "Phosphor's own horizontal mirroring, for direction-aware icons.",
+          ],
+          [
+            code("spin"),
+            code("boolean"),
+            code("false"),
+            "Continuous rotation, for loading. Stops under reduced motion.",
+          ],
+          [
+            code("pulse"),
+            code("boolean"),
+            code("false"),
+            "A pulse when spin is off.",
+          ],
         ]}
       />
     </GuideSection>
@@ -1646,9 +1713,18 @@ const IconsDocsContent = () => (
     <GuideSection title="Accessibility">
       <GuideList
         items={[
-          <>An icon next to a visible label is decorative: leave out {code("ariaLabel")} and it is hidden from screen readers.</>,
-          <>An icon that stands alone needs an {code("ariaLabel")} that says what it means, not what it shows.</>,
-          <>An icon-only button gets its name from the button, not the icon. A tooltip is not a name.</>,
+          <>
+            An icon next to a visible label is decorative: leave out{" "}
+            {code("ariaLabel")} and it is hidden from screen readers.
+          </>,
+          <>
+            An icon that stands alone needs an {code("ariaLabel")} that says
+            what it means, not what it shows.
+          </>,
+          <>
+            An icon-only button gets its name from the button, not the icon. A
+            tooltip is not a name.
+          </>,
           "Do not rely on an icon alone to show status. Pair it with text.",
         ]}
       />
@@ -1679,7 +1755,13 @@ const IconsDocsContent = () => (
 
 type IconFilter = "all" | "registered";
 
-const IconTile = ({ name, onCopy }: { name: string; onCopy: (name: string) => void }) => {
+const IconTile = ({
+  name,
+  onCopy,
+}: {
+  name: string;
+  onCopy: (name: string) => void;
+}) => {
   const PhosphorComponent = resolveBrowserPhosphorIcon(name);
   const registered = REGISTERED.has(name);
 
@@ -1701,7 +1783,9 @@ const IconTile = ({ name, onCopy }: { name: string; onCopy: (name: string) => vo
         aria-label={`Copy ${name}${registered ? ", registered" : ""}`}
       >
         <span className={styles.tileGlyph}>
-          {PhosphorComponent ? <PhosphorComponent size={28} weight="regular" aria-hidden /> : null}
+          {PhosphorComponent ? (
+            <PhosphorComponent size={28} weight="regular" aria-hidden />
+          ) : null}
         </span>
         <span className={styles.tileName}>
           {/* Break long names only between their words: GlobeHemisphere|East. */}
@@ -1712,7 +1796,9 @@ const IconTile = ({ name, onCopy }: { name: string; onCopy: (name: string) => vo
             </React.Fragment>
           ))}
         </span>
-        {registered ? <span className={styles.tileMark} aria-hidden="true" /> : null}
+        {registered ? (
+          <span className={styles.tileMark} aria-hidden="true" />
+        ) : null}
       </button>
     </li>
   );
@@ -1738,14 +1824,18 @@ const IconBrowserContent = () => {
       title="Icon browser"
       lede="Every Phosphor icon. Select one to copy its name; a dot marks the icons @dt/Icon can render without adding them to the registry first."
     >
+      <TextInput
+        label="Search icons"
+        type="search"
+        value={query}
+        onValueChange={(value) => setQuery(String(value))}
+        clearable
+      />
+
       <div className={styles.toolbar}>
-        <TextInput
-          label="Search icons"
-          type="search"
-          value={query}
-          onValueChange={(value) => setQuery(String(value))}
-          clearable
-        />
+        <Text as="p" size="s" flush className={styles.count} aria-live="polite">
+          {icons.length} {icons.length === 1 ? "icon" : "icons"}
+        </Text>
         <SegmentedControl
           ariaLabel="Which icons"
           value={filter}
@@ -1757,10 +1847,6 @@ const IconBrowserContent = () => {
         />
       </div>
 
-      <Text as="p" size="s" className={styles.count} aria-live="polite">
-        {icons.length} {icons.length === 1 ? "icon" : "icons"}
-      </Text>
-
       {icons.length > 0 ? (
         <ul className={styles.tiles}>
           {icons.map((name) => (
@@ -1769,7 +1855,8 @@ const IconBrowserContent = () => {
         </ul>
       ) : (
         <Text as="p" size="m" className={styles.empty}>
-          No icon name contains “{query}”. Try a shorter word, such as arrow or user.
+          No icon name contains “{query}”. Try a shorter word, such as arrow or
+          user.
         </Text>
       )}
 

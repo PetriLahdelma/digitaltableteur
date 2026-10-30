@@ -2305,5 +2305,6 @@
   "taskListStatusInProgress": "In progress",
   "taskListStatusCompleted": "Completed",
   "taskListStatusCannotStart": "Cannot start yet",
-  "taskListStepDone": "done"
+  "taskListStepDone": "done",
+  "statListOf": "of {{total}}"
 }

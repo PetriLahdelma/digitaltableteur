@@ -411,6 +411,7 @@
     "SplitButton": {},
     "Stack": {},
     "StageList": {},
+    "StatList": {},
     "StatusDot": {},
     "SummaryList": {},
     "Switch": {
@@ -425,7 +426,25 @@
         }
       ]
     },
-    "Table": {},
+    "Table": {
+      "forbiddenCombos": [
+        {
+          "id": "table-needs-name",
+          "when": {
+            "caption": {
+              "absent": true
+            }
+          },
+          "requireAnyOf": [
+            "aria-labelledby",
+            "aria-label"
+          ],
+          "reason": "A table without a caption has no accessible name. Pass caption, or aria-labelledby pointing at a visible heading, e.g. <Table aria-labelledby=\"usage-heading\">.",
+          "severity": "error",
+          "evidence": "Table.tsx development warning (!caption && !aria-labelledby && !aria-label)"
+        }
+      ]
+    },
     "TableCell": {},
     "TableHeaderCell": {},
     "TableOfContents": {},

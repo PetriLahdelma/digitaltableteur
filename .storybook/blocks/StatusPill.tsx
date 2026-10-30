@@ -29,7 +29,9 @@ export function StatusPill({ status }: { status: ComponentStatus }) {
       dot
       className={`${styles.pill} ${styles[status]}`}
     >
-      {status}
+      {/* Capitalised in the markup: ::first-letter does not reach the
+          badge's inline label span. */}
+      {status.charAt(0).toUpperCase() + status.slice(1)}
     </Badge>
   );
 }

@@ -20,6 +20,11 @@ export type TitleProps = {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Line height variant. */
   lineHeight?: LineHeight;
+  /**
+   * Drop the block margins. Use when the parent owns spacing: a row, a cell,
+   * a card or a flex/grid gap. @default false
+   */
+  flush?: boolean;
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
 const sizeClassMap: Record<TitleSize, string> = {
@@ -50,6 +55,7 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
     size = "l",
     level,
     lineHeight,
+    flush = false,
     ...rest
   },
   ref,
@@ -69,7 +75,9 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
   return (
     <Tag
       ref={ref}
-      className={`${styles.title} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
+      className={`${styles.title} ${sizeClass} ${lineHeightClass} ${flush ? styles.flush : ""} ${className}`
+        .replace(/\s+/g, " ")
+        .trim()}
       {...rest}
     >
       {children}

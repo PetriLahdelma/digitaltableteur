@@ -1,0 +1,23 @@
+# StatList
+
+## Intent
+Show a few key figures with what each one counts, so a reader can take in the
+numbers at a glance and still hear them in order with a screen reader.
+
+## Interaction contract
+- Keyboard: not interactive.
+- Pointer: not interactive.
+- Screen readers: a description list; each label is read, then its figure,
+  then the note. The figure is drawn first with CSS order only.
+
+## Do / don't
+- Do: keep labels short and concrete, and put the source or date in the note.
+- Do: pass `of` for a figure out of a total instead of writing "191/208".
+- Don't: animate figures counting up.
+- Don't: use it for several values per row; use Table.
+
+## Design notes
+- Tokens: --font-size-title-s and -m for figures, --color-border hairlines
+  (rule) or --color-surface tiles (card), --space-layout-24/32 gaps.
+- Figures use the regular-weight display face, as on the site's display lines.
+- Figma: not drawn yet.

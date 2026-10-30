@@ -10,6 +10,11 @@ export type TextProps = {
   as?: TextTag;
   size?: TextSize;
   lineHeight?: LineHeight;
+  /**
+   * Drop the block margins. Use when the parent owns spacing: a row, a cell,
+   * a card or a flex/grid gap. @default false
+   */
+  flush?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 const sizeClassMap: Record<TextSize, string> = {
@@ -38,6 +43,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
     className = "",
     size = "m",
     lineHeight,
+    flush = false,
     style,
     ...rest
   },
@@ -53,7 +59,9 @@ const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   return (
     <Tag
       ref={ref}
-      className={`${styles.text} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
+      className={`${styles.text} ${sizeClass} ${lineHeightClass} ${flush ? styles.flush : ""} ${className}`
+        .replace(/\s+/g, " ")
+        .trim()}
       style={style}
       {...rest}
     >

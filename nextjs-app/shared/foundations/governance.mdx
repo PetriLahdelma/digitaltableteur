@@ -1,9 +1,10 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideFacts, GuideSteps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideFacts, GuideSteps, GuideTable, GuideNoBreak, GuideCodeList } from '../../../.storybook/blocks/guide/GuidePage';
 import { a11yFigures, governanceFigures } from '../../../.storybook/blocks/guide/guideData';
 import Code from "@dt/Code";
 
 <Meta title="Overview/Governance" />
+
 
 <GuidePage
   kicker="Overview"
@@ -27,12 +28,12 @@ Each component folder holds a `<Name>.contract.json`, validated against `scripts
   caption="What a contract declares"
   columns={["Field group", "Fields", "Used for"]}
   rows={[
-    ["Identity", <Code size="inherit">name tier group status description</Code>, "Where it sits in the sidebar and how far it can be trusted."],
-    ["API", <Code size="inherit">props variants slots asChild subParts</Code>, "The public surface, checked against the TypeScript props."],
-    ["Usage", <Code size="inherit">usage composesWith prefersOver forbiddenUse forbiddenCombos</Code>, "When to use it, what it pairs with and which combinations are not allowed."],
+    ["Identity", <GuideCodeList names="name tier group status description" />, "Where it sits in the sidebar and how far it can be trusted."],
+    ["API", <GuideCodeList names="props variants slots asChild subParts" />, "The public surface, checked against the TypeScript props."],
+    ["Usage", <GuideCodeList names="usage composesWith prefersOver forbiddenUse forbiddenCombos" />, "When to use it, what it pairs with and which combinations are not allowed."],
     ["Accessibility", <Code size="inherit">a11y</Code>, "Keyboard support, ARIA requirements and what has been verified."],
-    ["Evidence", <Code size="inherit">requiredStories consumers governance lightDarkVerified</Code>, "The stories it must have, who uses it in production and when it was reviewed."],
-    ["Design", <Code size="inherit">tokens theming figma</Code>, "The tokens it reads and its source in Figma."],
+    ["Evidence", <GuideCodeList names="requiredStories consumers governance lightDarkVerified" />, "The stories it must have, who uses it in production and when it was reviewed."],
+    ["Design", <GuideCodeList names="tokens theming figma" />, "The tokens it reads and its source in Figma."],
   ]}
 />
 
@@ -41,8 +42,8 @@ Each component folder holds a `<Name>.contract.json`, validated against `scripts
 <GuideSteps
   steps={[
     { title: "Change the component", body: "Edit the code, its stories and, when the API moves, the contract in the same commit." },
-    { title: "Rebuild the generated files", body: "npm run build:tokens regenerates the agent blocks and the manifest the gates compare against." },
-    { title: "Push", body: "The pre-push hook runs the contract gates, typecheck and lint. A contract that has drifted from its code cannot leave the machine." },
+    { title: "Rebuild the generated files", body: <><Code size="inherit">npm run build:tokens</Code> regenerates the agent blocks and the manifest the gates compare against.</> },
+    { title: "Push", body: <>The <GuideNoBreak>pre-push</GuideNoBreak> hook runs the contract gates, typecheck and lint. A contract that has drifted from its code cannot leave the machine.</> },
   ]}
 />
 
@@ -65,7 +66,7 @@ Each component folder holds a `<Name>.contract.json`, validated against `scripts
   ]}
 />
 
-Most of these run in the pre-push hook, so the local gate catches drift before anything reaches a pull request.
+Most of these run in the <GuideNoBreak>pre-push</GuideNoBreak> hook, so the local gate catches drift before anything reaches a pull request.
 
 ## Rules agents can check
 

@@ -124,6 +124,48 @@ describe("Table primitives", () => {
     clientWidth.mockRestore();
   });
 
+  it("takes its name from a visible heading when there is no caption", async () => {
+    const scrollWidth = vi
+      .spyOn(HTMLElement.prototype, "scrollWidth", "get")
+      .mockReturnValue(900);
+    const clientWidth = vi
+      .spyOn(HTMLElement.prototype, "clientWidth", "get")
+      .mockReturnValue(320);
+    const { container } = render(
+      <>
+        <h2 id="usage-heading">Usage</h2>
+        <Table aria-labelledby="usage-heading">
+          <tbody>
+            <TableRow>
+              <TableCell>Cell</TableCell>
+            </TableRow>
+          </tbody>
+        </Table>
+      </>,
+    );
+    expect(container.querySelector("caption")).toBeNull();
+    expect(screen.getByRole("table", { name: "Usage" })).toBeInTheDocument();
+    expect(await screen.findByRole("region", { name: "Usage" })).toBeInTheDocument();
+    expect(await axe(container)).toHaveNoViolations();
+    scrollWidth.mockRestore();
+    clientWidth.mockRestore();
+  });
+
+  it("warns in development when a table has no name at all", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(
+      <Table>
+        <tbody>
+          <TableRow>
+            <TableCell>Cell</TableCell>
+          </TableRow>
+        </tbody>
+      </Table>,
+    );
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining("accessible name"));
+    warn.mockRestore();
+  });
+
   it("adds no tab stop when the table fits", () => {
     const { container } = render(
       <Table caption="Narrow table">

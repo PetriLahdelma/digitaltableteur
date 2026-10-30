@@ -42,15 +42,18 @@
   color: var(--color-muted);
 }
 
+/* Search on its own line; the count and the filter share the row under it. */
+
 .toolbar {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: var(--space-internal-16);
+  display: flex;
+  margin-block: var(--space-internal-8) var(--space-internal-16);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-12) var(--space-internal-16);
 }
 
 .count {
-  margin-block: var(--space-internal-16) var(--space-internal-12);
   color: var(--color-muted);
 }
 
@@ -127,12 +130,6 @@
 .empty {
   margin-block: var(--space-layout-24);
   color: var(--color-muted);
-}
-
-@media (width <= 600px) {
-  .toolbar {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

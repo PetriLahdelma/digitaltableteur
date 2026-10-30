@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1565,
+  "warningCount": 1557,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -172,15 +172,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": ".storybook/blocks/BestPractices.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 153,
-      "column": 35,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
@@ -568,51 +559,6 @@
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)",
       "id": ".storybook/blocks/ShowcaseStage.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 8,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"font-size\" to come before \"letter-spacing\" (order/properties-order)",
-      "id": ".storybook/blocks/StatusPill.module.css::order/properties-order::Expected \"font-size\" to come before \"letter-spacing\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 7,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"letter-spacing\" to come before \"text-transform\" (order/properties-order)",
-      "id": ".storybook/blocks/StatusPill.module.css::order/properties-order::Expected \"letter-spacing\" to come before \"text-transform\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 8,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/StatusPill.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 12,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
-      "id": ".storybook/blocks/StatusPill.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": ".storybook/blocks/StatusPill.module.css",
-      "line": 5,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": ".storybook/blocks/StatusPill.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
     },
     {
       "file": ".storybook/blocks/ThemingSection.module.css",
@@ -1309,24 +1255,6 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 9,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 139,
-      "column": 24,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.125rem\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.125rem\". Use var(--space-internal-2) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
       "line": 11,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
@@ -1471,7 +1399,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 253,
+      "line": 257,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1480,7 +1408,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 364,
+      "line": 368,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1489,7 +1417,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 377,
+      "line": 381,
       "column": 16,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1498,7 +1426,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 48,
+      "line": 52,
       "column": 44,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1507,7 +1435,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 54,
+      "line": 58,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1516,7 +1444,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 252,
+      "line": 256,
       "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1525,7 +1453,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 253,
+      "line": 257,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1534,7 +1462,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 336,
+      "line": 340,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1543,7 +1471,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 341,
+      "line": 345,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1552,7 +1480,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 342,
+      "line": 346,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1561,7 +1489,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 343,
+      "line": 347,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1570,7 +1498,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 370,
+      "line": 374,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1579,7 +1507,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 152,
+      "line": 156,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -14062,7 +13990,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 469,
+      "line": 471,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -14071,7 +13999,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 575,
+      "line": 577,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -14080,7 +14008,7 @@
     },
     {
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 821,
+      "line": 823,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

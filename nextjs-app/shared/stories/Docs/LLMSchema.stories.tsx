@@ -158,6 +158,13 @@ flowchart TD
 
 const code = (value: string) => <Code size="inherit">{value}</Code>;
 
+/** Nodes sit on the surface colour so they read as cards, in every theme. */
+const DIAGRAM_COLORS = {
+  color: "var(--color-text)",
+  nodeBg: "var(--color-surface)",
+  lineColor: "var(--color-border)",
+};
+
 /** Long JSON stays scrollable inside its block instead of running for pages. */
 const JSON_MAX_HEIGHT = 420;
 
@@ -179,6 +186,7 @@ function Diagram({
     <div className={compact ? `${styles.diagram} ${styles.compact}` : styles.diagram}>
       <Mermaid
         chart={chart}
+        themeColors={DIAGRAM_COLORS}
         title={title}
         description={description}
         accessibleDetails={

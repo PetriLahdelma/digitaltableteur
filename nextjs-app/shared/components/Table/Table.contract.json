@@ -112,9 +112,9 @@
     ],
     "props": {
         "caption": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Accessible table name, rendered as a `<caption>`."
+            "description": "Accessible table name, rendered as a `<caption>`. Optional only when the table is named by aria-labelledby or aria-label."
         },
         "hideCaption": {
             "optional": true,
@@ -156,6 +156,23 @@
         "use it for page layout",
         "omit a meaningful caption",
         "put interactive sort logic in the cell instead of the useTable* hooks"
+    ],
+    "forbiddenCombos": [
+        {
+            "id": "table-needs-name",
+            "when": {
+                "caption": {
+                    "absent": true
+                }
+            },
+            "requireAnyOf": [
+                "aria-labelledby",
+                "aria-label"
+            ],
+            "reason": "A table without a caption has no accessible name. Pass caption, or aria-labelledby pointing at a visible heading, e.g. <Table aria-labelledby=\"usage-heading\">.",
+            "severity": "error",
+            "evidence": "Table.tsx development warning (!caption && !aria-labelledby && !aria-label)"
+        }
     ],
     "composesWith": [
         "TableRow",

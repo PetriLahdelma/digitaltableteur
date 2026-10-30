@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import Code from "@dt/Code";
 import CodeBlock from "@dt/CodeBlock";
 import {
+  GuideCodeList,
   GuideList,
   GuidePage,
   GuideSection,
@@ -46,16 +47,56 @@ const APIIntegrationDocsContent = () => (
         caption="Site API endpoints"
         columns={["Route", "Method", "Called by"]}
         rows={[
-          [code("/api/chat"), "POST", "ChatWidget (Donny), streaming replies with tool calls"],
-          [code("/api/contact"), "POST", "ContactForm and ContactFormEditorial"],
-          [code("/api/download-cv"), "POST", "SecureCVDownload, behind a password"],
-          [code("/api/gdpr/delete-data"), "GET, POST", "The data deletion page: request and status"],
-          [code("/api/gdpr/delete-data/confirm"), "POST", "The confirmation link in the deletion email"],
-          [code("/mcp"), "MCP", "External agents: design-system and consulting tools over HTTP"],
-          [code("/api/intake/auth/*"), "POST", "Client intake sign-in: invite link, email, code, sign-out"],
-          [code("/api/intake/forms/[inviteId]/*"), "PUT, POST", "Intake autosave (draft) and submit"],
-          [code("/api/intake/admin/*"), "GET, POST", "The intake admin: passkeys, invites, submissions and PDFs"],
-          [code("/api/test-health/runs"), "GET, POST", "Recording and reading test runs"],
+          [
+            code("/api/chat"),
+            "POST",
+            "ChatWidget (Donny), streaming replies with tool calls",
+          ],
+          [
+            code("/api/contact"),
+            "POST",
+            "ContactForm and ContactFormEditorial",
+          ],
+          [
+            code("/api/download-cv"),
+            "POST",
+            "SecureCVDownload, behind a password",
+          ],
+          [
+            code("/api/gdpr/delete-data"),
+            "GET, POST",
+            "The data deletion page: request and status",
+          ],
+          [
+            code("/api/gdpr/delete-data/confirm"),
+            "POST",
+            "The confirmation link in the deletion email",
+          ],
+          [
+            code("/mcp"),
+            "MCP",
+            "External agents: design-system and consulting tools over HTTP",
+          ],
+          [
+            code("/api/intake/auth/*"),
+            "POST",
+            "Client intake sign-in: invite link, email, code, sign-out",
+          ],
+          [
+            code("/api/intake/forms/[inviteId]/*"),
+            "PUT, POST",
+            "Intake autosave (draft) and submit",
+          ],
+          [
+            code("/api/intake/admin/*"),
+            "GET, POST",
+            "The intake admin: passkeys, invites, submissions and PDFs",
+          ],
+          [
+            code("/api/test-health/runs"),
+            "GET, POST",
+            "Recording and reading test runs",
+          ],
           [code("/api/cron/*"), "GET", "Scheduled jobs on Vercel"],
         ]}
       />
@@ -67,9 +108,18 @@ const APIIntegrationDocsContent = () => (
     >
       <GuideSteps
         steps={[
-          { title: "Client sends", body: "ChatWidget posts the UI messages through the AI SDK's useChat transport." },
-          { title: "Server checks", body: "The body is normalised, the rate limit is checked and the history is trimmed to fit." },
-          { title: "Model streams", body: "streamText runs with the scoped Donny tools and streams text and tool results back." },
+          {
+            title: "Client sends",
+            body: "ChatWidget posts the UI messages through the AI SDK's useChat transport.",
+          },
+          {
+            title: "Server checks",
+            body: "The body is normalised, the rate limit is checked and the history is trimmed to fit.",
+          },
+          {
+            title: "Model streams",
+            body: "streamText runs with the scoped Donny tools and streams text and tool results back.",
+          },
         ]}
       />
       <CodeBlock
@@ -95,9 +145,18 @@ POST /api/chat
           [code("name"), "Required, 2 to 200 characters"],
           [code("email"), "Required, a valid address"],
           [code("message"), "Required, 5 to 5,000 characters"],
-          [code("phone interest budget timeline"), "Optional, short text"],
-          [code("attachmentName attachmentType attachment"), "Optional, one file as base64 within the size limit"],
-          [code("submissionId"), "Optional UUID, so a retry does not create a duplicate"],
+          [
+            <GuideCodeList key="phone interest budget timeline" names="phone interest budget timeline" />,
+            "Optional, short text",
+          ],
+          [
+            <GuideCodeList key="attachmentName attachmentType attachment" names="attachmentName attachmentType attachment" />,
+            "Optional, one file as base64 within the size limit",
+          ],
+          [
+            code("submissionId"),
+            "Optional UUID, so a retry does not create a duplicate",
+          ],
         ]}
       />
     </GuideSection>
@@ -125,8 +184,14 @@ if (!response.ok) {
     <GuideSection title="Tests">
       <GuideList
         items={[
-          <>Handler tests, such as app/api/contact/route.test.ts, run with {code("npm test")}.</>,
-          <>{code("npm run test:security")} runs the prompt-injection and abuse cases for chat.</>,
+          <>
+            Handler tests, such as {code("app/api/contact/route.test.ts")}, run
+            with {code("npm test")}.
+          </>,
+          <>
+            {code("npm run test:security")} runs the prompt-injection and abuse
+            cases for chat.
+          </>,
         ]}
       />
     </GuideSection>

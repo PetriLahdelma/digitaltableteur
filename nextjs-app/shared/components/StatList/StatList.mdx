@@ -1,0 +1,41 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './StatList.stories.tsx';
+
+<Meta of={Stories} />
+
+# StatList
+
+**Status:** alpha, **Tier:** molecule, **Group:** display
+
+## In use
+The Colophon page's "By the numbers" band, and the figures at the top of the
+Storybook guide pages. See the **Example** story.
+
+## How to use
+
+```tsx
+import { StatList } from '@dt/StatList';
+
+<StatList
+  items={[
+    { id: 'components', value: 191, label: 'Components in the catalog', note: '108 stable' },
+    { id: 'tokens', value: 228, label: 'Design tokens' },
+  ]}
+/>
+```
+
+## When to use
+- Three to eight key figures that belong together.
+- A figure out of a total: pass `of` and it reads "191 of 208".
+
+## When not to use
+- Several values per row: use Table.
+- A single figure in a sentence: write it in the text.
+
+## Accessibility
+- Renders a description list. Each label is read before its figure; the figure
+  is only drawn first.
+- Not interactive, no motion.
+
+## Promotion notes
+- Promote to stable after AT snapshots + production consumer documented.

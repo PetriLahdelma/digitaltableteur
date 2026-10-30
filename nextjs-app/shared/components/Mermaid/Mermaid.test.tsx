@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
+import mermaid from "mermaid";
 import { Mermaid } from "./Mermaid";
 
 expect.extend(toHaveNoViolations);
@@ -55,6 +56,22 @@ describe("Mermaid", () => {
     expect(
       screen.getByText("Visual diagram").closest("[aria-hidden='true']"),
     ).toBeInTheDocument();
+  });
+
+  it("follows theme tokens by default and gives mermaid resolved colours", async () => {
+    document.documentElement.style.setProperty("--color-text", "#041b23");
+    render(<Mermaid {...diagramProps} />);
+    await screen.findByRole("img", { name: diagramProps.title });
+
+    const diagram = screen
+      .getByText("Visual diagram")
+      .closest("[aria-hidden='true']") as HTMLElement;
+    expect(diagram.style.getPropertyValue("--mermaid-color")).toBe("var(--color-text)");
+    expect(diagram.style.getPropertyValue("--mermaid-line-color")).toBe("var(--color-border)");
+
+    const config = vi.mocked(mermaid.initialize).mock.calls.at(-1)?.[0];
+    expect(config?.themeVariables?.primaryTextColor).toBe("#041b23");
+    document.documentElement.style.removeProperty("--color-text");
   });
 
   it("has no automated accessibility violations", async () => {

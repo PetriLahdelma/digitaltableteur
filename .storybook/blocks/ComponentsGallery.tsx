@@ -201,6 +201,10 @@ const PREVIEW_SPECS: Record<string, PreviewSpec> = {
   // Contract defaults open the palette for SSR evidence; the live component
   // portals a full-screen dialog, so the gallery keeps it closed.
   CommandPalette: { props: { open: false } },
+  // Display type scales with the viewport and Title defaults to size l; at
+  // thumbnail width both crop mid-word. Show the face, not a cut headline.
+  Display: { props: { children: "Aa" }, wrapClassName: styles.displayPreview },
+  Title: { props: { size: "s" } },
 };
 
 class PreviewBoundary extends React.Component<

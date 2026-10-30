@@ -1,7 +1,19 @@
 /* Guide page frame. Proportions follow digitaltableteur.com: display title,
    muted kicker and lede, prose held to the reading measure, hairline rules
    and borders instead of tinted boxes. Every rule is scoped under .page so
-   Storybook's docs styles and the global li margin cannot leak in. */
+   Storybook's docs styles and the global li margin cannot leak in.
+
+   Type roles (desktop / phone). Every element takes one of these:
+     h1     --font-size-title-m    48 / 36   capped by the column (12cqi)
+     h2     --font-size-title-xs   28 / 20
+     h3     --font-size-title-xxs  22 / 18
+     lede   --font-size-text-l     24 / 20   muted
+     body   --font-size-text-s     18 / 16   paragraphs, lists, table cells
+     small  --font-size-text-xs    16        kickers, card text, notes
+     code   x-height matched to the text, never broken inside a short value
+   Measure: --measure-reading (30em, about 66 characters of Satoshi, solved
+   with measured-type), always set on the element that carries the font size
+   so the em is the text's own. */
 
 .page {
   margin-inline: auto;
@@ -31,7 +43,7 @@
 }
 
 .page .kicker {
-  margin: 0;
+  font-size: var(--font-size-text-xs);
   color: var(--color-muted);
 }
 
@@ -40,15 +52,15 @@
 
 .page .title {
   margin: 0;
-  font-size: min(var(--font-size-title-xl), 12cqi);
+  font-size: min(var(--font-size-title-m), 12cqi);
   font-weight: 400;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
 .page .lede {
-  margin: 0;
   max-inline-size: var(--measure-reading);
+  font-size: var(--font-size-text-l);
   color: var(--color-muted);
   text-wrap: pretty;
 }
@@ -61,6 +73,7 @@
   margin-block: var(--space-layout-64) var(--space-layout-16);
   padding-block-start: var(--space-layout-24);
   border-block-start: 1px solid var(--color-border-light);
+  font-size: var(--font-size-title-xs);
   font-weight: 400;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -72,12 +85,15 @@
 
 .page .h3 {
   margin-block: var(--space-layout-32) var(--space-internal-8);
+  font-size: var(--font-size-title-xxs);
   font-weight: 500;
 }
 
 .page .p {
   margin-block: 0 var(--space-internal-16);
   max-inline-size: var(--measure-reading);
+  font-size: var(--font-size-text-s);
+  line-height: 1.6;
   text-wrap: pretty;
 }
 
@@ -92,8 +108,8 @@
   margin-block: 0 var(--space-layout-24);
   padding: 0;
   max-inline-size: var(--measure-reading);
-  font-size: var(--font-size-text-m);
-  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-text-s);
+  line-height: 1.6;
 }
 
 .page .list {
@@ -112,6 +128,7 @@
 
 .page .item {
   margin-block: 0 var(--space-internal-8);
+  text-wrap: pretty;
 }
 
 .page .list > .item {
@@ -140,53 +157,10 @@
   border-block-start: 1px solid var(--color-border-light);
 }
 
-/* Facts: figures on a hairline, no cards. */
+/* Facts: DS StatList; the page only sets its outer spacing. */
 
 .page .facts {
-  display: grid;
   margin-block: var(--space-layout-32);
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: var(--space-layout-24) var(--space-layout-32);
-}
-
-.page .fact {
-  display: flex;
-  padding-block-start: var(--space-internal-16);
-  flex-direction: column;
-  gap: var(--space-internal-8);
-  border-block-start: 1px solid var(--color-border);
-}
-
-/* The figure reads first; the label stays first in the DOM so dt precedes dd. */
-
-.page .factValue {
-  display: flex;
-  margin: 0;
-  flex-wrap: wrap;
-  order: -1;
-  align-items: baseline;
-  gap: var(--space-internal-8);
-}
-
-.page .factFigure {
-  margin: 0;
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-.page .factOf {
-  white-space: nowrap;
-  color: var(--color-muted);
-}
-
-.page .factLabel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-internal-4);
-}
-
-.page .factNote {
-  color: var(--color-muted);
 }
 
 /* Steps: the site's numbered cards. */
@@ -198,6 +172,16 @@
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: var(--space-internal-16);
   list-style: none;
+}
+
+.page .stepsTwo {
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+}
+
+@container (width >= 48rem) {
+  .page .stepsTwo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .page .step {
@@ -212,48 +196,21 @@
   font-weight: 400;
 }
 
-.page .stepTitle {
-  margin: 0;
+/* Card and step titles: 20px fits a three-up column's short title on one
+   line; 22px (h3) wrapped "Every theme, every language". */
+
+.page .stepTitle,
+.page .cardTitle {
+  font-size: var(--font-size-text-m);
   font-weight: 500;
 }
 
-.page .stepBody {
-  margin: 0;
-  color: var(--color-muted);
-  text-wrap: pretty;
-}
+/* Plain wrapping in cards: Chrome's pretty rebalances a whole short
+   paragraph, which evened three lines out to 180px of a 260px card. */
 
-.page .gaps {
-  display: flex;
-  margin-block: var(--space-layout-24);
-  padding: 0;
-  max-inline-size: var(--measure-reading);
-  flex-direction: column;
-  gap: var(--space-internal-12);
-  list-style: none;
-}
-
-.page .gap {
-  display: flex;
-  margin: 0;
-  align-items: flex-start;
-  gap: var(--space-internal-12);
-}
-
-/* Centre the dot on the first line of text. */
-
-.page .gap > :first-child {
-  margin-block-start: var(--space-internal-8);
-  flex-shrink: 0;
-}
-
-/* Text and Title carry a bottom margin for running prose; inside these
-   composed rows the gap owns the spacing. */
-
-.page .gap > :last-child,
-.page .factLabel > *,
-.page .factValue > * {
-  margin: 0;
+.page .stepBody,
+.page .cardBody {
+  text-wrap: wrap;
 }
 
 /* Row headings in guide tables are short labels; keep them on one line. */
@@ -292,11 +249,6 @@
   border-color: var(--color-border);
 }
 
-.page .cardTitle {
-  margin: 0;
-  font-weight: 500;
-}
-
 .page .cardTitle a {
   text-decoration: none;
   color: inherit;
@@ -319,8 +271,10 @@
 }
 
 .page .cardMeta,
-.page .cardBody {
-  margin: 0;
+.page .cardBody,
+.page .stepBody {
+  font-size: var(--font-size-text-xs);
+  line-height: 1.55;
   color: var(--color-muted);
 }
 
@@ -330,10 +284,29 @@
   }
 }
 
-/* DS Code breaks anywhere so it never overflows running text. In a table
-   that lets auto layout squeeze a column to one character ("ligh/t"); break
-   only when a value is longer than its column can ever be. */
+/* Inline code: match the mono's x-height to Satoshi's (0.483, measured;
+   at the same font size the mono ran 1.13 taller). A short value never
+   breaks: "light" on two lines reads as two tokens. Long paths break only
+   where their markup offers <wbr>. */
 
-.page table code {
-  overflow-wrap: break-word;
+.page :not(pre) > code {
+  /* Line height 1 keeps the chip inside the line box, so a line with code
+     keeps the same leading as the lines around it. */
+  line-height: 1;
+  white-space: nowrap;
+  font-size-adjust: ex-height 0.483;
+}
+
+/* Table cells holding a short label or value keep it on one line, so auto
+   layout gives the long-text column the slack instead of crushing them. */
+
+.page .nowrap {
+  white-space: nowrap;
+}
+
+@container (width < 36rem) {
+  .page :not(pre) > code {
+    white-space: normal;
+    overflow-wrap: normal;
+  }
 }

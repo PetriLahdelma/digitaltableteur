@@ -4,14 +4,18 @@
  * A per-request nonce with 'strict-dynamic': only scripts the server
  * rendered, and the chunks they load, can run. No third-party host is
  * allowed, so analytics cannot load on an intake page even if a visitor
- * consented to it elsewhere on the site. The one static inline script the
- * root layout renders (the SSR snapshot) is allowed by its hash.
+ * consented to it elsewhere on the site. The two static inline scripts the
+ * root layout renders (the theme init and the SSR snapshot) are allowed by
+ * their hashes.
  *
  * Edge-safe: no Node APIs, so the proxy can build it on every request.
  */
 
 /** sha256 of SSR_SNAPSHOT_SCRIPT (app/lib/ssr-snapshot-script.ts); a test keeps it in sync. */
 export const SSR_SNAPSHOT_SCRIPT_HASH = "'sha256-Ee7gccy5SRwKO4nseK1VT4fbVYT1Ebf7oxttawGZppM='";
+
+/** sha256 of THEME_INIT_SCRIPT (app/lib/theme-init-script.ts); a test keeps it in sync. */
+export const THEME_INIT_SCRIPT_HASH = "'sha256-a04n1IMDAE4ib0YGuUVInrPPfD8FEPlAJDqwJsIZ6Po='";
 
 export function createNonce(): string {
   return btoa(crypto.randomUUID());
@@ -20,7 +24,7 @@ export function createNonce(): string {
 export function intakeCsp(nonce: string, options: { dev: boolean; https: boolean }): string {
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${SSR_SNAPSHOT_SCRIPT_HASH}${options.dev ? " 'unsafe-eval'" : ""}`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${SSR_SNAPSHOT_SCRIPT_HASH} ${THEME_INIT_SCRIPT_HASH}${options.dev ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob:",
     "font-src 'self' data:",

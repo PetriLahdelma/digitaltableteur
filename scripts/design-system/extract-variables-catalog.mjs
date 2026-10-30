@@ -51,6 +51,9 @@ function inferUsage(name) {
   if (name === "--font-mono") return "Monospace font stack for code and technical UI.";
   if (name.startsWith("--line-height-")) return `Line-height for ${name.replace("--line-height-", "")} typography rhythm.`;
   if (name.startsWith("--tracking-")) return `Letter-spacing for ${name.replace("--tracking-", "")} display/heading styles.`;
+  if (name === "--size-target-min") return "Smallest pointer target, the WCAG 2.2 AA floor (2.5.8): min-block-size and min-inline-size on anything clickable, unless spacing gives it a 24px circle.";
+  if (name === "--size-target-touch") return "Comfortable touch target (44px) for primary actions on phones; the site page tests hold touch targets to it.";
+  if (name.startsWith("--size-width-")) return `Max inline size for ${name.replace("--size-width-", "")} blocks.`;
   if (name.startsWith("--measure-")) return `Max inline size for ${name.replace("--measure-", "")} text, in em so it follows the block's own font size.`;
   if (name.startsWith("--duration-")) return `Motion duration for ${name.replace("--duration-", "")} transitions.`;
   if (name.startsWith("--ease-")) return `Cubic-bezier easing curve (${name.replace("--ease-", "")}).`;

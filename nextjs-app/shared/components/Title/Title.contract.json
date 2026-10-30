@@ -173,6 +173,11 @@
                 "loose"
             ],
             "description": "Line height variant."
+        },
+        "flush": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
         }
     },
     "forbiddenUse": [

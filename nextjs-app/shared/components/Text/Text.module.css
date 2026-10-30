@@ -64,3 +64,9 @@
     font-optical-sizing: auto;
   }
 }
+
+/* Parent owns the spacing (rows, cells, cards, gaps). Declared after the
+   base rule so it wins at equal specificity. */
+.flush {
+  margin-block: 0;
+}

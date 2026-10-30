@@ -98,7 +98,13 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     if (resolvedIcon == null && dot) {
       // Leading color-coded dot instead of the semantic icon (tone drives the
       // color; undefined tone falls back to StatusDot's neutral).
-      resolvedIcon = <StatusDot tone={tone} size={badgeDotSize[size]} />;
+      resolvedIcon = (
+        <StatusDot
+          tone={tone}
+          size={badgeDotSize[size]}
+          className={styles.leadingDot}
+        />
+      );
     } else if (resolvedIcon == null && tone && semanticStatus) {
       // The badge already sets a contrast-correct text color per variant×tone,
       // so the semantic icon inherits it via currentColor.
@@ -106,6 +112,9 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         <Icon
           name={STATUS_ICON_NAMES[semanticStatus]}
           size={badgeIconSize[size]}
+          // Bold matches the 600-weight label; regular strokes read thin
+          // beside it at badge sizes.
+          weight="bold"
           color="currentColor"
           decorative
         />

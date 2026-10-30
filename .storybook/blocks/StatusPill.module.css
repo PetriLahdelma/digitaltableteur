@@ -1,28 +1,23 @@
-/* Doubled .pill.pill raises specificity above Storybook's global `.sbdocs`
-   font-size so the docs pill fully matches a <Badge size="sm">. The label is
-   targeted explicitly because `.sbdocs :where(span)` sets 16px directly on the
-   label span (overriding inheritance from the pill root's 0.75rem). */
-.pill.pill {
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  font-size: 0.75rem;
-}
+/* The docs pill is a DS Badge size="sm" (14px, weight 600). Doubled .pill.pill
+   outranks Storybook's `.sbdocs` font rules, which otherwise set 16px and a
+   regular weight straight on the label span; the label is targeted for the
+   same reason. Capitalised, not lowercase: tracking is for capitals only, and
+   lowercase at 14px reads thin. */
 
+.pill.pill,
 .pill.pill :global(.badge__content) {
-  font-size: 0.75rem;
-}
-
-.stable {
-  /* Badge tone=success carries the color treatment; hook kept for smoke/tests. */
+  font-size: var(--font-size-text-xxs);
   font-weight: 600;
+  letter-spacing: normal;
 }
 
-.beta {
-  font-weight: 500;
-}
 
+/* Status hooks, kept for smoke tests; Badge tone carries the colour. */
+
+.stable,
+.beta,
 .alpha {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .deprecated {

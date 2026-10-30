@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { GuidePage, GuideFacts, GuideGaps, GuideTable } from '../../../.storybook/blocks/guide/GuidePage';
+import { GuidePage, GuideFacts, GuideGaps, GuideTable, GuideNoBreak } from '../../../.storybook/blocks/guide/GuidePage';
 import { a11yFigures, catalogFigures, tokenFigures, usageFigures, formatDate } from '../../../.storybook/blocks/guide/guideData';
 import Code from "@dt/Code";
 import StatusDot from "@dt/StatusDot";
@@ -44,7 +44,7 @@ export const Done = () => <StatusDot tone="success" size="md">Done</StatusDot>;
   rows={[
     ["Production tokens", <Done />, `variables.css is the runtime source, with ${tokenFigures.tokens} tokens in the catalog.`],
     ["DTCG export", <Done />, "npm run build:tokens writes tokens/production/*.json and the token packages."],
-    ["Radius and elevation", <Done />, "A tight radius scale and a four-step shadow ramp, gated by check:radius-shadow."],
+    ["Radius and elevation", <Done />, <>A tight radius scale and a <GuideNoBreak>four-step</GuideNoBreak> shadow ramp, gated by <Code size="inherit">check:radius-shadow</Code>.</>],
     ["Foundation pages", <Done />, "Color, Typography, Space, Motion, Layout, Radius, Elevation, Focus, Themes, Contrast and the Token catalog."],
     ["Tailwind bridge", <Done />, "The DT-THEME block in app/tailwind.css, regenerated with the tokens."],
     ["Themes", <Done />, "Light, dark, high-contrast black and high-contrast white."],
@@ -79,17 +79,16 @@ Four packages publish to npm and are consumed back into the site: `@digitaltable
   items={[
     `${usageFigures.governedCount - usageFigures.strictConsumedCount} governed components are not yet imported from the npm package by the site.`,
     `${a11yFigures.total - a11yFigures.reviewed} components have no reviewed accessibility record.`,
-    "Site CSS under app/ still has raw border-radius values outside the scope of check:radius-shadow.",
+    <>Site CSS under <Code size="inherit">app/</Code> still has raw <Code size="inherit">border-radius</Code> values outside the scope of <Code size="inherit">check:radius-shadow</Code>.</>,
     "The web components package records its accessibility notes but does not gate on them.",
     "A few shell components (SiteHeader, Logo, SiteFooter) report consumer drift; run npm run audit:consumers.",
-    "The theme is applied after hydration, so a saved dark choice can flash light on first paint.",
   ]}
 />
 
 ## Not planned
 
-- Importing `foundations/dist/tokens.css` at runtime (ADR-0004).
-- Copying another system's palette or spacing values into this repo (ADR-0005).
+- Importing `foundations/dist/tokens.css` at runtime (<GuideNoBreak>ADR-0004</GuideNoBreak>).
+- Copying another system's palette or spacing values into this repo (<GuideNoBreak>ADR-0005</GuideNoBreak>).
 
 ## Commands
 

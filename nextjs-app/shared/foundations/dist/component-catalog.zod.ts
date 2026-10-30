@@ -127,6 +127,7 @@ export const componentCatalog = {
   "SplitButton": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "Stack": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "StageList": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
+  "StatList": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "StatusDot": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "SummaryList": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),
   "Switch": z.object({ status: z.enum(["alpha","beta","stable","deprecated"]), tier: z.string(), group: z.string(), description: z.string(), requiredStories: z.array(z.string()) }),

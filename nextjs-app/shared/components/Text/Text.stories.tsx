@@ -118,6 +118,13 @@ export default {
       description: "Line height variant",
     },
 
+    flush: {
+      control: "boolean",
+      description:
+        "Drop the block margins when the parent owns spacing (a row, cell, card or gap)",
+      table: { defaultValue: { summary: "false" } },
+    },
+
     className: { control: "text", description: "Custom class name" },
 
     children: { control: "text", description: "Text content" },

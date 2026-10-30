@@ -5,6 +5,13 @@ import Text from "@dt/Text";
 import styles from "./Text.module.css";
 
 describe("Text", () => {
+  it("drops its block margins with flush", () => {
+    const { container, rerender } = render(<Text>Body</Text>);
+    expect(container.firstChild).not.toHaveClass(styles.flush);
+    rerender(<Text flush>Body</Text>);
+    expect(container.firstChild).toHaveClass(styles.flush);
+  });
+
   it("renders children", () => {
     const { getByText } = render(<Text>Text Content</Text>);
     expect(getByText("Text Content")).toBeInTheDocument();

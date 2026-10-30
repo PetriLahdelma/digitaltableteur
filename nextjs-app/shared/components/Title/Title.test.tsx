@@ -5,6 +5,13 @@ import Title from "@dt/Title";
 import styles from "./Title.module.css";
 
 describe("Title", () => {
+  it("drops its block margins with flush", () => {
+    const { container, rerender } = render(<Title>Body</Title>);
+    expect(container.firstChild).not.toHaveClass(styles.flush);
+    rerender(<Title flush>Body</Title>);
+    expect(container.firstChild).toHaveClass(styles.flush);
+  });
+
   it("renders children", () => {
     const { getByText } = render(<Title>Title Text</Title>);
     expect(getByText("Title Text")).toBeInTheDocument();

@@ -324,6 +324,8 @@
   --size-width-md: 320px;
   --size-width-lg: 900px;
   --size-width-form: 600px;
+  --size-target-min: 24px; /* WCAG 2.2 AA (2.5.8) minimum pointer target */
+  --size-target-touch: 44px; /* Comfortable touch target on phones */
 
   /* Layout & Grid System */
 

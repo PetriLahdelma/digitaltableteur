@@ -194,6 +194,24 @@
       "level": "additive",
       "detail": "prop `shortcut` added",
       "bump": "patch"
+    },
+    {
+      "component": "Table",
+      "level": "additive",
+      "detail": "prop `caption` became optional",
+      "bump": "patch"
+    },
+    {
+      "component": "Text",
+      "level": "additive",
+      "detail": "prop `flush` added",
+      "bump": "patch"
+    },
+    {
+      "component": "Title",
+      "level": "additive",
+      "detail": "prop `flush` added",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -4787,7 +4805,7 @@
       "element": "table",
       "props": {
         "caption": {
-          "optional": false,
+          "optional": true,
           "type": "string"
         },
         "hideCaption": {
@@ -4982,6 +5000,10 @@
         "children": {
           "optional": true,
           "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+        },
+        "flush": {
+          "optional": true,
+          "type": "boolean"
         },
         "lineHeight": {
           "optional": true,
@@ -5263,6 +5285,10 @@
         "className": {
           "optional": true,
           "type": "string | undefined"
+        },
+        "flush": {
+          "optional": true,
+          "type": "boolean"
         },
         "level": {
           "optional": true,

@@ -5,7 +5,14 @@ import { describe, expect, it } from "vitest";
 import { SSR_SNAPSHOT_SCRIPT } from "../ssr-snapshot-script";
 import { ADMIN_COPY } from "./admin-copy";
 import { INTAKE_COPY, copyTable, format, resolveIntakeLocale } from "./copy";
-import { INTAKE_RESPONSE_HEADERS, SSR_SNAPSHOT_SCRIPT_HASH, intakeCsp, isIntakePath } from "./csp";
+import {
+  INTAKE_RESPONSE_HEADERS,
+  SSR_SNAPSHOT_SCRIPT_HASH,
+  THEME_INIT_SCRIPT_HASH,
+  intakeCsp,
+  isIntakePath,
+} from "./csp";
+import { THEME_INIT_SCRIPT } from "../theme-init-script";
 import { PRIVACY_NOTICE, PRIVACY_NOTICE_TITLE } from "./privacy-notice";
 import { INTAKE_LOCALES, type LocalizedCopy } from "./types";
 
@@ -74,6 +81,12 @@ describe("intake security headers", () => {
   it("allows the root layout's SSR snapshot script by its current hash", () => {
     const hash = createHash("sha256").update(SSR_SNAPSHOT_SCRIPT, "utf8").digest("base64");
     expect(SSR_SNAPSHOT_SCRIPT_HASH).toBe(`'sha256-${hash}'`);
+  });
+
+  it("allows the root layout's theme init script by its current hash", () => {
+    const hash = createHash("sha256").update(THEME_INIT_SCRIPT, "utf8").digest("base64");
+    expect(THEME_INIT_SCRIPT_HASH).toBe(`'sha256-${hash}'`);
+    expect(intakeCsp("abc", { dev: false, https: true })).toContain(THEME_INIT_SCRIPT_HASH);
   });
 
   it("builds a nonce policy with no third-party hosts", () => {

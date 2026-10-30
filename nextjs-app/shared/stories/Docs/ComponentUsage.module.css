@@ -3,13 +3,24 @@
 .controls {
   display: grid;
   grid-template-columns: minmax(0, 2fr) repeat(3, minmax(9rem, 1fr));
-  align-items: end;
+
+  /* Top: TextInput and Select both put 8px between label and field, so the
+     labels and the fields line up. TextInput also carries an outer bottom
+     margin that Select does not, which is what pushed "end" out of line. */
+  align-items: start;
   gap: var(--space-internal-16);
 }
 
 .count {
   margin-block: var(--space-internal-16) var(--space-internal-12);
   color: var(--color-muted);
+}
+
+/* Component names break only at their <wbr> word boundaries. */
+
+.name.name {
+  white-space: normal;
+  overflow-wrap: normal;
 }
 
 .none {

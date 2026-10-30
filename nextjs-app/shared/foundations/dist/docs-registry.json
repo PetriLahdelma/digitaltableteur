@@ -11001,7 +11001,7 @@
         "themeColors": {
           "optional": true,
           "type": "MermaidThemeColors",
-          "description": "Diagram color overrides"
+          "description": "Diagram color overrides: CSS colours or var(--token) references. Defaults to --color-text and --color-border, so diagrams follow the theme."
         }
       },
       "composesWith": [],
@@ -16895,6 +16895,108 @@
         }
       ]
     },
+    "StatList": {
+      "name": "StatList",
+      "group": "display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import StatList from \"@dt/StatList\";",
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "StatListItem[]",
+          "required": true
+        },
+        {
+          "name": "variant",
+          "type": "rule | card",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "md | lg",
+          "required": false
+        },
+        {
+          "name": "align",
+          "type": "start | center",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "StatListItem[]",
+          "description": "Figures in reading order."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "rule",
+            "card"
+          ],
+          "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "md",
+            "lg"
+          ],
+          "description": "Figure size: md for rows of four or more, lg for two or three."
+        },
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "start",
+            "center"
+          ],
+          "description": "Text alignment inside each item."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the dl element."
+        }
+      },
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-title",
+          "--color-text",
+          "--color-muted",
+          "--color-border",
+          "--color-border-light",
+          "--color-surface"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-internal-16",
+          "--space-internal-24",
+          "--space-layout-24",
+          "--space-layout-32"
+        ]
+      },
+      "examples": []
+    },
     "StatusDot": {
       "name": "StatusDot",
       "group": "feedback",
@@ -17364,13 +17466,13 @@
       "importLine": "import Table from \"@dt/Table\";",
       "keyProps": [
         {
-          "name": "caption",
-          "type": "string",
-          "required": true
-        },
-        {
           "name": "size",
           "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "caption",
+          "type": "string",
           "required": false
         },
         {
@@ -17396,9 +17498,9 @@
       ],
       "props": {
         "caption": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "Accessible table name, rendered as a `<caption>`."
+          "description": "Accessible table name, rendered as a `<caption>`. Optional only when the table is named by aria-labelledby or aria-label."
         },
         "hideCaption": {
           "optional": true,
@@ -18293,6 +18395,11 @@
           "name": "children",
           "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
           "required": false
+        },
+        {
+          "name": "flush",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
@@ -18341,6 +18448,11 @@
             "relaxed",
             "loose"
           ]
+        },
+        "flush": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
         }
       },
       "composesWith": [
@@ -19180,6 +19292,11 @@
             "loose"
           ],
           "description": "Line height variant."
+        },
+        "flush": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
         }
       },
       "composesWith": [

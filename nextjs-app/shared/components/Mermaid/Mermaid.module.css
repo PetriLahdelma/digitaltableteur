@@ -8,9 +8,9 @@
 }
 
 .diagram {
-  --mermaid-color: #ed4b9b;
+  --mermaid-color: var(--color-text);
   --mermaid-node-bg: transparent;
-  --mermaid-line-color: #ed4b9b;
+  --mermaid-line-color: var(--color-border);
 
   display: flex;
   inline-size: 100%;

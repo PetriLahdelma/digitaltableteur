@@ -81,6 +81,20 @@ export function GuideAnchor({
   );
 }
 
+/**
+ * Long paths and commands may wrap on a phone, but only after a slash, dot
+ * or colon, never inside a name: "nextjs-app/shared/|locales/|en/".
+ */
+function breakable(children: ReactNode): ReactNode {
+  if (typeof children !== "string" || children.length < 24) return children;
+  return children.split(/(?<=[/.:])/).map((part, index) => (
+    <React.Fragment key={index}>
+      {index > 0 ? <wbr /> : null}
+      {part}
+    </React.Fragment>
+  ));
+}
+
 function GuidePre({ children }: Props) {
   const child = Children.toArray(children)[0];
   if (!isValidElement<Props>(child)) return <pre>{children}</pre>;
@@ -110,14 +124,14 @@ function GuideMdTable({ children }: Props) {
 
 const guide: Record<string, ComponentType<Props>> = {
   h1: ({ children }) => (
-    <Title as="h1" size="xl" lineHeight="tight" className={styles.title}>
+    <Title as="h1" size="m" lineHeight="tight" className={styles.title}>
       {children}
     </Title>
   ),
   h2: ({ children }) => (
     <Title
       as="h2"
-      size="s"
+      size="xs"
       lineHeight="snug"
       id={slug(children)}
       className={styles.h2}
@@ -131,12 +145,12 @@ const guide: Record<string, ComponentType<Props>> = {
     </Title>
   ),
   p: ({ children }) => (
-    <Text as="p" size="m" lineHeight="relaxed" className={styles.p}>
+    <Text as="p" size="s" className={styles.p}>
       {children}
     </Text>
   ),
   a: ({ href, children }) => <GuideAnchor href={href}>{children}</GuideAnchor>,
-  code: ({ children }) => <Code size="inherit">{children}</Code>,
+  code: ({ children }) => <Code size="inherit">{breakable(children)}</Code>,
   pre: GuidePre,
   ul: ({ children }) => <ul className={styles.list}>{children}</ul>,
   ol: ({ children }) => <ol className={styles.orderedList}>{children}</ol>,
@@ -150,7 +164,13 @@ const guide: Record<string, ComponentType<Props>> = {
   th: ({ children }) => (
     <TableHeaderCell scope="col">{children}</TableHeaderCell>
   ),
-  td: ({ children }) => <TableCell>{children}</TableCell>,
+  td: ({ children }) => (
+    <TableCell
+      className={textOf(children).length <= 28 ? styles.nowrap : undefined}
+    >
+      {children}
+    </TableCell>
+  ),
 };
 
 const storybookDefaults: Record<string, ComponentType<Props>> = {

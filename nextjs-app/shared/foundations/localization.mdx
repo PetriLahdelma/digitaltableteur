@@ -38,7 +38,7 @@ Case studies and blog posts stay in English on purpose. Everything else a visito
 <GuideSteps
   steps={[
     { title: "The server renders English", body: "Every page is rendered in English first, so crawlers and link previews always get real content." },
-    { title: "The saved choice applies", body: "After hydration the client reads the visitor's choice from localStorage (i18nextLng) or the i18next cookie and switches." },
+    { title: "The saved choice applies", body: <>After hydration the client reads the visitor's choice from <Code size="inherit">localStorage</Code> (<Code size="inherit">i18nextLng</Code>) or the <Code size="inherit">i18next</Code> cookie and switches.</> },
     { title: "Changes are saved twice", body: "Picking a language writes both, so the choice survives blocked storage. The cookie lasts a year." },
   ]}
 />
@@ -62,7 +62,7 @@ The app connects that hook to i18next once, through `TranslationProvider` inside
 
 ## In app code
 
-Pages and site sections use react-i18next directly:
+Pages and site sections use `react-i18next` directly:
 
 ```tsx
 import { useTranslation } from "react-i18next";

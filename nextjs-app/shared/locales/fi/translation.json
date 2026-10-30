@@ -2305,5 +2305,6 @@
   "taskListStatusInProgress": "Kesken",
   "taskListStatusCompleted": "Valmis",
   "taskListStatusCannotStart": "Ei voi vielä aloittaa",
-  "taskListStepDone": "valmis"
+  "taskListStepDone": "valmis",
+  "statListOf": "/ {{total}}"
 }
