@@ -151,7 +151,6 @@ const REQUIRED_REPOSITORY_PATHS = [
   "nextjs-app/shared/components/Section/Section.contract.json",
   "nextjs-app/shared/components/Section/Section.tsx",
   "nextjs-app/shared/components/Section/index.ts",
-  "nextjs-app/shared/components/Select/Select.module.css",
   "nextjs-app/shared/components/Select/Select.tsx",
   "nextjs-app/shared/components/Select/SelectOption.module.css",
   "nextjs-app/shared/components/Select/SelectOption.tsx",
