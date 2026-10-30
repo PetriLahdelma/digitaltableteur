@@ -138,6 +138,13 @@
   display: block;
 }
 
+/* "HKI HQ" is a run of capitals in body text: capitals set solid read
+   cramped, so they get the wider tracking. */
+
+.addressName {
+  letter-spacing: var(--tracking-wider);
+}
+
 .email {
   font-family: var(--font-body);
   font-size: var(--font-size-text-s);

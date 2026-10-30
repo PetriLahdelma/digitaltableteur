@@ -148,7 +148,7 @@ export function ContactPageContentEditorial({
               }
             >
               <address className={styles.address}>
-                <span className={styles.addressLine}>
+                <span className={cn(styles.addressLine, styles.addressName)}>
                   {t("contactAddressLine1", "HKI HQ")}
                 </span>
                 <span className={styles.addressLine}>
