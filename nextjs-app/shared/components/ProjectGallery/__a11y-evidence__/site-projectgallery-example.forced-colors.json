@@ -1,9 +1,9 @@
 {
   "storyId": "site-projectgallery-example",
   "mode": "forced-colors",
-  "sourceSHA": "b0b36a256f56d4abe1ee3b2b4d8cfaed50776525",
-  "capturedAt": "2026-10-15T19:37:50.961Z",
-  "runner": "local-2026-10-15v",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:28:14.005Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

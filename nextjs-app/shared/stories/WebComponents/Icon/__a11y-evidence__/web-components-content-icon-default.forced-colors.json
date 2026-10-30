@@ -1,12 +1,16 @@
 {
   "storyId": "web-components-content-icon-default",
   "mode": "forced-colors",
-  "sourceSHA": "d14b56331362c888c62bab010b88217a3b7ab6ce",
-  "capturedAt": "2026-07-26T22:00:39.676Z",
-  "runner": "table-icons",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:29:09.918Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

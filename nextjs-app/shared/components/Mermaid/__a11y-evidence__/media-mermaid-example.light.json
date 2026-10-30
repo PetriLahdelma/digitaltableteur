@@ -1,9 +1,9 @@
 {
   "storyId": "media-mermaid-example",
   "mode": "light",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:27.955Z",
-  "runner": null,
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:20:24.501Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

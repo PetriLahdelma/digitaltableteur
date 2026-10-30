@@ -1,9 +1,9 @@
 {
   "storyId": "forms-multicombobox-forced-colors",
   "mode": "light",
-  "sourceSHA": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-  "capturedAt": "2026-10-27T18:10:27.708Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:16:11.074Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

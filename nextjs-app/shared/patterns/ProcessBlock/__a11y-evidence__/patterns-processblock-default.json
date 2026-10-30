@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-processblock-default",
   "mode": "light",
-  "sourceSHA": "d856f95afca735a7c9aee3e70996749f3181aa8f",
-  "capturedAt": "2026-08-07T12:33:55.173Z",
-  "runner": "react-0.1.23-publish",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:16:36.462Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

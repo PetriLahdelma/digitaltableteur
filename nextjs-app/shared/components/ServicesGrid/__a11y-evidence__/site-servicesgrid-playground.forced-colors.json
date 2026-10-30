@@ -1,12 +1,16 @@
 {
   "storyId": "site-servicesgrid-playground",
   "mode": "forced-colors",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:42:49.300Z",
-  "runner": null,
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:27:49.236Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

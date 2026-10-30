@@ -1,12 +1,16 @@
 {
   "storyId": "site-wipbadge-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
-  "capturedAt": "2026-07-30T08:46:38.160Z",
-  "runner": null,
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:07:57.783Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

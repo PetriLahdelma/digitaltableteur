@@ -1,9 +1,9 @@
 {
   "storyId": "forms-formfield-default",
   "mode": "forced-colors",
-  "sourceSHA": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
-  "capturedAt": "2026-10-26T21:11:44.552Z",
-  "runner": "local-claude",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:06:57.932Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

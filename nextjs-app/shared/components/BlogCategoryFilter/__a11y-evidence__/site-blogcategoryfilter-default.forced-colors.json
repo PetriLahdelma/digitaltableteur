@@ -1,9 +1,9 @@
 {
   "storyId": "site-blogcategoryfilter-default",
   "mode": "forced-colors",
-  "sourceSHA": "b28c9495432e58f36639236470d1e869496d107b",
-  "capturedAt": "2026-10-19T22:09:49.963Z",
-  "runner": "local-2026-10-20",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:04:06.258Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

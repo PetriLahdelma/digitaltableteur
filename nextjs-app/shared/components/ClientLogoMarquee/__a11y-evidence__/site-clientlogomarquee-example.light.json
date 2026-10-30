@@ -1,9 +1,9 @@
 {
   "storyId": "site-clientlogomarquee-example",
   "mode": "light",
-  "sourceSHA": "4896f7a5d3035c6fdb1ae9c86bb20a5b8c91f225",
-  "capturedAt": "2026-10-25T13:49:43.944Z",
-  "runner": "local-claude",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:50:08.309Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

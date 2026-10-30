@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-treeview-playground",
   "mode": "dark",
-  "sourceSHA": "b454078d59a2ce7928c45dbb79e82f840172579f",
-  "capturedAt": "2026-10-15T18:19:42.531Z",
-  "runner": "local-2026-10-15p",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:23:04.157Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

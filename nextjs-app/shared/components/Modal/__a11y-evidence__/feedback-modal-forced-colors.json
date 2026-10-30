@@ -1,9 +1,9 @@
 {
   "storyId": "feedback-modal-forced-colors",
   "mode": "light",
-  "sourceSHA": "8187e69ddf8f738917a8fa10204b62800553147a",
-  "capturedAt": "2026-09-27T05:44:37.588Z",
-  "runner": null,
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:14:11.222Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "forms-formfield-example",
   "mode": "light",
-  "sourceSHA": "88e4923b1d56b9acbfb63353f139ab639f5f919a",
-  "capturedAt": "2026-10-26T21:11:34.804Z",
-  "runner": "local-claude",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:49:47.971Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -48,22 +48,22 @@
       - list:
         - listitem:
           - link "User research":
-            - /url: "#stage-list-_r_d_-research"
+            - /url: "#stage-list-_r_5_-research"
     - listitem:
       - text: Build
       - list:
         - listitem:
           - link "Content review":
-            - /url: "#stage-list-_r_d_-content"
+            - /url: "#stage-list-_r_5_-content"
     - listitem:
       - text: Launch
       - list:
         - listitem:
           - link "Content review":
-            - /url: "#stage-list-_r_d_-content"
+            - /url: "#stage-list-_r_5_-content"
         - listitem:
           - link "Support briefing":
-            - /url: "#stage-list-_r_d_-support"
+            - /url: "#stage-list-_r_5_-support"
 - article "User research":
   - paragraph: Plan, Research
   - heading "User research" [level=3]

@@ -1,9 +1,9 @@
 {
   "storyId": "site-sentrysummarycard-forced-colors",
   "mode": "light",
-  "sourceSHA": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-  "capturedAt": "2026-10-15T19:23:55.267Z",
-  "runner": "local-2026-10-15t",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:21:05.691Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

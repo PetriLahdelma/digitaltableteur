@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-hero-playground",
   "mode": "light",
-  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
-  "capturedAt": "2026-10-14T20:32:28.274Z",
-  "runner": "local-2026-10-14b",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:16:21.275Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,12 +1,16 @@
 {
   "storyId": "web-components-site-gallery-example",
   "mode": "forced-colors",
-  "sourceSHA": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
-  "capturedAt": "2026-07-26T19:51:52.591Z",
-  "runner": "promote-gallery-stable",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:07:06.475Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

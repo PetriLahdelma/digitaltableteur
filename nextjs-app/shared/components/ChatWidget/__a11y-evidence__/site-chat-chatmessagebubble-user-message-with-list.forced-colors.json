@@ -1,9 +1,9 @@
 {
   "storyId": "site-chat-chatmessagebubble-user-message-with-list",
   "mode": "forced-colors",
-  "sourceSHA": "183a1c2da9f13f3e1d3cc73538d5def8261e5e88",
-  "capturedAt": "2026-10-30T10:01:40.922Z",
-  "runner": "local",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:06:44.563Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

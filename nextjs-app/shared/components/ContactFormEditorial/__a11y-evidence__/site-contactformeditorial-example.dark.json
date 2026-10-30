@@ -1,9 +1,9 @@
 {
   "storyId": "site-contactformeditorial-example",
   "mode": "dark",
-  "sourceSHA": "972352ab923a8b6cf6ba370f3f52b4d1db023e8e",
-  "capturedAt": "2026-10-28T22:24:49.335Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:23:17.589Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

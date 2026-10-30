@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-workmagneticfield-example",
   "mode": "light",
-  "sourceSHA": "c4fc52e555934539e4641eac129a893062a03c72",
-  "capturedAt": "2026-10-17T07:32:30.531Z",
-  "runner": "local-2026-10-17",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:50:49.733Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

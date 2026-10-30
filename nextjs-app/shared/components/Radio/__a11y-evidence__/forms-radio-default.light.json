@@ -1,9 +1,9 @@
 {
   "storyId": "forms-radio-default",
   "mode": "light",
-  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
-  "capturedAt": "2026-10-29T20:56:36.839Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:49:44.958Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

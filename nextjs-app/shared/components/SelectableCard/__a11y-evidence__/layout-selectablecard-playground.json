@@ -1,9 +1,9 @@
 {
   "storyId": "layout-selectablecard-playground",
   "mode": "light",
-  "sourceSHA": "998f818484929702348a92822e6f45613ac36b6f",
-  "capturedAt": "2026-10-20T20:01:55.109Z",
-  "runner": "local-2026-10-20",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:44:14.448Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

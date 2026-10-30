@@ -1,3 +1,3 @@
-- text: Email*
-- textbox "Email*":
+- text: Email (required)
+- textbox "Email (required)":
   - /placeholder: you@company.com

@@ -1,0 +1,12 @@
+{
+  "storyId": "content-emptystate-forced-colors",
+  "mode": "light",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:44:51.346Z",
+  "runner": "local-recapture",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

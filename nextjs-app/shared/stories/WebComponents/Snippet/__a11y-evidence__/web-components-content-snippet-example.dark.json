@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-content-snippet-example",
   "mode": "dark",
-  "sourceSHA": "1be5b0147113fcbda9e31b333bc89a06d0cef610",
-  "capturedAt": "2026-10-25T19:12:48.956Z",
-  "runner": "local-claude",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:24:49.047Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-proofblock-playground",
   "mode": "forced-colors",
-  "sourceSHA": "8cca46ecd2c5ca308bccb2f7baef863f7e19b649",
-  "capturedAt": "2026-10-15T19:54:49.095Z",
-  "runner": "local-2026-10-15w",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T19:02:53.861Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

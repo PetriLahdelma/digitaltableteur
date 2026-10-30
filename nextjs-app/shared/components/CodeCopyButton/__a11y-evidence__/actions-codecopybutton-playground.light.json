@@ -1,9 +1,9 @@
 {
   "storyId": "actions-codecopybutton-playground",
   "mode": "light",
-  "sourceSHA": "5273c1132711e819f118e27d64289e47d4264953",
-  "capturedAt": "2026-10-29T20:57:14.148Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:50:19.848Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

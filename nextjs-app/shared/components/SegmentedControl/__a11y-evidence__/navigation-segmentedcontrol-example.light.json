@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-segmentedcontrol-example",
   "mode": "light",
-  "sourceSHA": "35673ef993e71351c36e62414a49b3b2efe9c8d6",
-  "capturedAt": "2026-10-17T09:17:02.382Z",
-  "runner": "local-2026-10-17",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:52:24.722Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

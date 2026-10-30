@@ -1,9 +1,9 @@
 {
   "storyId": "forms-phoneinput-example",
   "mode": "dark",
-  "sourceSHA": "cee7e78118b73ff867cb0fc132a7f6c3a50a9a7c",
-  "capturedAt": "2026-10-29T04:49:35.517Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:24:51.789Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

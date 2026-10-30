@@ -1,9 +1,9 @@
 {
   "storyId": "layout-macwindowframe-playground",
   "mode": "light",
-  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-  "capturedAt": "2026-10-27T18:42:06.599Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:18:44.866Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

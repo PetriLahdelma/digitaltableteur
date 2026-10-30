@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-herosection-playground",
   "mode": "forced-colors",
-  "sourceSHA": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-  "capturedAt": "2026-09-29T19:12:04.750Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T19:03:04.779Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "layout-spacer-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-  "capturedAt": "2026-09-29T19:06:14.022Z",
-  "runner": "local",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:08:09.542Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

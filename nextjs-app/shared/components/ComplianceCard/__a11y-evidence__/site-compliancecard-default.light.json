@@ -1,9 +1,9 @@
 {
   "storyId": "site-compliancecard-default",
   "mode": "light",
-  "sourceSHA": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
-  "capturedAt": "2026-10-29T17:42:16.877Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:19:02.316Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

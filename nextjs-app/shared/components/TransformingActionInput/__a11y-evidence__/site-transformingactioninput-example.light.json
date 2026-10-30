@@ -1,9 +1,9 @@
 {
   "storyId": "site-transformingactioninput-example",
   "mode": "light",
-  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-  "capturedAt": "2026-10-27T18:42:10.412Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:49:54.457Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

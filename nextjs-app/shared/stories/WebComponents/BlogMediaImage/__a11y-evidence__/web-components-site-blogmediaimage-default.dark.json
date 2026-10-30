@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-site-blogmediaimage-default",
   "mode": "dark",
-  "sourceSHA": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-  "capturedAt": "2026-09-10T06:38:37.654Z",
-  "runner": null,
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:56:20.016Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-forms-fileupload-playground",
   "mode": "light",
-  "sourceSHA": "4debcb7ea521112660b29c9fcb2857548d470a28",
-  "capturedAt": "2026-10-15T19:35:39.625Z",
-  "runner": "local-2026-10-15u",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:21:19.831Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

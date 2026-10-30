@@ -1,9 +1,9 @@
 {
   "storyId": "site-locationcard-example",
   "mode": "light",
-  "sourceSHA": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-  "capturedAt": "2026-10-15T19:27:57.181Z",
-  "runner": "local-2026-10-15t",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:49:21.009Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

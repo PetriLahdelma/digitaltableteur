@@ -1,0 +1,13 @@
+- status: Work in progress (alpha)
+- heading "Contact details" [level=3]
+- button "Change Contact details"
+- term: Full name
+- definition: Aino Virtanen
+- term: Company / brand name
+- definition: Northwind Planning
+- term: What are the three most important things to address?
+- definition: 1. One shared component library. 2. Accessibility that passes procurement reviews. 3. Tokens the team can maintain.
+- term: Services
+- definition: Design System Audit Redesign / refresh
+- term: Phone number
+- definition: Not answered

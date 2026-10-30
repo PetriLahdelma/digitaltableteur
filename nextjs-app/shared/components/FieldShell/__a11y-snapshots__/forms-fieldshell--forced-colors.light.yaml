@@ -1,0 +1,8 @@
+- status: Work in progress (alpha)
+- text: Company
+- button "Paste"
+- textbox "Company" [invalid]
+- alert:
+  - img
+  - text: Enter the company name
+- paragraph: As it reads on your invoices

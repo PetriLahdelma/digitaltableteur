@@ -1,8 +1,8 @@
 {
   "storyId": "feedback-statusdot-playground",
   "mode": "forced-colors",
-  "sourceSHA": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-  "capturedAt": "2026-10-30T16:24:55.622Z",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:07:41.118Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

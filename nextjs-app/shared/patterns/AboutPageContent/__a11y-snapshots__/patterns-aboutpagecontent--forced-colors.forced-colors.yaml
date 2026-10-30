@@ -20,8 +20,6 @@
 - definition: 100+
 - term: Developers and designers served by that system
 - definition: 300+
-- link "See two decades of work on the timeline":
-  - /url: /timeline
 - heading "How delivery scales" [level=2]
 - paragraph: Senior-led, networked and built to outlast the engagement.
 - article:
@@ -80,15 +78,13 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.50
+  - definition: 0.1.51
   - term: web-components
   - definition: 0.11.0
   - term: tokens
   - definition: 0.2.0
   - term: tokens-css
   - definition: 0.1.5
-  - link "See the changelog":
-    - /url: /changelog
 - region "Ready to build something great?":
   - heading "Ready to build something great?" [level=2]
   - paragraph: Let’s discuss your next project and explore how to bring your vision to life.

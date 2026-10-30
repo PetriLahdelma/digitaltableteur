@@ -1,0 +1,16 @@
+{
+  "storyId": "navigation-tableofcontents-default",
+  "mode": "forced-colors",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:04:13.225Z",
+  "runner": "local-recapture",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-breadcrumb-default",
   "mode": "forced-colors",
-  "sourceSHA": "75e9c3e68c734666b99770e44f973c65b17cf9da",
-  "capturedAt": "2026-10-16T09:32:42.644Z",
-  "runner": "local-2026-10-16f",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:30:04.421Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

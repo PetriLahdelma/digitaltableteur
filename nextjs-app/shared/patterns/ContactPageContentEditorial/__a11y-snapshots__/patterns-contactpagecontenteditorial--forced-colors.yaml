@@ -29,12 +29,12 @@
   - tab "Send a message" [selected]
   - tab "Book a call"
 - tabpanel "Send a message":
-  - text: Full Name*
-  - textbox "Full Name*"
-  - text: Email Address*
-  - textbox "Email Address*"
-  - text: Your Message*
-  - textbox "Your Message*":
+  - text: Full Name (required)
+  - textbox "Full Name (required)"
+  - text: Email Address (required)
+  - textbox "Email Address (required)"
+  - text: Your Message (required)
+  - textbox "Your Message (required)":
     - /placeholder: Enter your message
   - button "Add project details"
   - paragraph:

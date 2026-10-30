@@ -1,9 +1,9 @@
 {
   "storyId": "media-mermaid-forced-colors",
   "mode": "dark",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:08:00.070Z",
-  "runner": null,
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:24:19.622Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

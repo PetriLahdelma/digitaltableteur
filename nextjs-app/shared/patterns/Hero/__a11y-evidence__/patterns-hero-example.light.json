@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-hero-example",
   "mode": "light",
-  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
-  "capturedAt": "2026-10-14T20:32:33.305Z",
-  "runner": "local-2026-10-14b",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:20:51.825Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,0 +1,36 @@
+- status: Work in progress (alpha)
+- text: Email
+- button "Paste"
+- textbox "Email": anna@example.com
+- paragraph:
+  - img
+  - text: Address verified
+- text: Phone
+- combobox "Phone number country": FI +358
+- textbox "Phone"
+- paragraph: Only if you prefer a call
+- text: Company size
+- button "Size options"
+- combobox "Company size" [invalid]: Choose a size
+- button "Toggle options"
+- alert:
+  - img
+  - text: Choose a company size
+- text: Timeline
+- combobox "Timeline": Pick a start
+- button "Toggle options"
+- paragraph:
+  - img
+  - text: The next free slot is in December
+- text: Services
+- button "Service options"
+- text: Design system audit
+- button "Remove badge"
+- combobox "Services"
+- button "Toggle options"
+- paragraph: Pick all that apply
+- text: Brief
+- button "Insert a template"
+- button "Brief options"
+- textbox "Brief"
+- paragraph: What should change, and by when

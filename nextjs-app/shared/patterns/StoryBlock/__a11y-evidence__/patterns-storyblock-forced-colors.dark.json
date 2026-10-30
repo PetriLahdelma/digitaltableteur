@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-storyblock-forced-colors",
   "mode": "dark",
-  "sourceSHA": "9cd0b718e0d6cca8701cfc622dc10840fac190c8",
-  "capturedAt": "2026-10-29T17:41:33.670Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:55:06.425Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

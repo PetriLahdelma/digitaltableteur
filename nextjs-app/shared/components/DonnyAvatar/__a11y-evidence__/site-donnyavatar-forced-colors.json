@@ -1,9 +1,9 @@
 {
   "storyId": "site-donnyavatar-forced-colors",
   "mode": "light",
-  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-  "capturedAt": "2026-09-30T06:10:02.023Z",
-  "runner": null,
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:44:04.716Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

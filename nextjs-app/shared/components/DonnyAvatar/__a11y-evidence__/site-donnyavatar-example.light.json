@@ -1,9 +1,9 @@
 {
   "storyId": "site-donnyavatar-example",
   "mode": "light",
-  "sourceSHA": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-  "capturedAt": "2026-09-30T06:11:19.241Z",
-  "runner": null,
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:52:24.405Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

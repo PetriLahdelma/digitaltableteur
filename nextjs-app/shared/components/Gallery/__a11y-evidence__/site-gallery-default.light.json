@@ -1,9 +1,9 @@
 {
   "storyId": "site-gallery-default",
   "mode": "light",
-  "sourceSHA": "a8056e578d356b59f2772ea38a1462f2e129eec2",
-  "capturedAt": "2026-10-24T15:53:56.007Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:50:13.051Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

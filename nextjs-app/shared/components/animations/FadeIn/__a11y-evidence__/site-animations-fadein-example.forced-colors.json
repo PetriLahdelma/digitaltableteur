@@ -1,9 +1,9 @@
 {
   "storyId": "site-animations-fadein-example",
   "mode": "forced-colors",
-  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
-  "capturedAt": "2026-10-14T20:32:23.604Z",
-  "runner": "local-2026-10-14b",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:07:16.748Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "marketing-reliablepartnerbadge-default",
   "mode": "dark",
-  "sourceSHA": "14d5669f75eceec2df3b8f075c60cb8481c457fa",
-  "capturedAt": "2026-09-29T17:12:40.421Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:25:26.456Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

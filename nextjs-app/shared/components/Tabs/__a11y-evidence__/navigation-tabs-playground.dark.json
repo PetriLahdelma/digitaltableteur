@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-tabs-playground",
   "mode": "dark",
-  "sourceSHA": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-  "capturedAt": "2026-09-29T20:12:13.786Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:56:19.054Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

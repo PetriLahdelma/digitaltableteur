@@ -1,0 +1,30 @@
+- status: Work in progress (alpha)
+- region "Services":
+  - heading "Services" [level=2]
+  - radiogroup "View":
+    - radio "Human" [checked]
+    - radio "Machine"
+  - list:
+    - listitem:
+      - 'link "Build the system Design systems that hold up in production: tokens, component architecture and governance. Tokens Component architecture Governance"':
+        - /url: "#system"
+        - text: "Build the system Design systems that hold up in production: tokens, component architecture and governance."
+        - list:
+          - listitem: Tokens
+          - listitem: Component architecture
+          - listitem: Governance
+    - listitem:
+      - link "Improve how teams ship DesignOps and AI workflows your team keeps running after the engagement. Agent-ready components Accessibility checks":
+        - /url: "#ship"
+        - text: Improve how teams ship DesignOps and AI workflows your team keeps running after the engagement.
+        - list:
+          - listitem: Agent-ready components
+          - listitem: Accessibility checks
+    - listitem:
+      - link "Design the product Research, product strategy and UX, carried through to interfaces and code. Research Product strategy UX":
+        - /url: "#product"
+        - text: Design the product Research, product strategy and UX, carried through to interfaces and code.
+        - list:
+          - listitem: Research
+          - listitem: Product strategy
+          - listitem: UX

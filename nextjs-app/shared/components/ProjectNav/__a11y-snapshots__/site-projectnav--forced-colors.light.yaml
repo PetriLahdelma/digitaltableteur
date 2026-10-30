@@ -3,11 +3,11 @@
     - /url: /work
     - img
     - text: Back to work
-  - 'link "Previous project: DSharp Design System"':
-    - /url: /work/dsharp-design-system
+  - 'link "Previous project: Home Remote"':
+    - /url: /work/home-remote
     - img
     - text: Previous
-  - 'link "Next project: KnobSmith Audio"':
-    - /url: /work/knobsmith-audio
+  - 'link "Next project: DSharp Design System"':
+    - /url: /work/dsharp-design-system
     - text: Next
     - img

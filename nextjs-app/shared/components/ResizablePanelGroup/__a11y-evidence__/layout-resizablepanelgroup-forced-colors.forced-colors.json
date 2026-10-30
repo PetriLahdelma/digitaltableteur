@@ -1,9 +1,9 @@
 {
   "storyId": "layout-resizablepanelgroup-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "d7454bd10fb5a8cae5b1c88ac10429c2c833e9b5",
-  "capturedAt": "2026-10-25T15:51:24.625Z",
-  "runner": "local-claude",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T19:02:51.940Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "site-transformingactioninput-playground",
   "mode": "forced-colors",
-  "sourceSHA": "181ae431cb4fe7f55c3d6d033b30b82d14517488",
-  "capturedAt": "2026-10-27T18:43:09.496Z",
-  "runner": "local",
+  "sourceSHA": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+  "capturedAt": "2026-10-30T19:05:30.813Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

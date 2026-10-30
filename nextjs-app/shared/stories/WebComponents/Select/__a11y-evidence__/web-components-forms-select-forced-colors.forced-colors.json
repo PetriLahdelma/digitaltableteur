@@ -1,12 +1,16 @@
 {
   "storyId": "web-components-forms-select-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
-  "capturedAt": "2026-07-26T14:20:17.175Z",
-  "runner": "recapture",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T19:03:07.972Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
     }
   }
 }

@@ -1,9 +1,9 @@
 {
   "storyId": "feedback-modal-playground",
   "mode": "dark",
-  "sourceSHA": "60e756d47ab9d9e06a5395cf78e9f46ce4643dab",
-  "capturedAt": "2026-09-27T06:07:51.788Z",
-  "runner": null,
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:22:49.902Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

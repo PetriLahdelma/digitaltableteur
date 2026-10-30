@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-socialiconlink-playground",
   "mode": "forced-colors",
-  "sourceSHA": "2f89e003bef02b6b80cda57929a63f8133c69b2a",
-  "capturedAt": "2026-10-14T20:32:04.490Z",
-  "runner": "local-2026-10-14b",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:29:18.545Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

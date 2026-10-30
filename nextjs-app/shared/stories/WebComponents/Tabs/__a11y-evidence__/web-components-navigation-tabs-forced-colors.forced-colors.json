@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-navigation-tabs-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-  "capturedAt": "2026-09-29T20:12:18.662Z",
-  "runner": "local",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T19:02:33.572Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

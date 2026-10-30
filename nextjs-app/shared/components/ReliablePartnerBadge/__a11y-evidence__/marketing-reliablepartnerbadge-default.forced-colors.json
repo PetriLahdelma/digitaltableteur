@@ -1,0 +1,16 @@
+{
+  "storyId": "marketing-reliablepartnerbadge-default",
+  "mode": "forced-colors",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:30:06.906Z",
+  "runner": "local-recapture",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "forced-colors-real-browser": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

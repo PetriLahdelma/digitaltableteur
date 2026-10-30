@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-tasklist-default",
   "mode": "dark",
-  "sourceSHA": "19e642e52007af2c789bf30cef0766557fc819c3",
-  "capturedAt": "2026-10-26T22:36:44.002Z",
-  "runner": "local-claude",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:22:45.449Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

@@ -1,9 +1,9 @@
 {
   "storyId": "content-stagelist-playground",
   "mode": "light",
-  "sourceSHA": "f4f4f30c6b818e0a19c3dca1843768d73f36d129",
-  "capturedAt": "2026-10-24T18:12:22.653Z",
-  "runner": "local",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:19:13.335Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

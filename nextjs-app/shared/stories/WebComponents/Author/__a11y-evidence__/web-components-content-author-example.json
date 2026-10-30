@@ -1,0 +1,16 @@
+{
+  "storyId": "web-components-content-author-example",
+  "mode": "light",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:16:55.800Z",
+  "runner": "local-recapture",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

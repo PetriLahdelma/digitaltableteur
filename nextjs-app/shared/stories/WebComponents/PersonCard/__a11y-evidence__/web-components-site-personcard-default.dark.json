@@ -1,9 +1,9 @@
 {
   "storyId": "web-components-site-personcard-default",
   "mode": "dark",
-  "sourceSHA": "fc933022457710c6074d97db5a7182a727bd8b8f",
-  "capturedAt": "2026-09-01T10:14:40.932Z",
-  "runner": "local-farm-parity",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:22:56.040Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

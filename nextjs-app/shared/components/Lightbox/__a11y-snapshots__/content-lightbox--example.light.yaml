@@ -1,0 +1,11 @@
+- status: Work in progress (alpha)
+- list:
+  - listitem:
+    - 'button "Placeholder one: a dark rectangle labelled One."':
+      - 'img "Placeholder one: a dark rectangle labelled One."'
+  - listitem:
+    - 'button "Placeholder two: a dark rectangle labelled Two."':
+      - 'img "Placeholder two: a dark rectangle labelled Two."'
+  - listitem:
+    - 'button "Placeholder three: a dark rectangle labelled Three."':
+      - 'img "Placeholder three: a dark rectangle labelled Three."'

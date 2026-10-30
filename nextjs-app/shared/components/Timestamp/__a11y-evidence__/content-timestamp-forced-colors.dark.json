@@ -1,9 +1,9 @@
 {
   "storyId": "content-timestamp-forced-colors",
   "mode": "dark",
-  "sourceSHA": "8d1ed3064aaa260c13437d90296b08154f49a741",
-  "capturedAt": "2026-10-27T23:01:27.325Z",
-  "runner": "local-claude",
+  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+  "capturedAt": "2026-10-30T18:54:21.071Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true

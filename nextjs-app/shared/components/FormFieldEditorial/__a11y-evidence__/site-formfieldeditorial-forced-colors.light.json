@@ -1,9 +1,9 @@
 {
   "storyId": "site-formfieldeditorial-forced-colors",
   "mode": "light",
-  "sourceSHA": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-  "capturedAt": "2026-10-16T09:59:57.740Z",
-  "runner": "local-2026-10-16g",
+  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
+  "capturedAt": "2026-10-30T19:21:28.052Z",
+  "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
