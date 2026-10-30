@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T22:56:03.865Z",
+  "generatedAt": "2026-10-30T23:15:28.973Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -49049,7 +49049,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. Known gap shared with the DS Accordion: FAQ triggers are not wrapped in heading elements."
+          "note": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. 2026-10-31: FAQ questions are headings one level below their section (Accordion headingLevel), so they join the outline; triggers look the same."
         }
       ],
       "docOrigin": {
@@ -52764,7 +52764,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. Known gap shared with the DS Accordion: triggers are not wrapped in heading elements, so FAQ questions are not in the heading outline."
+          "note": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. 2026-10-31: FAQ questions are headings one level below their section (Accordion headingLevel), so they join the outline; triggers look the same."
         }
       ],
       "docOrigin": {
