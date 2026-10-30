@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T22:48:51.095Z",
+  "generatedAt": "2026-10-30T22:56:04.295Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -243,6 +243,11 @@
             "type": "(openIds: string[]) => void",
             "description": "Called with the full set of open ids whenever it changes."
           },
+          "headingLevel": {
+            "optional": true,
+            "type": "2 | 3 | 4 | 5 | 6",
+            "description": "Wraps each trigger in a heading of this level, so the section titles\njoin the page outline (screen reader users list and jump by headings).\nPick the level below the heading that introduces the accordion. Unset,\ntriggers are plain buttons."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -404,6 +409,11 @@
             "type": "(openIds: string[]) => void",
             "description": "Called with the full set of open ids whenever it changes."
           },
+          "headingLevel": {
+            "optional": true,
+            "type": "2 | 3 | 4 | 5 | 6",
+            "description": "Wraps each trigger in a heading of this level, so the section titles\njoin the page outline (screen reader users list and jump by headings).\nPick the level below the heading that introduces the accordion. Unset,\ntriggers are plain buttons."
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -483,7 +493,7 @@
           "Button"
         ],
         "prefersOver": [],
-        "declaredPropCount": 8,
+        "declaredPropCount": 9,
         "guidelines": [
           {
             "level": "should",

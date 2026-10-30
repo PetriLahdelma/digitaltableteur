@@ -1,8 +1,8 @@
 {
   "storyId": "layout-accordion-default",
   "mode": "forced-colors",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:30:12.476Z",
+  "sourceSHA": "df1b48ae3fbf3febebbd4418f0be9c77bf6f960b",
+  "capturedAt": "2026-10-30T22:55:47.431Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
