@@ -1,0 +1,97 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "StatList",
+  "status": "alpha",
+  "description": "Key figures as a description list: each item pairs a figure with what it counts, an optional total and a short note.",
+  "props": {
+    "items": {
+      "type": "StatListItem[]",
+      "optional": false,
+      "description": "Figures in reading order."
+    },
+    "variant": {
+      "type": "union",
+      "values": [
+        "rule",
+        "card"
+      ],
+      "optional": true,
+      "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
+    },
+    "size": {
+      "type": "union",
+      "values": [
+        "md",
+        "lg"
+      ],
+      "optional": true,
+      "description": "Figure size: md for rows of four or more, lg for two or three."
+    },
+    "align": {
+      "type": "union",
+      "values": [
+        "start",
+        "center"
+      ],
+      "optional": true,
+      "description": "Text alignment inside each item."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Merged onto the dl element."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "unverified",
+        "wcag": [
+          "2.5.8"
+        ],
+        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "unverified",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "unverified"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "Marked reviewed, but no review date was recorded."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/StatList/StatList.module.css",
+    "../../../nextjs-app/shared/components/StatList/StatList.tsx"
+  ]
+}

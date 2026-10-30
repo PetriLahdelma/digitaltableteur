@@ -120,6 +120,7 @@
     "SplitButton.contract.json",
     "Stack.contract.json",
     "StageList.contract.json",
+    "StatList.contract.json",
     "StatusDot.contract.json",
     "SummaryList.contract.json",
     "Switch.contract.json",

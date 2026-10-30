@@ -67,6 +67,11 @@
       ],
       "optional": true,
       "description": "Line height variant."
+    },
+    "flush": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Drop the block margins. Use when the parent owns spacing: a row, a cell, a card or a flex/grid gap."
     }
   },
   "accessibility": {
@@ -74,52 +79,12 @@
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "automated",
+        "verification": "unverified",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "check": "npm run test:stories:matrix:ci",
-        "evidence": [
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:43.650Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:13:29.581Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:24.717Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:35:43.682Z",
-            "passed": true
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.forced-colors.json",
-            "sourceCommit": "c0e14a5f590c50ec3143bdab6aba50838e7f9157",
-            "capturedAt": "2026-09-29T19:13:29.628Z",
-            "passed": true,
-            "runner": "local"
-          },
-          {
-            "artifact": "../../../nextjs-app/shared/components/Title/__a11y-evidence__/content-title-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:29:24.771Z",
-            "passed": true
-          }
-        ]
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "forced-colors-real-browser",
@@ -135,7 +100,7 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No exportable evidence record for this check; re-run the check to capture one."
+        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
       },
       {
         "id": "human-a11y-review",
