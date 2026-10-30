@@ -1,8 +1,8 @@
 {
   "storyId": "forms-fieldshell-default",
   "mode": "light",
-  "sourceSHA": "2b311e4d58d58194da7f293e610c5228396de68d",
-  "capturedAt": "2026-10-30T19:40:47.791Z",
+  "sourceSHA": "4eb094025b6f9ef457e81a5155e10532f23de315",
+  "capturedAt": "2026-10-30T20:14:19.859Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
