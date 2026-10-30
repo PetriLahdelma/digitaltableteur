@@ -18,7 +18,7 @@ Render a familiar paged-list navigation surface with the announcements, current-
 - Colors: --color-text, --color-accent, --color-surface-elevated
 - Spacing: --space-internal-4, --space-internal-8
 - Typography: --font-size-sm, --font-size-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [Pagination](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1430-2182) (node 1430:2182)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.
 

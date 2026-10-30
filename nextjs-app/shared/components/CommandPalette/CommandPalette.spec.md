@@ -37,7 +37,7 @@ for cross-surface navigation and quick actions, not as a menu bound to one contr
   dialog appears only after the mount effect. Harnesses and tests must await
   a paint after mounting before querying or interacting with the dialog
   (see audit:interaction-evidence and audit:ssr-evidence).
-- Figma: TODO (parity build; no Figma node yet).
+- Figma: [CommandPalette](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1285-2113) (node 1285:2113)
 
 ## Promotion notes
 Parity build (Astryx `Command Palette`, reduced to the core launcher). Ships at

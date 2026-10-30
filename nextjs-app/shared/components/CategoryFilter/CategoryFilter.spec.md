@@ -20,6 +20,6 @@ Render the canonical filter-by-category row used on list pages. Owns the active-
 - Colors: --color-text, --color-accent, --color-border-default
 - Spacing: --space-internal-4, --space-internal-8
 - Typography: --font-size-sm, --font-size-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [CategoryFilter](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1429-2346) (node 1429:2346)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

@@ -18,6 +18,6 @@ Provide a single, theme-aware label component for grouped form controls so group
 - Colors: --color-text
 - Spacing: --space-internal-4
 - Typography: --font-size-sm
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [GroupLabel](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1290-2104) (node 1290:2104)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

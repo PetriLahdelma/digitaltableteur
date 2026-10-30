@@ -18,6 +18,6 @@ Stable visual for the 'values', 'principles', and 'what we believe' grid layouts
 - Colors: --color-text, --color-text-muted, --color-surface-elevated
 - Spacing: --space-internal-8, --space-internal-12, --space-internal-16
 - Radii: --radius-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [ValueCard](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1431-2190) (node 1431:2190)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

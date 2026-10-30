@@ -18,6 +18,6 @@ Show a grid of images that the reader can dwell on or expand. Hover motion is de
 - Colors: --color-text, --color-surface-elevated
 - Spacing: --space-internal-8, --space-internal-12
 - Radii: --radius-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [Gallery](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2263) (node 1441:2263)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

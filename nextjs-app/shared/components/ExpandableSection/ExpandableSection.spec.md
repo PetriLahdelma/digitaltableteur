@@ -17,6 +17,6 @@ Provide a stand-alone disclosure surface for a single 'show more' affordance, wi
 ## Design notes
 - Colors: --color-text, --color-surface-elevated
 - Spacing: --space-internal-8, --space-internal-12
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [ExpandableSection](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2206) (node 1433:2206)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

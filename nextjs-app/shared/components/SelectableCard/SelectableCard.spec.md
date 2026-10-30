@@ -28,7 +28,7 @@ is one option in it.
   state is shown by a ring on the surface in `--color-primary`, with a
   forced-colors mapping to `Highlight`. Card content centers vertically so a
   lone title sits mid-card when grid rows stretch options to equal heights.
-- Figma: TODO (parity build; no Figma node yet).
+- Figma: [SelectableCard](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1288-2114) (node 1288:2114)
 
 ## Promotion notes
 Parity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not

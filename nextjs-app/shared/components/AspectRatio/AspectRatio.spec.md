@@ -16,6 +16,6 @@ Reserve layout space at a fixed aspect ratio so the page does not jump when the 
 
 ## Design notes
 - No own tokens (inherits from container).
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [AspectRatio](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2353) (node 1445:2353)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

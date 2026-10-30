@@ -16,6 +16,6 @@ Provide a single, named primitive for centering content so reviewers do not have
 
 ## Design notes
 - No own tokens (inherits from container).
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [Center](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2357) (node 1445:2357)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

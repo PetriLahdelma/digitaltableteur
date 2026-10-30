@@ -32,7 +32,7 @@ inline without opening a menu. It is the single-select counterpart to
 - Selection is shown by a raised neutral surface, not a brand fill, so it reads
   consistently across light/dark; forced-colors maps the selected segment to a
   `Highlight` outline. Motion respects `prefers-reduced-motion`.
-- Figma: TODO (parity build; no Figma node yet).
+- Figma: [SegmentedControl](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1281-2108) (node 1281:2108)
 
 ## Promotion notes
 Parity build (Astryx `Segmented Control`). Ships at alpha with the WIP badge. Do

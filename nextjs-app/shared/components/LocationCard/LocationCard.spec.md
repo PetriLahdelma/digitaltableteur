@@ -18,6 +18,6 @@ Single, recognisable layout for the contact / locations grid. Replaces ad-hoc `C
 - Colors: --color-text, --color-text-muted, --color-surface-elevated
 - Spacing: --space-internal-8, --space-internal-12, --space-internal-16
 - Radii: --radius-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [LocationCard](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2250) (node 1441:2250)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

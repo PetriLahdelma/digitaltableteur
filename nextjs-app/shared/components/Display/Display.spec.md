@@ -17,6 +17,6 @@ Provide a marketing-scale heading distinct from `Title`. Used for landing-page h
 ## Design notes
 - Colors: --color-text
 - Typography: --font-display, --font-size-display, --font-weight-bold, --line-height-tight
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [Display](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2253) (node 1441:2253)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

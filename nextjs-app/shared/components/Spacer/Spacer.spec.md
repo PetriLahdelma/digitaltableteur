@@ -16,6 +16,6 @@ Provide a named gap element so reviewers reading JSX see 'a 16-pixel spacer' ins
 
 ## Design notes
 - Spacing: --space-layout-4, --space-layout-8, --space-layout-12, --space-layout-16, --space-layout-24, --space-layout-32
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [Spacer](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2382) (node 1445:2382)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.

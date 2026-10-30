@@ -19,6 +19,6 @@ Single primitive for site-level navigation links. Owns active-route detection so
 ## Design notes
 - Colors: --color-text, --color-link, --color-link-hover
 - Typography: --font-size-md
-- Figma: TODO — to be linked during the alpha → beta promotion.
+- Figma: [NavLink](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=516-3146) (node 516:3146)
 - Catalog status: **alpha**, scaffolded as part of the Bucket-1
   catalog-gap migration on 2026-05-26.
