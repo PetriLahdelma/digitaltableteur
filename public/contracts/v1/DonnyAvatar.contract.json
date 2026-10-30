@@ -187,39 +187,45 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:40.057Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:52.569Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:59.021Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.232Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:16.672Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.137Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:43.763Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:52.876Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:10:01.783Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.479Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:19.241Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.405Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-extended-states.dark.json",
@@ -259,21 +265,24 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:44.042Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:53.218Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:10:02.023Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.716Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:19.490Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.673Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-interactive.dark.json",
@@ -415,51 +424,59 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:40.057Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:52.569Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:10.954Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:12.518Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:59.021Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.232Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:16.672Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.137Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:43.763Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:52.876Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:15.027Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:12.970Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:10:01.783Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.479Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:19.241Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.405Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-extended-states.dark.json",
@@ -511,27 +528,31 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:44.042Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:53.218Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:15.391Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:13.400Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:10:02.023Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:04.716Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:19.490Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:24.673Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-interactive.dark.json",
@@ -633,15 +654,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-default.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:10.954Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:12.518Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-example.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:15.027Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:12.970Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-extended-states.forced-colors.json",
@@ -657,9 +680,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-forced-colors.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:15.391Z",
-            "passed": true
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:13.400Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/DonnyAvatar/__a11y-evidence__/site-donnyavatar-interactive.forced-colors.json",

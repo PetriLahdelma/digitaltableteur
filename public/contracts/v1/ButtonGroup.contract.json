@@ -38,39 +38,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:56.586Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.027Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:28.860Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.749Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:38.710Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:57.055Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.565Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:29.601Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.216Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:39.279Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:56.832Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.299Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:29.230Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.985Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:39.004Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -86,79 +113,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:56.586Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.027Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:27.806Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:35.715Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:28.860Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.749Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:38.710Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:57.055Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.565Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:28.364Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:36.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:29.601Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.216Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:39.279Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:57.099Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.610Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:28.406Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:36.862Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:29.642Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:28.242Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:39.304Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:56.832Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:48.299Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:28.060Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:36.361Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:47:29.230Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:27.985Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:49:39.004Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -170,24 +233,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:27.806Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:35.715Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:28.364Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:36.798Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ButtonGroup/__a11y-evidence__/actions-buttongroup-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:28.060Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:07:36.361Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

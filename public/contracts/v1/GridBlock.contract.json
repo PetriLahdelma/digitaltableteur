@@ -88,59 +88,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.078Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:01.995Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.152Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.204Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.194Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.676Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.590Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.809Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.786Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.746Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.959Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.894Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:58.104Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:31.057Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.018Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.382Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.291Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.479Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.499Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.454Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -156,87 +184,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.078Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:01.995Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:43.802Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.077Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.152Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.204Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.194Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.676Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.590Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.283Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.677Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.809Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.786Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.746Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.959Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.894Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.530Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.943Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:58.104Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:31.057Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.018Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.dark.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:00:33.382Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:24:02.291Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.042Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.392Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:57.479Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.light.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T18:51:30.499Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.454Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -248,31 +304,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-default.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:43.802Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.077Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-example.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.283Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.677Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-forced-colors.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.530Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.943Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/GridBlock/__a11y-evidence__/patterns-gridblock-playground.forced-colors.json",
-            "sourceCommit": "8214ca92f84539e42368b4d1655b15b1f06ae5e7",
-            "capturedAt": "2026-09-29T19:07:44.042Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:20.392Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

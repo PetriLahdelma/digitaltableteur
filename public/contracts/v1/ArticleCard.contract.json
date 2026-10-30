@@ -44,83 +44,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.410Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:39.761Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.225Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:25.927Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:02.911Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.955Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.242Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.794Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.759Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.381Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.563Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:05.208Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.470Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:33.001Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:25.056Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.614Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.853Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.682Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.001Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.597Z",
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.490Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.144Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.272Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -136,83 +140,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.410Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:39.761Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.083Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.225Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:25.927Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:02.911Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.955Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.242Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.794Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.648Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.759Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.381Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.563Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:05.208Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.470Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:33.001Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.933Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:25.056Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.614Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.853Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.dark.json",
-            "sourceCommit": "fc933022457710c6074d97db5a7182a727bd8b8f",
-            "capturedAt": "2026-09-01T10:15:04.682Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:22:40.001Z",
             "passed": true,
-            "runner": "local-farm-parity"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.597Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.370Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:24.490Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:33:26.144Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:03.272Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -224,31 +260,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-default.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.357Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.083Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.794Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.648Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:33.001Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.933Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ArticleCard/__a11y-evidence__/site-articlecard-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:32.597Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:18.370Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           }
         ]
       },

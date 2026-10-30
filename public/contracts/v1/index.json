@@ -50,6 +50,7 @@
     "EmptyState.contract.json",
     "EnhancedProjectCard.contract.json",
     "ExpandableSection.contract.json",
+    "FieldShell.contract.json",
     "FileUpload.contract.json",
     "FilterChip.contract.json",
     "FlexBox.contract.json",

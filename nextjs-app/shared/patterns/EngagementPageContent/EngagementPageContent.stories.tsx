@@ -5,7 +5,7 @@ import contract from "./EngagementPageContent.contract.json";
 const meta = {
   title: "Patterns/EngagementPageContent",
   component: EngagementPageContent,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,

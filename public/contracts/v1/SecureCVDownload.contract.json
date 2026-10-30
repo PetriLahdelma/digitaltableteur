@@ -43,60 +43,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.740Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:58.233Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:29.119Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.423Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.386Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.955Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:58.569Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:29.373Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.666Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.698Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.463Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:57.919Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
-            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:28.839Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.135Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.069Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -112,60 +118,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.740Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:58.233Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:58.422Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:29.119Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.423Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.386Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.955Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:58.569Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:59.361Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:29.373Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.666Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.698Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.dark.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:37:28.463Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:57.919Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:57.387Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:28.839Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.light.json",
-            "sourceCommit": "0ae9abc1c55bf958657c6259eb9a97cec07592c9",
-            "capturedAt": "2026-09-10T06:26:46.135Z",
-            "passed": true
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:27.069Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -177,24 +210,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-example.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.252Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:58.422Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-forced-colors.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:22.475Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:59.361Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SecureCVDownload/__a11y-evidence__/site-securecvdownload-playground.forced-colors.json",
-            "sourceCommit": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-            "capturedAt": "2026-07-26T13:45:21.968Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:05:57.387Z",
             "passed": true,
-            "runner": "backfill"
+            "runner": "local-recapture"
           }
         ]
       },

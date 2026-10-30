@@ -77,17 +77,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.278Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:03.781Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:00.463Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.365Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:02.865Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.dark.json",
@@ -105,31 +112,45 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.788Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.528Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:01.091Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.879Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.482Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:43.826Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.913Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:01.382Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:37.958Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.804Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.dark.json",
@@ -161,17 +182,24 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.531Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.157Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:00.784Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.625Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.177Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -187,24 +215,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.278Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:03.781Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.196Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:48.936Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:00.463Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.365Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:02.865Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.dark.json",
@@ -229,45 +264,59 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.788Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.528Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.675Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.512Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:01.091Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.879Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.482Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:43.826Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.913Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:49.653Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.780Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:01.382Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:37.958Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.804Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.dark.json",
@@ -313,24 +362,31 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.dark.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:42.531Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:04.157Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.440Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.222Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:15:00.784Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.light.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:36.625Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:03.177Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -342,10 +398,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-default.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.196Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:48.936Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-disabled-node.forced-colors.json",
@@ -356,17 +412,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-example.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.675Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.512Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-forced-colors.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:49.653Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.780Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-keyboard-interaction.forced-colors.json",
@@ -384,10 +440,10 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TreeView/__a11y-evidence__/navigation-treeview-playground.forced-colors.json",
-            "sourceCommit": "b454078d59a2ce7928c45dbb79e82f840172579f",
-            "capturedAt": "2026-10-15T18:19:48.440Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:49.222Z",
             "passed": true,
-            "runner": "local-2026-10-15p"
+            "runner": "local-recapture"
           }
         ]
       },

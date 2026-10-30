@@ -5,7 +5,7 @@ import contract from "./ProcurementFaq.contract.json";
 const meta = {
   title: "Patterns/ProcurementFaq",
   component: ProcurementFaq,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,

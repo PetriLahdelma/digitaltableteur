@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T19:37:21.810Z",
+  "generatedAt": "2026-10-30T19:46:13.350Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
-      "beta": 50,
+      "beta": 52,
       "stable": 108,
       "deprecated": 3,
-      "alpha": 32
+      "alpha": 30
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.9,
@@ -107,10 +107,10 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 50,
+        "beta": 52,
         "stable": 108,
         "deprecated": 3,
-        "alpha": 32
+        "alpha": 30
       },
       "dsharp": {
         "beta": 110,
@@ -81524,16 +81524,18 @@
         "schemaVersion": 2,
         "tier": "pattern",
         "group": "marketing",
-        "status": "alpha",
+        "status": "beta",
         "radixPrimitive": null,
         "variants": {},
         "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
-          "Default"
+          "Default",
+          "Example",
+          "ForcedColors"
         ],
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "name": "EngagementPageContent",
         "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2070-770",
@@ -81549,7 +81551,7 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "forcedColorsVerified": false,
+          "forcedColorsVerified": true,
           "reviewedNote": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. Known gap shared with the DS Accordion: FAQ triggers are not wrapped in heading elements."
         },
         "tokens": {
@@ -81696,7 +81698,9 @@
         ],
         "compositionRules": [],
         "canonicalExamples": [
-          "Default"
+          "Default",
+          "Example",
+          "ForcedColors"
         ],
         "replacementFor": [],
         "forbiddenUse": [
@@ -81790,7 +81794,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.1.1",
@@ -87743,16 +87748,18 @@
         "schemaVersion": 2,
         "tier": "pattern",
         "group": "content",
-        "status": "alpha",
+        "status": "beta",
         "radixPrimitive": null,
         "variants": {},
         "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
-          "Default"
+          "Default",
+          "Example",
+          "ForcedColors"
         ],
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "name": "ProcurementFaq",
         "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1910-223",
@@ -87767,7 +87774,7 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "forcedColorsVerified": false,
+          "forcedColorsVerified": true,
           "reviewedNote": "2026-10-30: reviewed live in Storybook (Default). The section is labelled by its h2; 14 Accordion triggers expose aria-expanded and aria-controls, each panel is a labelled region, collapsed panels are hidden; Tab reaches each trigger in order with a visible 2px inset focus ring; Enter and Space toggle; one item opens at a time; motion respects prefers-reduced-motion; the Reliable Partner link is named by its image alt and the AI policy link by its text. Known gap shared with the DS Accordion: triggers are not wrapped in heading elements, so FAQ questions are not in the heading outline."
         },
         "tokens": {
@@ -87884,7 +87891,9 @@
         ],
         "compositionRules": [],
         "canonicalExamples": [
-          "Default"
+          "Default",
+          "Example",
+          "ForcedColors"
         ],
         "replacementFor": [],
         "forbiddenUse": [
@@ -87956,7 +87965,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual",
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci",
             "wcag": [
               {
                 "sc": "2.1.1",

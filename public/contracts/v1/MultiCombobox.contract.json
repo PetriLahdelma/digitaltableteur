@@ -49,6 +49,21 @@
       "optional": true,
       "description": "Error message; renders above the helper line and sets aria-invalid"
     },
+    "status": {
+      "type": "FieldStatus",
+      "optional": true,
+      "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+    },
+    "statusMessage": {
+      "type": "string",
+      "optional": true,
+      "description": "Message under the field for `status`, above the helper line"
+    },
+    "actions": {
+      "type": "FieldAction[]",
+      "optional": true,
+      "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+    },
     "required": {
       "type": "boolean",
       "optional": true,
@@ -78,87 +93,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.232Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.053Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:26.219Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.148Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:40.327Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.746Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.835Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.634Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:27.059Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.704Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:41.047Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.322Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:50.193Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.964Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:27.667Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:11.041Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:41.586Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.673Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.535Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.324Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:26.607Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.418Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:40.700Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.038Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -174,143 +189,143 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.232Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.053Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.515Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:55.613Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:26.219Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.148Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:40.327Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:52.746Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.835Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.634Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.048Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:56.207Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:27.059Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.704Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:41.047Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.322Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-forced-colors.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:50.237Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.995Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-forced-colors.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.417Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:56.598Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:27.708Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:11.074Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-forced-colors.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:41.655Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.706Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:50.193Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.964Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.382Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:56.537Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:27.667Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:11.041Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:41.586Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.673Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:49.535Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:01.324Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.780Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:55.900Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:26.607Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:16:10.418Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:40.700Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:19:53.038Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -322,31 +337,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-default.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.515Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:55.613Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-example.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.048Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:56.207Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-keyboard-multi-select.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:59.382Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:56.537Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/MultiCombobox/__a11y-evidence__/forms-multicombobox-playground.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:58.780Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:28:55.900Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

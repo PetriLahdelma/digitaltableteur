@@ -22495,7 +22495,7 @@
       "name": "EngagementPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
       "dense": "Engagement offer page from data/engagements and engagementPages locale copy: hero, fit, scope, steps, deliverables, price, proof, FAQs, booking",
       "keywords": [
@@ -24094,7 +24094,7 @@
       "name": "ProcurementFaq",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Visible answers for procurement, legal and finance teams: contracting party, supplier verification, invoicing, agreements, ownership, languages, location, accessibility law and AI use.",
       "dense": "Visible procurement FAQ (9 locale items, Accordion divided); its English items feed the FAQPage data of the pages that render it",
       "keywords": [

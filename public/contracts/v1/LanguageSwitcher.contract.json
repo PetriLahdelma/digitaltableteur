@@ -105,45 +105,45 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.325Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:28.819Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:34.628Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:16.920Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.477Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:07.788Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.769Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.341Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:35.053Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.443Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.915Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.357Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-fan-open.dark.json",
@@ -168,45 +168,45 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:45.175Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.818Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:35.480Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.892Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:40.320Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.828Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.545Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.081Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:34.840Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.174Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.700Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.053Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -278,59 +278,59 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.325Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:28.819Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.011Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.059Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:34.628Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:16.920Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.477Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:07.788Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.769Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.341Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.410Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.710Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:35.053Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.443Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.915Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.357Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-fan-open.dark.json",
@@ -362,87 +362,87 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-forced-colors.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:45.195Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.848Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-forced-colors.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.846Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:27.262Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:35.500Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.914Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-forced-colors.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:40.340Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.857Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:45.175Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.818Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.824Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:27.221Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:35.480Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.892Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:40.320Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.828Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.dark.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:44.545Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:29.081Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.213Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.395Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:34.840Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:17.174Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.light.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:39.700Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:51:08.053Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -468,17 +468,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-default.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.011Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.059Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-example.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.410Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.710Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-fan-open.forced-colors.json",
@@ -489,17 +489,17 @@
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-keyboard-toggle.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.824Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:27.221Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/LanguageSwitcher/__a11y-evidence__/navigation-languageswitcher-playground.forced-colors.json",
-            "sourceCommit": "9b9d9c071e680b0471c1a0060dde3efbd1e7bd27",
-            "capturedAt": "2026-10-15T14:27:49.213Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:26.395Z",
             "passed": true,
-            "runner": "local-2026-10-15b"
+            "runner": "local-recapture"
           }
         ]
       },

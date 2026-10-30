@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "EngagementPageContent",
-  "status": "alpha",
+  "status": "beta",
   "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
   "props": {
     "engagementId": {
@@ -33,26 +33,201 @@
       {
         "id": "axe-no-violations",
         "statement": "Required stories produce no axe violations at the configured severity.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "2.5.8"
         ],
-        "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:08.543Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:50.979Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:59.655Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:09.041Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:51.495Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:00.203Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:09.520Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:51.986Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:00.714Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "accessibility-tree",
         "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-        "verification": "unverified",
+        "verification": "automated",
         "wcag": [
           "1.3.1",
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:08.543Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:16.503Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:50.979Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:59.655Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:09.041Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:16.891Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:51.495Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:00.203Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:09.520Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:17.269Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:51.986Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:00.714Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "forced-colors-real-browser",
         "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-        "verification": "unverified"
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-default.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:16.503Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-example.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:16.891Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/EngagementPageContent/__a11y-evidence__/patterns-engagementpagecontent-forced-colors.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:17.269Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
       },
       {
         "id": "keyboard-contract",
@@ -62,7 +237,7 @@
           "2.1.1",
           "2.1.2"
         ],
-        "note": "Marked reviewed, but no review date was recorded."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "aria-requirements",
@@ -71,13 +246,14 @@
         "wcag": [
           "4.1.2"
         ],
-        "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
-        "verification": "unverified",
-        "note": "Marked reviewed, but no review date was recorded."
+        "verification": "manual",
+        "note": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. Known gap shared with the DS Accordion: FAQ triggers are not wrapped in heading elements.",
+        "reviewedAt": "2026-10-30"
       }
     ]
   },

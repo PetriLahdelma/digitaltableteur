@@ -29,59 +29,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:28.652Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.076Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:42.797Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.272Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:39.543Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:29.175Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.708Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.404Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.790Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:40.115Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:29.417Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.994Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.703Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:24.022Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:40.414Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:28.923Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.403Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.112Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.531Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:39.833Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -97,87 +125,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:28.652Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.076Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:33.851Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.244Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:42.797Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.272Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:39.543Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:29.175Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.708Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.307Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.889Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.404Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.790Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:40.115Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:29.417Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.994Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.565Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:01.204Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.703Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:24.022Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:40.414Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:28.923Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:54:37.403Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.068Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.570Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:43.112Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:23.531Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:39.833Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -189,31 +245,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-default.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:33.851Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.244Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-example.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.307Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.889Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-forced-colors.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.565Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:01.204Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/NewsBulletin/__a11y-evidence__/patterns-newsbulletin-playground.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:25:34.068Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:03:00.570Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },

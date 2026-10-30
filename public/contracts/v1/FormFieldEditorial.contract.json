@@ -50,6 +50,21 @@
       "type": "string",
       "optional": true,
       "description": "Supporting text under the field, linked with aria-describedby. Text and textarea fields only; use it to say why a read-only value is fixed."
+    },
+    "status": {
+      "type": "FieldStatus",
+      "optional": true,
+      "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+    },
+    "statusMessage": {
+      "type": "string",
+      "optional": true,
+      "description": "Message under the field for `status`, above the helper line"
+    },
+    "actions": {
+      "type": "FieldAction[]",
+      "optional": true,
+      "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
     }
   },
   "accessibility": {
@@ -65,108 +80,108 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.302Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:31.375Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:51.788Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:02.788Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:56.998Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.119Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.762Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.084Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.252Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.283Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.523Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.732Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.981Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.414Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.466Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.519Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.740Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:28.052Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.539Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:31.743Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.036Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.043Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.300Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.414Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:03.200Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.732Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.694Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.766Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.976Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:28.378Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -182,143 +197,143 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.302Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:31.375Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.240Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:25.660Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:51.788Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:02.788Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:56.998Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.119Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.762Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.084Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.678Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.188Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.252Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.283Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.523Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.732Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.981Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.414Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.892Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.435Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.466Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.519Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.740Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:28.052Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:02.539Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:31.743Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.468Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:25.932Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.036Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.043Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.300Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:27.414Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.dark.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:03.200Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:23:32.732Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:08.103Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.717Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:52.694Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:03.766Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.light.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T09:59:57.976Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:28.378Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -330,38 +345,38 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-default.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.240Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:25.660Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-example.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.678Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.188Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-forced-colors.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.892Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.435Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-playground.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:07.468Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:25.932Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FormFieldEditorial/__a11y-evidence__/site-formfieldeditorial-read-only.forced-colors.json",
-            "sourceCommit": "bc0a504a009232b19dd267115ec2c7931b2f8102",
-            "capturedAt": "2026-10-16T10:00:08.103Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:27:26.717Z",
             "passed": true,
-            "runner": "local-2026-10-16g"
+            "runner": "local-recapture"
           }
         ]
       },

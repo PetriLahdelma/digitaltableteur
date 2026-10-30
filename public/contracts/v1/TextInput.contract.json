@@ -65,6 +65,21 @@
       "optional": true,
       "description": "Validation error message; renders above the helper line and sets aria-invalid"
     },
+    "status": {
+      "type": "FieldStatus",
+      "optional": true,
+      "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+    },
+    "statusMessage": {
+      "type": "string",
+      "optional": true,
+      "description": "Message under the field for `status`, above the helper line"
+    },
+    "actions": {
+      "type": "FieldAction[]",
+      "optional": true,
+      "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+    },
     "helperText": {
       "type": "string",
       "optional": true,
@@ -127,17 +142,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.658Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:34.959Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:48:20.314Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.103Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:52.594Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -153,87 +175,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.658Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:34.959Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:11:01.782Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:08.429Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:48:20.314Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.103Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:52.594Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.734Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.035Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:11:01.872Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:08.503Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:48:20.399Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-example.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.170Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:52.655Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.760Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.061Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:11:01.900Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:08.533Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:48:20.434Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-forced-colors.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.209Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:52.680Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.dark.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:52.687Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.010Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:11:01.838Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:08.464Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:48:20.350Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-playground.light.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:10:44.134Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:52.621Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -245,10 +295,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextInput/__a11y-evidence__/forms-textinput-clearable.forced-colors.json",
-            "sourceCommit": "574da8a311255bd9ec6bb5446a098b457dd7b207",
-            "capturedAt": "2026-10-27T18:11:01.782Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:08.429Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

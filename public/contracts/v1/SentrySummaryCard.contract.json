@@ -23,59 +23,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.032Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:14.716Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.059Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:54.624Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:04.875Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.465Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:15.267Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.586Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:55.054Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.424Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.686Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:15.570Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.834Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:55.267Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.691Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.250Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:14.980Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.323Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:54.837Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.149Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -91,87 +119,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.032Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:14.716Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.118Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:48.749Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.059Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:54.624Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:04.875Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.465Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:15.267Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.515Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.280Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.586Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:55.054Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.424Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.686Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:15.570Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.720Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.535Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.834Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:55.267Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.691Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.dark.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:01.250Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:14.980Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.312Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.002Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:46.323Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.light.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:23:54.837Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:05.149Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -183,31 +239,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-default.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.118Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:48.749Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-example.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.515Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.280Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-forced-colors.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.720Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.535Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/SentrySummaryCard/__a11y-evidence__/site-sentrysummarycard-playground.forced-colors.json",
-            "sourceCommit": "9ad5bb4d661142266b90970ffda3a3cd1064c7d3",
-            "capturedAt": "2026-10-15T19:24:07.312Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:49.002Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },

@@ -1,0 +1,358 @@
+{
+  "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
+  "specVersion": "1.0",
+  "name": "FieldShell",
+  "status": "beta",
+  "description": "The frame every text and choice field is built on: a label row with icon actions at its end, the control, then a status message and a helper line.",
+  "props": {
+    "controlId": {
+      "type": "string",
+      "optional": false,
+      "description": "id of the control inside; the label, status and helper ids derive from it."
+    },
+    "label": {
+      "type": "string",
+      "optional": false,
+      "description": "Visible field label."
+    },
+    "children": {
+      "type": "React.ReactNode",
+      "optional": false,
+      "description": "The control: an input, textarea, select or composite control."
+    },
+    "status": {
+      "type": "union",
+      "values": [
+        "success",
+        "warning",
+        "error"
+      ],
+      "optional": true,
+      "description": "Semantic state; pairs with `statusMessage`."
+    },
+    "statusMessage": {
+      "type": "string",
+      "optional": true,
+      "description": "Message under the control, styled and announced for `status`."
+    },
+    "helperText": {
+      "type": "string",
+      "optional": true,
+      "description": "Supporting copy under the control, after the status message."
+    },
+    "actions": {
+      "type": "FieldAction[]",
+      "optional": true,
+      "description": "Icon buttons at the end of the label row, level with the label."
+    },
+    "required": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Shows the required marker on the label."
+    },
+    "disabled": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Dims the label and disables every action."
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "optional": true,
+      "description": "Visually hides the label; it stays the control's accessible name."
+    },
+    "className": {
+      "type": "string",
+      "optional": true,
+      "description": "Merged onto the field wrapper."
+    }
+  },
+  "accessibility": {
+    "criteria": [
+      {
+        "id": "axe-no-violations",
+        "statement": "Required stories produce no axe violations at the configured severity.",
+        "verification": "automated",
+        "wcag": [
+          "2.5.8"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:05.393Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:47.791Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:56.628Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:06.060Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.534Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:57.303Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:06.361Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.787Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:57.547Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:05.666Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.076Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:56.905Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
+      },
+      {
+        "id": "accessibility-tree",
+        "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+        "verification": "automated",
+        "wcag": [
+          "1.3.1",
+          "4.1.2"
+        ],
+        "check": "npm run test:stories:matrix:ci",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:05.393Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:13.909Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:47.791Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:56.628Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:06.060Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.515Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.534Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:57.303Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:06.361Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.769Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.787Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:57.547Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.dark.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:05.666Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.170Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:48.076Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.light.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:40:56.905Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
+      },
+      {
+        "id": "forced-colors-real-browser",
+        "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+        "verification": "automated",
+        "check": "npm run test:stories:hc",
+        "evidence": [
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-default.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:13.909Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-example.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.515Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-forced-colors.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.769Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FieldShell/__a11y-evidence__/forms-fieldshell-playground.forced-colors.json",
+            "sourceCommit": "2b311e4d58d58194da7f293e610c5228396de68d",
+            "capturedAt": "2026-10-30T19:41:14.170Z",
+            "passed": true,
+            "runner": "local-recapture"
+          }
+        ]
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "aria-requirements",
+        "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+        "verification": "unverified",
+        "wcag": [
+          "4.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-10-30 (Claude, Storybook 6010, Chromium; real key presses): label is a <label for> the control and carries ${id}-label for aria-labelledby controls (Combobox, MultiCombobox); fieldDescribedBy lists the status message then the helper (verified on Company size: named by its label, described by 'Choose a company size', aria-invalid only for error). Actions: native buttons named by aria-label; DS Tooltip opens on keyboard focus (Shift+Tab onto Paste shows 'Paste'), not pointer-only. Menu action: Enter opens, ArrowDown moves Use-the-size-from-last-time -> Reset, Escape closes and returns focus to the trigger; aria-haspopup=menu, aria-expanded tracks state. Focus ring sits inside the 32px box, 4px clear of the control (measured). Hit area 44px on coarse pointers. No motion of its own; Menu and Tooltip carry the DS reduced-motion handling. Forced colors: icon ButtonText, ring Highlight 3px inset. The label is always required; hideLabel hides it visually and keeps it as the accessible name.",
+        "reviewedAt": "2026-10-30"
+      }
+    ]
+  },
+  "source": [
+    "../../../nextjs-app/shared/components/FieldShell/FieldShell.module.css",
+    "../../../nextjs-app/shared/components/FieldShell/FieldShell.tsx"
+  ]
+}

@@ -49,87 +49,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:35.398Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:52.812Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:24.788Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:32.602Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:29.961Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.049Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:36.039Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.495Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.344Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:33.264Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.531Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.733Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:36.334Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.883Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.620Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:33.581Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.789Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:50.065Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:35.718Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.128Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.070Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:32.925Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.236Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.380Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -145,115 +145,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:35.398Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:52.812Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:40.534Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:38.510Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:24.788Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:32.602Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:29.961Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.049Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:36.039Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.495Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:41.007Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:39.173Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.344Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:33.264Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.531Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.733Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:36.334Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.883Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:41.251Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:39.630Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.620Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:33.581Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.789Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:50.065Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.dark.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:35.718Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:53:53.128Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:40.769Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:38.839Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:25.070Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:45:32.925Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.light.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:30.236Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:50:49.380Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -265,31 +265,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-default.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:40.534Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:38.510Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-example.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:41.007Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:39.173Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-forced-colors.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:41.251Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:39.630Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/WorkMagneticField/__a11y-evidence__/patterns-workmagneticfield-playground.forced-colors.json",
-            "sourceCommit": "c4fc52e555934539e4641eac129a893062a03c72",
-            "capturedAt": "2026-10-17T07:32:40.769Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T19:02:38.839Z",
             "passed": true,
-            "runner": "local-2026-10-17"
+            "runner": "local-recapture"
           }
         ]
       },

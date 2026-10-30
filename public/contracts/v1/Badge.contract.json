@@ -93,15 +93,22 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.dark.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:03.417Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:10.581Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:33.816Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.light.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:22:58.093Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:47.870Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -119,85 +126,113 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.dark.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:03.417Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:10.581Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.forced-colors.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:08.561Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:17.199Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:33.816Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.light.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:22:58.093Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:47.870Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.dark.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:03.450Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:10.625Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.forced-colors.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:08.607Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:17.271Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:33.872Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-example.light.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:22:58.125Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:47.911Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.dark.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:03.492Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:10.675Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.forced-colors.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:08.638Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:17.310Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:33.913Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-forced-colors.light.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:22:58.162Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:47.963Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.dark.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:02.913Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:10.029Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.forced-colors.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:08.242Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:16.809Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:33.149Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-playground.light.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:22:57.627Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:47.282Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -211,8 +246,8 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Badge/__a11y-evidence__/content-badge-default.forced-colors.json",
-            "sourceCommit": "f88f4c8b00065eb8ed07cf7be11b62b809cf234b",
-            "capturedAt": "2026-10-30T16:23:08.561Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:30:17.199Z",
             "passed": true,
             "runner": "local-recapture"
           }

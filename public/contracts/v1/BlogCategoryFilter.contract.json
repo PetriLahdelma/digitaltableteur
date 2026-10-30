@@ -74,66 +74,66 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:38.264Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:31.745Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:02.514Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.091Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:20.058Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.253Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:38.759Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:32.066Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:03.104Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.370Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:20.924Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.562Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:39.297Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:32.352Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:03.938Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.637Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:21.565Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.862Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -149,87 +149,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:38.264Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:31.745Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:49.963Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.258Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:02.514Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.091Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:20.058Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.253Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:38.759Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:32.066Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:50.898Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.567Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:03.104Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.370Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:20.924Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.562Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.dark.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:39.297Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:55:32.352Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:51.420Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.881Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:03.938Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:42.637Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.light.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:21.565Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:31.862Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -241,24 +241,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-default.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:49.963Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.258Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-example.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:50.898Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.567Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/BlogCategoryFilter/__a11y-evidence__/site-blogcategoryfilter-forced-colors.forced-colors.json",
-            "sourceCommit": "b28c9495432e58f36639236470d1e869496d107b",
-            "capturedAt": "2026-10-19T22:09:51.420Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:04:06.881Z",
             "passed": true,
-            "runner": "local-2026-10-20"
+            "runner": "local-recapture"
           }
         ]
       },

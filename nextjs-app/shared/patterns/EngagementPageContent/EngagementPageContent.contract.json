@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "tier": "pattern",
     "group": "marketing",
-    "status": "alpha",
+    "status": "beta",
     "radixPrimitive": null,
     "variants": {},
     "slots": [],
@@ -14,7 +14,7 @@
         "Example",
         "ForcedColors"
     ],
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "name": "EngagementPageContent",
     "description": "One engagement offer page: a breadcrumb back to Pricing, problem, fit signals, scope and limits, steps, deliverables, investment, published proof, an offer FAQ, the procurement FAQ, the other engagements and a booking call to action.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2070-770",
@@ -30,7 +30,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": false,
+        "forcedColorsVerified": true,
         "reviewedNote": "2026-10-30: reviewed live in Storybook (Default, Audit). One h1 labels the article; every section is labelled by its h2; the breadcrumb is a labelled nav with an ordered list; steps are an ordered list; decorative icons and step numbers are aria-hidden (no unhidden SVG); proof links read 'Read the case study: <title>'; the badge link is named by its image alt; Tab order follows reading order through breadcrumb, hero calls to action, proof links, FAQ triggers, other engagements and booking. Known gap shared with the DS Accordion: FAQ triggers are not wrapped in heading elements."
     },
     "tokens": {

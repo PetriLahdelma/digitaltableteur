@@ -79,75 +79,87 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:02.390Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.236Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.274Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:58.399Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.283Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:54.646Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:03.029Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.820Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.892Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:59.006Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.784Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:55.172Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:03.338Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:05.126Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:39.229Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:59.297Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:11.011Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:55.422Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:02.696Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.531Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.569Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:58.717Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.548Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:54.905Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -163,99 +175,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:02.390Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.236Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:35.338Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:07.898Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.274Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:58.399Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.283Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:54.646Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:03.029Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.820Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:36.008Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.610Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.892Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:59.006Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.784Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:55.172Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:03.338Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:05.126Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:36.345Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.945Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:39.229Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:59.297Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:11.011Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:55.422Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.dark.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:02.696Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:25:04.531Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:35.638Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.265Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:09:38.569Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:14:58.717Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.light.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:11:10.548Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:20:54.905Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },
@@ -267,27 +295,31 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-default.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:35.338Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:07.898Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-example.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:36.008Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.610Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-forced-colors.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:36.345Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.945Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ScrollIndicator/__a11y-evidence__/navigation-scrollindicator-playground.forced-colors.json",
-            "sourceCommit": "a20eb6ef4b8c66d92b4fe624cf58996858142557",
-            "capturedAt": "2026-09-30T06:12:35.638Z",
-            "passed": true
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:08.265Z",
+            "passed": true,
+            "runner": "local-recapture"
           }
         ]
       },

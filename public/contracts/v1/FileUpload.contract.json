@@ -101,17 +101,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.dark.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:55.307Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.091Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:21.703Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.light.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:50.057Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:35.806Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -127,87 +134,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.dark.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:55.307Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.091Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.forced-colors.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:32:00.346Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:22.436Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:21.703Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.light.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:50.057Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:35.806Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-example.dark.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:56.264Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.146Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-example.forced-colors.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:32:01.292Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:22.528Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-example.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:21.755Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-example.light.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:51.037Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:35.879Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-forced-colors.dark.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:56.287Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.170Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-forced-colors.forced-colors.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:32:01.316Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:22.563Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-forced-colors.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:21.783Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-forced-colors.light.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:51.064Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:35.908Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-playground.dark.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:56.235Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:56:35.120Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-playground.forced-colors.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:32:01.262Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:22.484Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-playground.json",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:44:21.729Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-playground.light.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:31:51.011Z",
+            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
+            "capturedAt": "2026-10-30T18:52:35.835Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -219,10 +254,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/FileUpload/__a11y-evidence__/forms-fileupload-default.forced-colors.json",
-            "sourceCommit": "473f5c045cc3a6dc76a3f21c1147eae5692704fa",
-            "capturedAt": "2026-10-15T19:32:00.346Z",
+            "sourceCommit": "a23dc6e3be870b22b538c55193366bf4e13e74b5",
+            "capturedAt": "2026-10-30T19:08:22.436Z",
             "passed": true,
-            "runner": "local-2026-10-15t"
+            "runner": "local-recapture"
           }
         ]
       },

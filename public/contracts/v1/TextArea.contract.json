@@ -24,6 +24,21 @@
       "optional": true,
       "description": "Validation error message; renders above the helper line"
     },
+    "status": {
+      "type": "FieldStatus",
+      "optional": true,
+      "description": "Semantic state: colours the border and styles statusMessage. `error` overrides it."
+    },
+    "statusMessage": {
+      "type": "string",
+      "optional": true,
+      "description": "Message under the field for `status`, above the helper line"
+    },
+    "actions": {
+      "type": "FieldAction[]",
+      "optional": true,
+      "description": "Icon buttons at the end of the label row: each runs an operation or opens a menu"
+    },
     "helperText": {
       "type": "string",
       "optional": true,
@@ -63,17 +78,24 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.dark.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:35.042Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:28.116Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:28.595Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.light.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:28.070Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:42.352Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -89,87 +111,115 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.dark.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:35.042Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:28.116Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.forced-colors.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:41.541Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:33.356Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:28.595Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.light.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:28.070Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:42.352Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.dark.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:35.092Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:28.198Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.forced-colors.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:41.601Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:33.485Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:28.661Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-example.light.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:28.120Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:42.407Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.dark.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:35.112Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:28.222Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.forced-colors.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:41.624Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:33.524Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:28.685Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-forced-colors.light.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:28.140Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:42.433Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.dark.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:35.068Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:26:28.158Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.forced-colors.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:41.571Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:33.430Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.json",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:17:28.624Z",
+            "passed": true,
+            "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-playground.light.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:28.093Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:21:42.379Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },
@@ -181,10 +231,10 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/TextArea/__a11y-evidence__/forms-textarea-default.forced-colors.json",
-            "sourceCommit": "2c48cea270b6928021edfbad01d5c35e18cd526f",
-            "capturedAt": "2026-09-29T20:12:41.541Z",
+            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
+            "capturedAt": "2026-10-30T19:29:33.356Z",
             "passed": true,
-            "runner": "local"
+            "runner": "local-recapture"
           }
         ]
       },

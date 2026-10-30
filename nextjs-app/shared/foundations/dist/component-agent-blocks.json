@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T19:37:21.284Z",
+  "generatedAt": "2026-10-30T19:46:12.942Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -48910,7 +48910,9 @@
       ],
       "compositionRules": [],
       "canonicalExamples": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
       ],
       "replacementFor": [],
       "forbiddenUse": [
@@ -49004,7 +49006,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.1.1",
@@ -52644,7 +52647,9 @@
       ],
       "compositionRules": [],
       "canonicalExamples": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
       ],
       "replacementFor": [],
       "forbiddenUse": [
@@ -52716,7 +52721,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.1.1",
