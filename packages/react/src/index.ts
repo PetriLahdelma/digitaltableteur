@@ -155,6 +155,17 @@ export {
 } from "../../../nextjs-app/shared/components/ExpandableSection";
 export { default as FlexBox } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
 export type { FlexBoxProps } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
+export {
+  FieldShell,
+  fieldDescribedBy,
+  fieldIds,
+  resolveFieldStatus,
+  type FieldAction,
+  type FieldActionItem,
+  type FieldShellProps,
+  type FieldSize,
+  type FieldStatus,
+} from "../../../nextjs-app/shared/components/FieldShell";
 export { default as FileUpload } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export type { FileUploadProps } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export { FilterChip } from "../../../nextjs-app/shared/components/FilterChip";

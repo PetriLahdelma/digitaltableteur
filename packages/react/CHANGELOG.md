@@ -1,8 +1,34 @@
 # Changelog
 
-## 0.1.52 - 2026-10-30
+## 0.2.0 - 2026-10-30
 
-- `StatList` (new, alpha): key figures as a description list. Each item pairs
+Minor bump: `Select` is no longer a native `<select>` (see below).
+
+- `FieldShell` (new, beta): the frame every field renders on. A label row
+  with up to two icon actions at its end (each runs an operation or opens a
+  DS menu), the control, then a status message and a helper line. Exported
+  with `fieldIds`, `fieldDescribedBy` and `resolveFieldStatus` for custom
+  fields that should share the same ids and status rules.
+- `TextInput`, `TextArea`, `Select`, `Combobox`, `MultiCombobox`,
+  `PhoneInput`: new `status` (`error` / `warning` / `success`),
+  `statusMessage` and `actions` props. `error` stays as the shorthand.
+- One field size scale: sm 40px with 16px text, md 48px with 18px text, lg
+  56px with 20px text, 16px inset. Fields set no outer margin; the form or
+  stack owns the space between them.
+- `Select` (breaking): opens the DS option list instead of the native popup.
+  The ref is now an `HTMLButtonElement` and the callbacks receive the value
+  string (`onValueChange`; `onChange` is deprecated). `name` submits through
+  a hidden input.
+  Options come from `options` or `<SelectOption>` children; a `""` option
+  is the placeholder.
+- `Combobox`: new `size` and `name` props.
+- Status colours: `--color-success`, `--color-info`, `--color-warning` and
+  `--color-error` are fills, used with `--color-on-status` text. Status
+  text, borders and icons use the new `--color-*-contrast` tones. Badges,
+  toasts, Button tones, Progress and StatusDot follow the split. High
+  contrast themes keep a distinct hue per status.
+
+- `StatList` (new, beta): key figures as a description list. Each item pairs
   a figure with its label, an optional total (`of`, "191 of 208") and a short
   note. `variant` is `rule` (a hairline above each figure) or `card` (surface
   tiles); `size` md or lg; `align` start or center. The label stays first in
