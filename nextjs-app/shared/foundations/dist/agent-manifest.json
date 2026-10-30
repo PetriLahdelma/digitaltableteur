@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-30T23:15:29.414Z",
+  "generatedAt": "2026-10-30T23:34:00.168Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -8443,7 +8443,7 @@
           },
           "rel": {
             "optional": true,
-            "type": "string | undefined"
+            "type": "never"
           },
           "variant": {
             "optional": true,
@@ -62558,7 +62558,7 @@
           },
           "defaultChecked": {
             "optional": true,
-            "type": "boolean | undefined",
+            "type": "boolean",
             "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
           },
           "checked": {
@@ -67177,7 +67177,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode"
           },
           "as": {
             "optional": true,
@@ -70280,7 +70280,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
+            "type": "React.ReactNode",
             "description": "Heading text."
           },
           "as": {
@@ -70298,7 +70298,7 @@
           },
           "className": {
             "optional": true,
-            "type": "string | undefined",
+            "type": "string",
             "description": "Additional CSS class names."
           },
           "unstyled": {

@@ -178,7 +178,12 @@ function extractPropSchemasFromFile(
         );
       }
       const typeNodeInner = (d as { getTypeNode?: () => { getText: () => string } }).getTypeNode?.();
-      if (typeNodeInner) declaredTypeTexts.push(typeNodeInner.getText());
+      // The type as the component declares it: a library's global
+      // augmentation of the same member (react-i18next adds to
+      // HTMLAttributes.children) is not part of this component's API.
+      if (typeNodeInner && d.getSourceFile().getFilePath() === ownPath) {
+        declaredTypeTexts.push(typeNodeInner.getText());
+      }
       const jsDocs =
         (d as {
           getJsDocs?: () => Array<{

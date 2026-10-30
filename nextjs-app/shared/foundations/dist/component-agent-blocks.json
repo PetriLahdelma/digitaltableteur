@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T23:15:28.973Z",
+  "generatedAt": "2026-10-30T23:33:33.288Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4507,7 +4507,7 @@
         },
         "rel": {
           "optional": true,
-          "type": "string | undefined"
+          "type": "never"
         },
         "variant": {
           "optional": true,
@@ -36910,7 +36910,7 @@
         },
         "defaultChecked": {
           "optional": true,
-          "type": "boolean | undefined",
+          "type": "boolean",
           "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
         },
         "checked": {
@@ -39571,7 +39571,7 @@
       "props": {
         "children": {
           "optional": true,
-          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+          "type": "React.ReactNode"
         },
         "as": {
           "optional": true,
@@ -41211,7 +41211,7 @@
       "props": {
         "children": {
           "optional": true,
-          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
+          "type": "React.ReactNode",
           "description": "Heading text."
         },
         "as": {
@@ -41229,7 +41229,7 @@
         },
         "className": {
           "optional": true,
-          "type": "string | undefined",
+          "type": "string",
           "description": "Additional CSS class names."
         },
         "unstyled": {
