@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1 - 2026-10-30
+
+- Fields render the size scale's type (md 18px on a 24px line, sm 16px, lg
+  20px) in apps whose CSS reset sets `font: inherit` on form elements. The
+  type sat in a zero-specificity `:where()` rule that such resets beat, so
+  inputs, textareas and selects fell back to the inherited size.
+
 ## 0.2.0 - 2026-10-30
 
 Minor bump: `Select` is no longer a native `<select>` (see below).

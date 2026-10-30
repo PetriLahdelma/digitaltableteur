@@ -28,8 +28,15 @@
  * after the component's, which let these rules beat equal-specificity
  * overrides such as a textarea's min-height. */
 
+/* Type stays at class specificity: the site's unlayered reset
+ * `input, button, textarea, select { font: inherit }` (0,0,1) beats :where(),
+ * which left every native field at the inherited 16px instead of the scale. */
+
 .field {
   box-sizing: border-box;
+  font-family: var(--font-text);
+  font-size: var(--field-font-size);
+  line-height: var(--field-line-height);
 }
 
 :where(.field) {
@@ -37,9 +44,6 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
-  font-family: var(--font-text);
-  font-size: var(--field-font-size);
-  line-height: var(--field-line-height);
   transition: border-color 0.3s;
 
   --field-block-size: 3rem;
