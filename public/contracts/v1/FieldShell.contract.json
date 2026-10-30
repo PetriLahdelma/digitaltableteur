@@ -4,6 +4,10 @@
   "name": "FieldShell",
   "status": "beta",
   "description": "The frame every text and choice field is built on: a label row with icon actions at its end, the control, then a status message and a helper line.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { FieldShell } from \"@digitaltableteur/react\";"
+  },
   "props": {
     "controlId": {
       "type": "string",

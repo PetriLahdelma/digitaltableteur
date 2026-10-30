@@ -75,9 +75,8 @@
     },
     "lightDarkVerified": true,
     "forbiddenUse": [
-        "animate figures counting up; the figure is the content, not a decoration.",
-        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
-        "use it for tables of several values per row."
+        "animate figures counting up.",
+        "use it for several values per row; use Table."
     ],
     "schemaVersion": 2,
     "props": {
@@ -90,8 +89,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "rule",
-                "card"
+                "card",
+                "rule"
             ],
             "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
         },
@@ -108,8 +107,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "start",
-                "center"
+                "center",
+                "start"
             ],
             "description": "Text alignment inside each item."
         },

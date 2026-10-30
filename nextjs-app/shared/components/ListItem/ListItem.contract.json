@@ -88,47 +88,47 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/intake/_components/IntakeForm.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
+            "path": "app/intake/_components/InviteFlow.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
+            "path": "app/intake/_components/SignInFlow.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/EngagementPage/index.ts",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
+            "path": "app/intake/admin/_components/PasskeyList.tsx",
             "since": "2026-06-04"
         }
     ],

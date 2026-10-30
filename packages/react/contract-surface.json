@@ -428,6 +428,12 @@
       "level": "additive",
       "detail": "prop `statusMessage` added",
       "bump": "patch"
+    },
+    {
+      "component": "FieldShell",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -2238,6 +2244,65 @@
       "keyboard": [
         "Enter / Space — toggles the section.",
         "Tab — focuses the trigger header."
+      ]
+    },
+    "FieldShell": {
+      "element": "div",
+      "props": {
+        "actions": {
+          "optional": true,
+          "type": "FieldAction[]"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "controlId": {
+          "optional": false,
+          "type": "string"
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "helperText": {
+          "optional": true,
+          "type": "string"
+        },
+        "hideLabel": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "label": {
+          "optional": false,
+          "type": "string"
+        },
+        "required": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "status": {
+          "optional": true,
+          "values": [
+            "error",
+            "success",
+            "warning"
+          ]
+        },
+        "statusMessage": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it.",
+        "Label-row actions come before the control in Tab order, as they sit above it."
       ]
     },
     "FileUpload": {

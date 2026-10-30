@@ -145,7 +145,17 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/CodeStep.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/_components/IntakeChrome.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/IntakeField.tsx",
             "since": "2026-06-04"
         },
         {
@@ -155,7 +165,27 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/InviteFlow.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/_components/SignInFlow.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/admin/_components/IntakeActions.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/InviteForm.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/_components/PasskeyFlows.tsx",
             "since": "2026-06-04"
         },
         {
@@ -165,32 +195,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/intake/admin/enrol/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/intake/admin/intakes/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/admin/passkeys/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/forms/[inviteId]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/intake/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
             "since": "2026-06-04"
         }
     ]

@@ -21,10 +21,10 @@
     "side": {
       "type": "union",
       "values": [
-        "left",
-        "right",
         "top",
-        "bottom"
+        "right",
+        "bottom",
+        "left"
       ],
       "optional": true,
       "description": "Preferred side relative to the trigger; flips when out of room."
@@ -33,8 +33,8 @@
       "type": "union",
       "values": [
         "center",
-        "end",
-        "start"
+        "start",
+        "end"
       ],
       "optional": true,
       "description": "Alignment along the trigger edge."

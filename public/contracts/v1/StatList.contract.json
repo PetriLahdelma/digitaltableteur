@@ -17,8 +17,8 @@
     "variant": {
       "type": "union",
       "values": [
-        "rule",
-        "card"
+        "card",
+        "rule"
       ],
       "optional": true,
       "description": "\"rule\" sets each figure under a hairline, for figures inside running\ncontent; \"card\" puts each on a surface tile, for a standalone band."
@@ -35,8 +35,8 @@
     "align": {
       "type": "union",
       "values": [
-        "start",
-        "center"
+        "center",
+        "start"
       ],
       "optional": true,
       "description": "Text alignment inside each item."
