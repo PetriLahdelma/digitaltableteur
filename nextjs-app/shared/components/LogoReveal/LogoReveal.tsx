@@ -3,7 +3,7 @@
 import { useCallback, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import Button from "@dt/Button";
+import Button, { type ButtonSurface } from "@dt/Button";
 import { Image } from "../../lib/imageComponent";
 import { useAnimationContext } from "../../lib/animation";
 import { cn } from "../../../../lib/utils";
@@ -38,6 +38,8 @@ export interface LogoRevealProps {
   onAnimationComplete?: () => void;
   /** Visible label for the user-initiated reveal control. */
   playLabel?: string;
+  /** Surface the stage sits on, so the play control keeps its contrast. */
+  surface?: ButtonSurface;
 }
 
 export function LogoReveal({
@@ -52,6 +54,7 @@ export function LogoReveal({
   className,
   onAnimationComplete,
   playLabel = "Play logo reveal animation",
+  surface = "default",
 }: LogoRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const logoWrapRef = useRef<HTMLDivElement>(null);
@@ -204,7 +207,12 @@ export function LogoReveal({
         </span>
       </div>
       {motionPreference !== "reduced" && (
-        <Button variant="secondary" size="sm" onClick={playReveal}>
+        <Button
+          variant="secondary"
+          size="sm"
+          surface={surface}
+          onClick={playReveal}
+        >
           {playLabel}
         </Button>
       )}

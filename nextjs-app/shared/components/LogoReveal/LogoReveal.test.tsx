@@ -22,4 +22,19 @@ describe("LogoReveal", () => {
     ).toBeInTheDocument();
     expect(container.querySelectorAll("img[alt='']")).toHaveLength(2);
   });
+
+  it("passes the surface to the play button so it stays legible on a dark stage", () => {
+    renderWithProviders(
+      <LogoReveal
+        logoSrc="/logo.svg"
+        wordmarkSrc="/wordmark.svg"
+        playLabel="Play logo animation"
+        surface="onDark"
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Play logo animation" }).className,
+    ).toMatch(/onDark/);
+  });
 });

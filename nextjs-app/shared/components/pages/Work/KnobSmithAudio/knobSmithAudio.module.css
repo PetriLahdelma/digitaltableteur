@@ -242,6 +242,10 @@
   align-items: center;
   gap: var(--space-layout-32);
   background-color: #2b2f33;
+
+  /* The band stays dark in every theme, so the play button's onDark white
+     must not flip with the theme the way --color-white does. */
+  --color-white: var(--color-on-media-text);
 }
 
 /* Keep the caption paired with this fixed dark brand surface even when
