@@ -75,21 +75,21 @@
 /* Secondary badges with a tone keep a transparent background. */
 
 .secondary.success {
-  border-color: var(--color-success);
+  border-color: var(--color-success-contrast);
   background: none;
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .secondary.info {
-  border-color: var(--color-info);
+  border-color: var(--color-info-contrast);
   background: none;
-  color: var(--color-info);
+  color: var(--color-info-contrast);
 }
 
 .secondary.error {
-  border-color: var(--color-error);
+  border-color: var(--color-error-contrast);
   background: none;
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }
 
 .secondary.warning {
@@ -104,28 +104,30 @@
   color: var(--color-neutral-text);
 }
 
+/* Filled tones: the status fill under --color-on-status text (6:1+). */
+
 .success {
   border: 2px solid transparent;
   background: var(--color-success);
-  color: var(--color-white);
+  color: var(--color-on-status);
 }
 
 .info {
   border: 2px solid transparent;
   background: var(--color-info);
-  color: var(--color-white);
+  color: var(--color-on-status);
 }
 
 .error {
   border: 2px solid transparent;
   background: var(--color-error);
-  color: var(--color-white);
+  color: var(--color-on-status);
 }
 
 .warning {
   border: 2px solid transparent;
-  background: var(--color-warning-contrast);
-  color: var(--color-white);
+  background: var(--color-warning);
+  color: var(--color-on-status);
 }
 
 .neutral {

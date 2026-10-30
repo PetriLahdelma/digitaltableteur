@@ -158,7 +158,7 @@ export const Z_ChatMessagesCompliance: Story = {
     <ComplianceCard
       title="Compliance: 11/11"
       titleIcon={
-        <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+        <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
       }
       rules={chatMessagesComplianceRules}
     />

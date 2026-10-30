@@ -126,7 +126,7 @@ export const Z_ChatHeaderCompliance: StoryFn = () => (
   <ComplianceCard
     title="ChatHeader Compliance: 12/12"
     titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
     }
     rules={chatHeaderComplianceRules}
     lastReviewed="2025-11-24"

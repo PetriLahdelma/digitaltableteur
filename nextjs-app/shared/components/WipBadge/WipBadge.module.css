@@ -54,8 +54,8 @@
    text (mirrors the sidebar's struck red lifecycle dot). */
 
 .badge.deprecated {
-  background: var(--color-error-bg, rgb(239 68 68 / 12%));
-  box-shadow: 0 0 0 1px var(--color-error, #b91c1c);
+  background: var(--color-error-bg, #feedec);
+  box-shadow: 0 0 0 1px var(--color-error-contrast, #ce3139);
   text-decoration: line-through;
-  color: var(--color-error-text, #7a1f1f);
+  color: var(--color-error-text, #782a28);
 }

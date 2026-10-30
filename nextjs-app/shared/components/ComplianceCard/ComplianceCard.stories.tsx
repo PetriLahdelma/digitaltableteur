@@ -100,7 +100,7 @@ export const Z_BadgeCompliance: Story = {
   args: {
     title: "Compliance: 12/12",
     titleIcon: (
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
     ),
     rules: badgeComplianceRules,
   },
@@ -159,7 +159,7 @@ export const Z_FailedCompliance: Story = {
   args: {
     title: "Compliance: 0/3",
     titleIcon: (
-      <Icon name="x-circle" color="var(--color-error)" weight="fill" />
+      <Icon name="x-circle" color="var(--color-error-contrast)" weight="fill" />
     ),
     rules: [
       {
@@ -187,7 +187,7 @@ export const Z_FailedCompliance: Story = {
 const defaultStoryArgs = {
   title: "Compliance: 12/12",
   titleIcon: (
-    <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
   ),
   rules: badgeComplianceRules,
 };

@@ -31,9 +31,9 @@ const STATUS_ICON_MAP: Record<ComplianceStatus, string> = {
 };
 
 const STATUS_COLOR_MAP: Record<ComplianceStatus, string> = {
-  pass: "var(--color-success)",
+  pass: "var(--color-success-contrast)",
   warning: "var(--color-warning-contrast)",
-  fail: "var(--color-error)",
+  fail: "var(--color-error-contrast)",
 };
 
 // Resize bounds. Keep in sync with min/max-height and min/max-width in

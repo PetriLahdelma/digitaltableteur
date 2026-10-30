@@ -231,8 +231,18 @@
   --main-body-background-color: #fff;
   --color-primary: #041b23;
   --color-primary-disabled: #041b2350;
-  --color-success: #068338;
-  --color-info: #0c7a8b;
+
+  /* Status palette (owner, 2026-10-30). Each status has two tones of one hue:
+     the base token is the FILL (badges, toasts) and carries
+     --color-on-status text; the -contrast token is the TEXT tone for messages,
+     borders, icons and graphics on the page (5:1 on #fff, so 3:1 graphics
+     pass too). Never put the base fill on the page as text or as a lone
+     graphic: at 1.9-2.9:1 it fails WCAG 1.4.3 and 1.4.11. */
+  --color-success: #27ae60; /* fill: 6.16:1 under --color-on-status */
+  --color-success-contrast: #017f40; /* text: 5.11:1 on #fff */
+  --color-info: #509cff; /* fill: 6.36:1 */
+  --color-info-contrast: #206ecd; /* text: 5.03:1 */
+  --color-on-status: #041b23; /* text on any status fill */
 
   /* Info surface + on-info text (e.g. native CookieConsent "required" badge).
      Previously phantom vars whose #hex fallbacks left the badge illegible in
@@ -240,21 +250,22 @@
      (+ -fg) is ImagePlaceholder's genuinely-dark variant surface (dark in every
      theme so its light text stays legible). --switch-handle-ring-color is a
      hairline ring shown only where the on-track matches the handle colour. */
-  --color-info-bg: #e6f4ff;
-  --color-info-text: #0c5460;
+  --color-info-bg: #e9f3fe; /* L 0.96 tint of the info hue */
+  --color-info-text: #054980; /* 8.24:1 on the tint */
   --color-primary-dark: #0046b8;
   --color-placeholder-dark: #222;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: transparent;
   --switch-track-off: var(--color-muted-light); /* 3.19:1 on white: the white handle and the page both need 3:1 (WCAG 1.4.11) */
-  --color-error: #dc3545;
-  --color-warning: #ffc107;
-  --color-warning-contrast: #8d5a00;
+  --color-error: #ff6161; /* fill: 6.01:1 */
+  --color-error-contrast: #ce3139; /* text: 5.09:1 */
+  --color-warning: #e2b93b; /* fill: 9.47:1 under --color-warning-text */
+  --color-warning-contrast: #876b06; /* text: 5.08:1 */
   --color-warning-text: #041b23;
   --color-neutral-bg: #e2e8f0;
   --color-neutral-text: #1a1d26;
-  --color-error-bg: #dfbdbc;
-  --color-error-text: #7a1f1f;
+  --color-error-bg: #feedec; /* L 0.96 tint of the error hue */
+  --color-error-text: #782a28; /* 8.58:1 on the tint */
 
   /* Other colors */
   --color-react: #61dafb;
@@ -507,6 +518,13 @@
   --color-primary: #6fa8ff;
   --color-primary-disabled: #6fa8ff50;
   --color-success: #4fd18b;
+
+  /* Fill and text tone are the same here: each base value already passes as
+     text on this theme's page. */
+  --color-success-contrast: var(--color-success);
+  --color-info-contrast: var(--color-info);
+  --color-error-contrast: var(--color-error);
+  --color-on-status: var(--color-white);
   --color-info: #71efff;
   --color-info-bg: #0e2a33;
   --color-info-text: #71efff;
@@ -605,23 +623,35 @@
   --link-color: #fff;
   --color-primary: #fff;
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
-  --color-success: #fff;
-  --color-info: #fff;
+
+  /* Status keeps its hue in the HC themes (owner, 2026-10-30): each tone is a
+     distinct AAA colour on #000, so success, info, warning and error never
+     collapse to the same white. Fills pair with --color-white (#000) text at
+     the same ratio. Forced-colors (the OS mode) still hands back CanvasText. */
+  --color-success: #4ade80; /* 12.05:1 on #000 */
+
+  /* Fill and text tone are the same here: each base value already passes as
+     text on this theme's page. */
+  --color-success-contrast: var(--color-success);
+  --color-info-contrast: var(--color-info);
+  --color-error-contrast: var(--color-error);
+  --color-on-status: var(--color-white);
+  --color-info: #38bdf8; /* 9.80:1 */
   --color-info-bg: #000;
-  --color-info-text: #fff;
+  --color-info-text: #38bdf8;
   --color-primary-dark: #fff;
   --color-placeholder-dark: #2a2a2a;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: var(--color-border);
   --switch-track-off: var(--color-border-light);
-  --color-error: #fff;
-  --color-warning: #fff;
-  --color-warning-contrast: #fff;
+  --color-error: #ff7a7a; /* 8.32:1 */
+  --color-warning: #facc15; /* 13.71:1 */
+  --color-warning-contrast: #facc15;
   --color-warning-text: #000;
   --color-neutral-bg: #000;
   --color-neutral-text: #fff;
   --color-error-bg: #000;
-  --color-error-text: #fff;
+  --color-error-text: #ff7a7a;
   --color-react: #fff;
   --color-header-bg: #000;
   --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
@@ -740,26 +770,37 @@
   --link-color: #000;
   --color-primary: #000;
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
-  --color-success: #000;
-  --color-info: #000;
+
+  /* Status keeps its hue in the HC themes (owner, 2026-10-30): each tone is a
+     distinct AAA colour on #fff. Fills pair with --color-white (#fff) text at
+     the same ratio. */
+  --color-success: #006126; /* 7.67:1 on #fff */
+
+  /* Fill and text tone are the same here: each base value already passes as
+     text on this theme's page. */
+  --color-success-contrast: var(--color-success);
+  --color-info-contrast: var(--color-info);
+  --color-error-contrast: var(--color-error);
+  --color-on-status: var(--color-white);
+  --color-info: #00588a; /* 7.60:1 */
   --color-info-bg: #fff;
-  --color-info-text: #000;
+  --color-info-text: #00588a;
   --color-primary-dark: #000;
   --color-placeholder-dark: #1a1a1a;
   --color-placeholder-dark-fg: #fff;
   --switch-handle-ring-color: transparent;
   --switch-track-off: var(--color-border-light);
-  --color-error: #000;
-  --color-warning: #000;
-  --color-warning-contrast: #000;
+  --color-error: #b0001a; /* 7.34:1 */
+  --color-warning: #7a4a00; /* 7.48:1 */
+  --color-warning-contrast: #7a4a00;
 
-  /* White text for the dark (#000) warning surface (e.g. Toast .toast--warning).
+  /* White text for the dark (#7a4a00, 7.48:1) warning surface (e.g. Toast .toast--warning).
      On-canvas warning text uses --color-warning-contrast (HelperText, Card). */
   --color-warning-text: #fff;
   --color-neutral-bg: #fff;
   --color-neutral-text: #000;
   --color-error-bg: #fff;
-  --color-error-text: #000;
+  --color-error-text: #b0001a;
   --color-react: #000;
   --color-header-bg: #fff;
   --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
@@ -855,6 +896,10 @@
     --shadow-xl: none;
     --modal-shadow: none;
     --color-success: CanvasText;
+    --color-success-contrast: CanvasText;
+    --color-info-contrast: CanvasText;
+    --color-error-contrast: CanvasText;
+    --color-on-status: Canvas;
     --color-error: CanvasText;
     --color-warning: CanvasText;
     --color-warning-contrast: CanvasText;

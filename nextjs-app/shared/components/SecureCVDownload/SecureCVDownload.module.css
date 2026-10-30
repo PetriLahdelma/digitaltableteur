@@ -36,14 +36,14 @@
 }
 
 .inlineSuccess {
-  color: var(--color-success-text, var(--color-success));
+  color: var(--color-success-text, var(--color-success-contrast));
 }
 
 .errorText {
   margin-block-start: 0.25rem;
   font-size: var(--font-size-text-xs);
   text-align: start;
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }
 
 .modalFooter {

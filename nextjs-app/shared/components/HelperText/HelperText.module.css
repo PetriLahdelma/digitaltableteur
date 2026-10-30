@@ -27,7 +27,7 @@
 }
 
 .error {
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }
 
 .warning {
@@ -37,9 +37,9 @@
 }
 
 .success {
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .info {
-  color: var(--color-info);
+  color: var(--color-info-contrast);
 }

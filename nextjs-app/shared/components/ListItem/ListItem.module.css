@@ -83,7 +83,7 @@
 .destructive,
 .destructive .icon,
 .destructive .trailingIcon {
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }
 
 .destructive:hover,

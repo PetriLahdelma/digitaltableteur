@@ -362,6 +362,18 @@
         }
       }
     },
+    "on": {
+      "status": {
+        "$value": "{color.white}",
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-on-status",
+            "css": "var(--color-white)"
+          }
+        }
+      }
+    },
     "placeholder": {
       "dark": {
         "$root": {
@@ -405,20 +417,34 @@
       }
     },
     "success": {
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.3098,
-          0.8196,
-          0.5451
-        ],
-        "hex": "#4fd18b"
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3098,
+            0.8196,
+            0.5451
+          ],
+          "hex": "#4fd18b"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success",
+            "css": "#4fd18b"
+          }
+        }
       },
-      "$type": "color",
-      "$extensions": {
-        "com.digitaltableteur": {
-          "cssVar": "--color-success",
-          "css": "#4fd18b"
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/success/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success-contrast",
+            "css": "var(--color-success)"
+          }
         }
       }
     },
@@ -438,6 +464,18 @@
           "com.digitaltableteur": {
             "cssVar": "--color-info",
             "css": "#71efff"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/info/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info-contrast",
+            "css": "var(--color-info)"
           }
         }
       },
@@ -494,6 +532,18 @@
           "com.digitaltableteur": {
             "cssVar": "--color-error",
             "css": "#ff6b6b"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/error/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error-contrast",
+            "css": "var(--color-error)"
           }
         }
       },

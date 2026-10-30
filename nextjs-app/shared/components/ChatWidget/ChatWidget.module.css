@@ -79,11 +79,11 @@
 }
 
 .availabilityDotOpen {
-  background: var(--color-success);
+  background: var(--color-success-contrast);
 }
 
 .availabilityDotClosed {
-  background: var(--color-error);
+  background: var(--color-error-contrast);
 }
 
 /* Inline variant for positioning next to tagline text */
@@ -101,11 +101,11 @@
 }
 
 .availabilityIconClosed {
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }
 
 .availabilityIconOpen {
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 /* Header copy: `.header .x` (two classes) already outranks the Text and
@@ -136,7 +136,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-error);
+  color: var(--color-error-contrast);
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }

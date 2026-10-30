@@ -241,6 +241,7 @@
         }
       ]
     },
+    "FieldShell": {},
     "FileUpload": {},
     "FilterChip": {},
     "FlexBox": {},
@@ -375,6 +376,16 @@
     "SecureCVDownload": {},
     "SegmentedControl": {},
     "Select": {
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "value",
+            "defaultValue"
+          ],
+          "reason": "`value` makes the component controlled and `defaultValue` uncontrolled; pass one, not both."
+        }
+      ],
       "props": {
         "onChange": {
           "deprecated": true,

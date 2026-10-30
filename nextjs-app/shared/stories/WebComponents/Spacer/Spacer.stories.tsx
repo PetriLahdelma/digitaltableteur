@@ -28,7 +28,7 @@ const visualizeCss = `
     flex-direction: row;
   }
   .dt-spacer-viz > dt-spacer {
-    outline: 1px dashed color-mix(in srgb, var(--color-info) 55%, transparent);
+    outline: 1px dashed color-mix(in srgb, var(--color-info-contrast) 55%, transparent);
     outline-offset: -1px;
     background-color: color-mix(in srgb, var(--color-info) 16%, transparent);
   }

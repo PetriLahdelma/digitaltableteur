@@ -393,6 +393,18 @@
         }
       }
     },
+    "on": {
+      "status": {
+        "$value": "{color.white}",
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-on-status",
+            "css": "var(--color-white)"
+          }
+        }
+      }
+    },
     "placeholder": {
       "dark": {
         "$root": {
@@ -454,20 +466,34 @@
       }
     },
     "success": {
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "hex": "#000000"
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.3804,
+            0.149
+          ],
+          "hex": "#006126"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success",
+            "css": "#006126"
+          }
+        }
       },
-      "$type": "color",
-      "$extensions": {
-        "com.digitaltableteur": {
-          "cssVar": "--color-success",
-          "css": "#000"
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/success/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success-contrast",
+            "css": "var(--color-success)"
+          }
         }
       }
     },
@@ -477,16 +503,28 @@
           "colorSpace": "srgb",
           "components": [
             0,
-            0,
-            0
+            0.3451,
+            0.5412
           ],
-          "hex": "#000000"
+          "hex": "#00588a"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-info",
-            "css": "#000"
+            "css": "#00588a"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/info/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info-contrast",
+            "css": "var(--color-info)"
           }
         }
       },
@@ -513,16 +551,16 @@
           "colorSpace": "srgb",
           "components": [
             0,
-            0,
-            0
+            0.3451,
+            0.5412
           ],
-          "hex": "#000000"
+          "hex": "#00588a"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-info-text",
-            "css": "#000"
+            "css": "#00588a"
           }
         }
       }
@@ -532,17 +570,29 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
+            0.6902,
             0,
-            0,
-            0
+            0.102
           ],
-          "hex": "#000000"
+          "hex": "#b0001a"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-error",
-            "css": "#000"
+            "css": "#b0001a"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "$ref": "#/color/error/$root/$value"
+        },
+        "$type": "color",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error-contrast",
+            "css": "var(--color-error)"
           }
         }
       },
@@ -568,17 +618,17 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
+            0.6902,
             0,
-            0,
-            0
+            0.102
           ],
-          "hex": "#000000"
+          "hex": "#b0001a"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-error-text",
-            "css": "#000"
+            "css": "#b0001a"
           }
         }
       }
@@ -588,17 +638,17 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0,
+            0.4784,
+            0.2902,
             0
           ],
-          "hex": "#000000"
+          "hex": "#7a4a00"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-warning",
-            "css": "#000"
+            "css": "#7a4a00"
           }
         }
       },
@@ -606,17 +656,17 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0,
-            0,
+            0.4784,
+            0.2902,
             0
           ],
-          "hex": "#000000"
+          "hex": "#7a4a00"
         },
         "$type": "color",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-warning-contrast",
-            "css": "#000"
+            "css": "#7a4a00"
           }
         }
       },

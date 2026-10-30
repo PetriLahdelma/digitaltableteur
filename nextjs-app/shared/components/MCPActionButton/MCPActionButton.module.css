@@ -28,15 +28,15 @@
 }
 
 [data-status="loading"] .status {
-  color: var(--color-info, var(--color-primary));
+  color: var(--color-info-contrast, var(--color-primary));
 }
 
 [data-status="error"] .status {
-  color: var(--color-error-text, var(--color-error));
+  color: var(--color-error-text, var(--color-error-contrast));
 }
 
 [data-status="success"] .status {
-  color: var(--color-success-text, var(--color-success));
+  color: var(--color-success-text, var(--color-success-contrast));
 }
 
 @media (width >= 768px) {

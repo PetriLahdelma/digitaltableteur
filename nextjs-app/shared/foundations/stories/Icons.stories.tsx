@@ -57,20 +57,20 @@ export const Overview: Story = {
             alignItems: "center",
           }}
         >
-          <Icon name="circle-info" color="var(--color-info)" ariaLabel="Info" />
+          <Icon name="circle-info" color="var(--color-info-contrast)" ariaLabel="Info" />
           <Icon
             name="triangle-exclamation"
-            color="var(--color-warning)"
+            color="var(--color-warning-contrast)"
             ariaLabel="Warning"
           />
           <Icon
             name="circle-check"
-            color="var(--color-success)"
+            color="var(--color-success-contrast)"
             ariaLabel="Success"
           />
           <Icon
             name="circle-xmark"
-            color="var(--color-error)"
+            color="var(--color-error-contrast)"
             ariaLabel="Error"
           />
         </div>

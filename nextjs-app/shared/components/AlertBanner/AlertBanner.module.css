@@ -82,22 +82,22 @@
    light, dark, and both high-contrast themes automatically. */
 
 .info {
-  border: 1px solid color-mix(in srgb, var(--color-info) 40%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-info-contrast) 40%, var(--color-surface));
   background: color-mix(in srgb, var(--color-info) 12%, var(--color-surface));
 }
 
 .success {
-  border: 1px solid color-mix(in srgb, var(--color-success) 40%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-success-contrast) 40%, var(--color-surface));
   background: color-mix(in srgb, var(--color-success) 12%, var(--color-surface));
 }
 
 .warning {
-  border: 1px solid color-mix(in srgb, var(--color-warning) 46%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-warning-contrast) 46%, var(--color-surface));
   background: color-mix(in srgb, var(--color-warning) 16%, var(--color-surface));
 }
 
 .error {
-  border: 1px solid color-mix(in srgb, var(--color-error) 40%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-error-contrast) 40%, var(--color-surface));
   background: color-mix(in srgb, var(--color-error) 12%, var(--color-surface));
 }
 

@@ -10,10 +10,10 @@ export const STATUS_ICON_NAMES: Record<SemanticStatus, string> = {
 };
 
 const STATUS_COLORS: Record<SemanticStatus, string> = {
-  success: "var(--color-success)",
-  error: "var(--color-error)",
+  success: "var(--color-success-contrast)",
+  error: "var(--color-error-contrast)",
   warning: "var(--color-warning-contrast)",
-  info: "var(--color-info)",
+  info: "var(--color-info-contrast)",
 };
 
 export type SemanticIconOptions = {

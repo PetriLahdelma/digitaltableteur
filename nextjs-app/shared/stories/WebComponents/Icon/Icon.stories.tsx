@@ -144,8 +144,8 @@ export const ColorShowcase: Story = {
       {(
         [
           "var(--color-primary)",
-          "var(--color-success)",
-          "var(--color-error)",
+          "var(--color-success-contrast)",
+          "var(--color-error-contrast)",
         ] as const
       ).map((color) => (
         <NativeElement

@@ -91,7 +91,7 @@ export const CustomClass: Story = {
     <>
       <style>
         {
-          ".custom-text::part(text) { color: var(--color-info); font-weight: 600; }"
+          ".custom-text::part(text) { color: var(--color-info-contrast); font-weight: 600; }"
         }
       </style>
       <NativeElement

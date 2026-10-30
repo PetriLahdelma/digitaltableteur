@@ -163,7 +163,7 @@ export const Z_ChatComposerCompliance: StoryFn = () => (
   <ComplianceCard
     title="ChatComposer Compliance: 12/12"
     titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
     }
     rules={chatComposerComplianceRules}
     lastReviewed="2025-11-24"

@@ -2,9 +2,9 @@
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
   "fileUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff",
-  "generatedAt": "2026-10-16T04:26:29.893Z",
+  "generatedAt": "2026-10-30T18:07:19.034Z",
   "source": "nextjs-app/shared/styles/variables.css",
-  "runId": "dt-dsb-2026-10-16",
+  "runId": "dt-dsb-2026-10-30",
   "figmaApplied": {
     "appliedAt": "2026-10-16T04:28:53.000Z",
     "verifiedAt": "2026-10-16T04:28:53.000Z",
@@ -312,10 +312,10 @@
           "cssVar": "--color-error",
           "type": "COLOR",
           "values": {
-            "Light": "#dc3545",
+            "Light": "#be2323",
             "Dark": "#ff6b6b",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#ff7a7a",
+            "HCW": "#b0001a"
           },
           "scopes": [
             "FRAME_FILL",
@@ -332,7 +332,7 @@
           "cssVar": "--color-error-bg",
           "type": "COLOR",
           "values": {
-            "Light": "#dfbdbc",
+            "Light": "#feedec",
             "Dark": "#2d2323",
             "HCB": "#000",
             "HCW": "#fff"
@@ -352,10 +352,10 @@
           "cssVar": "--color-error-text",
           "type": "COLOR",
           "values": {
-            "Light": "#7a1f1f",
+            "Light": "#782a28",
             "Dark": "#ffb3b3",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#ff7a7a",
+            "HCW": "#b0001a"
           },
           "scopes": [
             "FRAME_FILL",
@@ -472,10 +472,10 @@
           "cssVar": "--color-info",
           "type": "COLOR",
           "values": {
-            "Light": "#0c7a8b",
+            "Light": "#0d6bb6",
             "Dark": "#71efff",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#38bdf8",
+            "HCW": "#00588a"
           },
           "scopes": [
             "FRAME_FILL",
@@ -492,7 +492,7 @@
           "cssVar": "--color-info-bg",
           "type": "COLOR",
           "values": {
-            "Light": "#e6f4ff",
+            "Light": "#e9f3fe",
             "Dark": "#0e2a33",
             "HCB": "#000",
             "HCW": "#fff"
@@ -512,10 +512,10 @@
           "cssVar": "--color-info-text",
           "type": "COLOR",
           "values": {
-            "Light": "#0c5460",
+            "Light": "#054980",
             "Dark": "#71efff",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#38bdf8",
+            "HCW": "#00588a"
           },
           "scopes": [
             "FRAME_FILL",
@@ -752,10 +752,10 @@
           "cssVar": "--color-success",
           "type": "COLOR",
           "values": {
-            "Light": "#068338",
+            "Light": "#047e39",
             "Dark": "#4fd18b",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#4ade80",
+            "HCW": "#006126"
           },
           "scopes": [
             "FRAME_FILL",
@@ -852,10 +852,10 @@
           "cssVar": "--color-warning",
           "type": "COLOR",
           "values": {
-            "Light": "#ffc107",
+            "Light": "#ffb922",
             "Dark": "#ffb366",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#facc15",
+            "HCW": "#7a4a00"
           },
           "scopes": [
             "FRAME_FILL",
@@ -872,10 +872,10 @@
           "cssVar": "--color-warning-contrast",
           "type": "COLOR",
           "values": {
-            "Light": "#8d5a00",
+            "Light": "#915b02",
             "Dark": "#ffb366",
-            "HCB": "#fff",
-            "HCW": "#000"
+            "HCB": "#facc15",
+            "HCW": "#7a4a00"
           },
           "scopes": [
             "FRAME_FILL",
@@ -1183,6 +1183,30 @@
           ],
           "codeSyntax": {
             "WEB": "var(--radius-xl)"
+          }
+        },
+        {
+          "name": "size/target/min",
+          "cssVar": "--size-target-min",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--size-target-min)"
+          }
+        },
+        {
+          "name": "size/target/touch",
+          "cssVar": "--size-target-touch",
+          "type": "FLOAT",
+          "values": {
+            "Value": 44
+          },
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--size-target-touch)"
           }
         },
         {
@@ -1639,9 +1663,9 @@
   },
   "stats": {
     "color": 53,
-    "dimension": 31,
+    "dimension": 33,
     "string": 5,
-    "skipped": 101
+    "skipped": 129
   },
   "skipped": [
     {
@@ -1685,6 +1709,108 @@
       "category": "other",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
       "sample": "#fff"
+    },
+    {
+      "name": "--code-line-added-bg",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#f4faf6"
+    },
+    {
+      "name": "--code-line-added-fg",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#1a7f37"
+    },
+    {
+      "name": "--code-line-highlight-bg",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#f1f5f9"
+    },
+    {
+      "name": "--code-line-number",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#4b5563"
+    },
+    {
+      "name": "--code-line-removed-bg",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#fdf5f5"
+    },
+    {
+      "name": "--code-line-removed-fg",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#be2a34"
+    },
+    {
+      "name": "--code-shiki-attr",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#023b95"
+    },
+    {
+      "name": "--code-shiki-comment",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#66707b"
+    },
+    {
+      "name": "--code-shiki-constant",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#023b95"
+    },
+    {
+      "name": "--code-shiki-entity",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#702c00"
+    },
+    {
+      "name": "--code-shiki-function",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#622cbc"
+    },
+    {
+      "name": "--code-shiki-jsx-brace",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#a0111f"
+    },
+    {
+      "name": "--code-shiki-keyword",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#a0111f"
+    },
+    {
+      "name": "--code-shiki-string",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#032563"
+    },
+    {
+      "name": "--code-shiki-tag",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#024c1a"
+    },
+    {
+      "name": "--code-shiki-text",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#0e1116"
+    },
+    {
+      "name": "--code-shiki-variable",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#702c00"
     },
     {
       "name": "--code-toolbar-text",
@@ -1801,6 +1927,36 @@
       "sample": "clamp(0.875rem, 0.3vi + 0.8rem, 1rem)"
     },
     {
+      "name": "--font-size-code-l",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "1rem"
+    },
+    {
+      "name": "--font-size-code-m",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "0.875rem"
+    },
+    {
+      "name": "--font-size-code-s",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "0.8125rem"
+    },
+    {
+      "name": "--font-size-code-xs",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "0.75rem"
+    },
+    {
+      "name": "--font-size-disclaimer",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "1rem"
+    },
+    {
       "name": "--font-size-text",
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
@@ -1834,7 +1990,7 @@
       "name": "--font-size-text-xs",
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
-      "sample": "clamp(0.875rem, 0.208vi + 0.8333rem, 1rem)"
+      "sample": "1rem"
     },
     {
       "name": "--font-size-text-xxl",
@@ -1945,6 +2101,24 @@
       "sample": "#fff"
     },
     {
+      "name": "--line-height-code-m",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "1.25rem"
+    },
+    {
+      "name": "--line-height-code-row",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "1.375rem"
+    },
+    {
+      "name": "--line-height-code-s",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "1.125rem"
+    },
+    {
       "name": "--line-height-loose",
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
@@ -1973,6 +2147,12 @@
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
       "sample": "1.2"
+    },
+    {
+      "name": "--measure-reading",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "30em"
     },
     {
       "name": "--modal-overlay-bg",
@@ -2209,6 +2389,12 @@
       "sample": "transparent"
     },
     {
+      "name": "--switch-track-off",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#909090"
+    },
+    {
       "name": "--tracking-normal",
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
@@ -2243,6 +2429,12 @@
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
       "sample": "0.1em"
+    },
+    {
+      "name": "--wavy-underline-depth",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "6px"
     },
     {
       "name": "--wavy-underline-mask",

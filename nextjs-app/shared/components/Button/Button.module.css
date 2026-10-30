@@ -81,7 +81,7 @@
 /* Tone: recolor the accent. */
 
 .button.error {
-  --btn-accent: var(--color-error);
+  --btn-accent: var(--color-error-contrast);
 }
 
 .button.warning {
@@ -90,11 +90,11 @@
 }
 
 .button.success {
-  --btn-accent: var(--color-success);
+  --btn-accent: var(--color-success-contrast);
 }
 
 .button.info {
-  --btn-accent: var(--color-info);
+  --btn-accent: var(--color-info-contrast);
 }
 
 /* Variant: how the accent is applied. */

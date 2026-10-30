@@ -85,8 +85,8 @@ button.row {
 }
 
 .markerDone {
-  border-color: var(--color-success);
-  background: var(--color-success);
+  border-color: var(--color-success-contrast);
+  background: var(--color-success-contrast);
   color: var(--color-surface);
 }
 
@@ -134,7 +134,7 @@ button.row:hover .label {
 /* The step checks carry the success colour too. */
 
 .check {
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .muted {

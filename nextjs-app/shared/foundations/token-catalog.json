@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-10-30T15:35:05.792Z",
-  "tokenCount": 230,
-  "usageCoverage": 178,
+  "generatedAt": "2026-10-30T18:30:00.601Z",
+  "tokenCount": 234,
+  "usageCoverage": 182,
   "themes": [
     {
       "id": "light",
@@ -69,10 +69,59 @@
       "largeText": false
     },
     {
-      "id": "error-on-canvas",
-      "fg": "--color-error",
+      "id": "success-on-canvas",
+      "fg": "--color-success-contrast",
       "bg": "--main-body-background-color",
-      "label": "Error on canvas",
+      "label": "Success text on canvas",
+      "largeText": false
+    },
+    {
+      "id": "info-on-canvas",
+      "fg": "--color-info-contrast",
+      "bg": "--main-body-background-color",
+      "label": "Info text on canvas",
+      "largeText": false
+    },
+    {
+      "id": "warning-on-canvas",
+      "fg": "--color-warning-contrast",
+      "bg": "--main-body-background-color",
+      "label": "Warning text on canvas",
+      "largeText": false
+    },
+    {
+      "id": "error-on-canvas",
+      "fg": "--color-error-contrast",
+      "bg": "--main-body-background-color",
+      "label": "Error text on canvas",
+      "largeText": false
+    },
+    {
+      "id": "on-status-on-success",
+      "fg": "--color-on-status",
+      "bg": "--color-success",
+      "label": "Text on success fill",
+      "largeText": false
+    },
+    {
+      "id": "on-status-on-info",
+      "fg": "--color-on-status",
+      "bg": "--color-info",
+      "label": "Text on info fill",
+      "largeText": false
+    },
+    {
+      "id": "on-status-on-error",
+      "fg": "--color-on-status",
+      "bg": "--color-error",
+      "label": "Text on error fill",
+      "largeText": false
+    },
+    {
+      "id": "info-text-on-info-bg",
+      "fg": "--color-info-text",
+      "bg": "--color-info-bg",
+      "label": "Info text on info surface",
       "largeText": false
     },
     {
@@ -207,16 +256,107 @@
         "pass": true
       },
       {
-        "id": "error-on-canvas",
-        "fg": "--color-error",
+        "id": "success-on-canvas",
+        "fg": "--color-success-contrast",
         "bg": "--main-body-background-color",
-        "label": "Error on canvas",
+        "label": "Success text on canvas",
         "largeText": false,
         "themeId": "light",
-        "fgRaw": "#dc3545",
+        "fgRaw": "#017f40",
         "bgRaw": "#fff",
-        "ratio": 4.53,
+        "ratio": 5.11,
         "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "info-on-canvas",
+        "fg": "--color-info-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Info text on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#206ecd",
+        "bgRaw": "#fff",
+        "ratio": 5.03,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "warning-on-canvas",
+        "fg": "--color-warning-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Warning text on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#876b06",
+        "bgRaw": "#fff",
+        "ratio": 5.08,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Error text on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#ce3139",
+        "bgRaw": "#fff",
+        "ratio": 5.09,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-success",
+        "fg": "--color-on-status",
+        "bg": "--color-success",
+        "label": "Text on success fill",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#27ae60",
+        "ratio": 6.16,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-info",
+        "fg": "--color-on-status",
+        "bg": "--color-info",
+        "label": "Text on info fill",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#509cff",
+        "ratio": 6.36,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-error",
+        "fg": "--color-on-status",
+        "bg": "--color-error",
+        "label": "Text on error fill",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#ff6161",
+        "ratio": 6.01,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "info-text-on-info-bg",
+        "fg": "--color-info-text",
+        "bg": "--color-info-bg",
+        "label": "Info text on info surface",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#054980",
+        "bgRaw": "#e9f3fe",
+        "ratio": 8.24,
+        "level": "AAA",
         "pass": true
       },
       {
@@ -226,10 +366,10 @@
         "label": "Error text on error surface",
         "largeText": false,
         "themeId": "light",
-        "fgRaw": "#7a1f1f",
-        "bgRaw": "#dfbdbc",
-        "ratio": 5.94,
-        "level": "AA",
+        "fgRaw": "#782a28",
+        "bgRaw": "#feedec",
+        "ratio": 8.58,
+        "level": "AAA",
         "pass": true
       },
       {
@@ -240,8 +380,8 @@
         "largeText": false,
         "themeId": "light",
         "fgRaw": "#041b23",
-        "bgRaw": "#ffc107",
-        "ratio": 10.86,
+        "bgRaw": "#e2b93b",
+        "ratio": 9.47,
         "level": "AAA",
         "pass": true
       },
@@ -380,16 +520,107 @@
         "pass": true
       },
       {
-        "id": "error-on-canvas",
-        "fg": "--color-error",
+        "id": "success-on-canvas",
+        "fg": "--color-success-contrast",
         "bg": "--main-body-background-color",
-        "label": "Error on canvas",
+        "label": "Success text on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#4fd18b",
+        "bgRaw": "#181a1b",
+        "ratio": 9,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "info-on-canvas",
+        "fg": "--color-info-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Info text on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#71efff",
+        "bgRaw": "#181a1b",
+        "ratio": 12.88,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-on-canvas",
+        "fg": "--color-warning-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Warning text on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#ffb366",
+        "bgRaw": "#181a1b",
+        "ratio": 9.89,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Error text on canvas",
         "largeText": false,
         "themeId": "dark",
         "fgRaw": "#ff6b6b",
         "bgRaw": "#181a1b",
         "ratio": 6.29,
         "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-success",
+        "fg": "--color-on-status",
+        "bg": "--color-success",
+        "label": "Text on success fill",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#181a1b",
+        "bgRaw": "#4fd18b",
+        "ratio": 9,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-info",
+        "fg": "--color-on-status",
+        "bg": "--color-info",
+        "label": "Text on info fill",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#181a1b",
+        "bgRaw": "#71efff",
+        "ratio": 12.88,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-error",
+        "fg": "--color-on-status",
+        "bg": "--color-error",
+        "label": "Text on error fill",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#181a1b",
+        "bgRaw": "#ff6b6b",
+        "ratio": 6.29,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "info-text-on-info-bg",
+        "fg": "--color-info-text",
+        "bg": "--color-info-bg",
+        "label": "Info text on info surface",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#71efff",
+        "bgRaw": "#0e2a33",
+        "ratio": 11.08,
+        "level": "AAA",
         "pass": true
       },
       {
@@ -553,15 +784,106 @@
         "pass": true
       },
       {
-        "id": "error-on-canvas",
-        "fg": "--color-error",
+        "id": "success-on-canvas",
+        "fg": "--color-success-contrast",
         "bg": "--main-body-background-color",
-        "label": "Error on canvas",
+        "label": "Success text on canvas",
         "largeText": false,
         "themeId": "hcb",
-        "fgRaw": "#fff",
+        "fgRaw": "#4ade80",
         "bgRaw": "#000",
-        "ratio": 21,
+        "ratio": 12.05,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "info-on-canvas",
+        "fg": "--color-info-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Info text on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#38bdf8",
+        "bgRaw": "#000",
+        "ratio": 9.8,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-on-canvas",
+        "fg": "--color-warning-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Warning text on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#facc15",
+        "bgRaw": "#000",
+        "ratio": 13.71,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Error text on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#ff7a7a",
+        "bgRaw": "#000",
+        "ratio": 8.32,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-success",
+        "fg": "--color-on-status",
+        "bg": "--color-success",
+        "label": "Text on success fill",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#000",
+        "bgRaw": "#4ade80",
+        "ratio": 12.05,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-info",
+        "fg": "--color-on-status",
+        "bg": "--color-info",
+        "label": "Text on info fill",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#000",
+        "bgRaw": "#38bdf8",
+        "ratio": 9.8,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-error",
+        "fg": "--color-on-status",
+        "bg": "--color-error",
+        "label": "Text on error fill",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#000",
+        "bgRaw": "#ff7a7a",
+        "ratio": 8.32,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "info-text-on-info-bg",
+        "fg": "--color-info-text",
+        "bg": "--color-info-bg",
+        "label": "Info text on info surface",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#38bdf8",
+        "bgRaw": "#000",
+        "ratio": 9.8,
         "level": "AAA",
         "pass": true
       },
@@ -572,9 +894,9 @@
         "label": "Error text on error surface",
         "largeText": false,
         "themeId": "hcb",
-        "fgRaw": "#fff",
+        "fgRaw": "#ff7a7a",
         "bgRaw": "#000",
-        "ratio": 21,
+        "ratio": 8.32,
         "level": "AAA",
         "pass": true
       },
@@ -586,8 +908,8 @@
         "largeText": false,
         "themeId": "hcb",
         "fgRaw": "#000",
-        "bgRaw": "#fff",
-        "ratio": 21,
+        "bgRaw": "#facc15",
+        "ratio": 13.71,
         "level": "AAA",
         "pass": true
       },
@@ -726,15 +1048,106 @@
         "pass": true
       },
       {
-        "id": "error-on-canvas",
-        "fg": "--color-error",
+        "id": "success-on-canvas",
+        "fg": "--color-success-contrast",
         "bg": "--main-body-background-color",
-        "label": "Error on canvas",
+        "label": "Success text on canvas",
         "largeText": false,
         "themeId": "hcw",
-        "fgRaw": "#000",
+        "fgRaw": "#006126",
         "bgRaw": "#fff",
-        "ratio": 21,
+        "ratio": 7.67,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "info-on-canvas",
+        "fg": "--color-info-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Info text on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#00588a",
+        "bgRaw": "#fff",
+        "ratio": 7.6,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-on-canvas",
+        "fg": "--color-warning-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Warning text on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#7a4a00",
+        "bgRaw": "#fff",
+        "ratio": 7.48,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error-contrast",
+        "bg": "--main-body-background-color",
+        "label": "Error text on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#b0001a",
+        "bgRaw": "#fff",
+        "ratio": 7.34,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-success",
+        "fg": "--color-on-status",
+        "bg": "--color-success",
+        "label": "Text on success fill",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#fff",
+        "bgRaw": "#006126",
+        "ratio": 7.67,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-info",
+        "fg": "--color-on-status",
+        "bg": "--color-info",
+        "label": "Text on info fill",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#fff",
+        "bgRaw": "#00588a",
+        "ratio": 7.6,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "on-status-on-error",
+        "fg": "--color-on-status",
+        "bg": "--color-error",
+        "label": "Text on error fill",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#fff",
+        "bgRaw": "#b0001a",
+        "ratio": 7.34,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "info-text-on-info-bg",
+        "fg": "--color-info-text",
+        "bg": "--color-info-bg",
+        "label": "Info text on info surface",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#00588a",
+        "bgRaw": "#fff",
+        "ratio": 7.6,
         "level": "AAA",
         "pass": true
       },
@@ -745,9 +1158,9 @@
         "label": "Error text on error surface",
         "largeText": false,
         "themeId": "hcw",
-        "fgRaw": "#000",
+        "fgRaw": "#b0001a",
         "bgRaw": "#fff",
-        "ratio": 21,
+        "ratio": 7.34,
         "level": "AAA",
         "pass": true
       },
@@ -759,8 +1172,8 @@
         "largeText": false,
         "themeId": "hcw",
         "fgRaw": "#fff",
-        "bgRaw": "#000",
-        "ratio": 21,
+        "bgRaw": "#7a4a00",
+        "ratio": 7.48,
         "level": "AAA",
         "pass": true
       },
@@ -1065,6 +1478,13 @@
           "subgroup": "Semantic"
         },
         {
+          "name": "--color-on-status",
+          "value": "#041b23",
+          "usage": "Text and icons on any status fill (--color-success / -info / -error / -warning).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
           "name": "--color-primary-dark",
           "value": "#0046b8",
           "usage": "Color token (primary-dark).",
@@ -1115,50 +1535,71 @@
       "tokens": [
         {
           "name": "--color-success",
-          "value": "#068338",
-          "usage": "Success feedback, positive badges, and confirmations.",
+          "value": "#27ae60",
+          "usage": "Status FILL (success): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-success-contrast there.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-success-contrast",
+          "value": "#017f40",
+          "usage": "Status TEXT tone (success): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-info",
-          "value": "#0c7a8b",
-          "usage": "Informational alerts and neutral-positive emphasis.",
+          "value": "#509cff",
+          "usage": "Status FILL (info): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-info-contrast there.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-info-contrast",
+          "value": "#206ecd",
+          "usage": "Status TEXT tone (info): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-info-bg",
-          "value": "#e6f4ff",
+          "value": "#e9f3fe",
           "usage": "Color token (info-bg).",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-info-text",
-          "value": "#0c5460",
+          "value": "#054980",
           "usage": "Color token (info-text).",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-error",
-          "value": "#dc3545",
-          "usage": "Errors, destructive actions, and critical alerts.",
+          "value": "#ff6161",
+          "usage": "Status FILL (error): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-error-contrast there.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-error-contrast",
+          "value": "#ce3139",
+          "usage": "Status TEXT tone (error): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-warning",
-          "value": "#ffc107",
-          "usage": "Warning surfaces; pair with --color-warning-text.",
+          "value": "#e2b93b",
+          "usage": "Status FILL (warning): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-warning-contrast there.",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-warning-contrast",
-          "value": "#8d5a00",
-          "usage": "Color token (warning-contrast).",
+          "value": "#876b06",
+          "usage": "Status TEXT tone (warning): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
           "category": "color",
           "subgroup": "Status & feedback"
         },
@@ -1185,14 +1626,14 @@
         },
         {
           "name": "--color-error-bg",
-          "value": "#dfbdbc",
+          "value": "#feedec",
           "usage": "Color token (error-bg).",
           "category": "color",
           "subgroup": "Status & feedback"
         },
         {
           "name": "--color-error-text",
-          "value": "#7a1f1f",
+          "value": "#782a28",
           "usage": "Color token (error-text).",
           "category": "color",
           "subgroup": "Status & feedback"

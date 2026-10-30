@@ -207,7 +207,7 @@ export const Z_LinkedInQuoteCardCompliance: StoryFn = () => (
   <ComplianceCard
     title="Compliance: 9/11 (WIP)"
     titleIcon={
-      <Icon name="warning" color="var(--color-warning)" weight="fill" />
+      <Icon name="warning" color="var(--color-warning-contrast)" weight="fill" />
     }
     rules={linkedInQuoteCardComplianceRules}
   />

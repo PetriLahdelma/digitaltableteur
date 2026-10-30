@@ -35,5 +35,5 @@
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--font-size-text-s);
-  color: var(--color-error);
+  color: var(--color-error-contrast);
 }

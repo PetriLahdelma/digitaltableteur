@@ -11,7 +11,7 @@
 @keyframes decode-split {
   from {
     text-shadow:
-      calc(-1 * var(--space-internal-2)) 1px color-mix(in srgb, var(--color-error) 60%, transparent),
+      calc(-1 * var(--space-internal-2)) 1px color-mix(in srgb, var(--color-error-contrast) 60%, transparent),
       var(--space-internal-2) -1px color-mix(in srgb, var(--accent-cyan) 70%, transparent);
   }
 

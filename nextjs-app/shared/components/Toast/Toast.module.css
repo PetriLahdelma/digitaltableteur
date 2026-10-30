@@ -66,7 +66,17 @@
   font-size: var(--font-size-button-l);
 }
 
-/* Severity variants (v1.1.0) */
+/* Severity variants (v1.1.0): the status fill under --color-on-status text
+   and icon (6:1+); the neutral toast keeps white on --color-primary. */
+
+.toast--success,
+.toast--error,
+.toast--info,
+.toast--success .icon,
+.toast--error .icon,
+.toast--info .icon {
+  color: var(--color-on-status);
+}
 
 .toast--success {
   background-color: var(--color-success);

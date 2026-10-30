@@ -37,19 +37,19 @@
 }
 
 .dot.success {
-  background-color: var(--color-success);
+  background-color: var(--color-success-contrast);
 }
 
 .dot.warning {
-  background-color: var(--color-warning);
+  background-color: var(--color-warning-contrast);
 }
 
 .dot.error {
-  background-color: var(--color-error);
+  background-color: var(--color-error-contrast);
 }
 
 .dot.info {
-  background-color: var(--color-info);
+  background-color: var(--color-info-contrast);
 }
 
 .pulse {

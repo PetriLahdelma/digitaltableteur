@@ -257,7 +257,7 @@ export const Z_TitleCompliance: React.FC = () => (
   <ComplianceCard
     title="Compliance: 11/11"
     titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
     }
     rules={titleComplianceRules}
   />

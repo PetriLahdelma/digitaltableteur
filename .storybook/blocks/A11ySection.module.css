@@ -50,7 +50,7 @@
 }
 
 .ok svg {
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .pending {

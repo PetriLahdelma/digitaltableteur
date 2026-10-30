@@ -49,7 +49,7 @@
 }
 
 .error {
-  color: var(--color-error);
+  color: var(--color-error-contrast);
   font-size: var(--font-size-text-s);
   white-space: pre-wrap;
   margin: 0;

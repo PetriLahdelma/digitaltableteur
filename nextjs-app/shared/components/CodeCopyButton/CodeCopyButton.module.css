@@ -44,7 +44,7 @@
 }
 
 .button[data-status="copied"] {
-  color: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .button:disabled {

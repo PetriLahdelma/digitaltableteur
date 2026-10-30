@@ -96,7 +96,7 @@ export const CustomTagAndClass: Story = {
   render: () => (
     <>
       <style>
-        {".custom-title::part(title) { color: var(--color-info); }"}
+        {".custom-title::part(title) { color: var(--color-info-contrast); }"}
       </style>
       <NativeElement
         tagName="dt-title"

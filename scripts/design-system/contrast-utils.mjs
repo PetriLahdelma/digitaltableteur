@@ -56,7 +56,16 @@ export const SEMANTIC_CONTRAST_PAIRS = [
   { id: "title-on-canvas", fg: "--color-title", bg: "--main-body-background-color", label: "Title on canvas", largeText: true },
   { id: "primary-on-canvas", fg: "--color-primary", bg: "--main-body-background-color", label: "Primary on canvas", largeText: false },
   { id: "link-on-canvas", fg: "--link-color", bg: "--main-body-background-color", label: "Link on canvas", largeText: false },
-  { id: "error-on-canvas", fg: "--color-error", bg: "--main-body-background-color", label: "Error on canvas", largeText: false },
+  // Status tones (2026-10-30 split): the -contrast token is the text tone on
+  // the page; the base token is a fill under --color-on-status text.
+  { id: "success-on-canvas", fg: "--color-success-contrast", bg: "--main-body-background-color", label: "Success text on canvas", largeText: false },
+  { id: "info-on-canvas", fg: "--color-info-contrast", bg: "--main-body-background-color", label: "Info text on canvas", largeText: false },
+  { id: "warning-on-canvas", fg: "--color-warning-contrast", bg: "--main-body-background-color", label: "Warning text on canvas", largeText: false },
+  { id: "error-on-canvas", fg: "--color-error-contrast", bg: "--main-body-background-color", label: "Error text on canvas", largeText: false },
+  { id: "on-status-on-success", fg: "--color-on-status", bg: "--color-success", label: "Text on success fill", largeText: false },
+  { id: "on-status-on-info", fg: "--color-on-status", bg: "--color-info", label: "Text on info fill", largeText: false },
+  { id: "on-status-on-error", fg: "--color-on-status", bg: "--color-error", label: "Text on error fill", largeText: false },
+  { id: "info-text-on-info-bg", fg: "--color-info-text", bg: "--color-info-bg", label: "Info text on info surface", largeText: false },
   { id: "error-text-on-error-bg", fg: "--color-error-text", bg: "--color-error-bg", label: "Error text on error surface", largeText: false },
   { id: "warning-text-on-warning", fg: "--color-warning-text", bg: "--color-warning", label: "Warning text on warning", largeText: false },
   // Disabled controls are WCAG-1.4.3-exempt, so these two enforce the DS's own

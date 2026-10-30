@@ -22,10 +22,6 @@ const USAGE_OVERRIDES = {
   "--color-text": "Default body copy color.",
   "--color-title": "Heading color; usually aligned with primary text.",
   "--main-body-background-color": "Page canvas / body background.",
-  "--color-success": "Success feedback, positive badges, and confirmations.",
-  "--color-info": "Informational alerts and neutral-positive emphasis.",
-  "--color-warning": "Warning surfaces; pair with --color-warning-text.",
-  "--color-error": "Errors, destructive actions, and critical alerts.",
   "--color-border": "Default 1px borders on inputs, cards, and dividers.",
   "--link-color": "Hyperlink color in prose and inline links.",
   "--focus-ring-color": "Keyboard focus outline color (WCAG focus appearance).",
@@ -53,6 +49,9 @@ function inferUsage(name) {
   if (name.startsWith("--tracking-")) return `Letter-spacing for ${name.replace("--tracking-", "")} display/heading styles.`;
   if (name === "--size-target-min") return "Smallest pointer target, the WCAG 2.2 AA floor (2.5.8): min-block-size and min-inline-size on anything clickable, unless spacing gives it a 24px circle.";
   if (name === "--size-target-touch") return "Comfortable touch target (44px) for primary actions on phones; the site page tests hold touch targets to it.";
+  if (["--color-success", "--color-info", "--color-error", "--color-warning"].includes(name)) return `Status FILL (${name.replace("--color-", "")}): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use ${name}-contrast there.`;
+  if (/^--color-(success|info|error|warning)-contrast$/.test(name)) return `Status TEXT tone (${name.replace("--color-", "").replace("-contrast", "")}): messages, borders, icons and graphics on the page; 5:1 on the light canvas.`;
+  if (name === "--color-on-status") return "Text and icons on any status fill (--color-success / -info / -error / -warning).";
   if (name.startsWith("--size-width-")) return `Max inline size for ${name.replace("--size-width-", "")} blocks.`;
   if (name.startsWith("--measure-")) return `Max inline size for ${name.replace("--measure-", "")} text, in em so it follows the block's own font size.`;
   if (name.startsWith("--duration-")) return `Motion duration for ${name.replace("--duration-", "")} transitions.`;

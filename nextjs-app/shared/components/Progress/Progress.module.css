@@ -21,10 +21,10 @@
   transform-origin: left center;
 }
 
-.success { background: var(--color-success); }
-.info { background: var(--color-info); }
-.warning { background: var(--color-warning); }
-.error { background: var(--color-error); }
+.success { background: var(--color-success-contrast); }
+.info { background: var(--color-info-contrast); }
+.warning { background: var(--color-warning-contrast); }
+.error { background: var(--color-error-contrast); }
 
 /* Indeterminate: a 40%-wide bar sweeps across; reduced motion slows it instead
    of freezing so "still working" stays perceivable. */

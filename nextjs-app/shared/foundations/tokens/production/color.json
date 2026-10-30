@@ -458,6 +458,27 @@
             }
           }
         }
+      },
+      "status": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0157,
+            0.1059,
+            0.1373
+          ],
+          "hex": "#041b23"
+        },
+        "$type": "color",
+        "$description": "Text and icons on any status fill (--color-success / -info / -error / -warning).",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-on-status",
+            "category": "color",
+            "subgroup": "Semantic",
+            "css": "#041b23"
+          }
+        }
       }
     },
     "title": {
@@ -707,23 +728,46 @@
       }
     },
     "success": {
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.0235,
-          0.5137,
-          0.2196
-        ],
-        "hex": "#068338"
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1529,
+            0.6824,
+            0.3765
+          ],
+          "hex": "#27ae60"
+        },
+        "$type": "color",
+        "$description": "Status FILL (success): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-success-contrast there.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success",
+            "category": "color",
+            "subgroup": "Status & feedback",
+            "css": "#27ae60"
+          }
+        }
       },
-      "$type": "color",
-      "$description": "Success feedback, positive badges, and confirmations.",
-      "$extensions": {
-        "com.digitaltableteur": {
-          "cssVar": "--color-success",
-          "category": "color",
-          "subgroup": "Status & feedback",
-          "css": "#068338"
+      "contrast": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0039,
+            0.498,
+            0.251
+          ],
+          "hex": "#017f40"
+        },
+        "$type": "color",
+        "$description": "Status TEXT tone (success): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-success-contrast",
+            "category": "color",
+            "subgroup": "Status & feedback",
+            "css": "#017f40"
+          }
         }
       }
     },
@@ -732,20 +776,41 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.0471,
-            0.4784,
-            0.5451
+            0.3137,
+            0.6118,
+            1
           ],
-          "hex": "#0c7a8b"
+          "hex": "#509cff"
         },
         "$type": "color",
-        "$description": "Informational alerts and neutral-positive emphasis.",
+        "$description": "Status FILL (info): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-info-contrast there.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-info",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#0c7a8b"
+            "css": "#509cff"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1255,
+            0.4314,
+            0.8039
+          ],
+          "hex": "#206ecd"
+        },
+        "$type": "color",
+        "$description": "Status TEXT tone (info): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-info-contrast",
+            "category": "color",
+            "subgroup": "Status & feedback",
+            "css": "#206ecd"
           }
         }
       },
@@ -753,11 +818,11 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.902,
-            0.9569,
-            1
+            0.9137,
+            0.9529,
+            0.9961
           ],
-          "hex": "#e6f4ff"
+          "hex": "#e9f3fe"
         },
         "$type": "color",
         "$description": "Color token (info-bg).",
@@ -766,7 +831,7 @@
             "cssVar": "--color-info-bg",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#e6f4ff"
+            "css": "#e9f3fe"
           }
         }
       },
@@ -774,11 +839,11 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.0471,
-            0.3294,
-            0.3765
+            0.0196,
+            0.2863,
+            0.502
           ],
-          "hex": "#0c5460"
+          "hex": "#054980"
         },
         "$type": "color",
         "$description": "Color token (info-text).",
@@ -787,7 +852,7 @@
             "cssVar": "--color-info-text",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#0c5460"
+            "css": "#054980"
           }
         }
       }
@@ -797,20 +862,41 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.8627,
-            0.2078,
-            0.2706
+            1,
+            0.3804,
+            0.3804
           ],
-          "hex": "#dc3545"
+          "hex": "#ff6161"
         },
         "$type": "color",
-        "$description": "Errors, destructive actions, and critical alerts.",
+        "$description": "Status FILL (error): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-error-contrast there.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-error",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#dc3545"
+            "css": "#ff6161"
+          }
+        }
+      },
+      "contrast": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8078,
+            0.1922,
+            0.2235
+          ],
+          "hex": "#ce3139"
+        },
+        "$type": "color",
+        "$description": "Status TEXT tone (error): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
+        "$extensions": {
+          "com.digitaltableteur": {
+            "cssVar": "--color-error-contrast",
+            "category": "color",
+            "subgroup": "Status & feedback",
+            "css": "#ce3139"
           }
         }
       },
@@ -818,11 +904,11 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.8745,
-            0.7412,
-            0.7373
+            0.9961,
+            0.9294,
+            0.9255
           ],
-          "hex": "#dfbdbc"
+          "hex": "#feedec"
         },
         "$type": "color",
         "$description": "Color token (error-bg).",
@@ -831,7 +917,7 @@
             "cssVar": "--color-error-bg",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#dfbdbc"
+            "css": "#feedec"
           }
         }
       },
@@ -839,11 +925,11 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.4784,
-            0.1216,
-            0.1216
+            0.4706,
+            0.1647,
+            0.1569
           ],
-          "hex": "#7a1f1f"
+          "hex": "#782a28"
         },
         "$type": "color",
         "$description": "Color token (error-text).",
@@ -852,7 +938,7 @@
             "cssVar": "--color-error-text",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#7a1f1f"
+            "css": "#782a28"
           }
         }
       }
@@ -862,20 +948,20 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            1,
-            0.7569,
-            0.0275
+            0.8863,
+            0.7255,
+            0.2314
           ],
-          "hex": "#ffc107"
+          "hex": "#e2b93b"
         },
         "$type": "color",
-        "$description": "Warning surfaces; pair with --color-warning-text.",
+        "$description": "Status FILL (warning): badges, toasts and other surfaces that carry --color-on-status text. Never text or a lone graphic on the page; use --color-warning-contrast there.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-warning",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#ffc107"
+            "css": "#e2b93b"
           }
         }
       },
@@ -883,20 +969,20 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.5529,
-            0.3529,
-            0
+            0.5294,
+            0.4196,
+            0.0235
           ],
-          "hex": "#8d5a00"
+          "hex": "#876b06"
         },
         "$type": "color",
-        "$description": "Color token (warning-contrast).",
+        "$description": "Status TEXT tone (warning): messages, borders, icons and graphics on the page; 5:1 on the light canvas.",
         "$extensions": {
           "com.digitaltableteur": {
             "cssVar": "--color-warning-contrast",
             "category": "color",
             "subgroup": "Status & feedback",
-            "css": "#8d5a00"
+            "css": "#876b06"
           }
         }
       },

@@ -60,9 +60,18 @@ function useResolvedToken(token: string, themeClass?: string) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const cs = getComputedStyle(el);
-    const prop = token.replace(/^--/, "");
-    setResolved(cs.getPropertyValue(prop).trim() || "—");
+    // Custom properties are read by their full name, leading "--" included;
+    // the stripped name always came back empty, so every swatch showed "—".
+    const read = () =>
+      setResolved(getComputedStyle(el).getPropertyValue(token).trim() || "—");
+    read();
+    // The Storybook theme toolbar swaps the theme class on html/body without
+    // remounting the story; re-read so the value follows the active theme.
+    const observer = new MutationObserver(read);
+    for (const node of [document.documentElement, document.body]) {
+      observer.observe(node, { attributes: true, attributeFilter: ["class", "data-theme"] });
+    }
+    return () => observer.disconnect();
   }, [token, themeClass]);
 
   return { ref, resolved };

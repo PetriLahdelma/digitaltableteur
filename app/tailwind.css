@@ -137,6 +137,7 @@
   --color-dt-disabled-placeholder: var(--color-disabled-placeholder);
   --color-dt-error: var(--color-error);
   --color-dt-error-bg: var(--color-error-bg);
+  --color-dt-error-contrast: var(--color-error-contrast);
   --color-dt-error-text: var(--color-error-text);
   --color-dt-focus-ring: var(--color-focus-ring);
   --color-dt-gray: var(--color-gray);
@@ -145,6 +146,7 @@
   --color-dt-header-bg: var(--color-header-bg);
   --color-dt-info: var(--color-info);
   --color-dt-info-bg: var(--color-info-bg);
+  --color-dt-info-contrast: var(--color-info-contrast);
   --color-dt-info-text: var(--color-info-text);
   --color-dt-light-bg: var(--color-light-bg);
   --color-dt-muted: var(--color-muted);
@@ -153,6 +155,7 @@
   --color-dt-neutral-text: var(--color-neutral-text);
   --color-dt-on-media-scrim: var(--color-on-media-scrim);
   --color-dt-on-media-text: var(--color-on-media-text);
+  --color-dt-on-status: var(--color-on-status);
   --color-dt-placeholder-dark: var(--color-placeholder-dark);
   --color-dt-placeholder-dark-fg: var(--color-placeholder-dark-fg);
   --color-dt-primary: var(--color-primary);
@@ -160,6 +163,7 @@
   --color-dt-primary-disabled: var(--color-primary-disabled);
   --color-dt-react: var(--color-react);
   --color-dt-success: var(--color-success);
+  --color-dt-success-contrast: var(--color-success-contrast);
   --color-dt-surface: var(--color-surface);
   --color-dt-switch-track-off: var(--color-switch-track-off);
   --color-dt-text: var(--color-text);
@@ -255,7 +259,7 @@
   --muted-foreground: #4b5563;
   --accent: var(--accent-purple, #812eff);
   --accent-foreground: var(--inverted-text-color, #fff);
-  --destructive: var(--color-error, #dc3545);
+  --destructive: var(--color-error-contrast, #ce3139);
   --border: var(--color-border, #c0c0c0);
   --input: var(--color-border, #c0c0c0);
   --ring: var(--color-primary, #041B23);
