@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T19:46:12.942Z",
+  "generatedAt": "2026-10-30T22:36:07.648Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -54980,7 +54980,9 @@
       ],
       "compositionRules": [],
       "canonicalExamples": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
       ],
       "replacementFor": [],
       "forbiddenUse": [
@@ -55058,7 +55060,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci",
           "wcag": [
             {
               "sc": "2.1.1",
@@ -55094,7 +55097,8 @@
         {
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
-          "verificationMode": "manual"
+          "verificationMode": "manual",
+          "note": "2026-10-31: reviewed live in Storybook (Default, both views). The section is labelled by its h2; the Human / Machine switch is a labelled radiogroup (roving tabindex, arrow keys move and select); the ledger is an ordered list whose rows are single links. Each link's name is the whole row on purpose: WCAG 2.5.3 (Label in Name) needs the name to contain the visible text, and naming it by the title alone fails axe label-content-name-mismatch. The index numbers are aria-hidden; the machine view's copy button announces Copied through aria-live; Tab order runs switch, rows, then the machine view links and copy button."
         }
       ],
       "docOrigin": {

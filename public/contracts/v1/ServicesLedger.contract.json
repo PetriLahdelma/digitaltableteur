@@ -2,7 +2,7 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "ServicesLedger",
-  "status": "alpha",
+  "status": "beta",
   "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
   "props": {
     "title": {
@@ -53,22 +53,64 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:24.971Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.396Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:27.952Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:08.617Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:42.228Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:13.499Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.dark.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.672Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:08.893Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.light.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:13.782Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.dark.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.940Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:09.177Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.light.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:14.049Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -86,29 +128,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:24.971Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.396Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:21.820Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.125Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:27.952Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:08.617Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:42.228Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:13.499Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.dark.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.672Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.397Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:08.893Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.light.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:13.782Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.dark.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:18.940Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.650Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:09.177Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.light.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:14.049Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -122,8 +220,22 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:21.820Z",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.125Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-example.forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.397Z",
+            "passed": true,
+            "runner": "local-recapture"
+          },
+          {
+            "artifact": "../../../nextjs-app/shared/patterns/ServicesLedger/__a11y-evidence__/patterns-servicesledger-forced-colors.forced-colors.json",
+            "sourceCommit": "1c90fb9972042b0ed8f0cde43692633fde85cd2b",
+            "capturedAt": "2026-10-30T22:33:23.650Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -137,7 +249,7 @@
           "2.1.1",
           "2.1.2"
         ],
-        "note": "Marked reviewed, but no review date was recorded."
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "aria-requirements",
@@ -151,8 +263,9 @@
       {
         "id": "human-a11y-review",
         "statement": "A human completed an end-to-end accessibility review of this component.",
-        "verification": "unverified",
-        "note": "Marked reviewed, but no review date was recorded."
+        "verification": "manual",
+        "note": "2026-10-31: reviewed live in Storybook (Default, both views). The section is labelled by its h2; the Human / Machine switch is a labelled radiogroup (roving tabindex, arrow keys move and select); the ledger is an ordered list whose rows are single links. Each link's name is the whole row on purpose: WCAG 2.5.3 (Label in Name) needs the name to contain the visible text, and naming it by the title alone fails axe label-content-name-mismatch. The index numbers are aria-hidden; the machine view's copy button announces Copied through aria-live; Tab order runs switch, rows, then the machine view links and copy button.",
+        "reviewedAt": "2026-10-31"
       }
     ]
   },

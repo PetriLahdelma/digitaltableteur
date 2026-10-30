@@ -42,7 +42,7 @@ const labels = {
 const meta = {
   title: "Patterns/ServicesLedger",
   component: ServicesLedger,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,

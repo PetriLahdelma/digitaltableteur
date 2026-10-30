@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "tier": "pattern",
     "group": "marketing",
-    "status": "alpha",
+    "status": "beta",
     "radixPrimitive": null,
     "variants": {},
     "slots": [],
@@ -14,7 +14,7 @@
         "Example",
         "ForcedColors"
     ],
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "name": "ServicesLedger",
     "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=2075-863",
@@ -30,7 +30,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": false,
+        "forcedColorsVerified": true,
         "reviewedNote": "2026-10-31: reviewed live in Storybook (Default, both views). The section is labelled by its h2; the Human / Machine switch is a labelled radiogroup (roving tabindex, arrow keys move and select); the ledger is an ordered list whose rows are single links. Each link's name is the whole row on purpose: WCAG 2.5.3 (Label in Name) needs the name to contain the visible text, and naming it by the title alone fails axe label-content-name-mismatch. The index numbers are aria-hidden; the machine view's copy button announces Copied through aria-live; Tab order runs switch, rows, then the machine view links and copy button."
     },
     "tokens": {

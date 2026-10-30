@@ -25016,7 +25016,7 @@
       "name": "ServicesLedger",
       "group": "marketing",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Services as a ruled ledger: index, offer, description and capabilities per row, with a Human / Machine switch that shows the same offers as plain text.",
       "dense": "Homepage services ledger: ruled rows (index, title, description, capabilities) plus a Human / Machine text view",
       "keywords": [
