@@ -9,6 +9,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { Avatar } from "@digitaltableteur/react";
+import List from "@dt/List";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { gsap, useGSAP } from "../../lib/gsap";
@@ -93,7 +94,7 @@ export function ProjectMetaSection({
       if (motionPreference === "reduced" || !servicesRef.current) return;
 
       const serviceItems =
-        servicesRef.current.querySelectorAll("[data-service]");
+        servicesRef.current.querySelectorAll("li");
       if (!serviceItems.length) return;
 
       gsap.set(serviceItems, { opacity: 0, x: -10, scale: 0.9 });
@@ -134,18 +135,15 @@ export function ProjectMetaSection({
                 <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
                   {t("projectServicesTitle", "Services")}
                 </h3>
-                <ul ref={servicesRef} className="space-y-2">
-                  {services.map((service) => (
-                    <li
-                      key={service}
-                      data-service
-                      className="font-body text-sm text-foreground flex items-center gap-2"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {service}
-                    </li>
+                <List
+                  ref={servicesRef}
+                  className={styles.services}
+                  listStyleType="dash"
+                  size="s"
+                  items={services.map((service) => (
+                    <span key={service}>{service}</span>
                   ))}
-                </ul>
+                />
               </div>
             </FadeIn>
 

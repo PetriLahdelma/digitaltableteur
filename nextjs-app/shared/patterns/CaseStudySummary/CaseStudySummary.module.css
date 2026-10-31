@@ -39,10 +39,13 @@
   color: var(--color-foreground);
 }
 
+/* List's dash markers hang in each item's own padding, so the list box sits
+   flush with the label above it. */
+
 .list {
   display: flex;
   margin: 0;
-  padding-inline-start: var(--space-layout-24);
+  padding-inline-start: 0;
   flex-direction: column;
   gap: var(--space-layout-8);
   color: var(--color-muted-foreground);

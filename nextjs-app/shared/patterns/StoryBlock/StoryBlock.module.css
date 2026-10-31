@@ -32,6 +32,16 @@
   flex-direction: column;
 }
 
+/* The text is a single column: it shrinks to its reading measure and sits
+   centred in the layout, text still set flush-left. Image rows keep the full
+   width. */
+
+.grid1Col:not(.imagesRow) > .col {
+  margin-inline: auto;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+}
+
 /* Typography */
 
 .subtitle {

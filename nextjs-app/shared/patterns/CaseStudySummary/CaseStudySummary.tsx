@@ -90,6 +90,7 @@ export function CaseStudySummary({
             </Title>
             <List
               className={styles.list}
+              listStyleType="dash"
               size="s"
               lineHeight="relaxed"
               items={constraints.map((constraint) => (
@@ -130,6 +131,7 @@ export function CaseStudySummary({
           </Title>
           <List
             className={styles.list}
+            listStyleType="dash"
             size="s"
             lineHeight="relaxed"
             items={evidence.map((item) => (

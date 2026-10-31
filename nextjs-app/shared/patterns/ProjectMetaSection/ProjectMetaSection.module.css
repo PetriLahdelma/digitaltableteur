@@ -1,3 +1,9 @@
+/* Services: DS List with hanging em-dash markers, flush with the heading. */
+
+.services {
+  color: var(--color-foreground);
+}
+
 .teamAvatar {
   display: flex;
   margin-block-end: var(--space-internal-12);
