@@ -1,8 +1,8 @@
 {
   "storyId": "forms-selectoption-example",
   "mode": "light",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:14:43.417Z",
+  "sourceSHA": "32ff0cd9491b69466779335f3795fc46938e8874",
+  "capturedAt": "2026-10-31T01:31:30.962Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

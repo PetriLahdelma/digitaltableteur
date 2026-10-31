@@ -1,8 +1,8 @@
 {
   "storyId": "display-pixelloop-forced-colors",
   "mode": "dark",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:24:07.038Z",
+  "sourceSHA": "32ff0cd9491b69466779335f3795fc46938e8874",
+  "capturedAt": "2026-10-31T01:31:49.471Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

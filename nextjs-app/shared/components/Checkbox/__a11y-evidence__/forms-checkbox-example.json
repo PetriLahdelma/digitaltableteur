@@ -1,8 +1,8 @@
 {
   "storyId": "forms-checkbox-example",
   "mode": "light",
-  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-  "capturedAt": "2026-10-30T18:47:04.681Z",
+  "sourceSHA": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+  "capturedAt": "2026-10-31T01:25:27.533Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

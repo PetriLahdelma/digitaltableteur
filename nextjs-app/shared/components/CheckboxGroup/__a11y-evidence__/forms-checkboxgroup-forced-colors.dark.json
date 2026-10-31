@@ -1,8 +1,8 @@
 {
   "storyId": "forms-checkboxgroup-forced-colors",
   "mode": "dark",
-  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-  "capturedAt": "2026-10-30T18:56:37.746Z",
+  "sourceSHA": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+  "capturedAt": "2026-10-31T01:26:22.917Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

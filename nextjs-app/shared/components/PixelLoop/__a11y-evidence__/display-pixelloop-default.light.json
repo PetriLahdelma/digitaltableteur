@@ -1,8 +1,8 @@
 {
   "storyId": "display-pixelloop-default",
   "mode": "light",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:18:58.456Z",
+  "sourceSHA": "32ff0cd9491b69466779335f3795fc46938e8874",
+  "capturedAt": "2026-10-31T01:31:37.606Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {

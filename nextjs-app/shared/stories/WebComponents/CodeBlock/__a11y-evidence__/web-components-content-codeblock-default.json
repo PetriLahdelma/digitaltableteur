@@ -1,8 +1,8 @@
 {
   "storyId": "web-components-content-codeblock-default",
   "mode": "light",
-  "sourceSHA": "66f430500290e9c319fe95539afc4288cef2dd42",
-  "capturedAt": "2026-10-30T20:42:27.554Z",
+  "sourceSHA": "14cf9d4fe2a4880aa5a390aad0c073702b0fd359",
+  "capturedAt": "2026-10-31T01:06:59.115Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
