@@ -2,23 +2,7 @@ import contract from "./SentrySummaryCard.contract.json";
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import SentrySummaryCard, { SentrySummaryData } from "@dt/SentrySummaryCard";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
-
-const sentrySummaryCardComplianceRules: ComplianceRule[] = [
-  { title: "CSS Modules only (no inline styles)", status: "pass" },
-  { title: "Design tokens for spacing/colors", status: "pass" },
-  { title: "Logical CSS properties", status: "pass" },
-  { title: "TypeScript strict mode", status: "pass" },
-  { title: "Accessibility (loading state, error handling)", status: "pass" },
-  { title: "i18n for all user-facing text", status: "pass" },
-  { title: "Unit tests present", status: "pass" },
-  { title: "Storybook stories", status: "pass" },
-  { title: "Font token compliance (--font-text)", status: "pass" },
-  { title: "Progressive enhancement (stub badge)", status: "pass" },
-  { title: "No hardcoded values", status: "pass" },
-];
 
 const meta: Meta<typeof SentrySummaryCard> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
@@ -136,19 +120,6 @@ export const Stub: Story = {
       },
     },
   },
-};
-
-export const Z_SentrySummaryCardCompliance: Story = {
-  parameters: { docs: { disable: true } },
-  render: () => (
-    <ComplianceCard
-      title="Compliance: 11/11"
-      titleIcon={
-        <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-      }
-      rules={sentrySummaryCardComplianceRules}
-    />
-  ),
 };
 
 // The bare component fetches its summary JSON at runtime. In Storybook that

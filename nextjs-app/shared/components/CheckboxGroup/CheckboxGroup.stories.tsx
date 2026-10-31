@@ -4,75 +4,10 @@ import { Meta, StoryFn } from "@storybook/react-vite";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import CheckboxGroup, { CheckboxGroupProps } from "@dt/CheckboxGroup";
 import CodeSnippet from "@dt/CodeSnippet";
 import Title from "@dt/Title";
 import schema from "./schema.json";
-const checkboxGroupComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Exported interface",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "useTranslation in stories",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS variables",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "CSS uses logical properties",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Uses Checkbox, GroupLabel",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Proper checkbox semantics",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 export default {
   title: "Forms/CheckboxGroup",
@@ -148,16 +83,6 @@ const CheckboxGroupStory: React.FC<CheckboxGroupProps> = (args) => {
 
 const Template: StoryFn<CheckboxGroupProps> = (args: CheckboxGroupProps) => (
   <CheckboxGroupStory {...args} />
-);
-
-export const Z_CheckboxGroupCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-    }
-    rules={checkboxGroupComplianceRules}
-  />
 );
 
 export const Default = Template.bind({});

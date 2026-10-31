@@ -4,78 +4,7 @@ import html2canvas from "html2canvas";
 import LinkedInQuoteCard from "./LinkedInQuoteCard";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import type { Meta, StoryFn } from "@storybook/react-vite";
-
-const linkedInQuoteCardComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with LinkedInQuoteCardProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Content passed as props",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses var(--font-text), spacing tokens",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses inline-size, block-size, margin-block",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "Dark theme support with [data-theme]",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Uses Text, Link, Icon from design system",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Semantic markup, aria-labels, alt text",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "wip",
-    details: "Multiple variants - needs visual test",
-  },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "wip",
-    details: "Test file created - needs coverage",
-  },
-];
 
 const SCREENSHOT_WIDTH = 588;
 const SCREENSHOT_HEIGHT = 725;
@@ -202,16 +131,6 @@ export default {
     layout: "fullscreen",
   },
 } as Meta;
-
-export const Z_LinkedInQuoteCardCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 9/11 (WIP)"
-    titleIcon={
-      <Icon name="warning" color="var(--color-warning-contrast)" weight="fill" />
-    }
-    rules={linkedInQuoteCardComplianceRules}
-  />
-);
 
 export const Default = () => (
   <LinkedInQuoteCard

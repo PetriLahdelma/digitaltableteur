@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-31T00:02:19.773Z",
+  "generatedAt": "2026-10-31T00:06:03.127Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -24864,9 +24864,9 @@
         },
         "lightDarkVerified": true,
         "forbiddenUse": [
-          "nest a DS field inside another FieldShell.",
-          "put text buttons or links in the label row.",
-          "use it to group controls; that is FormField."
+          "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+          "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+          "use it for a group of controls; FormField's fieldset owns the group case."
         ],
         "schemaVersion": 2,
         "props": {
@@ -60850,8 +60850,9 @@
         },
         "lightDarkVerified": true,
         "forbiddenUse": [
-          "animate figures counting up.",
-          "use it for several values per row; use Table."
+          "animate figures counting up; the figure is the content, not a decoration.",
+          "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+          "use it for tables of several values per row; use Table."
         ],
         "schemaVersion": 2,
         "props": {

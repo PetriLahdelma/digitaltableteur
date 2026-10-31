@@ -6,74 +6,9 @@ import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import Checkbox, { CheckboxProps } from "@dt/Checkbox";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-const checkboxComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Exported interface, forwardRef",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "StoryLabel pattern for i18n",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "Removed all inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS variables throughout",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "border-inline-start used",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties adapt",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Native input, proper labels",
-  },
-  {
-    id: "progressive-enhancement",
-    rule: "Progressive enhancement",
-    status: "pass",
-    details: "@supports for accent-color",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 export default {
   title: "Forms/Checkbox",
@@ -283,16 +218,6 @@ SelectAllParent.parameters = {
   },
 };
 
-export const Z_CheckboxCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-    }
-    rules={checkboxComplianceRules}
-  />
-);
-Z_CheckboxCompliance.parameters = { docs: { disable: true } };
 // Playground keeps the canvas interactive while `checked` is seeded (controlled):
 // toggling in the canvas writes the arg back so panel and canvas stay in sync.
 const PlaygroundRender: StoryFn<CheckboxProps> = (args) => {

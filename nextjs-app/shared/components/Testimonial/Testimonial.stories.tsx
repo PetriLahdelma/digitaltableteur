@@ -2,73 +2,7 @@ import contract from "./Testimonial.contract.json";
 import React from "react";
 import Testimonial from "@dt/Testimonial";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import type { Meta, StoryFn } from "@storybook/react-vite";
-
-const testimonialComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with TestimonialProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Content passed as props",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Replaced --primary-body-font with var(--font-text)",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses gap for layout",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "Dark theme support with custom properties",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Optional avatar, LinkedIn link",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Semantic markup, link labels",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 export default {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
@@ -85,16 +19,6 @@ export default {
     layout: "padded",
   },
 } as Meta;
-
-export const Z_TestimonialCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-    }
-    rules={testimonialComplianceRules}
-  />
-);
 
 export const Default = () => (
   <Testimonial

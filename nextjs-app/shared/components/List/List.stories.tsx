@@ -4,7 +4,6 @@ import type { Meta, StoryFn } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 import List from "@dt/List";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
 import { useTranslation } from "react-i18next";
 import schema from "./schema.json";
 

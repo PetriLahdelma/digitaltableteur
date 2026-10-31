@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1513,
+  "warningCount": 1475,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -769,7 +769,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Accordion/Accordion.module.css",
-      "line": 56,
+      "line": 67,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -778,7 +778,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Accordion/Accordion.module.css",
-      "line": 108,
+      "line": 119,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1255,7 +1255,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 143,
+      "line": 153,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1264,7 +1264,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 144,
+      "line": 154,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1273,7 +1273,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 145,
+      "line": 155,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1282,7 +1282,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 146,
+      "line": 156,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1291,7 +1291,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 40,
+      "line": 48,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -13168,348 +13168,6 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::rhythmguard/use-scale::Unexpected off-scale value \"5rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 124,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"align-items\" to come before \"gap\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"align-items\" to come before \"gap\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 13,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-block-end\" to come before \"color\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"border-block-end\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 47,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"font-size\" to come before \"font-weight\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"font-size\" to come before \"font-weight\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 36,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin\" to come before \"list-style\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"margin\" to come before \"list-style\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"gap\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"min-block-size\" to come before \"gap\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 145,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"max-inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::order/properties-order::Expected \"padding\" to come before \"max-inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 52,
-      "column": 11,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.35rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.35rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 17,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use one of the tokens that hold it: var(--space-internal-8) or var(--space-layout-8). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 74,
-      "column": 35,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 147,
-      "column": 35,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 97,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". Use var(--space-internal-12) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 41,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 72,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 86,
-      "column": 21,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". No known token holds this value; use the nearest token or add one. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 10,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 79,
-      "column": 15,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use one of the tokens that hold it: var(--space-internal-24) or var(--space-layout-24). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 123,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 145,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 58,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.5rem\". Use var(--space-layout-40) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 10,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 37,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 58,
-      "column": 19,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 133,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use one of the tokens that hold it: var(--space-internal-32) or var(--space-layout-32). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 133,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"4rem\". Use var(--space-layout-64) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"4rem\". Use var(--space-layout-64) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 52,
-      "column": 11,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 98,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.75rem\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 31,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.85em\". Use scale values (nearest: 14px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.85em\". Use scale values (nearest: 14px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 26,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 53,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 14px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 41,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 72,
-      "column": 12,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 86,
-      "column": 21,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 144,
-      "column": 20,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"22rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"22rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 25,
-      "column": 20,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"52rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rhythmguard/use-scale::Unexpected off-scale value \"52rem\". Use scale values (nearest: 64px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 132,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 113,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#4ade80\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#4ade80\" of \"color\" (scale-unlimited/declaration-strict-value)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 117,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#ca8a04\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#ca8a04\" of \"color\" (scale-unlimited/declaration-strict-value)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css",
-      "line": 109,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#f87171\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#f87171\" of \"color\" (scale-unlimited/declaration-strict-value)::1"
     },
     {
       "file": "nextjs-app/shared/stories/WipBadge.module.css",

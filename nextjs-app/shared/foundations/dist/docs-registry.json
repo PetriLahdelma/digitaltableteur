@@ -7189,9 +7189,9 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "nest a DS field inside another FieldShell.",
-        "put text buttons or links in the label row.",
-        "use it to group controls; that is FormField."
+        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+        "use it for a group of controls; FormField's fieldset owns the group case."
       ],
       "usage": null,
       "tokens": {
@@ -17226,8 +17226,9 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "animate figures counting up.",
-        "use it for several values per row; use Table."
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row; use Table."
       ],
       "usage": null,
       "tokens": {

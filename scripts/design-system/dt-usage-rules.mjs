@@ -21,7 +21,7 @@ export const DT_USAGE_SKIP_SEGMENTS = [
   "/node_modules/",
 ];
 
-/** Known shadcn debt — see MigrationDecisionBoard/DialogComparison.stories.tsx */
+/** Known shadcn debt (decisions recorded in docs/SHADCN_TO_DT_MIGRATION.md) */
 export const DT_USAGE_SHADCN_ALLOWLIST_REL = new Set([
   "nextjs-app/shared/components/ui/index.ts",
   "nextjs-app/shared/components/interactive/index.ts",

@@ -2,8 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { UIMessage } from "ai";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import ChatMessages from "./ChatMessages";
 import { expect, waitFor, within } from "storybook/test";
 
@@ -71,70 +69,6 @@ const LONG_CONVERSATION: UIMessage[] = [
   },
 ];
 
-const chatMessagesComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Exported interface, forwardRef",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "useTranslation hook implemented",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "100% - replaced Moderat with var(--font-text)",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "margin-inline, padding-inline used",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "Uses CSS custom properties",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Uses ChatMessageBubble, workflow components",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Semantic HTML structure",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test files exist" },
-];
-
 const meta: Meta<typeof ChatMessages> = {
   title: "Site/Chat/ChatMessages",
   component: ChatMessages,
@@ -151,19 +85,6 @@ const meta: Meta<typeof ChatMessages> = {
 export default meta;
 
 type Story = StoryObj<typeof ChatMessages>;
-
-export const Z_ChatMessagesCompliance: Story = {
-  parameters: { docs: { disable: true } },
-  render: () => (
-    <ComplianceCard
-      title="Compliance: 11/11"
-      titleIcon={
-        <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-      }
-      rules={chatMessagesComplianceRules}
-    />
-  ),
-};
 
 export const Default: Story = {
   tags: ["beta-matrix"],

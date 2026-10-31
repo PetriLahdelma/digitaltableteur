@@ -3,72 +3,7 @@ import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
 import SecureCVDownload, { SecureCVDownloadProps } from "@dt/SecureCVDownload";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import { userEvent, waitFor, within } from "storybook/test";
-const secureCVDownloadComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with SecureCVDownloadProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Uses i18n for all text",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS custom properties",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses gap for spacing",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties throughout",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Modal + Button + Input composition",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Form labels, error messages, loading states",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 const meta: Meta<typeof SecureCVDownload> = {
   title: "Site/SecureCVDownload",
@@ -85,16 +20,6 @@ const meta: Meta<typeof SecureCVDownload> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 export default meta;
-
-export const Z_SecureCVDownloadCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-    }
-    rules={secureCVDownloadComplianceRules}
-  />
-);
 
 const Template: StoryFn<SecureCVDownloadProps> = (args) => (
   <SecureCVDownload {...args} />

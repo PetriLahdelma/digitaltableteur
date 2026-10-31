@@ -12,7 +12,7 @@ Production dogfooding uses the same loop as the Button surface board:
 
 Storybook → **Design system / Migration boards → Review hub**
 
-Shared UI lives in `nextjs-app/shared/stories/MigrationDecisionBoard/` (`MigrationDecisionPage`, `MigrationDecisionBand`, `MigrationDecisionBlock`, `MigrationReviewHub`).
+The side-by-side migration boards (`nextjs-app/shared/stories/MigrationDecisionBoard/`) were removed on 2026-10-31 once the migration decisions were made; this document keeps the decisions.
 
 | Board | Storybook path | Production touchpoints | Status |
 |-------|----------------|------------------------|--------|

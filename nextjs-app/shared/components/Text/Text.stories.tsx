@@ -13,77 +13,11 @@ import {
 } from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
 import Title from "@dt/Title";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import CodeSnippet from "@dt/CodeSnippet";
 import styles from "./Text.stories.module.css";
 import schema from "./schema.json";
-
-const textComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with TextProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Content as children prop",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "Removed inline styles, using module classes",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Replaced Moderat with var(--font-text)",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses margin-block and margin-inline",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties throughout",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Polymorphic as prop, size/lineHeight variants",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Semantic HTML with flexible tag",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 export default {
   title: "Content/Text",
@@ -136,16 +70,6 @@ export default {
 } as Meta;
 
 type Story = StoryObj<typeof Text>;
-
-export const Z_TextCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success-contrast)" weight="fill" />
-    }
-    rules={textComplianceRules}
-  />
-);
 
 const TextStory: React.FC<any> = (args) => {
   const { t } = useTranslation();
