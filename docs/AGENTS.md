@@ -18,6 +18,9 @@
 - **`SKILL_AUTHORING.md`**
   - How to write Claude/Cursor skills: frontmatter, triggers, references/, validation checklist
 
+- **`CREATIVE_MOTION_TEAM_PROMPT.md`**
+  - Paste-in prompt for an agent team building an art-directed, animated case study: seats, `app/dev/lab` isolation, owner-tuned motion, release gates
+
 - **`AGENT_READINESS.md`**
   - isitagentready.com checks, discovery endpoints, re-scan commands
 
