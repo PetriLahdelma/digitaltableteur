@@ -1,14 +1,8 @@
 - region "Team":
   - heading "Team" [level=2]
-  - figure:
-    - img "Sarah Johnson, Product Designer": 112 × 112
-  - heading "Sarah Johnson" [level=3]
+  - heading "Sarah Johnson" [level=4]
   - paragraph: Product Designer
-  - figure:
-    - img "Michael Chen, Frontend Developer": 112 × 112
-  - heading "Michael Chen" [level=3]
+  - heading "Michael Chen" [level=4]
   - paragraph: Frontend Developer
-  - figure:
-    - img "Emma Davis, UX Researcher": 112 × 112
-  - heading "Emma Davis" [level=3]
+  - heading "Emma Davis" [level=4]
   - paragraph: UX Researcher

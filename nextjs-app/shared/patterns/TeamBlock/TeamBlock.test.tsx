@@ -247,7 +247,7 @@ describe("TeamBlock", () => {
       expect(mainHeading.tagName).toBe("H2");
 
       const memberHeading = screen.getByText("Laura Karhu");
-      expect(memberHeading.tagName).toBe("H4");
+      expect(memberHeading.tagName).toBe("H3");
     });
 
     it("has data attribute for title", () => {

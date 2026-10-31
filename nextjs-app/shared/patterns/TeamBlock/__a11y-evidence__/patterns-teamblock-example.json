@@ -1,16 +1,16 @@
 {
   "storyId": "patterns-teamblock-example",
   "mode": "light",
-  "sourceSHA": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-  "capturedAt": "2026-10-30T18:44:01.838Z",
+  "sourceSHA": "2556fc3b711e3a722d6d0e2ccfa9f2ac2ae2a7b2",
+  "capturedAt": "2026-10-31T08:38:28.672Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
       "passed": true
     },
     "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
+      "passed": false,
+      "axeViolations": 1
     }
   }
 }

@@ -146,7 +146,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
                   alt=""
                 />
                 <Title
-                  level={4}
+                  level={3}
                   size="xs"
                   className={styles.memberName}
                 >

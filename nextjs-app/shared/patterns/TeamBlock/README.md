@@ -60,6 +60,6 @@ The grid is a wrapping flex row. Each member takes one column's width, so a row 
 ## Accessibility
 
 - The name and role are printed under each avatar, so the avatar renders with `alt=""` (initials are `aria-hidden`) and nothing is read twice.
-- The section title is an H2, member names H4.
+- The section title is an H2, member names H3.
 - Linked members open in a new tab with `rel="noopener noreferrer"` and show a focus ring.
 - Hover lift is off under `prefers-reduced-motion`; names go bold under `prefers-contrast: more`.
