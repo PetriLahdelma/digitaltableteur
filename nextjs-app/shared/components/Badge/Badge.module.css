@@ -21,24 +21,34 @@
   color: var(--color-dark);
   overflow: hidden;
   vertical-align: middle;
+
+  /* The leading icon slot per size step (xs/sm 16, md 24, lg 32), matching
+     Badge's icon sizes, so a dot badge measures exactly like its icon twin. */
+  --badge-icon-slot: var(--space-internal-24);
 }
 
 .xs {
   padding: 0 var(--space-internal-8);
   block-size: 24px;
   font-size: var(--font-size-text-xxs);
+
+  --badge-icon-slot: var(--space-internal-16);
 }
 
 .sm {
   padding: 0 var(--space-internal-12);
   block-size: 32px;
   font-size: var(--font-size-text-xxs);
+
+  --badge-icon-slot: var(--space-internal-16);
 }
 
 .lg {
   padding: 0 var(--space-internal-16);
   block-size: 56px;
   font-size: 1.25rem;
+
+  --badge-icon-slot: var(--space-internal-32);
 }
 
 .square {
@@ -227,6 +237,14 @@
 
 .badge .leadingDot {
   color: inherit;
+}
+
+/* The dot takes the icon's slot (centred in it) instead of its own few
+   pixels, so lifecycle badges line up with the semantic-icon variants. */
+
+.icon:has(.leadingDot) {
+  block-size: var(--badge-icon-slot);
+  inline-size: var(--badge-icon-slot);
 }
 
 .badge .leadingDot > [aria-hidden="true"] {

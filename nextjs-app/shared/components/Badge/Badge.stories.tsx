@@ -314,16 +314,16 @@ export const LifecycleDots: Story = {
         flexWrap: "wrap",
       }}
     >
-      <Badge variant="secondary" tone="warning" size="sm" dot>
+      <Badge variant="secondary" tone="warning" dot>
         alpha
       </Badge>
-      <Badge variant="secondary" tone="info" size="sm" dot>
+      <Badge variant="secondary" tone="info" dot>
         beta
       </Badge>
-      <Badge variant="secondary" tone="success" size="sm" dot>
+      <Badge variant="secondary" tone="success" dot>
         stable
       </Badge>
-      <Badge variant="secondary" tone="error" size="sm" dot>
+      <Badge variant="secondary" tone="error" dot>
         deprecated
       </Badge>
     </div>
