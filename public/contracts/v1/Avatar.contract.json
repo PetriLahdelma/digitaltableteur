@@ -73,6 +73,11 @@
       ],
       "optional": true,
       "description": "Controls whether the avatar prefers an image or initials"
+    },
+    "alt": {
+      "type": "string",
+      "optional": true,
+      "description": "Overrides the image alt text (defaults to `name`). Pass `\"\"` when the\nname is already printed beside the avatar, so it is not read twice."
     }
   },
   "accessibility": {
@@ -88,43 +93,43 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:16.314Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:20.859Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:33.152Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:11.366Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:39.831Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:16.114Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:16.594Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:21.094Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:33.434Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:11.604Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:40.079Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:16.371Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -142,57 +147,57 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:16.314Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:20.859Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:09.935Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:25.589Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:33.152Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:11.366Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:39.831Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:16.114Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:16.594Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:21.094Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:10.192Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:25.812Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:33.434Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:11.604Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:40.079Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:16.371Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -206,15 +211,15 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:09.935Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:25.589Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Avatar/__a11y-evidence__/content-avatar-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:10.192Z",
+            "sourceCommit": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+            "capturedAt": "2026-10-31T08:13:25.812Z",
             "passed": true,
             "runner": "local-recapture"
           }
