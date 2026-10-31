@@ -51,6 +51,14 @@
   color: inherit;
 }
 
+/* A list in the description (an error summary's links) sits flush with the
+   title text: no start padding, no markers. (0,2,1) beats List's .list. */
+
+.content .description :is(ul, ol) {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
 /* Links in a banner get a plain underline, not the site's wave: the wave is
    for running page text; inside a tinted box it competes with the message.
    (0,2,1) beats the global .link / .wavyUnderline rules (0,1,0) and Link's
