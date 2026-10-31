@@ -1,8 +1,8 @@
 {
   "storyId": "content-avatar-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:30:10.192Z",
+  "sourceSHA": "3e1f469ef116eab0906b337616f5fb9f01c1e826",
+  "capturedAt": "2026-10-31T08:13:25.812Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
