@@ -109,3 +109,10 @@ export {
   type VirtualListItemContent,
   type VirtualListItemProps,
 } from "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem";
+export { PixelLoop } from "../../../nextjs-app/shared/components/PixelLoop/PixelLoop";
+export type {
+  PixelLoopProps,
+  PixelLoopRows,
+  PixelLoopSize,
+  PixelLoopVariant,
+} from "../../../nextjs-app/shared/components/PixelLoop/PixelLoop";

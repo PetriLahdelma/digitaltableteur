@@ -32,6 +32,18 @@
       "level": "breaking",
       "detail": "prop `className` type changed",
       "bump": "minor"
+    },
+    {
+      "component": "Menu",
+      "level": "additive",
+      "detail": "prop `alignOffset` added",
+      "bump": "patch"
+    },
+    {
+      "component": "PixelLoop",
+      "level": "additive",
+      "detail": "component added to the public API",
+      "bump": "patch"
     }
   ],
   "deprecationsWithoutRuntimeWarning": [
@@ -2828,6 +2840,10 @@
             "start"
           ]
         },
+        "alignOffset": {
+          "optional": true,
+          "type": "number"
+        },
         "children": {
           "optional": false,
           "type": "React.ReactNode"
@@ -3547,6 +3563,43 @@
         "Enter, Space, Escape and typeahead by name or calling code (country select)",
         "Tab",
         "typing digits"
+      ]
+    },
+    "PixelLoop": {
+      "element": "div",
+      "props": {
+        "animate": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "cycle": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "rows": {
+          "optional": true,
+          "type": "PixelLoopRows"
+        },
+        "size": {
+          "optional": true,
+          "values": [
+            "lg",
+            "md",
+            "sm"
+          ]
+        },
+        "variant": {
+          "optional": true,
+          "values": [
+            "dots",
+            "strokes"
+          ]
+        }
+      },
+      "slots": [],
+      "subParts": [],
+      "keyboard": [
+        "None: the graphic is decorative and never takes focus."
       ]
     },
     "ProcessBlock": {

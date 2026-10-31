@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.2.0",
+  "packageVersion": "0.2.2",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -151,6 +151,7 @@
     "PageLayout",
     "Pagination",
     "PhoneInput",
+    "PixelLoop",
     "ProcessBlock",
     "Progress",
     "ProjectList",
@@ -250,6 +251,7 @@
       "List",
       "ListItem",
       "Logo",
+      "PixelLoop",
       "ProjectList",
       "ReadingProgress",
       "Snippet",
@@ -465,6 +467,11 @@
       "ListProps",
       "Logo",
       "LogoProps",
+      "PixelLoop",
+      "PixelLoopProps",
+      "PixelLoopRows",
+      "PixelLoopSize",
+      "PixelLoopVariant",
       "ProjectList",
       "ProjectListItem",
       "ProjectListProps",

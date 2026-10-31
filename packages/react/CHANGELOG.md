@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.3.0 - 2026-10-31
+
+Minor bump: the contract gate counts the corrected prop types below as
+changes, and `SplitButton` now opens its menu from the start edge.
+
+- `PixelLoop` (new export, beta): decorative constellation loop of 5x5 glyph
+  cells in dots or 45-degree strokes, `size` sm/md/lg, `rows` 1-3 or
+  `cycle` for one cell. Hidden from assistive technology and static under
+  reduced motion.
+- `SplitButton`: the menu opens under the whole control, its start edge
+  lined up with the main button, not under the toggle alone. `menuAlign`
+  defaults to `"start"` (was `"end"`).
+- `Menu`: `MenuContent` takes `alignOffset`, a shift in px along the
+  alignment edge.
+- `Badge`: the leading dot sits in the same slot as an icon (16px at xs and
+  sm, 24px at md, 32px at lg), so dot badges match the icon badges of the
+  same size.
+- `FilterChip`: medium-weight label and a 2px border on the pill and
+  rectangle shapes, matching the secondary button; the chip keeps its
+  height.
+- `CodeBlock`: the filename and language label use the medium weight and the
+  header icon the bold weight. `CodeCopyButton`: bold copy and check glyphs.
+- `ProjectList`: in narrow containers rows drop the tag chips and the
+  coming-soon pill, show "coming soon" as a muted line and get more room;
+  wide rows are unchanged.
+- `AlertBanner`: lists in the description line up with the title instead of
+  sitting indented.
+- Contract types: `Button` `rel`, `Switch` `defaultChecked`, `Text` and
+  `Title` `children` and `Title` `className` now record the types the
+  components actually accept.
+
 ## 0.2.2 - 2026-10-31
 
 - `Accordion`: new `headingLevel` (2-6) wraps each trigger in a heading of

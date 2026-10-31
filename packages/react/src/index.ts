@@ -281,6 +281,13 @@ export {
   Spacer,
   type SpacerProps,
 } from "../../../nextjs-app/shared/components/Spacer";
+export { PixelLoop } from "../../../nextjs-app/shared/components/PixelLoop/PixelLoop";
+export type {
+  PixelLoopProps,
+  PixelLoopRows,
+  PixelLoopSize,
+  PixelLoopVariant,
+} from "../../../nextjs-app/shared/components/PixelLoop/PixelLoop";
 export { ScrollIndicator } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
 export type { ScrollIndicatorProps } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
 export { default as SegmentedControl } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";

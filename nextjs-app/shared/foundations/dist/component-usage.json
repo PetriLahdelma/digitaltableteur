@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-31T01:19:04.582Z",
+  "generatedAt": "2026-10-31T01:26:11.387Z",
   "summary": {
     "catalogCount": 231,
     "governedCount": 193,
-    "exportedCount": 100,
+    "exportedCount": 101,
     "strictConsumedCount": 53,
     "transitiveConsumedCount": 87
   },
@@ -3583,7 +3583,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 0,
       "directImporters": [],
       "packageImportCount": 0,
