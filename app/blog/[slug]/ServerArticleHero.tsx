@@ -4,7 +4,7 @@ import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
 import { articleMeasureClassName } from "@/nextjs-app/shared/components/ArticleContent/articleProseClasses";
-import { Author, cn } from "@digitaltableteur/react";
+import { Author } from "@digitaltableteur/react";
 
 function formatPublishedDate(iso?: string): string {
   if (!iso) return "";
@@ -95,11 +95,10 @@ export function ServerArticleHero({
           // Uncaptioned hero art is decorative: a plain wrapper, so screen
           // readers don't announce an empty, unnamed figure.
           // Same width as the article's text blocks.
+          // A plain string: this is a Server Component, and helpers from the
+          // client package (cn) are client references that throw on the server.
           <HeroWrapper
-            className={cn(
-              articleMeasureClassName,
-              "mx-auto mt-10 max-w-[var(--article-measure)]",
-            )}
+            className={`${articleMeasureClassName} mx-auto mt-10 max-w-[var(--article-measure)]`}
           >
             <Image
               src={mainImageUrl}
