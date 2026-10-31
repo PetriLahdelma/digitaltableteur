@@ -1,8 +1,8 @@
 - region "Team":
   - heading "Team" [level=2]
-  - heading "Sarah Johnson" [level=4]
+  - heading "Sarah Johnson" [level=3]
   - paragraph: Product Designer
-  - heading "Michael Chen" [level=4]
+  - heading "Michael Chen" [level=3]
   - paragraph: Frontend Developer
-  - heading "Emma Davis" [level=4]
+  - heading "Emma Davis" [level=3]
   - paragraph: UX Researcher
