@@ -23,85 +23,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:17.512Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:17.751Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:10.678Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.015Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:34.927Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.432Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:18.139Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.269Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:11.231Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.504Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.499Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.928Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:18.435Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.511Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:11.501Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.762Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.787Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:48.170Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:17.831Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.008Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:10.954Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.265Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.207Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.685Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -119,113 +119,113 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:17.512Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:17.751Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:48.988Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:44.679Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:10.678Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.015Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:34.927Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.432Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:18.139Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.269Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.490Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:45.128Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:11.231Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.504Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.499Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.928Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:18.435Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.511Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.754Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:45.359Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:11.501Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.762Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.787Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:48.170Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:17.831Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:18.008Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.236Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:44.915Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:10.954Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:30.265Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:19:35.207Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:47.685Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -239,29 +239,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:48.988Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:44.679Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.490Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:45.128Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.754Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:45.359Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/ServicesGrid/__a11y-evidence__/site-servicesgrid-playground.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:49.236Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:44.915Z",
             "passed": true,
             "runner": "local-recapture"
           }

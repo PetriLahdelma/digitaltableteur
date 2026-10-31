@@ -83,22 +83,22 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:56:46.559Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:24.965Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:47:05.412Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:27.965Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:49:41.616Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:58.943Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -116,57 +116,57 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:56:46.024Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:24.501Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:25.204Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:51.513Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:47:04.681Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:27.533Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-example.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:49:41.156Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:58.509Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:56:46.559Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:24.965Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:25.610Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:51.845Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:47:05.412Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:27.965Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:49:41.616Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:25:58.943Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -180,8 +180,8 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/Checkbox/__a11y-evidence__/forms-checkbox-forced-colors.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:25.610Z",
+            "sourceCommit": "312acc913a73599e7dc2ebe8f643234b13b913fa",
+            "capturedAt": "2026-10-31T01:26:51.845Z",
             "passed": true,
             "runner": "local-recapture"
           }

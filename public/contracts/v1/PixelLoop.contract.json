@@ -2,8 +2,12 @@
   "$schema": "https://www.digitaltableteur.com/schemas/contract-spec/1.0/contract.schema.json",
   "specVersion": "1.0",
   "name": "PixelLoop",
-  "status": "alpha",
+  "status": "beta",
   "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants; the glyph pool includes the studio D and T initials.",
+  "package": {
+    "name": "@digitaltableteur/react",
+    "import": "import { PixelLoop } from \"@digitaltableteur/react\";"
+  },
   "props": {
     "size": {
       "type": "union",
@@ -27,17 +31,17 @@
     "rows": {
       "type": "PixelLoopRows",
       "optional": true,
-      "description": "Number of three-glyph rows in the animated field."
+      "description": "Number of three-cell rows in the field."
     },
     "animate": {
       "type": "boolean",
       "optional": true,
-      "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+      "description": "Runs the cross-fade cycle. Disable for a deliberate static composition."
     },
     "cycle": {
       "type": "boolean",
       "optional": true,
-      "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores rows."
+      "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores `rows`."
     }
   },
   "accessibility": {
@@ -53,85 +57,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.001Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:48.674Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:30.474Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.017Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:58.456Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:37.606Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.653Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:49.199Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:31.130Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.546Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:59.079Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:38.136Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:07.038Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:49.471Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:31.445Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.788Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:59.402Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:38.405Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.317Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:48.943Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:30.805Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.283Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:58.764Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:37.879Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -149,113 +153,113 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.001Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:48.674Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:17.786Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:59.545Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:30.474Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.017Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:58.456Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:37.606Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.653Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:49.199Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.390Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:32:00.034Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:31.130Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.546Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:59.079Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:38.136Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:07.038Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:49.471Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.667Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:32:00.294Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:31.445Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.788Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:59.402Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:38.405Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:24:06.317Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:48.943Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.073Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:59.788Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:15:30.805Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:28.283Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:18:58.764Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:37.879Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -269,29 +273,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:17.786Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:59.545Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-example.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.390Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:32:00.034Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-forced-colors.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.667Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:32:00.294Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/components/PixelLoop/__a11y-evidence__/display-pixelloop-playground.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:27:18.073Z",
+            "sourceCommit": "32ff0cd9491b69466779335f3795fc46938e8874",
+            "capturedAt": "2026-10-31T01:31:59.788Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -305,7 +309,17 @@
           "2.2.2",
           "2.3.3"
         ],
-        "reviewedAt": "2026-07-23"
+        "reviewedAt": "2026-10-31"
+      },
+      {
+        "id": "keyboard-contract",
+        "statement": "Every documented keyboard interaction works as specified.",
+        "verification": "unverified",
+        "wcag": [
+          "2.1.1",
+          "2.1.2"
+        ],
+        "note": "No exportable evidence record for this check; re-run the check to capture one."
       },
       {
         "id": "aria-requirements",
@@ -315,13 +329,20 @@
           "4.1.2"
         ],
         "note": "No exportable evidence record for this check; re-run the check to capture one."
+      },
+      {
+        "id": "human-a11y-review",
+        "statement": "A human completed an end-to-end accessibility review of this component.",
+        "verification": "manual",
+        "note": "2026-10-31: reviewed live in Storybook (Default, Example, ForcedColors). The root is aria-hidden with no role, every SVG has focusable=\"false\", there are no focusable descendants and no text reaches the accessibility tree. Under prefers-reduced-motion the cross-fade stops and each cell keeps its first glyph, so the composition stays static rather than blank; animate={false} gives the same still frame. Cells swap at most every 0.6 s over a small area, well below the WCAG 2.3.1 flash threshold. Marks inherit the text colour and switch to CanvasText in forced colors. Because the loop runs indefinitely with no on-page pause, use it as a small accent beside content, not as a large hero behind reading text (WCAG 2.2.2).",
+        "reviewedAt": "2026-10-31"
       }
     ]
   },
   "governance": {
     "owner": "design-system",
-    "lastReviewed": "2026-07-23",
-    "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+    "lastReviewed": "2026-10-31",
+    "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids."
   },
   "source": [
     "../../../nextjs-app/shared/components/PixelLoop/PixelLoop.module.css",
