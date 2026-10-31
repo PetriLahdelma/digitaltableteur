@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-casestudysummary-default",
   "mode": "light",
-  "sourceSHA": "99eac772e8e1f5934321142b9f781441339d3789",
-  "capturedAt": "2026-10-30T19:21:21.559Z",
+  "sourceSHA": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+  "capturedAt": "2026-10-31T08:53:58.322Z",
   "runner": "local-recapture",
   "checks": {
     "accessibility-tree": {
