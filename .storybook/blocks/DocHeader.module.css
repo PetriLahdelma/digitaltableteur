@@ -106,3 +106,15 @@
   max-inline-size: 70ch;
   color: var(--color-text);
 }
+
+/* Production usage under the title; "unused" takes the warning text tone so
+   components nothing renders stand out. */
+
+.usage {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.unused {
+  color: var(--color-warning-contrast);
+}

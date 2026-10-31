@@ -1,0 +1,776 @@
+{
+  "counts": {
+    "AboutHero": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "AboutPageContent": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Accordion": {
+      "status": "beta",
+      "prod": 7
+    },
+    "AlertBanner": {
+      "status": "stable",
+      "prod": 12
+    },
+    "ArticleCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ArticleContent": {
+      "status": "stable",
+      "prod": 8
+    },
+    "ArticleHero": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "ArticleLayout": {
+      "status": "alpha",
+      "prod": 7
+    },
+    "ArticlePageTemplate": {
+      "status": "alpha",
+      "prod": 5
+    },
+    "ArticleShareSection": {
+      "status": "stable",
+      "prod": 6
+    },
+    "AspectRatio": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Author": {
+      "status": "stable",
+      "prod": 3
+    },
+    "AuthorBio": {
+      "status": "stable",
+      "prod": 7
+    },
+    "Avatar": {
+      "status": "stable",
+      "prod": 9
+    },
+    "AvatarGroup": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Badge": {
+      "status": "stable",
+      "prod": 12
+    },
+    "BlogCategoryFilter": {
+      "status": "stable",
+      "prod": 2
+    },
+    "BlogHero": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "BlogIndexContent": {
+      "status": "alpha",
+      "prod": 1
+    },
+    "BlogMediaImage": {
+      "status": "stable",
+      "prod": 9
+    },
+    "BlogNav": {
+      "status": "stable",
+      "prod": 3
+    },
+    "Breadcrumb": {
+      "status": "stable",
+      "prod": 3
+    },
+    "Button": {
+      "status": "stable",
+      "prod": 12
+    },
+    "ButtonGroup": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Card": {
+      "status": "stable",
+      "prod": 10
+    },
+    "CaseStudySummary": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "CategoryFilter": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Center": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ChatWidget": {
+      "status": "beta",
+      "prod": 4
+    },
+    "Checkbox": {
+      "status": "stable",
+      "prod": 12
+    },
+    "CheckboxGroup": {
+      "status": "stable",
+      "prod": 9
+    },
+    "ClientLogoMarquee": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Code": {
+      "status": "beta",
+      "prod": 10
+    },
+    "CodeBlock": {
+      "status": "beta",
+      "prod": 8
+    },
+    "CodeBlockWindow": {
+      "status": "deprecated",
+      "prod": 1
+    },
+    "CodeCopyButton": {
+      "status": "beta",
+      "prod": 9
+    },
+    "CodeSnippet": {
+      "status": "deprecated",
+      "prod": 0
+    },
+    "Combobox": {
+      "status": "stable",
+      "prod": 11
+    },
+    "CommandPalette": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ComplianceCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ConfirmPopover": {
+      "status": "alpha",
+      "prod": 10
+    },
+    "ContactForm": {
+      "status": "beta",
+      "prod": 4
+    },
+    "ContactFormEditorial": {
+      "status": "stable",
+      "prod": 2
+    },
+    "ContactHero": {
+      "status": "stable",
+      "prod": 0
+    },
+    "ContactInquiryPanel": {
+      "status": "stable",
+      "prod": 2
+    },
+    "ContactPageContentEditorial": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Container": {
+      "status": "stable",
+      "prod": 12
+    },
+    "ContentSection": {
+      "status": "alpha",
+      "prod": 1
+    },
+    "CookieConsent": {
+      "status": "beta",
+      "prod": 4
+    },
+    "CTASection": {
+      "status": "stable",
+      "prod": 7
+    },
+    "CVDownloadSection": {
+      "status": "deprecated",
+      "prod": 0
+    },
+    "DataTable": {
+      "status": "beta",
+      "prod": 5
+    },
+    "Designerman": {
+      "status": "beta",
+      "prod": 0
+    },
+    "DesignSprintsSection": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Display": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Divider": {
+      "status": "stable",
+      "prod": 7
+    },
+    "DonnyAvatar": {
+      "status": "stable",
+      "prod": 4
+    },
+    "EmailSignatureGenerator": {
+      "status": "beta",
+      "prod": 2
+    },
+    "EmptyState": {
+      "status": "stable",
+      "prod": 3
+    },
+    "EngagementPageContent": {
+      "status": "beta",
+      "prod": 1
+    },
+    "EnhancedProjectCard": {
+      "status": "stable",
+      "prod": 6
+    },
+    "ExpandableSection": {
+      "status": "stable",
+      "prod": 2
+    },
+    "FieldShell": {
+      "status": "beta",
+      "prod": 12
+    },
+    "FileUpload": {
+      "status": "stable",
+      "prod": 6
+    },
+    "FilterChip": {
+      "status": "stable",
+      "prod": 6
+    },
+    "FlexBox": {
+      "status": "beta",
+      "prod": 12
+    },
+    "Footer": {
+      "status": "beta",
+      "prod": 0
+    },
+    "FormField": {
+      "status": "stable",
+      "prod": 9
+    },
+    "FormFieldEditorial": {
+      "status": "stable",
+      "prod": 2
+    },
+    "Gallery": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Grid": {
+      "status": "stable",
+      "prod": 12
+    },
+    "GridBlock": {
+      "status": "stable",
+      "prod": 6
+    },
+    "GroupLabel": {
+      "status": "stable",
+      "prod": 10
+    },
+    "HelperText": {
+      "status": "stable",
+      "prod": 12
+    },
+    "Hero": {
+      "status": "deprecated",
+      "prod": 0
+    },
+    "HeroSection": {
+      "status": "stable",
+      "prod": 2
+    },
+    "HighlightSection": {
+      "status": "stable",
+      "prod": 0
+    },
+    "HomeHero": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Icon": {
+      "status": "stable",
+      "prod": 12
+    },
+    "IconButton": {
+      "status": "stable",
+      "prod": 10
+    },
+    "ImagePlaceholder": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Kbd": {
+      "status": "stable",
+      "prod": 12
+    },
+    "Label": {
+      "status": "stable",
+      "prod": 12
+    },
+    "LanguageSwitcher": {
+      "status": "stable",
+      "prod": 6
+    },
+    "Lightbox": {
+      "status": "alpha",
+      "prod": 1
+    },
+    "Link": {
+      "status": "stable",
+      "prod": 12
+    },
+    "LinkedInQuoteCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "List": {
+      "status": "stable",
+      "prod": 11
+    },
+    "ListItem": {
+      "status": "stable",
+      "prod": 12
+    },
+    "LocationCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Logo": {
+      "status": "stable",
+      "prod": 7
+    },
+    "MacWindowFrame": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ManifestoSection": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "MarkdownMessage": {
+      "status": "stable",
+      "prod": 5
+    },
+    "MCPActionButton": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Menu": {
+      "status": "stable",
+      "prod": 12
+    },
+    "Mermaid": {
+      "status": "alpha",
+      "prod": 4
+    },
+    "Modal": {
+      "status": "stable",
+      "prod": 7
+    },
+    "MultiCombobox": {
+      "status": "stable",
+      "prod": 5
+    },
+    "NavLink": {
+      "status": "stable",
+      "prod": 6
+    },
+    "NavMenuList": {
+      "status": "beta",
+      "prod": 0
+    },
+    "NewsBulletin": {
+      "status": "stable",
+      "prod": 2
+    },
+    "NextLayout": {
+      "status": "beta",
+      "prod": 4
+    },
+    "OpenHours": {
+      "status": "beta",
+      "prod": 4
+    },
+    "PageLayout": {
+      "status": "stable",
+      "prod": 8
+    },
+    "Pagination": {
+      "status": "stable",
+      "prod": 2
+    },
+    "PersonCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "PhoneInput": {
+      "status": "stable",
+      "prod": 9
+    },
+    "PixelLoop": {
+      "status": "alpha",
+      "prod": 0
+    },
+    "PricingCalculator": {
+      "status": "stable",
+      "prod": 3
+    },
+    "PricingPageContent": {
+      "status": "stable",
+      "prod": 1
+    },
+    "ProcessBlock": {
+      "status": "stable",
+      "prod": 6
+    },
+    "ProcurementFaq": {
+      "status": "beta",
+      "prod": 4
+    },
+    "Progress": {
+      "status": "stable",
+      "prod": 3
+    },
+    "ProjectCard": {
+      "status": "stable",
+      "prod": 3
+    },
+    "ProjectDetailLayout": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "ProjectDetailTemplate": {
+      "status": "deprecated",
+      "prod": 0
+    },
+    "ProjectGallery": {
+      "status": "stable",
+      "prod": 1
+    },
+    "ProjectHero": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "ProjectList": {
+      "status": "beta",
+      "prod": 1
+    },
+    "ProjectMetaSection": {
+      "status": "alpha",
+      "prod": 5
+    },
+    "ProjectNav": {
+      "status": "stable",
+      "prod": 6
+    },
+    "ProofBlock": {
+      "status": "stable",
+      "prod": 0
+    },
+    "Radio": {
+      "status": "beta",
+      "prod": 5
+    },
+    "RadioGroup": {
+      "status": "beta",
+      "prod": 5
+    },
+    "ReadingProgress": {
+      "status": "stable",
+      "prod": 8
+    },
+    "RelatedPosts": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "RelatedProjects": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "ReliablePartnerBadge": {
+      "status": "alpha",
+      "prod": 8
+    },
+    "ResizablePanelGroup": {
+      "status": "beta",
+      "prod": 2
+    },
+    "ScrollIndicator": {
+      "status": "stable",
+      "prod": 7
+    },
+    "Section": {
+      "status": "stable",
+      "prod": 12
+    },
+    "SecureCVDownload": {
+      "status": "stable",
+      "prod": 1
+    },
+    "SegmentedControl": {
+      "status": "beta",
+      "prod": 3
+    },
+    "Select": {
+      "status": "stable",
+      "prod": 4
+    },
+    "SelectableCard": {
+      "status": "stable",
+      "prod": 3
+    },
+    "SentrySummaryCard": {
+      "status": "beta",
+      "prod": 0
+    },
+    "ServiceCard": {
+      "status": "stable",
+      "prod": 1
+    },
+    "ServicesBlock": {
+      "status": "stable",
+      "prod": 0
+    },
+    "ServicesGrid": {
+      "status": "beta",
+      "prod": 4
+    },
+    "ServicesLedger": {
+      "status": "beta",
+      "prod": 1
+    },
+    "ServicesSection": {
+      "status": "stable",
+      "prod": 0
+    },
+    "SiteFooter": {
+      "status": "stable",
+      "prod": 4
+    },
+    "SiteHeader": {
+      "status": "stable",
+      "prod": 11
+    },
+    "SiteTree": {
+      "status": "stable",
+      "prod": 2
+    },
+    "Skeleton": {
+      "status": "stable",
+      "prod": 10
+    },
+    "SkipLink": {
+      "status": "stable",
+      "prod": 4
+    },
+    "SlideButton": {
+      "status": "stable",
+      "prod": 4
+    },
+    "Snippet": {
+      "status": "beta",
+      "prod": 1
+    },
+    "SocialIconLink": {
+      "status": "alpha",
+      "prod": 10
+    },
+    "SocialShare": {
+      "status": "stable",
+      "prod": 4
+    },
+    "Spacer": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Spinner": {
+      "status": "stable",
+      "prod": 7
+    },
+    "SplitButton": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Stack": {
+      "status": "stable",
+      "prod": 7
+    },
+    "StageList": {
+      "status": "beta",
+      "prod": 6
+    },
+    "StatList": {
+      "status": "beta",
+      "prod": 1
+    },
+    "StatsSection": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "StatusDot": {
+      "status": "stable",
+      "prod": 12
+    },
+    "StoryBlock": {
+      "status": "stable",
+      "prod": 6
+    },
+    "SummaryList": {
+      "status": "alpha",
+      "prod": 10
+    },
+    "Switch": {
+      "status": "stable",
+      "prod": 7
+    },
+    "Table": {
+      "status": "stable",
+      "prod": 12
+    },
+    "TableCell": {
+      "status": "stable",
+      "prod": 12
+    },
+    "TableHeaderCell": {
+      "status": "stable",
+      "prod": 12
+    },
+    "TableOfContents": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "TableRow": {
+      "status": "stable",
+      "prod": 12
+    },
+    "Tabs": {
+      "status": "stable",
+      "prod": 3
+    },
+    "TaskList": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "TeamBlock": {
+      "status": "stable",
+      "prod": 1
+    },
+    "Testimonial": {
+      "status": "beta",
+      "prod": 0
+    },
+    "Text": {
+      "status": "stable",
+      "prod": 12
+    },
+    "TextArea": {
+      "status": "stable",
+      "prod": 9
+    },
+    "TextInput": {
+      "status": "stable",
+      "prod": 12
+    },
+    "ThemeProvider": {
+      "status": "beta",
+      "prod": 7
+    },
+    "Timestamp": {
+      "status": "stable",
+      "prod": 9
+    },
+    "Title": {
+      "status": "stable",
+      "prod": 12
+    },
+    "Toast": {
+      "status": "stable",
+      "prod": 11
+    },
+    "ToastStack": {
+      "status": "stable",
+      "prod": 2
+    },
+    "Tooltip": {
+      "status": "beta",
+      "prod": 12
+    },
+    "TransformingActionInput": {
+      "status": "beta",
+      "prod": 0
+    },
+    "TreeView": {
+      "status": "beta",
+      "prod": 2
+    },
+    "ValueCard": {
+      "status": "stable",
+      "prod": 3
+    },
+    "ValuesSection": {
+      "status": "alpha",
+      "prod": 2
+    },
+    "VirtualList": {
+      "status": "beta",
+      "prod": 0
+    },
+    "VirtualListItem": {
+      "status": "beta",
+      "prod": 0
+    },
+    "VisuallyHidden": {
+      "status": "stable",
+      "prod": 11
+    },
+    "WipBadge": {
+      "status": "beta",
+      "prod": 0
+    },
+    "WorkCTA": {
+      "status": "alpha",
+      "prod": 6
+    },
+    "WorkHero": {
+      "status": "alpha",
+      "prod": 1
+    },
+    "WorkMagneticField": {
+      "status": "stable",
+      "prod": 1
+    },
+    "WorkNav": {
+      "status": "stable",
+      "prod": 12
+    },
+    "WorkPreviewSection": {
+      "status": "stable",
+      "prod": 2
+    }
+  }
+}

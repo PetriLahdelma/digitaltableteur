@@ -2,6 +2,10 @@ import React from "react";
 import { addons } from "storybook/manager-api";
 import { create } from "storybook/theming";
 import type { API_HashEntry } from "storybook/internal/types";
+import usage from "../nextjs-app/shared/foundations/dist/component-usage-counts.json";
+
+/** Production pages that render each component (npm run report:component-usage). */
+const USAGE = (usage as { counts: Record<string, { prod: number }> }).counts;
 
 const brandImage =
   process.env.NODE_ENV === "production"
@@ -56,11 +60,34 @@ const STATUS_TAGS = ["stable", "beta", "alpha", "deprecated"] as const;
  * carries a status tag (stable = solid, beta = hollow, alpha = muted,
  * deprecated = struck). Dot styles live in manager-head.html.
  */
+/**
+ * The component's production usage after its name: the number of production
+ * pages that render it, or "unused" when none does, so dead components stand
+ * out in the sidebar. Only component entries carry it (one per component).
+ */
+function usageCount(item: API_HashEntry): React.ReactNode {
+  if (item.type !== "component") return null;
+  const entry = USAGE[item.name];
+  if (!entry) return null;
+  const unused = entry.prod === 0;
+  return React.createElement(
+    "span",
+    {
+      className: unused ? "dt-usage dt-usage--unused" : "dt-usage",
+      title: unused
+        ? "Not rendered on any production page"
+        : `Rendered on ${entry.prod} production page${entry.prod === 1 ? "" : "s"}`,
+    },
+    unused ? "unused" : String(entry.prod),
+  );
+}
+
 function renderLabel(item: API_HashEntry): React.ReactNode {
   if (item.type !== "component" && item.type !== "docs") return item.name;
   const tags: string[] = (item as { tags?: string[] }).tags ?? [];
   const status = STATUS_TAGS.find((candidate) => tags.includes(candidate));
-  if (!status) return item.name;
+  const count = usageCount(item);
+  if (!status && !count) return item.name;
   const labelClass =
     status === "deprecated"
       ? "dt-sidebar-label dt-sidebar-label--deprecated"
@@ -69,10 +96,13 @@ function renderLabel(item: API_HashEntry): React.ReactNode {
     "span",
     { className: labelClass },
     item.name,
-    React.createElement("span", {
-      className: `dt-status-dot dt-status-dot--${status}`,
-      "aria-hidden": "true",
-    }),
+    status
+      ? React.createElement("span", {
+          className: `dt-status-dot dt-status-dot--${status}`,
+          "aria-hidden": "true",
+        })
+      : null,
+    count,
   );
 }
 

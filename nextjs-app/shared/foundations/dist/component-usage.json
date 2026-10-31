@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-30T14:25:14.786Z",
+  "generatedAt": "2026-10-31T01:08:00.621Z",
   "summary": {
-    "catalogCount": 228,
-    "governedCount": 191,
-    "exportedCount": 98,
-    "strictConsumedCount": 52,
-    "transitiveConsumedCount": 84
+    "catalogCount": 231,
+    "governedCount": 193,
+    "exportedCount": 100,
+    "strictConsumedCount": 53,
+    "transitiveConsumedCount": 87
   },
   "components": [
     {
@@ -71,17 +71,15 @@
       "status": "beta",
       "governed": true,
       "exported": true,
-      "directImportCount": 4,
+      "directImportCount": 3,
       "directImporters": [
         "app/intake/_components/IntakeForm.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
         "nextjs-app/shared/patterns/ProcurementFaq/ProcurementFaq.tsx"
       ],
-      "packageImportCount": 4,
+      "packageImportCount": 3,
       "packageImporters": [
         "app/intake/_components/IntakeForm.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
         "nextjs-app/shared/patterns/ProcurementFaq/ProcurementFaq.tsx"
       ],
@@ -93,12 +91,12 @@
         "nextjs-app/shared/components/pages/EngagementPage/index.ts",
         "nextjs-app/shared/components/pages/PricingPage/index.ts",
         "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-        "nextjs-app/shared/components/pages/SiteChangelog/index.ts",
-        "nextjs-app/shared/components/pages/SiteChangelog/SiteChangelogPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/index.ts",
-        "nextjs-app/shared/components/pages/StudioLog/StudioLogPage.tsx",
-        "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx"
+        "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
+        "nextjs-app/shared/patterns/EngagementPageContent/index.ts",
+        "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+        "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+        "nextjs-app/shared/patterns/ProcurementFaq/index.ts",
+        "nextjs-app/shared/patterns/ProcurementFaq/ProcurementFaq.tsx"
       ]
     },
     {
@@ -233,21 +231,23 @@
       "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 4,
+      "directImportCount": 5,
       "directImporters": [
         "app/blog/[slug]/BlogArticleMdxBody.tsx",
         "app/blog/[slug]/ClientArticleShell.tsx",
+        "app/blog/[slug]/ServerArticleHero.tsx",
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 10,
+      "prodPageCount": 11,
       "prodPages": [
         "app/blog/[slug]/BlogArticleMdxBody.tsx",
         "app/blog/[slug]/ClientArticleShell.tsx",
         "app/blog/[slug]/page.tsx",
         "app/blog/[slug]/ServerArticleContent.tsx",
+        "app/blog/[slug]/ServerArticleHero.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
         "nextjs-app/shared/components/pages/Blog/index.ts",
@@ -688,7 +688,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 70,
+      "directImportCount": 69,
       "directImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/error.tsx",
@@ -750,7 +750,6 @@
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
         "nextjs-app/shared/components/pages/DataDeletionPage/DataDeletionPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
         "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
@@ -761,7 +760,7 @@
         "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx"
       ],
-      "packageImportCount": 31,
+      "packageImportCount": 30,
       "packageImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/error.tsx",
@@ -785,7 +784,6 @@
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
         "nextjs-app/shared/components/pages/DataDeletionPage/DataDeletionPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
         "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
@@ -1192,7 +1190,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 7,
+      "directImportCount": 8,
       "directImporters": [
         "app/intake/_components/IntakeField.tsx",
         "app/intake/admin/_components/InviteForm.tsx",
@@ -1200,7 +1198,8 @@
         "nextjs-app/shared/components/FileUpload/FileUpload.tsx",
         "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx",
         "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
-        "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx"
+        "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
+        "nextjs-app/shared/components/Select/Select.tsx"
       ],
       "packageImportCount": 2,
       "packageImporters": [
@@ -1578,7 +1577,7 @@
     {
       "name": "CVDownloadSection",
       "kind": "pattern",
-      "status": "alpha",
+      "status": "deprecated",
       "governed": true,
       "exported": false,
       "directImportCount": 1,
@@ -1847,7 +1846,7 @@
     {
       "name": "EngagementPageContent",
       "kind": "pattern",
-      "status": "alpha",
+      "status": "beta",
       "governed": true,
       "exported": false,
       "directImportCount": 1,
@@ -1945,6 +1944,40 @@
         "nextjs-app/shared/components/pages/ContactPage/index.ts",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts"
+      ]
+    },
+    {
+      "name": "FieldShell",
+      "kind": "component",
+      "status": "beta",
+      "governed": true,
+      "exported": true,
+      "directImportCount": 7,
+      "directImporters": [
+        "nextjs-app/shared/components/Combobox/Combobox.tsx",
+        "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx",
+        "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
+        "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
+        "nextjs-app/shared/components/Select/Select.tsx",
+        "nextjs-app/shared/components/TextArea/TextArea.tsx",
+        "nextjs-app/shared/components/TextInput/TextInput.tsx"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 12,
+      "prodPages": [
+        "app/intake/_components/CodeStep.tsx",
+        "app/intake/_components/IntakeChrome.tsx",
+        "app/intake/_components/IntakeField.tsx",
+        "app/intake/_components/IntakeForm.tsx",
+        "app/intake/_components/InviteFlow.tsx",
+        "app/intake/_components/SignInFlow.tsx",
+        "app/intake/admin/_components/InviteForm.tsx",
+        "app/intake/admin/_components/PasskeyFlows.tsx",
+        "app/intake/admin/_components/PasskeyList.tsx",
+        "app/intake/admin/enrol/page.tsx",
+        "app/intake/admin/invite/page.tsx",
+        "app/intake/admin/page.tsx"
       ]
     },
     {
@@ -2302,19 +2335,14 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 11,
+      "directImportCount": 6,
       "directImporters": [
         "nextjs-app/shared/components/Checkbox/Checkbox.tsx",
-        "nextjs-app/shared/components/Combobox/Combobox.tsx",
+        "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
         "nextjs-app/shared/components/FileUpload/FileUpload.tsx",
-        "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
-        "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
         "nextjs-app/shared/components/RadioGroup/RadioGroup.tsx",
-        "nextjs-app/shared/components/Select/Select.tsx",
         "nextjs-app/shared/components/SelectableCard/SelectableCard.tsx",
-        "nextjs-app/shared/components/Switch/Switch.tsx",
-        "nextjs-app/shared/components/TextArea/TextArea.tsx",
-        "nextjs-app/shared/components/TextInput/TextInput.tsx"
+        "nextjs-app/shared/components/Switch/Switch.tsx"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
@@ -2467,6 +2495,7 @@
         "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
         "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx",
         "nextjs-app/shared/components/EmptyState/EmptyState.tsx",
+        "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
         "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
         "nextjs-app/shared/components/Link/Link.tsx",
         "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.tsx",
@@ -2478,7 +2507,6 @@
         "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
         "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
         "nextjs-app/shared/components/SecureCVDownload/SecureCVDownload.tsx",
-        "nextjs-app/shared/components/Select/Select.tsx",
         "nextjs-app/shared/components/ServicesGrid/ServicesGrid.tsx",
         "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
         "nextjs-app/shared/components/SlideButton/SlideButton.tsx",
@@ -2649,18 +2677,20 @@
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 10,
+      "prodPageCount": 12,
       "prodPages": [
+        "app/intake/_components/CodeStep.tsx",
         "app/intake/_components/IntakeChrome.tsx",
+        "app/intake/_components/IntakeField.tsx",
         "app/intake/_components/IntakeForm.tsx",
+        "app/intake/_components/InviteFlow.tsx",
+        "app/intake/_components/SignInFlow.tsx",
         "app/intake/admin/_components/IntakeActions.tsx",
+        "app/intake/admin/_components/InviteForm.tsx",
+        "app/intake/admin/_components/PasskeyFlows.tsx",
         "app/intake/admin/_components/PasskeyList.tsx",
-        "app/intake/admin/intakes/[inviteId]/page.tsx",
-        "app/intake/admin/passkeys/page.tsx",
-        "app/intake/forms/[inviteId]/page.tsx",
-        "app/intake/layout.tsx",
-        "app/layout.tsx",
-        "app/not-found.tsx"
+        "app/intake/admin/enrol/page.tsx",
+        "app/intake/admin/intakes/[inviteId]/page.tsx"
       ]
     },
     {
@@ -2684,16 +2714,13 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 10,
+      "directImportCount": 7,
       "directImporters": [
         "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx",
         "nextjs-app/shared/components/Checkbox/Checkbox.tsx",
-        "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
+        "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
         "nextjs-app/shared/components/Radio/Radio.tsx",
-        "nextjs-app/shared/components/Select/Select.tsx",
         "nextjs-app/shared/components/Switch/Switch.tsx",
-        "nextjs-app/shared/components/TextArea/TextArea.tsx",
-        "nextjs-app/shared/components/TextInput/TextInput.tsx",
         "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.tsx",
         "nextjs-app/shared/components/index.ts"
       ],
@@ -2766,7 +2793,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 34,
+      "directImportCount": 33,
       "directImporters": [
         "app/design-system/agent/AgentBenchSection.tsx",
         "app/design-system/agent/EvidencePerPublishSection.tsx",
@@ -2792,7 +2819,6 @@
         "nextjs-app/shared/components/pages/DataDeletionPage/DataDeletionPage.tsx",
         "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
         "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/RingStats/RingStatsPage.tsx",
         "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
@@ -2927,15 +2953,15 @@
         "app/blog/[slug]/page.tsx",
         "app/blog/[slug]/ServerArticleContent.tsx",
         "app/blog/[slug]/ServerArticleHero.tsx",
+        "app/intake/_components/CodeStep.tsx",
         "app/intake/_components/IntakeChrome.tsx",
-        "app/intake/layout.tsx",
-        "app/layout.tsx",
-        "app/not-found.tsx",
-        "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
-        "nextjs-app/shared/components/pages/EngagementPage/index.ts",
-        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-        "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-        "nextjs-app/shared/patterns/EngagementPageContent/index.ts"
+        "app/intake/_components/IntakeField.tsx",
+        "app/intake/_components/IntakeForm.tsx",
+        "app/intake/_components/InviteFlow.tsx",
+        "app/intake/_components/SignInFlow.tsx",
+        "app/intake/admin/_components/InviteForm.tsx",
+        "app/intake/admin/_components/PasskeyFlows.tsx",
+        "app/intake/admin/_components/PasskeyList.tsx"
       ]
     },
     {
@@ -3109,10 +3135,11 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 4,
+      "directImportCount": 5,
       "directImporters": [
         "nextjs-app/shared/components/Avatar/Avatar.tsx",
         "nextjs-app/shared/components/Breadcrumb/Breadcrumb.tsx",
+        "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
         "nextjs-app/shared/components/SplitButton/SplitButton.tsx",
         "nextjs-app/shared/components/index.ts"
       ],
@@ -3123,15 +3150,15 @@
         "app/blog/[slug]/page.tsx",
         "app/blog/[slug]/ServerArticleContent.tsx",
         "app/blog/[slug]/ServerArticleHero.tsx",
+        "app/intake/_components/CodeStep.tsx",
         "app/intake/_components/IntakeChrome.tsx",
-        "app/intake/layout.tsx",
-        "app/layout.tsx",
-        "app/not-found.tsx",
-        "nextjs-app/shared/components/pages/EngagementPage/EngagementPage.tsx",
-        "nextjs-app/shared/components/pages/EngagementPage/index.ts",
-        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-        "nextjs-app/shared/patterns/EngagementPageContent/EngagementPageContent.tsx",
-        "nextjs-app/shared/patterns/EngagementPageContent/index.ts"
+        "app/intake/_components/IntakeField.tsx",
+        "app/intake/_components/IntakeForm.tsx",
+        "app/intake/_components/InviteFlow.tsx",
+        "app/intake/_components/SignInFlow.tsx",
+        "app/intake/admin/_components/InviteForm.tsx",
+        "app/intake/admin/_components/PasskeyFlows.tsx",
+        "app/intake/admin/_components/PasskeyList.tsx"
       ]
     },
     {
@@ -3365,6 +3392,21 @@
         "app/layout.tsx",
         "app/not-found.tsx"
       ]
+    },
+    {
+      "name": "node_modules",
+      "kind": "component",
+      "status": null,
+      "governed": false,
+      "exported": false,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/data/designSystemPackageVersions.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "OpenHours",
@@ -3645,7 +3687,7 @@
     {
       "name": "ProcurementFaq",
       "kind": "pattern",
-      "status": "alpha",
+      "status": "beta",
       "governed": true,
       "exported": false,
       "directImportCount": 2,
@@ -3765,7 +3807,7 @@
     {
       "name": "ProjectDetailTemplate",
       "kind": "pattern",
-      "status": "alpha",
+      "status": "deprecated",
       "governed": true,
       "exported": false,
       "directImportCount": 1,
@@ -4461,7 +4503,7 @@
     {
       "name": "ServicesLedger",
       "kind": "pattern",
-      "status": "alpha",
+      "status": "beta",
       "governed": true,
       "exported": false,
       "directImportCount": 2,
@@ -4855,6 +4897,26 @@
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
         "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
         "nextjs-app/shared/patterns/index.ts"
+      ]
+    },
+    {
+      "name": "StatList",
+      "kind": "component",
+      "status": "beta",
+      "governed": true,
+      "exported": true,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx"
+      ],
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx"
+      ],
+      "prodPageCount": 2,
+      "prodPages": [
+        "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+        "nextjs-app/shared/components/pages/Colophon/index.ts"
       ]
     },
     {
@@ -5286,7 +5348,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 92,
+      "directImportCount": 91,
       "directImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/design-system/agent/AgentBenchSection.tsx",
@@ -5347,7 +5409,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
         "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
@@ -5381,7 +5442,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 60,
+      "packageImportCount": 59,
       "packageImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/design-system/agent/AgentBenchSection.tsx",
@@ -5412,7 +5473,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
         "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
@@ -5618,7 +5678,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 80,
+      "directImportCount": 79,
       "directImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/design-system/agent/AgentBenchSection.tsx",
@@ -5666,7 +5726,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
         "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
@@ -5701,7 +5760,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 60,
+      "packageImportCount": 59,
       "packageImporters": [
         "app/blog/[slug]/ArticleOfferBlock.tsx",
         "app/design-system/agent/AgentBenchSection.tsx",
@@ -5735,7 +5794,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
         "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
-        "nextjs-app/shared/components/pages/StudioLog/DatedLog.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
@@ -5839,14 +5897,28 @@
       "status": "beta",
       "governed": true,
       "exported": true,
-      "directImportCount": 1,
+      "directImportCount": 2,
       "directImporters": [
+        "nextjs-app/shared/components/FieldShell/FieldShell.tsx",
         "nextjs-app/shared/components/interactive/index.ts"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 0,
-      "prodPages": []
+      "prodPageCount": 12,
+      "prodPages": [
+        "app/intake/_components/CodeStep.tsx",
+        "app/intake/_components/IntakeChrome.tsx",
+        "app/intake/_components/IntakeField.tsx",
+        "app/intake/_components/IntakeForm.tsx",
+        "app/intake/_components/InviteFlow.tsx",
+        "app/intake/_components/SignInFlow.tsx",
+        "app/intake/admin/_components/InviteForm.tsx",
+        "app/intake/admin/_components/PasskeyFlows.tsx",
+        "app/intake/admin/_components/PasskeyList.tsx",
+        "app/intake/admin/enrol/page.tsx",
+        "app/intake/admin/invite/page.tsx",
+        "app/intake/admin/page.tsx"
+      ]
     },
     {
       "name": "TransformingActionInput",

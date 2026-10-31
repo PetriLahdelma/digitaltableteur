@@ -32,6 +32,7 @@
   /* Lifecycle dots appended by sidebar.renderLabel (manager.ts). */
   .dt-sidebar-label {
     display: inline-flex;
+    inline-size: 100%;
     align-items: center;
     gap: 6px;
   }
@@ -59,6 +60,20 @@
   .dt-status-dot--deprecated {
     background: #ff6b6b; /* --color-error (dark) */
     opacity: 0.6;
+  }
+
+  /* Production usage after the name: a quiet count, or "unused" in the
+     warning tone so components nothing renders stand out. */
+  .dt-usage {
+    margin-inline-start: auto;
+    padding-inline-start: 6px;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: #888888; /* --color-muted (dark) */
+  }
+
+  .dt-usage--unused {
+    color: #ffb366; /* --color-warning (dark) */
   }
 
   /* Struck label: deprecated entries read as retired at a glance. */

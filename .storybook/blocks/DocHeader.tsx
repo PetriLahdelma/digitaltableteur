@@ -9,7 +9,11 @@ import {
 } from "../lib/web-components";
 import { StatusPill } from "./StatusPill";
 import type { ComponentStatus } from "./StatusPill";
+import usage from "../../nextjs-app/shared/foundations/dist/component-usage-counts.json";
 import styles from "./DocHeader.module.css";
+
+/** Production pages that render each component (npm run report:component-usage). */
+const USAGE = (usage as { counts: Record<string, { prod: number }> }).counts;
 
 /**
  * Docs-page masthead, stacked: the component group on its own row, then the
@@ -59,6 +63,23 @@ export function DocHeader({
           <StatusPill status={contract.status} />
         )}
       </div>
+      {implementation === "react" && USAGE[contract.name] ? (
+        <Text
+          as="p"
+          size="s"
+          className={
+            USAGE[contract.name].prod === 0
+              ? `${styles.usage} ${styles.unused}`
+              : styles.usage
+          }
+        >
+          {USAGE[contract.name].prod === 0
+            ? "Not rendered on any production page"
+            : `Rendered on ${USAGE[contract.name].prod} production page${
+                USAGE[contract.name].prod === 1 ? "" : "s"
+              }`}
+        </Text>
+      ) : null}
       <ImplementationSwitch
         componentName={contract.name}
         implementation={implementation}

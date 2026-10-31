@@ -18,6 +18,9 @@ import { computeConsumersForComponent } from "./consumers-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_PATH = join(ROOT, "nextjs-app/shared/foundations/dist/component-usage.json");
+// Small map for Storybook's sidebar and doc headers: production files that
+// render each governed component (barrel index files excluded).
+const COUNTS_PATH = join(ROOT, "nextjs-app/shared/foundations/dist/component-usage-counts.json");
 const COMPONENT_ROOTS = [
   { base: "nextjs-app/shared/components", kind: "component" },
   { base: "nextjs-app/shared/patterns", kind: "pattern" },
@@ -193,10 +196,32 @@ const summary = {
 };
 
 mkdirSync(dirname(OUT_PATH), { recursive: true });
+// Keep the previous timestamp when nothing else changed, so build:tokens (run
+// by pre-push) does not leave a diff that is only a new date.
+const previous = existsSync(OUT_PATH) ? JSON.parse(readFileSync(OUT_PATH, "utf8")) : null;
+const unchanged =
+  previous &&
+  JSON.stringify({
+    summary: previous.summary,
+    components: previous.components,
+  }) === JSON.stringify({ summary, components: rows });
 writeFileSync(
   OUT_PATH,
-  `${JSON.stringify({ generatedAt: new Date().toISOString(), summary, components: rows }, null, 2)}\n`,
+  `${JSON.stringify({ generatedAt: unchanged ? previous.generatedAt : new Date().toISOString(), summary, components: rows }, null, 2)}\n`,
 );
+
+const counts = Object.fromEntries(
+  rows
+    .filter((row) => row.governed)
+    .map((row) => [
+      row.name,
+      {
+        status: row.status,
+        prod: row.prodPages.filter((file) => !/\/index\.tsx?$/.test(file)).length,
+      },
+    ]),
+);
+writeFileSync(COUNTS_PATH, `${JSON.stringify({ counts }, null, 2)}\n`);
 
 const sorted = [...rows].sort(
   (a, b) => b.directImportCount - a.directImportCount || a.name.localeCompare(b.name),

@@ -19,6 +19,7 @@ nextjs-app/shared/foundations/dist/*
 !nextjs-app/shared/foundations/dist/docs-registry.json
 !nextjs-app/shared/foundations/dist/tokens-manifest.json
 !nextjs-app/shared/foundations/dist/component-usage.json
+!nextjs-app/shared/foundations/dist/component-usage-counts.json
 packages/*/dist/
 
 # misc
