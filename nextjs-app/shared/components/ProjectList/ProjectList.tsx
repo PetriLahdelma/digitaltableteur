@@ -116,6 +116,11 @@ export function ProjectList({
                     {meta}
                   </span>
                 )}
+                {item.comingSoon && (
+                  // Narrow rows carry no chips: the teaser state reads as a
+                  // quiet line instead of the pill the wide row shows.
+                  <span className={styles.soonNote}>{soonLabel}</span>
+                )}
               </span>
               <span className={styles.client} lang={clientLang}>
                 {item.client}
