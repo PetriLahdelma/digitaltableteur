@@ -193,7 +193,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
               if (onRemove) onRemove();
             }}
           >
-            <Icon name="x" color="currentColor" size={14} decorative />
+            <Icon name="x" color="currentColor" size={14} weight="bold" decorative />
           </button>
         )}
       </span>
