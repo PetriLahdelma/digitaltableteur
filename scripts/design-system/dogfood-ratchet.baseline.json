@@ -567,7 +567,7 @@
     },
     "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.tsx": {
       "rawElements": 8,
-      "utilityLines": 24
+      "utilityLines": 21
     },
     "nextjs-app/shared/patterns/RelatedPosts/RelatedPosts.tsx": {
       "rawElements": 1,
