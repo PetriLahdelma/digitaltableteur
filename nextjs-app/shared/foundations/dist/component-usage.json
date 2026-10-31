@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T01:08:00.621Z",
+  "generatedAt": "2026-10-31T01:19:04.582Z",
   "summary": {
     "catalogCount": 231,
     "governedCount": 193,
@@ -3581,7 +3581,7 @@
     {
       "name": "PixelLoop",
       "kind": "component",
-      "status": "alpha",
+      "status": "beta",
       "governed": true,
       "exported": false,
       "directImportCount": 0,

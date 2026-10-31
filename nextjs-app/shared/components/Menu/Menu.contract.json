@@ -140,6 +140,11 @@
             "optional": true,
             "type": "number",
             "description": "Gap in px between the trigger and the content."
+        },
+        "alignOffset": {
+            "optional": true,
+            "type": "number",
+            "description": "Shift in px along the alignment edge (negative moves toward the start)."
         }
     },
     "forbiddenUse": [

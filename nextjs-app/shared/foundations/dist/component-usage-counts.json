@@ -433,7 +433,7 @@
       "prod": 9
     },
     "PixelLoop": {
-      "status": "alpha",
+      "status": "beta",
       "prod": 0
     },
     "PricingCalculator": {

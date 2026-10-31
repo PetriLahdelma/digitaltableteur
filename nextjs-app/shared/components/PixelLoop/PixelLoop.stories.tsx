@@ -19,7 +19,7 @@ const meta = {
       },
     },
   },
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   argTypes: {
     size: {
       control: "radio",

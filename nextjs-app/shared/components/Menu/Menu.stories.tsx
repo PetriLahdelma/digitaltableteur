@@ -98,6 +98,11 @@ const meta = {
       description: "Gap between the trigger and the content in px",
       table: { defaultValue: { summary: "6" }, category: "Appearance" },
     },
+    alignOffset: {
+      control: { type: "number" },
+      description: "Shift in px along the alignment edge (negative moves toward the start)",
+      table: { defaultValue: { summary: "0" }, category: "Appearance" },
+    },
     className: {
       control: "text",
       description: "Extra class on the content surface",
@@ -115,6 +120,7 @@ const meta = {
     side: "bottom" as const,
     align: "start" as const,
     sideOffset: 6,
+    alignOffset: 0,
     className: "",
     children: "actions" as unknown as (typeof contentPresets)["actions"],
   },

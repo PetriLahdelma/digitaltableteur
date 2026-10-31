@@ -881,6 +881,11 @@
       "name": "ServicesLedger",
       "type": "COMPONENT_SET",
       "page": "Patterns"
+    },
+    "2100-7547": {
+      "name": "PixelLoop",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
     }
   }
 }

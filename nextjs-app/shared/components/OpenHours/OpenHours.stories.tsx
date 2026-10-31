@@ -9,6 +9,7 @@ const meta: Meta<typeof OpenHours> = {
   title: "Site/OpenHours",
   component: OpenHours,
   tags: ["beta", "!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   // Required AT snapshots must not depend on the CI runner's wall clock.
   args: { date: new Date("2025-11-03T10:30:00Z") },
 };

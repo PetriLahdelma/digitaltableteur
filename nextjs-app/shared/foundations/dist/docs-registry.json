@@ -1601,7 +1601,7 @@
         {
           "story": "LifecycleDots",
           "description": "dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).",
-          "source": "export const LifecycleDots: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).\",\n      },\n    },\n  },\n  render: () => (\n    <div\n      style={{\n        display: \"flex\",\n        gap: \"0.75rem\",\n        alignItems: \"center\",\n        flexWrap: \"wrap\",\n      }}\n    >\n      <Badge variant=\"secondary\" tone=\"warning\" size=\"sm\" dot>\n        alpha\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\" size=\"sm\" dot>\n        beta\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"success\" size=\"sm\" dot>\n        stable\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\" size=\"sm\" dot>\n        deprecated\n      </Badge>\n    </div>\n  ),\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"xs\">{t(\"badgeExtraSmall\")}</Badge>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
+          "source": "export const LifecycleDots: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).\",\n      },\n    },\n  },\n  render: () => (\n    <div\n      style={{\n        display: \"flex\",\n        gap: \"0.75rem\",\n        alignItems: \"center\",\n        flexWrap: \"wrap\",\n      }}\n    >\n      <Badge variant=\"secondary\" tone=\"warning\" dot>\n        alpha\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\" dot>\n        beta\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"success\" dot>\n        stable\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\" dot>\n        deprecated\n      </Badge>\n    </div>\n  ),\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"xs\">{t(\"badgeExtraSmall\")}</Badge>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
         },
         {
           "story": "Sizes",
@@ -3591,7 +3591,7 @@
         {
           "story": "SelectAllParent",
           "description": "Composition in context: a select-all parent showing indeterminate while the set is mixed (CheckboxGroup packages this pattern).",
-          "source": "export const SelectAllParent: StoryFn = () => <SelectAllContent />;\nSelectAllParent.tags = [\"example\"];\nSelectAllParent.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Composition in context: a select-all parent showing indeterminate while the set is mixed (CheckboxGroup packages this pattern).\",\n    },\n  },\n};"
+          "source": "export const SelectAllParent: StoryFn = () => <SelectAllContent />;\nSelectAllParent.tags = [\"example\"];\nSelectAllParent.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Composition in context: a select-all parent showing indeterminate while the set is mixed (CheckboxGroup packages this pattern).\",\n    },\n  },\n};\n\n// Playground keeps the canvas interactive while `checked` is seeded (controlled):\n// toggling in the canvas writes the arg back so panel and canvas stay in sync.\nconst PlaygroundRender: StoryFn<CheckboxProps> = (args) => {\n  const [, updateArgs] = useArgs();\n  const label =\n    typeof args.label === \"string\" ? (\n      <StoryLabel tKey={args.label} />\n    ) : (\n      args.label\n    );\n  return (\n    <Checkbox\n      {...args}\n      label={label as any}\n      onCheckedChange={(next) => {\n        args.onCheckedChange?.(next);\n        updateArgs({ checked: next });\n      }}\n    />\n  );\n};"
         }
       ]
     },
@@ -10930,6 +10930,11 @@
           "name": "sideOffset",
           "type": "number",
           "required": false
+        },
+        {
+          "name": "alignOffset",
+          "type": "number",
+          "required": false
         }
       ],
       "props": {
@@ -10967,6 +10972,11 @@
           "optional": true,
           "type": "number",
           "description": "Gap in px between the trigger and the content."
+        },
+        "alignOffset": {
+          "optional": true,
+          "type": "number",
+          "description": "Shift in px along the alignment edge (negative moves toward the start)."
         }
       },
       "composesWith": [
@@ -12871,7 +12881,7 @@
       "name": "PixelLoop",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants; the glyph pool includes the studio D and T initials.",
       "dense": "",
       "keywords": [],
@@ -12926,17 +12936,17 @@
         "rows": {
           "optional": true,
           "type": "PixelLoopRows",
-          "description": "Number of three-glyph rows in the animated field."
+          "description": "Number of three-cell rows in the field."
         },
         "animate": {
           "optional": true,
           "type": "boolean",
-          "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+          "description": "Runs the cross-fade cycle. Disable for a deliberate static composition."
         },
         "cycle": {
           "optional": true,
           "type": "boolean",
-          "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores rows."
+          "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores `rows`."
         }
       },
       "composesWith": [],
@@ -12944,7 +12954,7 @@
       "forbiddenUse": [
         "use it to communicate loading, progress, status, or instructions.",
         "add labels or interaction to the glyphs.",
-        "replace the stepped rotation with smooth motion."
+        "replace the stepped cross-fade with smooth motion."
       ],
       "usage": null,
       "tokens": {
