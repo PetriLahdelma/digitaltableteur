@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.1 - 2026-10-31
+
+- `Avatar`: `alt` overrides the image alt text (defaults to `name`); pass
+  `""` when the name is printed beside the avatar so it is not read twice.
+  Initials grow with custom sizes past about 3rem instead of staying at
+  1.125rem.
+- `Badge`: the remove button's X sits one spacing step in from the end edge,
+  uses the bold glyph, no longer paints a circle on hover and has a hit area
+  that runs from the label gap to the end edge at the badge's full height.
+
 ## 0.3.0 - 2026-10-31
 
 Minor bump: the contract gate counts the corrected prop types below as
