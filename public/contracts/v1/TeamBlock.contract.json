@@ -3,7 +3,7 @@
   "specVersion": "1.0",
   "name": "TeamBlock",
   "status": "stable",
-  "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
+  "description": "Centred team grid of member cards: an Avatar, the name and the role, plus avatar-size, column and spacing knobs.",
   "props": {
     "members": {
       "type": "TeamMember[]",
@@ -78,10 +78,10 @@
       "optional": true,
       "description": "Accessible label for the section"
     },
-    "roundImages": {
-      "type": "boolean",
+    "avatarSize": {
+      "type": "string",
       "optional": true,
-      "description": "Show member images as circles instead of rounded squares"
+      "description": "Avatar diameter as any CSS length (default 7rem)"
     }
   },
   "accessibility": {
@@ -97,85 +97,85 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:06.389Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.358Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.292Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:23.926Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.376Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.140Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:07.100Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.893Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.838Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.434Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.981Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.647Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:07.422Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:35.143Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:02.104Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.697Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:12.283Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.903Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:06.777Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.625Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.580Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.188Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.675Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.403Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -193,113 +193,113 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:06.389Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.358Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:57.785Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.294Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.292Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:23.926Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.376Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.140Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:07.100Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.893Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.395Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.773Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.838Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.434Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.981Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.647Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:07.422Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:35.143Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.718Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.999Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:02.104Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.697Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:12.283Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.903Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.dark.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:54:06.777Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:34.625Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.067Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.539Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:44:01.580Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:24.188Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.light.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T18:51:11.675Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:29.403Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -313,29 +313,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-default.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:57.785Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.294Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-example.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.395Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.773Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-forced-colors.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.718Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.999Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/TeamBlock/__a11y-evidence__/patterns-teamblock-playground.forced-colors.json",
-            "sourceCommit": "0e7ea02951e4a49daebf3d96b00d5e9771754081",
-            "capturedAt": "2026-10-30T19:02:58.067Z",
+            "sourceCommit": "f1b9c371e5785fb61d136988c13f3abcac43d17f",
+            "capturedAt": "2026-10-31T08:39:39.539Z",
             "passed": true,
             "runner": "local-recapture"
           }
