@@ -34,6 +34,7 @@ export default {
       description:
         "Full name used for fallback initials (e.g., 'First Last' -> 'FL').",
     },
+      alt: { control: "text", description: "Overrides the image alt text (defaults to name). Pass an empty string when the name is printed beside the avatar.", table: { category: "Accessibility" } },
       as: { table: { disable: true } },
       asChild: { table: { disable: true } },
       children: { table: { disable: true } },
@@ -58,7 +59,7 @@ export default {
       },
       menuLabel: { control: "text", description: "Accessible label announced for the avatar menu trigger", table: { category: "Accessibility" } },
       ref: { table: { disable: true } },
-      size: { control: { type: "inline-radio" }, options: ["sm", "md", "lg", "xl"], description: "Avatar size step.", table: { category: "Appearance", defaultValue: { summary: "md" } } },
+      size: { control: { type: "inline-radio" }, options: ["sm", "md", "lg", "xl", "7rem"], description: "Avatar size step, or any CSS length for a custom size.", table: { category: "Appearance", defaultValue: { summary: "md" } } },
       sizes: { control: "text", description: "Native img sizes attribute for responsive photos.", table: { category: "Content" } },
       srcSet: { control: "text", description: "Native img srcSet for responsive photo densities.", table: { category: "Content" } },
       style: { table: { disable: true } }
@@ -108,6 +109,14 @@ WithInitials.parameters = {
   docs: { description: { story: "No image, no problem: initials derive from name. This is the honest fallback, not a style choice for broken pipelines." } },
 };
 WithInitials.args = { name: "Petri Lahdelma", variant: "initials" };
+
+export const CustomSize = Template.bind({});
+CustomSize.tags = ["example"];
+CustomSize.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "size takes any CSS length beyond the sm to xl steps. TeamBlock sets 7rem portraits; the alt is empty because the name is printed under each one." } },
+};
+CustomSize.args = { imageUrl: peteVaultBoy, name: "Petri Lahdelma", size: "7rem", alt: "" };
 
 export const WithMenu = Template.bind({});
 WithMenu.tags = ["example"];

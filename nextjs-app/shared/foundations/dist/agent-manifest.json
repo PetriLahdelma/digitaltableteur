@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-31T01:43:05.062Z",
+  "generatedAt": "2026-10-31T08:12:36.223Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -4313,6 +4313,11 @@
               "initials"
             ],
             "description": "Controls whether the avatar prefers an image or initials"
+          },
+          "alt": {
+            "optional": true,
+            "type": "string",
+            "description": "Overrides the image alt text (defaults to `name`). Pass `\"\"` when the\nname is already printed beside the avatar, so it is not read twice."
           }
         },
         "propRelationships": [],
@@ -4362,7 +4367,7 @@
           "TextInput"
         ],
         "prefersOver": [],
-        "declaredPropCount": 12,
+        "declaredPropCount": 13,
         "guidelines": [
           {
             "level": "should",

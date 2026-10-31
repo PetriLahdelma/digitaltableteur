@@ -14,7 +14,13 @@
   border-radius: var(--radius-circle);
   background-color: var(--color-primary);
   font-family: var(--font-body, sans-serif);
-  font-size: clamp(0.875rem, 0.4vi + 0.8rem, 1.125rem);
+
+  /* The original clamp is the floor; custom sizes past about 3rem scale the
+     initials with the avatar so a 7rem portrait does not hold a tiny label. */
+  font-size: max(
+    clamp(0.875rem, 0.4vi + 0.8rem, 1.125rem),
+    calc(var(--avatar-size, 2.5rem) * 0.36)
+  );
   font-weight: 500;
   text-transform: uppercase;
   color: var(--color-white);

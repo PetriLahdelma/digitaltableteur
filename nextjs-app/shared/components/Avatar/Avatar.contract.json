@@ -191,6 +191,11 @@
                 "initials"
             ],
             "description": "Controls whether the avatar prefers an image or initials"
+        },
+        "alt": {
+            "optional": true,
+            "type": "string",
+            "description": "Overrides the image alt text (defaults to `name`). Pass `\"\"` when the\nname is already printed beside the avatar, so it is not read twice."
         }
     },
     "forbiddenUse": [

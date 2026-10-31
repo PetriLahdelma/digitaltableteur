@@ -65,6 +65,9 @@ export interface AvatarProps {
   menuLabel?: string;
   /** Controls whether the avatar prefers an image or initials */
   variant?: "image" | "initials";
+  /** Overrides the image alt text (defaults to `name`). Pass `""` when the
+   * name is already printed beside the avatar, so it is not read twice. */
+  alt?: string;
 }
 
 const resolveImageUrl = (
@@ -99,6 +102,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
       menuItems,
       menuLabel,
       variant = "image",
+      alt,
     },
     ref,
   ) => {
@@ -135,7 +139,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
         src={resolvedImageUrl}
         srcSet={resolvedSrcSet}
         sizes={resolvedSizes}
-        alt={name || t("avatar.altTextGeneric")}
+        alt={alt ?? (name || t("avatar.altTextGeneric"))}
         className={styles.avatarImage}
         onClick={clickable && !menuEnabled ? handleClick : undefined}
         style={avatarStyle}
@@ -155,6 +159,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
             className={styles.avatarText}
             onClick={clickable && !menuEnabled ? handleClick : undefined}
             style={avatarStyle}
+            aria-hidden={alt === "" ? true : undefined}
           >
             {initials}
           </div>
