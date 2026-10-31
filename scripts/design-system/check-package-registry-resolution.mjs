@@ -227,6 +227,11 @@ function findAppLocalImports(publicExports) {
   for (const root of APP_LOCAL_IMPORT_ROOTS) {
     for (const file of sourceFiles(root)) {
       const source = readFileSync(file, "utf8");
+      // The package root is a "use client" module. From a server module its
+      // exports are client references: components can be rendered, but a
+      // function (cn, a formatter) throws when called. Server files keep
+      // plain helpers local, so only components are held to the registry.
+      const isClientModule = /^\s*(?:\/\/[^\n]*\n\s*|\/\*[\s\S]*?\*\/\s*)*["']use client["']/.test(source);
       for (const match of source.matchAll(MODULE_SPECIFIER_RE)) {
         const clause = match[1] ?? null;
         const importPath = match[2] ?? match[3] ?? match[4];
@@ -255,7 +260,9 @@ function findAppLocalImports(publicExports) {
               ? pathTail[pathTail.indexOf("shared") + 2]
               : null;
           const packageHits = new Set(
-            specifiers.filter((name) => publicExports.has(name)),
+            specifiers.filter(
+              (name) => publicExports.has(name) && (isClientModule || /^[A-Z]/.test(name)),
+            ),
           );
           if (
             specifiers.length === 0 &&
