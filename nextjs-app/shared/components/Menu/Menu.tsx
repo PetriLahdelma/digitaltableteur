@@ -99,6 +99,8 @@ export interface MenuProps {
   align?: "start" | "center" | "end";
   /** Gap in px between the trigger and the content. */
   sideOffset?: number;
+  /** Shift in px along the alignment edge (negative moves toward the start). */
+  alignOffset?: number;
 }
 
 export function MenuContent({
@@ -107,6 +109,7 @@ export function MenuContent({
   side = "bottom",
   align = "start",
   sideOffset = 6,
+  alignOffset = 0,
 }: MenuProps) {
   return (
     <DropdownMenu.Portal>
@@ -115,6 +118,7 @@ export function MenuContent({
         side={side}
         align={align}
         sideOffset={sideOffset}
+        alignOffset={alignOffset}
         collisionPadding={12}
       >
         {children}

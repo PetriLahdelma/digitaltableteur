@@ -52,7 +52,11 @@ export interface SplitButtonProps
   onPrimaryClick?: React.MouseEventHandler<HTMLButtonElement>;
   /** List of alternative actions shown in the dropdown */
   options: SplitButtonOption[];
-  /** Alignment of the dropdown menu along the toggle edge */
+  /**
+   * Which edge of the split button the menu lines up with: "start" puts the
+   * menu under the whole control from its leading edge, "end" lines its end
+   * up with the toggle. @default "start"
+   */
   menuAlign?: "start" | "end";
   /** Disable both segments */
   disabled?: boolean;
@@ -92,7 +96,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
       rounded = false,
       tooltip,
       accessibleName,
-      menuAlign = "end",
+      menuAlign = "start",
       disabled = false,
       toggleLabel,
       className,
@@ -106,6 +110,28 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
     // Only wire the Radix Menu when the toggle can actually open: a disabled
     // trigger still opens under Radix asChild, so gate the whole Menu instead.
     const menuActive = hasOptions && !disabled;
+
+    // The menu is anchored to the toggle; to start it at the split button's
+    // leading edge, shift it back by the distance from the main segment's
+    // start to the toggle's start (the segments overlap by a border).
+    const mainRef = React.useRef<HTMLButtonElement>(null);
+    const [mainWidth, setMainWidth] = React.useState(0);
+    React.useLayoutEffect(() => {
+      const main = mainRef.current;
+      if (!main) return;
+      const measure = () => {
+        const toggleEl = main.nextElementSibling;
+        const start = main.getBoundingClientRect().left;
+        setMainWidth(
+          toggleEl ? toggleEl.getBoundingClientRect().left - start : main.getBoundingClientRect().width,
+        );
+      };
+      measure();
+      if (typeof ResizeObserver === "undefined") return;
+      const observer = new ResizeObserver(measure);
+      observer.observe(main);
+      return () => observer.disconnect();
+    }, []);
 
     const toggle = (
       <Button
@@ -175,6 +201,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
         ref={ref}
       >
         <Button
+          ref={mainRef}
           variant={variant}
           size={size}
           surface={surface}
@@ -195,7 +222,10 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
         {menuActive ? (
           <Menu>
             <MenuTrigger asChild>{toggle}</MenuTrigger>
-            <MenuContent align={menuAlign}>
+            <MenuContent
+              align={menuAlign}
+              alignOffset={menuAlign === "start" ? -mainWidth : 0}
+            >
               {options.map((option, index) => renderOption(option, index))}
             </MenuContent>
           </Menu>
