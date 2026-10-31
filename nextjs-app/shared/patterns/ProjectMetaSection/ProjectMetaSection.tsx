@@ -8,6 +8,7 @@ import {
   useRef,
 } from "react";
 import Image from "next/image";
+import { Avatar } from "@digitaltableteur/react";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { gsap, useGSAP } from "../../lib/gsap";
@@ -250,26 +251,16 @@ export function ProjectMetaSection({
               >
                 {team.map((member) => (
                   <li key={member.name} className="text-center">
-                    {member.image ? (
-                      <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-muted">
-                        <Image
-                          src={member.image}
-                          alt={`${member.name}, ${member.role}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className="w-20 h-20 mx-auto mb-3 rounded-full bg-muted flex items-center justify-center"
-                        role="img"
-                        aria-label={`${member.name}, ${member.role}`}
-                      >
-                        <span className="text-2xl font-medium text-muted-foreground" aria-hidden="true">
-                          {member.name.charAt(0)}
-                        </span>
-                      </div>
-                    )}
+                    {/* The name and role are printed below, so the avatar stays silent. */}
+                    <div className={styles.teamAvatar}>
+                      <Avatar
+                        name={member.name}
+                        imageUrl={member.image}
+                        variant={member.image ? "image" : "initials"}
+                        size="5rem"
+                        alt=""
+                      />
+                    </div>
                     <p className={cn("font-body font-medium text-sm text-foreground", styles.teamMemberName)}>
                       {member.name}
                     </p>

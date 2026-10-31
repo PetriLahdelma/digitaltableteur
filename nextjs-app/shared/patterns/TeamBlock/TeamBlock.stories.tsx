@@ -2,127 +2,11 @@ import contract from "./TeamBlock.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import TeamBlock from "./TeamBlock";
-import type { TeamBlockProps } from "./TeamBlock";
-import ImagePlaceholder from "@dt/ImagePlaceholder";
-import PageLayout from "../PageLayout/PageLayout";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
-import styles from "./TeamBlock.module.css";
 
-/**
- * Storybook-only wrapper that renders team members with ImagePlaceholder instead of Next.js Image
- * for mock data, while keeping production Helsinki DS images unchanged
- */
-const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
-  members,
-  sectionTitle = "Team",
-  description,
-  columns = 5,
-  backgroundColor = "transparent",
-  maxWidth = "lg",
-  spacing = "default",
-  className = "",
-  as = "section",
-  ariaLabel,
-  roundImages = false,
-}) => {
-  const Wrapper = as;
-  const bgColors = {
-    light: "var(--color-light-bg)",
-    white: "var(--color-white)",
-    transparent: "transparent",
-  };
-  const gridClass = styles[`grid${columns}Col`];
-  const imageClass = roundImages ? styles.roundImage : styles.teamImage;
-
-  return (
-    <Wrapper
-      className={[styles.teamBlock, className].filter(Boolean).join(" ")}
-      style={{
-        backgroundColor: bgColors[backgroundColor],
-        paddingBlock:
-          backgroundColor !== "transparent" ? "var(--space-xl, 3rem)" : "0",
-      }}
-      aria-label={ariaLabel || sectionTitle}
-    >
-      <PageLayout maxWidth={maxWidth} spacing={spacing} as="div">
-        {sectionTitle && (
-          <Title
-            level={2}
-            size="xl"
-            className={styles.sectionTitle}
-          >
-            {sectionTitle}
-          </Title>
-        )}
-
-        {description && (
-          <div className={styles.description}>
-            {typeof description === "string" ? (
-              <Text size="m">{description}</Text>
-            ) : (
-              description
-            )}
-          </div>
-        )}
-
-        <div className={gridClass}>
-          {members.map((member, index) => {
-            const MemberWrapper = member.link ? "a" : "div";
-            const memberProps = member.link
-              ? {
-                  href: member.link,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  className: styles.memberLink,
-                }
-              : {};
-
-            const width = member.imageWidth || 112;
-            const height = member.imageHeight || 112;
-
-            return (
-              <MemberWrapper
-                key={`${member.name}-${index}`}
-                className={styles.col}
-                {...memberProps}
-              >
-                {/* Use ImagePlaceholder for all Storybook previews */}
-                <div
-                  className={imageClass}
-                  style={{ overflow: "hidden", borderRadius: "50%" }}
-                >
-                  <ImagePlaceholder
-                    width={width}
-                    height={height}
-                    alt={member.imageAlt || member.name}
-                    variant="gradient"
-                    showIcon
-                    style={{ borderRadius: "50%" }}
-                  />
-                </div>
-                <Title
-                  level={3}
-                  size="xs"
-                  className={styles.memberName}
-                >
-                  {member.name}
-                </Title>
-                <Text size="s" className={styles.memberTitle}>
-                  {member.title}
-                </Text>
-              </MemberWrapper>
-            );
-          })}
-        </div>
-      </PageLayout>
-    </Wrapper>
-  );
-};
-
-const meta: Meta<typeof TeamBlockForStorybook> = {
+const meta: Meta<typeof TeamBlock> = {
   title: "Patterns/TeamBlock",
-  component: TeamBlockForStorybook,
+  component: TeamBlock,
   tags: ["stable", "autodocs"],
   parameters: {
     design: {
@@ -178,33 +62,27 @@ const smallTeam = [
   {
     name: "Sarah Johnson",
     title: "Product Designer",
-    image: "placeholder",
-    imageAlt: "Sarah Johnson, Product Designer",
   },
   {
     name: "Michael Chen",
     title: "Frontend Developer",
-    image: "placeholder",
-    imageAlt: "Michael Chen, Frontend Developer",
   },
   {
     name: "Emma Davis",
     title: "UX Researcher",
-    image: "placeholder",
-    imageAlt: "Emma Davis, UX Researcher",
   },
 ];
 
 // Large team example
 const largeTeam = [
-  { name: "Alex Rivera", title: "Creative Director", image: "placeholder" },
-  { name: "Jordan Lee", title: "Lead Designer", image: "placeholder" },
-  { name: "Taylor Swift", title: "Senior Developer", image: "placeholder" },
-  { name: "Casey Morgan", title: "UX Designer", image: "placeholder" },
-  { name: "Jamie Park", title: "Frontend Engineer", image: "placeholder" },
-  { name: "Riley Chen", title: "Product Manager", image: "placeholder" },
-  { name: "Avery Johnson", title: "UI Designer", image: "placeholder" },
-  { name: "Morgan Davis", title: "Backend Developer", image: "placeholder" },
+  { name: "Alex Rivera", title: "Creative Director" },
+  { name: "Jordan Lee", title: "Lead Designer" },
+  { name: "Taylor Brooks", title: "Senior Developer" },
+  { name: "Casey Morgan", title: "UX Designer" },
+  { name: "Jamie Park", title: "Frontend Engineer" },
+  { name: "Riley Chen", title: "Product Manager" },
+  { name: "Avery Johnson", title: "UI Designer" },
+  { name: "Morgan Davis", title: "Backend Developer" },
 ];
 
 /**
@@ -269,14 +147,13 @@ export const SixColumnLayout: Story = {
 };
 
 /**
- * Team with round profile images
+ * Real portraits from the Helsinki Design System case study, as avatars
  */
-export const RoundImages: Story = {
+export const WithPhotos: Story = {
   args: {
     members: helsinkiTeam,
     sectionTitle: "Team",
     columns: 5,
-    roundImages: true,
     backgroundColor: "light",
   },
 };
@@ -342,19 +219,16 @@ export const WithLinks: Story = {
       {
         name: "Sarah Johnson",
         title: "Product Designer",
-        image: "placeholder",
         link: "https://linkedin.com",
       },
       {
         name: "Michael Chen",
         title: "Frontend Developer",
-        image: "placeholder",
         link: "https://linkedin.com",
       },
       {
         name: "Emma Davis",
         title: "UX Researcher",
-        image: "placeholder",
         link: "https://linkedin.com",
       },
     ],
@@ -384,20 +258,18 @@ export const ArticleVariant: Story = {
 export const DesignTeam: Story = {
   args: {
     members: [
-      { name: "Alex Rivera", title: "Design Director", image: "placeholder" },
+      { name: "Alex Rivera", title: "Design Director" },
       {
         name: "Jordan Lee",
         title: "Lead Product Designer",
-        image: "placeholder",
       },
-      { name: "Taylor Morgan", title: "UI/UX Designer", image: "placeholder" },
-      { name: "Casey Park", title: "Visual Designer", image: "placeholder" },
+      { name: "Taylor Morgan", title: "UI/UX Designer" },
+      { name: "Casey Park", title: "Visual Designer" },
     ],
     sectionTitle: "Design Team",
     description: "Our creative minds shaping exceptional user experiences.",
     columns: 4,
     backgroundColor: "light",
-    roundImages: true,
   },
 };
 
@@ -407,15 +279,14 @@ export const DesignTeam: Story = {
 export const DevelopmentTeam: Story = {
   args: {
     members: [
-      { name: "Jamie Chen", title: "Tech Lead", image: "placeholder" },
+      { name: "Jamie Chen", title: "Tech Lead" },
       {
         name: "Riley Johnson",
         title: "Senior Frontend Engineer",
-        image: "placeholder",
       },
-      { name: "Avery Davis", title: "Backend Developer", image: "placeholder" },
-      { name: "Morgan Lee", title: "DevOps Engineer", image: "placeholder" },
-      { name: "Dakota Smith", title: "QA Engineer", image: "placeholder" },
+      { name: "Avery Davis", title: "Backend Developer" },
+      { name: "Morgan Lee", title: "DevOps Engineer" },
+      { name: "Dakota Smith", title: "QA Engineer" },
     ],
     sectionTitle: "Development Team",
     columns: 5,
@@ -432,12 +303,10 @@ export const MinimalTeam: Story = {
       {
         name: "Sarah Williams",
         title: "Founder & Designer",
-        image: "placeholder",
       },
       {
         name: "John Smith",
         title: "Co-founder & Developer",
-        image: "placeholder",
       },
     ],
     sectionTitle: "Founders",

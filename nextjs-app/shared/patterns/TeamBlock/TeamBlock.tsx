@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import PageLayout from "../PageLayout/PageLayout";
-import { Text, Title } from "@digitaltableteur/react";
+import { Avatar, Text, Title } from "@digitaltableteur/react";
 import styles from "./TeamBlock.module.css";
 
 /**
@@ -14,14 +13,8 @@ export interface TeamMember {
   name: string;
   /** Member's role or job title */
   title: string;
-  /** Path to member's image */
-  image: string;
-  /** Alt text for the image (defaults to name if not provided) */
-  imageAlt?: string;
-  /** Image width in pixels */
-  imageWidth?: number;
-  /** Image height in pixels */
-  imageHeight?: number;
+  /** Path to member's photo; without one the avatar shows initials */
+  image?: string;
   /** Optional link to member's profile or LinkedIn */
   link?: string;
 }
@@ -50,15 +43,16 @@ export interface TeamBlockProps {
   as?: "section" | "article" | "div";
   /** Accessible label for the section */
   ariaLabel?: string;
-  /** Show member images as circles instead of rounded squares */
-  roundImages?: boolean;
+  /** Avatar diameter as any CSS length (default 7rem) */
+  avatarSize?: string;
 }
 
 /**
  * TeamBlock - A reusable design system component for displaying team members
  *
- * Displays a multi-column grid of team members with images, names, and titles.
- * Commonly used in case studies and work pages to showcase project teams.
+ * Displays a centred grid of team members: an Avatar, the name and the title.
+ * Rows that hold fewer members than `columns` stay centred instead of
+ * hugging the start edge. Commonly used in case studies to credit teams.
  *
  * @example
  * ```tsx
@@ -83,7 +77,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
   className = "",
   as = "section",
   ariaLabel,
-  roundImages = false,
+  avatarSize,
 }) => {
   const Wrapper = as;
   const bgColors = {
@@ -92,20 +86,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
     transparent: "transparent",
   };
 
-  const gridClass =
-    columns === 2
-      ? styles.grid2Col
-      : columns === 3
-      ? styles.grid3Col
-      : columns === 4
-      ? styles.grid4Col
-      : columns === 5
-      ? styles.grid5Col
-      : styles.grid6Col;
-
-  const imageClass = roundImages
-    ? `${styles.teamImage} ${styles.roundImage}`
-    : styles.teamImage;
+  const columnClass = styles[`columns${columns}`];
 
   return (
     <Wrapper
@@ -138,7 +119,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
           </div>
         )}
 
-        <div className={gridClass}>
+        <div className={[styles.grid, columnClass].join(" ")}>
           {members.map((member, index) => {
             const MemberWrapper = member.link ? "a" : "div";
             const memberProps = member.link
@@ -156,12 +137,13 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
                 className={styles.col}
                 {...memberProps}
               >
-                <Image
-                  src={member.image}
-                  alt={member.imageAlt || member.name}
-                  width={member.imageWidth || 112}
-                  height={member.imageHeight || 112}
-                  className={imageClass}
+                {/* The name is printed below, so the avatar stays silent. */}
+                <Avatar
+                  name={member.name}
+                  imageUrl={member.image}
+                  variant={member.image ? "image" : "initials"}
+                  size={avatarSize || "7rem"}
+                  alt=""
                 />
                 <Title
                   level={4}

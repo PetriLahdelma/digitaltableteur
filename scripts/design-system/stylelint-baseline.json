@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 1475,
+  "warningCount": 1469,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -1237,7 +1237,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Avatar/avatar.module.css",
-      "line": 37,
+      "line": 43,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -1255,7 +1255,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 153,
+      "line": 154,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1264,7 +1264,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 154,
+      "line": 155,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1273,7 +1273,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 155,
+      "line": 156,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -1282,7 +1282,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 156,
+      "line": 157,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4882,7 +4882,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 23,
+      "line": 28,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4891,7 +4891,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 98,
+      "line": 109,
       "column": 35,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -4900,7 +4900,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 31,
+      "line": 36,
       "column": 39,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -4909,7 +4909,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 50,
+      "line": 57,
       "column": 37,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12847,7 +12847,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.module.css",
-      "line": 3,
+      "line": 9,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12856,7 +12856,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.module.css",
-      "line": 7,
+      "line": 13,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13009,7 +13009,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 209,
+      "line": 127,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -13018,30 +13018,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 163,
+      "line": 95,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"-4px\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-4px\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 190,
-      "column": 22,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use one of the tokens that hold it: var(--space-internal-4), var(--space-layout-4) or var(--spacing). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 190,
-      "column": 17,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use one of the tokens that hold it: var(--space-internal-16) or var(--space-layout-16). (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
@@ -13054,34 +13036,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 34,
-      "column": 30,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 140,
-      "column": 45,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 234,
-      "column": 32,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"3rem\". Use var(--space-layout-48) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 170,
+      "line": 102,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -13099,21 +13054,12 @@
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 168,
+      "line": 100,
       "column": 34,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 177,
-      "column": 34,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use var(--radius-lg) (nextjs-app/shared/styles/variables.css). (rhythmguard/prefer-token)::2"
     },
     {
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",

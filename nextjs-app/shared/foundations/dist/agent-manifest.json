@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-31T08:12:36.223Z",
+  "generatedAt": "2026-10-31T08:37:37.212Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -12,7 +12,7 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 91.9,
     "codebaseComponentCount": 210,
-    "usageCoveragePercent": 93.8,
+    "usageCoveragePercent": 93.3,
     "componentsWithProductionUsage": 45,
     "notReadyForStablePromotion": false
   },
@@ -78,12 +78,12 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 193,
-    "withAnyUsage": 181,
+    "withAnyUsage": 180,
     "withProductionUsage": 45,
-    "uniqueImportedComponents": 181,
-    "totalEvidenceRows": 913,
-    "aliasImportFiles": 464,
-    "relativeImportFiles": 490,
+    "uniqueImportedComponents": 180,
+    "totalEvidenceRows": 910,
+    "aliasImportFiles": 462,
+    "relativeImportFiles": 489,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -4140,6 +4140,11 @@
               "initials"
             ],
             "description": "Controls whether the avatar prefers an image or initials"
+          },
+          "alt": {
+            "optional": true,
+            "type": "string",
+            "description": "Overrides the image alt text (defaults to `name`). Pass `\"\"` when the\nname is already printed beside the avatar, so it is not read twice."
           }
         },
         "forbiddenUse": [
@@ -31730,18 +31735,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ImagePlaceholder",
-        "importCount": 1,
+        "importCount": 0,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": [
-          {
-            "path": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/ImagePlaceholder",
-            "context": "story"
-          }
-        ]
+        "evidence": []
       },
       "agent": {
         "preferredImport": "@dt/ImagePlaceholder",
@@ -67224,8 +67222,8 @@
         ],
         "composesWith": [
           "Button",
-          "Title",
           "TextInput",
+          "Title",
           "Icon",
           "CheckboxGroup",
           "Link"
@@ -70145,7 +70143,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 33,
+        "importCount": 32,
         "productionImportCount": 0,
         "patternImportCount": 6,
         "componentImportCount": 14,
@@ -85970,7 +85968,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PageLayout",
-        "importCount": 11,
+        "importCount": 10,
         "productionImportCount": 0,
         "patternImportCount": 10,
         "componentImportCount": 0,
@@ -86034,12 +86032,6 @@
             "importKind": "relative",
             "importPath": "../PageLayout/PageLayout",
             "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.stories.tsx",
-            "importKind": "relative",
-            "importPath": "../PageLayout/PageLayout",
-            "context": "story"
           }
         ]
       },
@@ -93937,8 +93929,8 @@
         "tier": "pattern",
         "group": "structure",
         "status": "stable",
-        "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
-        "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
+        "description": "Centred team grid of member cards: an Avatar, the name and the role, plus avatar-size, column and spacing knobs.",
+        "dense": "Centred team grid: Avatar, name and role cards with avatar-size, column and spacing knobs.",
         "keywords": [
           "team",
           "members",
@@ -93947,7 +93939,7 @@
           "case-study"
         ],
         "usage": {
-          "description": "TeamBlock renders a team/people grid: member cards with photo, name, and role, plus roundImages, column, and spacing knobs, under an optional section title and description. Work case studies use it to credit project teams; AboutPageContent has its own team treatment."
+          "description": "TeamBlock renders a team/people grid: member cards with an Avatar (photo or initials), name and role, plus avatarSize, column and spacing knobs, under an optional section title and description. Rows with fewer members than columns stay centred. Work case studies use it to credit project teams; AboutPageContent has its own team treatment."
         },
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-264",
         "radixPrimitive": null,
@@ -94079,10 +94071,10 @@
             "type": "string",
             "description": "Accessible label for the section"
           },
-          "roundImages": {
+          "avatarSize": {
             "optional": true,
-            "type": "boolean",
-            "description": "Show member images as circles instead of rounded squares"
+            "type": "string",
+            "description": "Avatar diameter as any CSS length (default 7rem)"
           }
         },
         "forbiddenUse": [
@@ -94197,10 +94189,10 @@
             "type": "string",
             "description": "Accessible label for the section"
           },
-          "roundImages": {
+          "avatarSize": {
             "optional": true,
-            "type": "boolean",
-            "description": "Show member images as circles instead of rounded squares"
+            "type": "string",
+            "description": "Avatar diameter as any CSS length (default 7rem)"
           }
         },
         "propRelationships": [],

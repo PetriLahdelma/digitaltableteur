@@ -73,29 +73,22 @@ describe("TeamBlock", () => {
       expect(screen.getByText("UX Designer")).toBeInTheDocument();
     });
 
-    it("renders all member images", () => {
-      render(<TeamBlock members={mockTeamMembers} />);
-      const images = screen.getAllByRole("img");
+    it("renders every photo as a decorative avatar", () => {
+      const { container } = render(<TeamBlock members={mockTeamMembers} />);
+      const images = container.querySelectorAll("img");
       expect(images).toHaveLength(3);
+      // The name is printed under each avatar, so the image stays silent.
+      images.forEach((img) => expect(img).toHaveAttribute("alt", ""));
+      expect(screen.queryAllByRole("img")).toHaveLength(0);
     });
 
-    it("uses member name as alt text when imageAlt not provided", () => {
-      render(<TeamBlock members={mockTeamMembers} />);
-      const lauraImage = screen.getByAltText("Laura Karhu");
-      expect(lauraImage).toBeInTheDocument();
-    });
-
-    it("uses custom imageAlt when provided", () => {
-      const membersWithAlt = [
-        {
-          ...mockTeamMembers[0],
-          imageAlt: "Custom alt text for Laura",
-        },
-      ];
-      render(<TeamBlock members={membersWithAlt} />);
-      expect(
-        screen.getByAltText("Custom alt text for Laura"),
-      ).toBeInTheDocument();
+    it("falls back to hidden initials when a member has no photo", () => {
+      const { container } = render(
+        <TeamBlock members={[{ name: "Laura Karhu", title: "Project Lead" }]} />,
+      );
+      expect(container.querySelector("img")).toBeNull();
+      const initials = screen.getByText("LK");
+      expect(initials).toHaveAttribute("aria-hidden", "true");
     });
 
     it("handles single member", () => {
@@ -113,7 +106,7 @@ describe("TeamBlock", () => {
         { name: "Member 6", title: "Role 6", image: "/path6.png" },
       ];
       const { container } = render(<TeamBlock members={manyMembers} />);
-      const members = container.querySelectorAll('[class*="col"]');
+      const members = container.querySelectorAll('[class*="columns"] > *');
       expect(members).toHaveLength(6);
     });
   });
@@ -196,81 +189,33 @@ describe("TeamBlock", () => {
       expect(section.style.backgroundColor).toBe("var(--color-white)");
     });
 
-    it("applies 5-column grid class by default", () => {
-      const { container } = render(<TeamBlock members={mockTeamMembers} />);
-      const grid = container.querySelector('[class*="grid5Col"]');
-      expect(grid).toBeInTheDocument();
-    });
+    it.each([2, 3, 4, 6] as const)(
+      "applies the %i-column modifier when specified",
+      (columns) => {
+        const { container } = render(
+          <TeamBlock members={mockTeamMembers} columns={columns} />,
+        );
+        expect(
+          container.querySelector(`[class*="columns${columns}"]`),
+        ).toBeInTheDocument();
+      },
+    );
 
-    it("applies 2-column grid class when specified", () => {
-      const { container } = render(
-        <TeamBlock members={mockTeamMembers} columns={2} />,
-      );
-      const grid = container.querySelector('[class*="grid2Col"]');
-      expect(grid).toBeInTheDocument();
-    });
-
-    it("applies 3-column grid class when specified", () => {
-      const { container } = render(
-        <TeamBlock members={mockTeamMembers} columns={3} />,
-      );
-      const grid = container.querySelector('[class*="grid3Col"]');
-      expect(grid).toBeInTheDocument();
-    });
-
-    it("applies 4-column grid class when specified", () => {
-      const { container } = render(
-        <TeamBlock members={mockTeamMembers} columns={4} />,
-      );
-      const grid = container.querySelector('[class*="grid4Col"]');
-      expect(grid).toBeInTheDocument();
-    });
-
-    it("applies 6-column grid class when specified", () => {
-      const { container } = render(
-        <TeamBlock members={mockTeamMembers} columns={6} />,
-      );
-      const grid = container.querySelector('[class*="grid6Col"]');
-      expect(grid).toBeInTheDocument();
-    });
-
-    it("applies round image class when roundImages is true", () => {
-      const { container } = render(
-        <TeamBlock members={mockTeamMembers} roundImages={true} />,
-      );
-      const image = container.querySelector('[class*="roundImage"]');
-      expect(image).toBeInTheDocument();
-    });
-
-    it("does not apply round image class by default", () => {
-      const { container } = render(<TeamBlock members={mockTeamMembers} />);
-      const image = container.querySelector('[class*="roundImage"]');
-      expect(image).not.toBeInTheDocument();
-    });
   });
 
-  describe("Image Properties", () => {
-    it("uses default image dimensions (112x112)", () => {
-      render(<TeamBlock members={mockTeamMembers} />);
-      const images = screen.getAllByRole("img");
-      images.forEach((img) => {
-        expect(img).toHaveAttribute("width", "112");
-        expect(img).toHaveAttribute("height", "112");
-      });
+  describe("Avatar size", () => {
+    it("uses a 7rem avatar by default", () => {
+      const { container } = render(<TeamBlock members={mockTeamMembers} />);
+      const img = container.querySelector("img") as HTMLElement;
+      expect(img.style.getPropertyValue("--avatar-size")).toBe("7rem");
     });
 
-    it("uses custom image dimensions when provided", () => {
-      const customMembers = [
-        {
-          ...mockTeamMembers[0],
-          imageWidth: 150,
-          imageHeight: 150,
-        },
-      ];
-      render(<TeamBlock members={customMembers} />);
-      const image = screen.getByRole("img");
-      expect(image).toHaveAttribute("width", "150");
-      expect(image).toHaveAttribute("height", "150");
+    it("passes a custom avatarSize through to Avatar", () => {
+      const { container } = render(
+        <TeamBlock members={mockTeamMembers} avatarSize="5rem" />,
+      );
+      const img = container.querySelector("img") as HTMLElement;
+      expect(img.style.getPropertyValue("--avatar-size")).toBe("5rem");
     });
   });
 
@@ -311,12 +256,6 @@ describe("TeamBlock", () => {
       expect(title).toHaveAttribute("data-team-title");
     });
 
-    it("provides proper alt text for all images", () => {
-      render(<TeamBlock members={mockTeamMembers} />);
-      expect(screen.getByAltText("Laura Karhu")).toBeInTheDocument();
-      expect(screen.getByAltText("Petri Lahdelma")).toBeInTheDocument();
-      expect(screen.getByAltText("Roni Helppi")).toBeInTheDocument();
-    });
   });
 
   describe("Props Defaults", () => {
@@ -327,7 +266,7 @@ describe("TeamBlock", () => {
 
     it("uses default columns of 5", () => {
       const { container } = render(<TeamBlock members={mockTeamMembers} />);
-      const grid = container.querySelector('[class*="grid5Col"]');
+      const grid = container.querySelector('[class*="columns5"]');
       expect(grid).toBeInTheDocument();
     });
 
@@ -354,11 +293,6 @@ describe("TeamBlock", () => {
       expect(container.firstChild?.nodeName).toBe("SECTION");
     });
 
-    it("uses default roundImages of false", () => {
-      const { container } = render(<TeamBlock members={mockTeamMembers} />);
-      const roundImage = container.querySelector('[class*="roundImage"]');
-      expect(roundImage).not.toBeInTheDocument();
-    });
   });
 
   describe("Edge Cases", () => {

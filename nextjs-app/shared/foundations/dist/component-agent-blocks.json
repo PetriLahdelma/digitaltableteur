@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T08:12:35.900Z",
+  "generatedAt": "2026-10-31T08:33:22.774Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -39705,8 +39705,8 @@
       ],
       "composesWith": [
         "Button",
-        "Title",
         "TextInput",
+        "Title",
         "Icon",
         "CheckboxGroup",
         "Link"
@@ -56668,10 +56668,10 @@
           "type": "string",
           "description": "Accessible label for the section"
         },
-        "roundImages": {
+        "avatarSize": {
           "optional": true,
-          "type": "boolean",
-          "description": "Show member images as circles instead of rounded squares"
+          "type": "string",
+          "description": "Avatar diameter as any CSS length (default 7rem)"
         }
       },
       "propRelationships": [],
