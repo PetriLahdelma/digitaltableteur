@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T23:33:33.288Z",
+  "generatedAt": "2026-10-31T00:02:19.363Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -14396,9 +14396,9 @@
         "keep `error` for validation; it is shorthand for status error."
       ],
       "avoidWhen": [
-        "nest a DS field inside another FieldShell.",
-        "put text buttons or links in the label row.",
-        "use it to group controls; that is FormField."
+        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+        "use it for a group of controls; FormField's fieldset owns the group case."
       ],
       "requiredA11y": [
         "The label is a <label for> the control and carries the id `${controlId}-label` for controls named with aria-labelledby.",
@@ -14410,9 +14410,7 @@
         "Label-row actions come before the control in Tab order, as they sit above it.",
         "An action with items opens a menu on Enter, Space or ArrowDown; arrow keys move through the items and Escape closes it."
       ],
-      "compositionRules": [
-        "nest a DS field inside another FieldShell."
-      ],
+      "compositionRules": [],
       "canonicalExamples": [
         "Default",
         "Playground",
@@ -14421,9 +14419,9 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [
-        "nest a DS field inside another FieldShell.",
-        "put text buttons or links in the label row.",
-        "use it to group controls; that is FormField."
+        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+        "use it for a group of controls; FormField's fieldset owns the group case."
       ],
       "composesWith": [
         "Icon",
@@ -14455,21 +14453,21 @@
         },
         {
           "level": "should-not",
-          "guidance": "nest a DS field inside another FieldShell.",
+          "guidance": "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
         },
         {
           "level": "should-not",
-          "guidance": "put text buttons or links in the label row.",
+          "guidance": "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
         },
         {
           "level": "should-not",
-          "guidance": "use it to group controls; that is FormField.",
+          "guidance": "use it for a group of controls; FormField's fieldset owns the group case.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
@@ -36030,8 +36028,9 @@
         "pass `of` for a figure out of a total instead of writing \"191/208\"."
       ],
       "avoidWhen": [
-        "animate figures counting up.",
-        "use it for several values per row; use Table."
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row; use Table."
       ],
       "requiredA11y": [
         "Renders a <dl>; each item is a <dt> label followed by a <dd> figure and an optional <dd> note, so the label is read before the figure.",
@@ -36049,8 +36048,9 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [
-        "animate figures counting up.",
-        "use it for several values per row; use Table."
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row; use Table."
       ],
       "composesWith": [],
       "prefersOver": [],
@@ -36072,14 +36072,21 @@
         },
         {
           "level": "should-not",
-          "guidance": "animate figures counting up.",
+          "guidance": "animate figures counting up; the figure is the content, not a decoration.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"
         },
         {
           "level": "should-not",
-          "guidance": "use it for several values per row; use Table.",
+          "guidance": "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it for tables of several values per row; use Table.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"

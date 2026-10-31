@@ -75,8 +75,9 @@
     },
     "lightDarkVerified": true,
     "forbiddenUse": [
-        "animate figures counting up.",
-        "use it for several values per row; use Table."
+        "animate figures counting up; the figure is the content, not a decoration.",
+        "put more than a short qualifier in the note; long explanations belong in the text around the list.",
+        "use it for tables of several values per row; use Table."
     ],
     "schemaVersion": 2,
     "props": {

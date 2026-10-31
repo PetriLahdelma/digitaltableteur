@@ -13,8 +13,9 @@ numbers at a glance and still hear them in order with a screen reader.
 ## Do / don't
 - Do: keep labels short and concrete, and put the source or date in the note.
 - Do: pass `of` for a figure out of a total instead of writing "191/208".
-- Don't: animate figures counting up.
-- Don't: use it for several values per row; use Table.
+- Don't: animate figures counting up; the figure is the content, not a decoration.
+- Don't: put more than a short qualifier in the note; long explanations belong in the text around the list.
+- Don't: use it for tables of several values per row; use Table.
 
 ## Design notes
 - Tokens: --font-size-title-s and -m for figures, --color-border hairlines

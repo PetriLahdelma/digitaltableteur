@@ -48,9 +48,9 @@
     },
     "lightDarkVerified": true,
     "forbiddenUse": [
-        "nest a DS field inside another FieldShell.",
-        "put text buttons or links in the label row.",
-        "use it to group controls; that is FormField."
+        "wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.",
+        "put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.",
+        "use it for a group of controls; FormField's fieldset owns the group case."
     ],
     "schemaVersion": 2,
     "props": {

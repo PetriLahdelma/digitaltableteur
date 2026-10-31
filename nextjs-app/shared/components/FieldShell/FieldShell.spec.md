@@ -21,9 +21,9 @@ colours, message lines and spacing instead of each rolling its own.
   for FieldShell directly only for a new kind of control.
 - Do: name each action with a verb ("Paste", "Generate password").
 - Do: keep `error` for validation; it is shorthand for status error.
-- Don't: nest a DS field inside another FieldShell.
-- Don't: put text buttons or links in the label row.
-- Don't: use it to group controls; that is FormField.
+- Don't: wrap a DS field (TextInput, TextArea, Select, Combobox, MultiCombobox, PhoneInput) in another FieldShell; they render their own.
+- Don't: put text buttons or links in actions; actions are icon buttons that run an operation or open a menu of operations.
+- Don't: use it for a group of controls; FormField's fieldset owns the group case.
 
 ## Design notes
 - Tokens: --space-internal-8 between label row, control and messages,
