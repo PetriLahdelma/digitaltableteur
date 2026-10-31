@@ -66,22 +66,22 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:14.587Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:54:02.796Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:25.926Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:53:53.808Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:21.559Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:53:58.322Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -99,29 +99,29 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.dark.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:26:14.587Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:54:02.796Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:15.477Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:54:07.033Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:17:25.926Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:53:53.808Z",
             "passed": true,
             "runner": "local-recapture"
           },
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.light.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:21:21.559Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:53:58.322Z",
             "passed": true,
             "runner": "local-recapture"
           }
@@ -135,8 +135,8 @@
         "evidence": [
           {
             "artifact": "../../../nextjs-app/shared/patterns/CaseStudySummary/__a11y-evidence__/patterns-casestudysummary-default.forced-colors.json",
-            "sourceCommit": "99eac772e8e1f5934321142b9f781441339d3789",
-            "capturedAt": "2026-10-30T19:30:15.477Z",
+            "sourceCommit": "1eed758ae73552f6e3232aee29172b24dcb68ae9",
+            "capturedAt": "2026-10-31T08:54:07.033Z",
             "passed": true,
             "runner": "local-recapture"
           }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T08:33:25.967Z",
+  "generatedAt": "2026-10-31T08:54:37.476Z",
   "summary": {
     "catalogCount": 231,
     "governedCount": 193,
@@ -2890,7 +2890,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 16,
+      "directImportCount": 17,
       "directImporters": [
         "app/design-system/agent/AgentBenchSection.tsx",
         "app/intake/_components/IntakeForm.tsx",
@@ -2907,6 +2907,7 @@
         "nextjs-app/shared/patterns/CaseStudySummary/CaseStudySummary.tsx",
         "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
         "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+        "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.tsx",
         "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx"
       ],
       "packageImportCount": 12,

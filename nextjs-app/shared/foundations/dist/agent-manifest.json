@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-10-31T08:37:37.212Z",
+  "generatedAt": "2026-10-31T08:54:33.869Z",
   "summary": {
     "componentCount": 193,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 180,
     "withProductionUsage": 45,
     "uniqueImportedComponents": 180,
-    "totalEvidenceRows": 910,
-    "aliasImportFiles": 462,
+    "totalEvidenceRows": 911,
+    "aliasImportFiles": 463,
     "relativeImportFiles": 489,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -4050,27 +4050,27 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/RawView/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -35368,9 +35368,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 5,
+        "importCount": 6,
         "productionImportCount": 0,
-        "patternImportCount": 3,
+        "patternImportCount": 4,
         "componentImportCount": 1,
         "evidence": [
           {
@@ -35387,6 +35387,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.tsx",
             "importKind": "alias",
             "importPath": "@dt/List",
             "context": "pattern"
