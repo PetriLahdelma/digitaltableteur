@@ -62,7 +62,9 @@ describe("ProjectList", () => {
     );
     const teaser = screen.getByText("VR Design System").closest("li")!;
     expect(within(teaser).queryByRole("link")).toBeNull();
-    expect(within(teaser).getByText("Soon")).toBeInTheDocument();
+    // One label for narrow rows (meta line) and one for wide rows (pill); the
+    // container query hides the other, so only one renders at any width.
+    expect(within(teaser).getAllByText("Soon")).toHaveLength(2);
   });
 
   it("hides the visual column header from assistive technology", () => {
