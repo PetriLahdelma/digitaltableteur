@@ -107,9 +107,9 @@ export const CodeCopyButton = React.forwardRef<
           {...rest}
         >
           {status === "copied" ? (
-            <Check className={styles.icon} size={GLYPH_SIZE[size]} aria-hidden="true" />
+            <Check className={styles.icon} size={GLYPH_SIZE[size]} weight="bold" aria-hidden="true" />
           ) : (
-            <Copy className={styles.icon} size={GLYPH_SIZE[size]} aria-hidden="true" />
+            <Copy className={styles.icon} size={GLYPH_SIZE[size]} weight="bold" aria-hidden="true" />
           )}
         </button>
         <span className={styles.visuallyHidden} role="status" aria-live="polite">

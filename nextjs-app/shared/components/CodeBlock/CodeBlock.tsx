@@ -329,7 +329,7 @@ export const CodeBlock = React.forwardRef<HTMLElement, CodeBlockProps>(
         >
           {showHeader ? (
             <div className={styles.header}>
-              <HeaderIcon className={styles.fileIcon} size={16} aria-hidden="true" />
+              <HeaderIcon className={styles.fileIcon} size={16} weight="bold" aria-hidden="true" />
               <span className={styles.filename} title={filename}>
                 {filename}
               </span>

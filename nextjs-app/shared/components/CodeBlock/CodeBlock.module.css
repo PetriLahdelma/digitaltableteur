@@ -71,6 +71,7 @@
   flex: 1;
   font-family: var(--font-mono);
   font-size: var(--font-size-code-s);
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-code-m);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -82,6 +83,7 @@
   flex-shrink: 0;
   font-family: var(--font-mono);
   font-size: var(--font-size-code-xs);
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-code-m);
   color: var(--color-muted);
 }
